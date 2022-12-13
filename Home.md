@@ -4,7 +4,7 @@ Welcome to the fastfetch wiki!
 
 ## macOS
 
-<img width="1001" alt="image" src="https://user-images.githubusercontent.com/6134068/206430105-c36f995d-55a1-4d14-85d9-ab9b2cdc9195.png">
+<img width="970" alt="image" src="https://user-images.githubusercontent.com/6134068/207219578-f9c4d6e3-539b-4a8f-a3b5-c3aaf9de8854.png">
 
 ## Linux
 
