@@ -4,7 +4,7 @@ Welcome to the fastfetch wiki!
 
 ## macOS
 
-<img width="970" alt="image" src="https://user-images.githubusercontent.com/6134068/207219578-f9c4d6e3-539b-4a8f-a3b5-c3aaf9de8854.png">
+<img width="970" alt="image" src="https://user-images.githubusercontent.com/6134068/209826384-e7e2dd7c-a17e-4165-bcfa-be2376fbcf63.png">
 
 ## Linux
 
@@ -36,7 +36,7 @@ Welcome to the fastfetch wiki!
 
 ## Android (without logo)
 
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/6134068/206433397-33ecb18e-5a6a-4978-abe0-d66a49302a73.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/6134068/209825936-94cb2d32-d8ad-465a-b5be-9f5dc9982874.png">
 
 # Benchmarks
 
