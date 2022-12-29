@@ -2,9 +2,9 @@ Welcome to the fastfetch wiki!
 
 # Screenshots on different systems
 
-## macOS
+## macOS (M1 Pro with image logo)
 
-<img width="970" alt="image" src="https://user-images.githubusercontent.com/6134068/209826384-e7e2dd7c-a17e-4165-bcfa-be2376fbcf63.png">
+<img width="970" alt="image" src="https://user-images.githubusercontent.com/6134068/209901964-54e86ba4-761a-442f-9cde-53bc96b727d9.png">
 
 ## macOS (old Intel with `--stat`)
 
