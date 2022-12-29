@@ -6,6 +6,10 @@ Welcome to the fastfetch wiki!
 
 <img width="970" alt="image" src="https://user-images.githubusercontent.com/6134068/209826384-e7e2dd7c-a17e-4165-bcfa-be2376fbcf63.png">
 
+## macOS (old Intel with `--stat`)
+
+<img width="970" alt="image" src="https://user-images.githubusercontent.com/6134068/209900706-ff43042f-8579-4d08-9b1e-213a50a1b9c2.png">
+
 ## Linux
 
 ![terminal](https://user-images.githubusercontent.com/6134068/206427763-7d466247-1e2e-49b3-923e-109411aab773.png)
