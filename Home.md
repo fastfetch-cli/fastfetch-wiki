@@ -40,7 +40,7 @@ Welcome to the fastfetch wiki!
 
 ## Android (without logo)
 
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/6134068/209825936-94cb2d32-d8ad-465a-b5be-9f5dc9982874.png">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/6134068/213856981-eb512b13-4348-40dd-b392-5f3921b8e12b.jpg">
 
 # Benchmarks
 
