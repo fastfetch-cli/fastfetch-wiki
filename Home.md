@@ -28,11 +28,11 @@ Welcome to the fastfetch wiki!
 
 ## Windows 8.1 (VM)
 
-![image](https://user-images.githubusercontent.com/6134068/206860409-c5a58f16-cf6a-4fb2-af7e-d9c9268ed5dd.png)
+![image](https://user-images.githubusercontent.com/6134068/213840372-52071c91-b1c7-436d-8fbf-895c67044004.png)
 
 ## Windows 7 (VM)
 
-![image](https://user-images.githubusercontent.com/6134068/206860447-f043148f-432c-4821-a0cd-f9194088aee3.png)
+![image](https://user-images.githubusercontent.com/6134068/213841123-2e11c552-4bc0-42d7-93eb-2e01a8603391.png)
 
 ## FreeBSD (VM)
 
