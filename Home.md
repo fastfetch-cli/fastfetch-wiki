@@ -16,7 +16,7 @@ Welcome to the fastfetch wiki!
 
 ## Windows 11
 
-![image](https://user-images.githubusercontent.com/6134068/205117230-8ff1c4ea-ffbc-4bd1-adf9-3473367bebf9.png)
+![image](https://user-images.githubusercontent.com/6134068/221414750-62357082-7056-46da-8973-bf52b9cdec3d.png)
 
 ## WSL
 
