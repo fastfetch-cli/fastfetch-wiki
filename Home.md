@@ -32,7 +32,7 @@ Welcome to the fastfetch wiki!
 
 ## Windows 7 (VM)
 
-![image](https://user-images.githubusercontent.com/6134068/213841123-2e11c552-4bc0-42d7-93eb-2e01a8603391.png)
+![image](https://github.com/LinusDierheimer/fastfetch/assets/6134068/e498c543-0e54-4804-ae65-86d924dd5932)
 
 ## FreeBSD (VM)
 
