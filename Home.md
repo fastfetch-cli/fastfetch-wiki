@@ -28,7 +28,7 @@ Welcome to the fastfetch wiki!
 
 ## Windows 8.1 (VM)
 
-![image](https://user-images.githubusercontent.com/6134068/213840372-52071c91-b1c7-436d-8fbf-895c67044004.png)
+![image](https://github.com/LinusDierheimer/fastfetch/assets/6134068/611496d0-4448-472a-965a-5419fb6049ad)
 
 ## Windows 7 (VM)
 
