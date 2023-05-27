@@ -24,7 +24,7 @@ Welcome to the fastfetch wiki!
 
 ## Windows 10 (Everything enabled)
 
-![image](https://user-images.githubusercontent.com/6134068/215812352-052fe040-4b13-4452-a0f8-63038e89c048.png)
+![image](https://github.com/LinusDierheimer/fastfetch/assets/6134068/b3c160d0-5d92-42e3-b7f1-4f857a88a4ac)
 
 ## Windows 8.1 (VM)
 
