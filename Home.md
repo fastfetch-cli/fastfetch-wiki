@@ -20,7 +20,7 @@ Welcome to the fastfetch wiki!
 
 ## WSL
 
-![image](https://user-images.githubusercontent.com/6134068/205118434-2cf9b46b-9dea-43d8-aae4-7f6f789f087f.png)
+<img width="1000" alt="image" src="https://github.com/LinusDierheimer/fastfetch/assets/6134068/f1e9dd0c-ce9d-4fd1-8034-ac3cb9e037bc">
 
 ## Windows 10 (Everything enabled)
 
