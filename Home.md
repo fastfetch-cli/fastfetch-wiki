@@ -12,7 +12,7 @@ Welcome to the fastfetch wiki!
 
 ## Linux
 
-![image](https://github.com/LinusDierheimer/fastfetch/assets/6134068/4f37d8f3-8bbe-4e84-96ec-9653b597b6b9)
+![image](https://github.com/LinusDierheimer/fastfetch/assets/6134068/6ef8a9c3-88a1-45b3-afc2-7d9e7a652296)
 
 ## Windows 11
 
