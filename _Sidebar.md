@@ -1,3 +1,7 @@
+# Docs
+
+1. [Logo Options](Logo-options)
+
 # Benchmarks
 
 1. [Fastfetch VS Hyfetch (Android)](Fastfetch-VS-Hyfetch-(Android))
