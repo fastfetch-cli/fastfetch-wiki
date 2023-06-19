@@ -51,6 +51,8 @@ fastfetch\build on  dev [$] via C v16.0.4-clang via △ v3.26.4
 | 5   | 1.2407647 | 0.1061817 |
 | AVG | 1.3103055 | 0.2494748 |
 
+Fastfetch is about 4.25 times faster than winfetch
+
 ---
 
 Output of winfetch
