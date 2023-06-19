@@ -1,4 +1,6 @@
-Following benchmarks were performed using [hyperfine](https://github.com/sharkdp/hyperfine) with neowofetch 7.3.9 (installed with hyfetch [1.4.9](https://github.com/hykilpikonna/hyfetch/releases/tag/1.4.9) and fastfetch [0540930](https://github.com/fastfetch-cli/fastfetch/commit/054093025e9b9773853151665ee1cd635f0e7953), running on Fedora Linux 38. All supported modules except Public IP (because it uses Network), GPU Driver (because not supported by fastfetch) in neowofetch were enabled, and fastfetch was set up with the equivalent modules enabled.
+Following benchmarks were performed using [hyperfine](https://github.com/sharkdp/hyperfine) with neowofetch 7.3.9 (installed with hyfetch [1.4.9](https://github.com/hykilpikonna/hyfetch/releases/tag/1.4.9)) and fastfetch [0540930](https://github.com/fastfetch-cli/fastfetch/commit/054093025e9b9773853151665ee1cd635f0e7953), running on Fedora Linux 38.
+
+All supported modules except Public IP (because it uses Network), GPU Driver (because not supported by fastfetch) in neowofetch were enabled, and fastfetch was set up with the equivalent modules enabled.
 
 ```
 $ env NO_CONFIG=1 hyperfine -w 3 neowofetch './fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:command:display:de:wm:theme:icons:cursor:terminal:terminalfont:cpu:gpu:memory:wifi:bios:disk:battery:font:media:player:localip:users:locale:break:colors --command-key Editor --command-text "$EDITOR -v | head -1"'
