@@ -36,7 +36,7 @@ Welcome to the fastfetch wiki!
 
 ## FreeBSD (VM)
 
-<img width="1000" alt="image" src="https://user-images.githubusercontent.com/6134068/206429374-da1fbe93-8a9e-4afc-81fc-7a9cfa54062f.png">
+<img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/c9772853-b034-481e-bccf-ebc7c3ae5d6f">
 
 ## Android (without logo)
 
