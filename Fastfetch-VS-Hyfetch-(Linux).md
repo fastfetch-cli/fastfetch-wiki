@@ -100,3 +100,4 @@ Note
 1. neowofetch failed to detect song and player
 1. neowofetch can only detect GTK themes, while fastfetch detect both GTK and Qt themes
 1. neowofetch's network module shows `Wifi6`, which seems not very useful, while fastfetch shows connected WIFI SSID and encryption protocol. However fastfetch doesn't support network type other than Wifi.
+1. neowofetch didn't show my Windows partition, because neowofetch doesn't support mount point auto-detection.
