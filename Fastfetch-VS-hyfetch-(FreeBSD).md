@@ -48,10 +48,6 @@ Output of neowofetch
                        Locale: en_US.UTF-8
 ```
 
-Note
-
-1. `vi` doesn't support `--version`. Neowofetch uses the error message as version string, while fastfetch ignores it.
-
 Output of fastfetch
 
 ```
@@ -86,3 +82,10 @@ Output of fastfetch
                         Users: ghostbsd
                         Locale: en_US.UTF-8
 ```
+
+Note
+
+1. `vi` doesn't support `--version`. Neowofetch uses the error message as version string, while fastfetch ignores it.
+2. My DE was running in software rendering, therefore no refresh rates.
+3. Neowofetch doesn't support mountpoint auto-detection, therefore my Windows partition wasn't found.
+4. Neowofetch didn't detect song and player for some reason.
