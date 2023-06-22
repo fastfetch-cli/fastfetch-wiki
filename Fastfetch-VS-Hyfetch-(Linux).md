@@ -1,4 +1,4 @@
-Following benchmarks were performed using [hyperfine](https://github.com/sharkdp/hyperfine) with neowofetch 7.3.9 (installed with hyfetch [1.4.9](https://github.com/hykilpikonna/hyfetch/releases/tag/1.4.9)) and fastfetch [68feaa2](https://github.com/fastfetch-cli/fastfetch/commit/68feaa2800e3aa953186f55db07e4892f4e19e9c), running on Fedora Linux 38.
+Following benchmarks were performed using [hyperfine](https://github.com/sharkdp/hyperfine) with neowofetch 7.3.9 (installed with hyfetch [1.4.9](https://github.com/hykilpikonna/hyfetch/releases/tag/1.4.9)) and fastfetch [9794c4b](https://github.com/fastfetch-cli/fastfetch/commit/9794c4b78f239eeb4a559661a95dc1dc504d578f), running on Fedora Linux 38.
 
 All supported modules except Public IP (because it uses Network), GPU Driver (because not supported by fastfetch) in neowofetch were enabled, and fastfetch was set up with the equivalent modules enabled.
 
