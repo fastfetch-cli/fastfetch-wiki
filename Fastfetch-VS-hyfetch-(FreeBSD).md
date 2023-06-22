@@ -86,6 +86,7 @@ Output of fastfetch
 Note
 
 1. `vi` doesn't support `--version`. Neowofetch uses the error message as version string, while fastfetch ignores it.
-2. My DE was running in software rendering, therefore no refresh rates.
-3. Neowofetch doesn't support mountpoint auto-detection, therefore my Windows partition wasn't found.
-4. Neowofetch didn't detect song and player for some reason.
+1. My DE was running in software rendering, therefore no refresh rates.
+1. Neowofetch doesn't support mountpoint auto-detection, therefore my Windows partition wasn't found.
+1. My battery wasn't charging. It was set to 60% as the maximum capacity.
+1. Neowofetch didn't detect song and player for some reason.
