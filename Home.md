@@ -12,7 +12,7 @@ Welcome to the fastfetch wiki!
 
 ## Linux
 
-![image](https://github.com/fastfetch-cli/fastfetch/assets/6134068/84e5efc6-bbe5-4a7f-9cd0-d899e40eda09)
+<img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/0311a4d4-6b3f-416a-83d0-685ab626050a">
 
 ## Windows 11
 
@@ -41,7 +41,3 @@ Welcome to the fastfetch wiki!
 ## Android (without logo)
 
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/6134068/213856981-eb512b13-4348-40dd-b392-5f3921b8e12b.jpg">
-
-# Benchmarks
-
-https://github.com/LinusDierheimer/fastfetch/wiki/Fastfetch-VS-Hyfetch-(Linux)
