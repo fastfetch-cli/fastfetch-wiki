@@ -1,73 +1,88 @@
-Following benchmarks were performed using [hyperfine](https://github.com/sharkdp/hyperfine) with hyfetch [1.4.4](https://github.com/hykilpikonna/hyfetch/releases/tag/1.4.4) and fastfetch [3c7f02b](https://github.com/LinusDierheimer/fastfetch/commit/3c7f02bee34afa65fb87de9ad46d542af79e3da9), running on FreeBSD (13.1). All supported modules except Public IP (because it uses Network) in hyfetch were enabled, and fastfetch was set up with the equivalent modules enabled.
+Following benchmarks were performed using [hyperfine](https://github.com/sharkdp/hyperfine) with neowofetch 7.3.9 (installed with hyfetch [1.4.9](https://github.com/hykilpikonna/hyfetch/releases/tag/1.4.9)) and fastfetch [f705978](https://github.com/fastfetch-cli/fastfetch/commit/f7059783dc7c38d08c7b7435c689c4754909b95e), running on GhostBSD 23.06.01 (Live CD).
+
+All supported modules except Public IP (because it uses Network) neowofetch were enabled, and fastfetch was set up with the equivalent modules enabled.
 
 ```
-hyperfine -w 3 "hyfetch" "./fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:resolution:de:wm:wmtheme:icons:cursor:terminal:terminalfont:cpu:gpu:memory:disk:font:media:player:localip:users:locale --nocache"
-Benchmark 1: hyfetch
-  Time (mean ± σ):     267.3 ms ±   2.2 ms    [User: 154.1 ms, System: 109.5 ms]
-  Range (min … max):   264.4 ms … 271.8 ms    11 runs
+hyperfine -w 3 neowofetch './fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:command:display:de:wm:wmtheme:theme:icons:cursor:terminal:terminalfont:cpu:gpu:memory:disk:battery:font:media:player:localip:users:locale:break:colors --command-text "$EDITOR -v | head -1" --command-key Editor'
+Benchmark 1: neowofetch
+  Time (mean ± σ):     767.4 ms ±  64.3 ms    [User: 271.5 ms, System: 436.3 ms]
+  Range (min … max):   686.4 ms … 892.9 ms    10 runs
  
-Benchmark 2: ./fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:resolution:de:wm:wmtheme:icons:cursor:terminal:terminalfont:cpu:gpu:memory:disk:font:media:player:localip:users:locale --nocache
-  Time (mean ± σ):       9.8 ms ±   0.4 ms    [User: 6.4 ms, System: 4.2 ms]
-  Range (min … max):     9.1 ms …  11.6 ms    281 runs
+Benchmark 2: ./fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:command:display:de:wm:wmtheme:theme:icons:cursor:terminal:terminalfont:cpu:gpu:memory:disk:battery:font:media:player:localip:users:locale:break:colors --command-text "$EDITOR -v | head -1" --command-key Editor
+  Time (mean ± σ):      82.6 ms ±  31.3 ms    [User: 28.7 ms, System: 23.3 ms]
+  Range (min … max):    52.1 ms … 207.1 ms    38 runs
  
 Summary
-  './fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:resolution:de:wm:wmtheme:icons:cursor:terminal:terminalfont:cpu:gpu:memory:disk:font:media:player:localip:users:locale --nocache' ran
-   27.30 ± 1.12 times faster than 'hyfetch'
+  './fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:command:display:de:wm:wmtheme:theme:icons:cursor:terminal:terminalfont:cpu:gpu:memory:disk:battery:font:media:player:localip:users:locale:break:colors --command-text "$EDITOR -v | head -1" --command-key Editor' ran
+    9.29 ± 3.60 times faster than 'neowofetch'
 ```
 
-Output of hyfetch
+Output of neowofetch
 
 ```
-```                        `       root@FreeBSD 
-  ` `.....---.......--.```   -/    ------------ 
-  +o   .--`         /y:`      +.   OS: FreeBSD 13.1-RELEASE aarch64 
-   yo`:.            :o      `+-    Uptime: 19 mins 
-    y/               -/`   -o/     Packages: 415 (pkg) 
-   .-                  ::/sy+:.    Shell: fish 3.5.1 
-   /                     `--  /    Resolution: 1024x768 @ 0.00Hz 
-  `:                          :`   DE: Xfce 4.16 () 
-  `:                          :`   WM: Xfwm4 
-   /                          /    WM Theme: Default 
-   .-                        -.    Theme: Adwaita [GTK3] 
-    --                      -.     Icons: Adwaita [GTK2/3] 
-     `:`                  `:`      Cursor: Adwaita [GTK3] 
-       .--             `--.        Terminal: xfce4-terminal 
-          .---.....----.           Terminal Font: DejaVu Sans Mono 12 
-                                   CPU: ARM Unknown r0p0 (midr: 410f0000) (4) 
-                                   Memory: 1.42 GiB / 2.99 GiB (47%) 
-                                   Disk (/): 3.3G / 120G (3%) 
-                                   Font: WenQuanYi Zen Hei Medium 10 [GTK2/3] 
-                                   Local IP: 10.211.55.8 
-                                   Users: root 
-                                   Locale: C.UTF-8
+           ,gggggg.    ghostbsd@livecd 
+        ,agg9*   .g)   --------------- 
+      .agg* ._.,gg*    OS: GhostBSD 23.06.01 amd64 
+    ,gga*  (ggg*'      Host: REV:1.0 
+   ,ga*       ,ga*     Kernel: 13.2-STABLE 
+  ,ga'     .ag*        Uptime: 3 hours, 26 mins 
+ ,ga'   .agga'         Packages: 798 (pkg) 
+ 9g' .agg'g*,a         Shell: fish 3.6.1 
+ 'gggg*',gga'          Editor: vi vi: illegal option -- - 
+      .gg*'            Resolution: 2560x1440 @ 0.00Hz 
+    .gga*              DE: GNOME 42.4 (x11) 
+  .gga*                WM: Mutter 
+ (ga*                  WM Theme: Adwaita 
+                       Theme: Adwaita [GTK2/3] 
+                       Icons: Adwaita [GTK2/3] 
+                       Cursor: Adwaita [GTK2/3] 
+                       Terminal: gnome-terminal 
+                       CPU: 12th Gen Intel i7-12700H (20) @ 2.6GHz 
+                       GPU: GA104 [Geforce RTX 3070 Ti Laptop GPU] 
+                       Memory: 4.78 GiB / 31.63 GiB (15%) 
+                       Disk (/): 3.4G / 23G (15%) 
+                       Battery: 61% Charging 
+                       Font: Cantarell 11 [GTK2/3] 
+                       Local IP: 192.168.31.86 
+                       Users: ghostbsd 
+                       Locale: en_US.UTF-8
 ```
+
+Note
+
+1. `vi` doesn't support `--version`. Neowofetch uses the error message as version string, while fastfetch ignores it.
 
 Output of fastfetch
 
 ```
-```                        `        root@FreeBSD
-  ` `.....---.......--.```   -/     ------------
-  +o   .--`         /y:`      +.    OS: FreeBSD 13.1 arm64
-   yo`:.            :o      `+-     Host: Parallels ARM Virtual Machine
-    y/               -/`   -o/      Kernel: 13.1-RELEASE
-   .-                  ::/sy+:.     Uptime: 19 mins
-   /                     `--  /     Packages: 415 (pkg)
-  `:                          :`    Shell: fish 3.5.1
-  `:                          :`    Resolution: 1024x768
-   /                          /     DE: Xfce4
-   .-                        -.     WM: Xfwm4 (X11)
-    --                      -.      WM Theme: Default
-     `:`                  `:`       Icons: Adwaita [GTK2/3/4]
-       .--             `--.         Terminal: xfce4-terminal
-          .---.....----.            Terminal Font: DejaVu Sans Mono (12pt)
-                                    CPU: ARM Unknown r0p0 (midr: 410f0000) (4)
-                                    Memory: 1.31 GiB / 2.90 GiB (45%)
-                                    Disk (/): 3.27 GiB / 120 GiB (2%)
-                                    Disk (/usr/home): 96.00 KiB / 117 GiB (0%)
-                                    Disk (/usr/ports): 756.83 MiB / 118 GiB (0%) [Removable]
-                                    Disk (/usr/src): 96.00 KiB / 117 GiB (0%)
-                                    Font: WenQuanYi Zen Hei Medium (10pt) [GTK2/3/4]
-                                    Local IP (vtnet0): 10.211.55.8
-                                    Users: root
-                                    Locale: C.UTF-8
+           ,gggggg.     ghostbsd@livecd
+        ,agg9*   .g)    ---------------
+      .agg* ._.,gg*     OS: GhostBSD 23.06.01 amd64
+    ,gga*  (ggg*'       Host: Raider GE76 12UGS (REV:1.0)
+   ,ga*       ,ga*      Kernel: 13.2-STABLE
+  ,ga'     .ag*         Uptime: 3 hours, 27 mins
+ ,ga'   .agga'          Packages: 798 (pkg)
+ 9g' .agg'g*,a          Shell: fish 3.6.1
+ 'gggg*',gga'           Display (default): 2560x1440
+      .gg*'             DE: Gnome 42.4
+    .gga*               WM: Mutter (X11)
+  .gga*                 WM Theme: Adwaita
+ (ga*                   Theme: Adwaita [GTK2/3/4]
+                        Icons: Adwaita [GTK2/3/4]
+                        Cursor: Adwaita (24px)
+                        Terminal: gnome-terminal 3.44.2
+                        Terminal Font: Droid Sans Mono (12pt)
+                        CPU: 12th Gen Intel(R) Core(TM) i7-12700H (20) @ 2.688 GHz
+                        GPU 1: NVIDIA Geforce RTX 3070 Ti Laptop GPU
+                        GPU 2: Intel Alder Lake-P Integrated Graphics Controller
+                        Memory: 4.81 GiB / 31.64 GiB (15%)
+                        Disk (/): 3.40 GiB / 22.53 GiB (15%) - zfs
+                        Disk (/mnt/windows): 833 GiB / 934 GiB (89%) - fusefs [External]
+                        Battery: 61% [AC connected]
+                        Font: Cantarell (11pt) [GTK2/3/4]
+                        Media: 原神-Genshin-公式 - 【原神】キャラクター実戦紹介　魈(CV：松岡禎丞)「劫を経りて、悪祟を祓う」
+                        Media Player: Chromium
+                        Local IP (wlan0): 192.168.31.86
+                        Users: ghostbsd
+                        Locale: en_US.UTF-8
 ```
