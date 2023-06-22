@@ -83,7 +83,7 @@ Output of fastfetch
                         Locale: en_US.UTF-8
 ```
 
-Note
+Notes:
 
 1. `vi` doesn't support `--version`. Neowofetch uses the error message as version string, while fastfetch ignores it.
 1. My DE was running in software rendering, therefore no refresh rates.
