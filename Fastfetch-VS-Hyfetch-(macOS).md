@@ -1,46 +1,48 @@
-Following benchmarks were performed using [hyperfine](https://github.com/sharkdp/hyperfine) with hyfetch [1.4.4](https://github.com/hykilpikonna/hyfetch/releases/tag/1.4.4) and fastfetch [3c7f02b](https://github.com/LinusDierheimer/fastfetch/commit/3c7f02bee34afa65fb87de9ad46d542af79e3da9), running on macOS Ventura (13.0.1). All supported modules except `Public IP` (because it uses Network) and `GPU Driver` (because not supported by fastfetch) in hyfetch were enabled, and fastfetch was set up with the equivalent modules enabled.
+Following benchmarks were performed using [hyperfine](https://github.com/sharkdp/hyperfine) with neowofetch 7.3.9 (installed with hyfetch [1.4.9](https://github.com/hykilpikonna/hyfetch/releases/tag/1.4.9)) and fastfetch [9794c4b](https://github.com/fastfetch-cli/fastfetch/commit/9794c4b78f239eeb4a559661a95dc1dc504d578f), running on macOS Ventura (13.3.1). All supported modules except `Public IP` (because it uses Network) and `GPU Driver` (because not supported by fastfetch) in hyfetch were enabled, and fastfetch was set up with the equivalent modules enabled.
 
 ```
-$ hyperfine -w 3 "hyfetch" "fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:resolution:de:wm:wmtheme:terminal:terminalfont:cpu:gpu:memory:disk:battery:poweradapter:song:player:localip:users:locale --nocache"
-Benchmark 1: hyfetch
-  Time (mean ± σ):      1.160 s ±  0.032 s    [User: 0.352 s, System: 0.371 s]
-  Range (min … max):    1.125 s …  1.200 s    10 runs
+$ env NO_CONFIG=1 hyperfine -w 3 neowofetch './fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:command:display:de:wm:wmtheme:terminal:terminalfont:cpu:gpu:memory:wifi:disk:battery:poweradapter:media:player:localip:users:locale:break:colors --command-key Editor --command-text "$EDITOR -v | head -1"'
+Benchmark 1: neowofetch
+  Time (mean ± σ):     746.6 ms ±  10.2 ms    [User: 227.4 ms, System: 289.6 ms]
+  Range (min … max):   728.3 ms … 760.0 ms    10 runs
 
-Benchmark 2: fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:resolution:de:wm:wmtheme:terminal:terminalfont:cpu:gpu:memory:disk:battery:poweradapter:song:player:localip:users:locale --nocache
-  Time (mean ± σ):      72.3 ms ±   3.6 ms    [User: 16.3 ms, System: 16.8 ms]
-  Range (min … max):    66.7 ms …  80.3 ms    43 runs
+Benchmark 2: ./fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:command:display:de:wm:wmtheme:terminal:terminalfont:cpu:gpu:memory:wifi:disk:battery:poweradapter:media:player:localip:users:locale:break:colors --command-key Editor --command-text "$EDITOR -v | head -1"
+  Time (mean ± σ):      99.2 ms ±   3.2 ms    [User: 24.2 ms, System: 30.0 ms]
+  Range (min … max):    90.2 ms … 103.8 ms    28 runs
 
 Summary
-  'fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:resolution:de:wm:wmtheme:terminal:terminalfont:cpu:gpu:memory:disk:battery:poweradapter:song:player:localip:users:locale --nocache' ran
-   16.04 ± 0.92 times faster than 'hyfetch'
+  ./fastfetch -s title:separator:os:host:kernel:uptime:packages:shell:command:display:de:wm:wmtheme:terminal:terminalfont:cpu:gpu:memory:wifi:disk:battery:poweradapter:media:player:localip:users:locale:break:colors --command-key Editor --command-text "$EDITOR -v | head -1" ran
+    7.53 ± 0.26 times faster than neowofetch
 ```
 
-Output of `hyfetch`
+Output of `neowofetch`
 
 ```
                     c.'          carter@litongzhoudeMacBook-Pro
                  ,xNMM.          ------------------------------
-               .OMMMMo           OS: macOS Ventura 13.0.1 (22A400) arm64
+               .OMMMMo           OS: macOS Ventura 13.3.1 (22E261) arm64
                lMM"              Host: MacBook Pro (16-inch, 2021)
-     .;loddo:.  .olloddol;.      Kernel: 22.1.0
-   cKMMMMMMMMMMNWMMMMMMMMMM0:    Uptime: 3 hours, 46 mins
- .KMMMMMMMMMMMMMMMMMMMMMMMWd.    Packages: 262 (brew)
- XMMMMMMMMMMMMMMMMMMMMMMMX.      Shell: fish 3.5.1
-;MMMMMMMMMMMMMMMMMMMMMMMM:       Resolution: 3456x2234
-:MMMMMMMMMMMMMMMMMMMMMMMM:       DE: Aqua ()
-.MMMMMMMMMMMMMMMMMMMMMMMMX.      WM: Quartz Compositor
- kMMMMMMMMMMMMMMMMMMMMMMMMWd.    WM Theme: Blue (Dark)
- 'XMMMMMMMMMMMMMMMMMMMMMMMMMMk   Terminal: iTerm2
-  'XMMMMMMMMMMMMMMMMMMMMMMMMK.   Terminal Font: MapleMonoSCNF-Regular 16
-    kMMMMMMMMMMMMMMMMMMMMMMd     CPU: Apple M1 Pro (10)
-     ;KMMMMMMMWXXWMMMMMMMk.      GPU: Apple M1 Pro (16)
-       "cooc*"    "*coo'"        Memory: 11.38 GiB / 16.00 GiB (71%)
-                                 Disk (/): 459G / 927G (50%)
-                                 Battery: 80%
+     .;loddo:.  .olloddol;.      Kernel: 22.4.0
+   cKMMMMMMMMMMNWMMMMMMMMMM0:    Uptime: 7 hours, 43 mins
+ .KMMMMMMMMMMMMMMMMMMMMMMMWd.    Packages: 304 (brew)
+ XMMMMMMMMMMMMMMMMMMMMMMMX.      Shell: fish 3.6.1
+;MMMMMMMMMMMMMMMMMMMMMMMM:       Editor: nvim NVIM v0.9.1
+:MMMMMMMMMMMMMMMMMMMMMMMM:       Resolution: 1728x1117 @ 120Hz
+.MMMMMMMMMMMMMMMMMMMMMMMMX.      DE: Aqua ()
+ kMMMMMMMMMMMMMMMMMMMMMMMMWd.    WM: Quartz Compositor
+ 'XMMMMMMMMMMMMMMMMMMMMMMMMMMk   WM Theme: Blue (Dark)
+  'XMMMMMMMMMMMMMMMMMMMMMMMMK.   Terminal: iTerm2
+    kMMMMMMMMMMMMMMMMMMMMMMd     Terminal Font: Sarasa-Term-SC-Nerd-Regular 16
+     ;KMMMMMMMWXXWMMMMMMMk.      CPU: Apple M1 Pro (10)
+       "cooc*"    "*coo'"        GPU: Apple M1 Pro (16)
+                                 Memory: 12.33 GiB / 16.00 GiB (77%)
+                                 Network: en0: Wi-Fi@229Mbps
+                                 Disk (/): 641G / 927G (70%)
+                                 Battery: 100%
                                  Power Adapter: 140W
                                  Song: Unknown Artist - Unknown Album - Unknown Song
-                                 Music Player: Music
-                                 Local IP: 172.16.134.31
+                                 Music Player: iTunes
+                                 Local IP: 10.62.99.219
                                  Users: carter
                                  Locale: zh_CN.UTF-8
 ```
@@ -50,30 +52,29 @@ Output of fastfetch
 ```
                      c.'          carter@litongzhoudeMacBook-Pro.local
                  ,xNMM.           ------------------------------------
-               .OMMMMo            OS: macOS Ventura 13.0.1 22A400 arm64
+               .OMMMMo            OS: macOS Ventura 13.3.1 22E261 arm64
                lMM"               Host: MacBook Pro (16-inch, 2021)
-     .;loddo:.  .olloddol;.       Kernel: 22.1.0
-   cKMMMMMMMMMMNWMMMMMMMMMM0:     Uptime: 3 hours, 48 mins
- .KMMMMMMMMMMMMMMMMMMMMMMMWd.     Packages: 262 (brew)
- XMMMMMMMMMMMMMMMMMMMMMMMX.       Shell: fish 3.5.1
-;MMMMMMMMMMMMMMMMMMMMMMMM:        Resolution: 1728x1117 @ 120Hz
-:MMMMMMMMMMMMMMMMMMMMMMMM:        DE: Aqua
-.MMMMMMMMMMMMMMMMMMMMMMMMX.       WM: Quartz Compositor
- kMMMMMMMMMMMMMMMMMMMMMMMMWd.     WM Theme: Multicolor (Dark)
- 'XMMMMMMMMMMMMMMMMMMMMMMMMMMk    Terminal: iTerm
-  'XMMMMMMMMMMMMMMMMMMMMMMMMK.    Terminal Font: MapleMonoSCNF-Regular (16pt)
-    kMMMMMMMMMMMMMMMMMMMMMMd      CPU: Apple M1 Pro (10)
-     ;KMMMMMMMWXXWMMMMMMMk.       GPU: Apple M1 Pro (16)
-       "cooc*"    "*coo'"         Memory: 7.46 GiB / 16.00 GiB (46%)
-                                  Disk (/): 459 GiB / 926 GiB (49%)
-                                  Disk (/Volumes/EOITEK): 50.31 MiB / 14.83 GiB (0%) [Removable]
-                                  Battery: 80%
+     .;loddo:.  .olloddol;.       Kernel: 22.4.0
+   cKMMMMMMMMMMNWMMMMMMMMMM0:     Uptime: 7 hours, 47 mins
+ .KMMMMMMMMMMMMMMMMMMMMMMMWd.     Packages: 291 (brew), 13 (brew-cask)
+ XMMMMMMMMMMMMMMMMMMMMMMMX.       Shell: fish 3.6.1
+;MMMMMMMMMMMMMMMMMMMMMMMM:        Editor: NVIM v0.9.1
+:MMMMMMMMMMMMMMMMMMMMMMMM:        Display (Color LCD): 3456x2234 @ 120Hz (as 1728x1117)
+.MMMMMMMMMMMMMMMMMMMMMMMMX.       DE: Aqua
+ kMMMMMMMMMMMMMMMMMMMMMMMMWd.     WM: Quartz Compositor
+ 'XMMMMMMMMMMMMMMMMMMMMMMMMMMk    WM Theme: Multicolor (Dark)
+  'XMMMMMMMMMMMMMMMMMMMMMMMMK.    Terminal: iTerm 3.5.0beta10
+    kMMMMMMMMMMMMMMMMMMMMMMd      Terminal Font: Sarasa-Term-SC-Nerd-Regular (16pt)
+     ;KMMMMMMMWXXWMMMMMMMk.       CPU: Apple M1 Pro (10)
+       "cooc*"    "*coo'"         GPU: Apple M1 Pro (16) [Integrated]
+                                  Memory: 5.27 GiB / 16.00 GiB (32%)
+                                  Wifi: Ceair-Staff - 802.11ac (Wi-Fi 5) - WPA2 Enterprise
+                                  Disk (/): 640 GiB / 926 GiB (69%) - apfs
+                                  Battery: 100% [Fully charged]
                                   Power Adapter: 140W USB-C Power Adapter
-                                  Media: HOYO-MiX - Village Surrounded by Green 葳蕤林野间 (Playing)
-                                  Media Player: NeteaseMusic
-                                  Local IP (en0): 172.16.134.31
-                                  Local IP (bridge100): 10.211.55.2
-                                  Local IP (bridge101): 10.37.129.2
+                                  Media: 秋日的私语 (Playing)
+                                  Media Player: IINA
+                                  Local IP (en0): 10.62.99.219
                                   Users: carter
                                   Locale: zh_CN.UTF-8
 ```
