@@ -78,3 +78,9 @@ Output of fastfetch
                                   Users: carter
                                   Locale: zh_CN.UTF-8
 ```
+
+Note:
+
+1. Both neowofetch and fastfetch hard coded DE value for macOS, thus no DE version. However leaving a empty `()` doesn't seem good.
+1. WM Theme should be Multicolor ( default value of macOS ), though it behaves like blue.
+1. Neowofetch fails to detect the song and media player, it doesn't seem to support media players other than iTunes.
