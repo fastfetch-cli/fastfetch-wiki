@@ -56,6 +56,18 @@ The value of `--logo` is interpreted as the name of a builtin logo.
 * All builtin logos set default values for `--logo-color-[1-9]`.
 * Use `none` to disable the logo, but keep key colors from the detected logo.
 
+## small
+
+Like `builtin`, but search for small logos. Assume you are running macOS
+
+* default -> macos
+* `-l small` -> macos_small
+* `--logo-type small` -> macos_small
+* `-l macos` -> macos
+* `-l macos --logo-type small` -> macos_small
+* `-l macos_small` -> macos_small
+* `-l macos_small --logo-type small` -> error, because Logo `macos_small_small` doesn't exist
+
 ## file
 
 The value of `--logo` is interpreted as the path to a file. The content of the file is displayed.
