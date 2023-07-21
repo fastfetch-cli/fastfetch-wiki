@@ -13,6 +13,8 @@ Using an editor with JSON schema support is highly suggested. If unsure, I sugge
 
 ### Documentation
 
+Refer to: https://github.com/fastfetch-cli/fastfetch/wiki/Json-Schema
+
 Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) with
 
 ```
