@@ -22,17 +22,9 @@ Welcome to the fastfetch wiki!
 
 <img width="1000" alt="image" src="https://github.com/LinusDierheimer/fastfetch/assets/6134068/f1e9dd0c-ce9d-4fd1-8034-ac3cb9e037bc">
 
-## Windows 10 (Everything enabled)
-
-![image](https://github.com/LinusDierheimer/fastfetch/assets/6134068/b3c160d0-5d92-42e3-b7f1-4f857a88a4ac)
-
-## Windows 8.1 (VM)
-
-![image](https://github.com/LinusDierheimer/fastfetch/assets/6134068/611496d0-4448-472a-965a-5419fb6049ad)
-
 ## Windows 7 (VM)
 
-![image](https://github.com/LinusDierheimer/fastfetch/assets/6134068/e498c543-0e54-4804-ae65-86d924dd5932)
+![image](https://github.com/fastfetch-cli/fastfetch/assets/6134068/9649e5af-b839-4bd1-a4d2-b68d95122e8e)
 
 ## FreeBSD
 
