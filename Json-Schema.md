@@ -39,7 +39,8 @@
   - [3.5. Property `JSON config > general > pipe`](#general_pipe)
   - [3.6. Property `JSON config > general > playerName`](#general_playerName)
   - [3.7. Property `JSON config > general > osFile`](#general_osFile)
-  - [3.8. Property `JSON config > general > wmiTimeout`](#general_wmiTimeout)
+  - [3.8. Property `JSON config > general > dsForceDrm`](#general_dsForceDrm)
+  - [3.9. Property `JSON config > general > wmiTimeout`](#general_wmiTimeout)
 - [4. Property `JSON config > display`](#display)
   - [4.1. Property `JSON config > display > showErrors`](#display_showErrors)
   - [4.2. Property `JSON config > display > disableLinewrap`](#display_disableLinewrap)
@@ -50,11 +51,13 @@
     - [4.5.2. Property `JSON config > display > color > oneOf > item 1`](#display_color_oneOf_i1)
       - [4.5.2.1. Property `JSON config > display > color > oneOf > item 1 > keys`](#display_color_oneOf_i1_keys)
       - [4.5.2.2. Property `JSON config > display > color > oneOf > item 1 > title`](#display_color_oneOf_i1_title)
-  - [4.6. Property `JSON config > display > binaryPrefix`](#display_binaryPrefix)
-  - [4.7. Property `JSON config > display > sizeNdigits`](#display_sizeNdigits)
-  - [4.8. Property `JSON config > display > sizeMaxPrefix`](#display_sizeMaxPrefix)
-  - [4.9. Property `JSON config > display > percentType`](#display_percentType)
-  - [4.10. Property `JSON config > display > noBuffer`](#display_noBuffer)
+  - [4.6. Property `JSON config > display > brightColor`](#display_brightColor)
+  - [4.7. Property `JSON config > display > binaryPrefix`](#display_binaryPrefix)
+  - [4.8. Property `JSON config > display > sizeNdigits`](#display_sizeNdigits)
+  - [4.9. Property `JSON config > display > sizeMaxPrefix`](#display_sizeMaxPrefix)
+  - [4.10. Property `JSON config > display > temperatureUnit`](#display_temperatureUnit)
+  - [4.11. Property `JSON config > display > percentType`](#display_percentType)
+  - [4.12. Property `JSON config > display > noBuffer`](#display_noBuffer)
 - [5. Property `JSON config > library`](#library)
   - [5.1. Property `JSON config > library > pci`](#library_pci)
   - [5.2. Property `JSON config > library > vulkan`](#library_vulkan)
@@ -639,6 +642,7 @@ Must be one of:
 | - [pipe](#general_pipe )                               | No      | boolean | No         | -          | Whether to enable pipe mode (disable logo and all escape sequences)       |
 | - [playerName](#general_playerName )                   | No      | string  | No         | -          | The name of the player to use for module Media and Player. Linux only     |
 | - [osFile](#general_osFile )                           | No      | string  | No         | -          | Set the path to the file containing OS information. Linux only            |
+| - [dsForceDrm](#general_dsForceDrm )                   | No      | boolean | No         | -          | Force display detection to use \`/sys/class/drm\`. Linux only             |
 | - [wmiTimeout](#general_wmiTimeout )                   | No      | integer | No         | -          | Set the timeout (ms) for WMI queries, \`-1\` for no timeout. Windows only |
 
 ### <a name="general_allowSlowOperations"></a>3.1. Property `JSON config > general > allowSlowOperations`
@@ -709,7 +713,17 @@ Must be one of:
 | **Type**     | `string` |
 | **Required** | No       |
 
-### <a name="general_wmiTimeout"></a>3.8. Property `JSON config > general > wmiTimeout`
+### <a name="general_dsForceDrm"></a>3.8. Property `JSON config > general > dsForceDrm`
+
+**Title:** Force display detection to use `/sys/class/drm`. Linux only
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `boolean` |
+| **Required** | No        |
+| **Default**  | `false`   |
+
+### <a name="general_wmiTimeout"></a>3.9. Property `JSON config > general > wmiTimeout`
 
 **Title:** Set the timeout (ms) for WMI queries, `-1` for no timeout. Windows only
 
@@ -717,6 +731,7 @@ Must be one of:
 | ------------ | --------- |
 | **Type**     | `integer` |
 | **Required** | No        |
+| **Default**  | `5000`    |
 
 ## <a name="display"></a>4. Property `JSON config > display`
 
@@ -735,9 +750,11 @@ Must be one of:
 | - [hideCursor](#display_hideCursor )           | No      | boolean          | No         | -          | Whether to hide the cursor during the run                                                                            |
 | - [separator](#display_separator )             | No      | string           | No         | -          | Set the separator between key and value                                                                              |
 | - [color](#display_color )                     | No      | Combination      | No         | -          | Set the color of the keys and title                                                                                  |
+| - [brightColor](#display_brightColor )         | No      | boolean          | No         | -          | Set if the keys, title and ASCII logo should be printed in bright color                                              |
 | - [binaryPrefix](#display_binaryPrefix )       | No      | enum (of string) | No         | -          | Set the binary prefix to used when printing bytes                                                                    |
 | - [sizeNdigits](#display_sizeNdigits )         | No      | integer          | No         | -          | Set the number of digits to keep after the decimal point when formatting sizes                                       |
 | - [sizeMaxPrefix](#display_sizeMaxPrefix )     | No      | enum (of string) | No         | -          | Set the largest binary prefix to use when formatting sizes                                                           |
+| - [temperatureUnit](#display_temperatureUnit ) | No      | enum (of string) | No         | -          | Set the unit of the temperature                                                                                      |
 | - [percentType](#display_percentType )         | No      | number           | No         | -          | Set the percentage output type. 1 for percentage number, 2 for bar, 3 for both, 6 for bar only, 9 for colored number |
 | - [noBuffer](#display_noBuffer )               | No      | boolean          | No         | -          | Whether to disable the stdout application buffer                                                                     |
 
@@ -839,7 +856,17 @@ Must be one of:
 | **Required**           | No                              |
 | **Same definition as** | [defs_keyColor](#defs_keyColor) |
 
-### <a name="display_binaryPrefix"></a>4.6. Property `JSON config > display > binaryPrefix`
+### <a name="display_brightColor"></a>4.6. Property `JSON config > display > brightColor`
+
+**Title:** Set if the keys, title and ASCII logo should be printed in bright color
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `boolean` |
+| **Required** | No        |
+| **Default**  | `true`    |
+
+### <a name="display_binaryPrefix"></a>4.7. Property `JSON config > display > binaryPrefix`
 
 **Title:** Set the binary prefix to used when printing bytes
 
@@ -853,7 +880,7 @@ Must be one of:
 * "si"
 * "jedec"
 
-### <a name="display_sizeNdigits"></a>4.7. Property `JSON config > display > sizeNdigits`
+### <a name="display_sizeNdigits"></a>4.8. Property `JSON config > display > sizeNdigits`
 
 **Title:** Set the number of digits to keep after the decimal point when formatting sizes
 
@@ -863,7 +890,7 @@ Must be one of:
 | **Required** | No        |
 | **Default**  | `2`       |
 
-### <a name="display_sizeMaxPrefix"></a>4.8. Property `JSON config > display > sizeMaxPrefix`
+### <a name="display_sizeMaxPrefix"></a>4.9. Property `JSON config > display > sizeMaxPrefix`
 
 **Title:** Set the largest binary prefix to use when formatting sizes
 
@@ -884,7 +911,25 @@ Must be one of:
 * "ZB"
 * "YB"
 
-### <a name="display_percentType"></a>4.9. Property `JSON config > display > percentType`
+### <a name="display_temperatureUnit"></a>4.10. Property `JSON config > display > temperatureUnit`
+
+**Title:** Set the unit of the temperature
+
+|              |                    |
+| ------------ | ------------------ |
+| **Type**     | `enum (of string)` |
+| **Required** | No                 |
+| **Default**  | `"C"`              |
+
+Must be one of:
+* "CELSIUS"
+* "C"
+* "FAHRENHEIT"
+* "F"
+* "KELVIN"
+* "K"
+
+### <a name="display_percentType"></a>4.11. Property `JSON config > display > percentType`
 
 **Title:** Set the percentage output type. 1 for percentage number, 2 for bar, 3 for both, 6 for bar only, 9 for colored number
 
@@ -899,7 +944,7 @@ Must be one of:
 | **Minimum**  | &ge; 0 |
 | **Maximum**  | &le; 9 |
 
-### <a name="display_noBuffer"></a>4.10. Property `JSON config > display > noBuffer`
+### <a name="display_noBuffer"></a>4.12. Property `JSON config > display > noBuffer`
 
 **Title:** Whether to disable the stdout application buffer
 
@@ -1253,6 +1298,7 @@ Must be one of:
 * "swap"
 * "terminal"
 * "terminalfont"
+* "terminalsize"
 * "title"
 * "theme"
 * "uptime"
@@ -1268,11 +1314,11 @@ Must be one of:
 
 **Title:** Run module with custom configurations
 
-|                           |                                                         |
-| ------------------------- | ------------------------------------------------------- |
-| **Type**                  | `combining`                                             |
-| **Required**              | No                                                      |
-| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `combining`                                                               |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
 
 | Property                                | Pattern | Type   | Deprecated | Definition | Title/Description |
 | --------------------------------------- | ------- | ------ | ---------- | ---------- | ----------------- |
@@ -1376,6 +1422,7 @@ Must be one of:
 * "swap"
 * "terminal"
 * "terminalfont"
+* "terminalsize"
 * "theme"
 * "uptime"
 * "users"
@@ -1669,14 +1716,14 @@ Must be one of:
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                 | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                                                                 |
-| -------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i6_type )         | No      | const            | No         | -                                                              | -                                                                                                                 |
-| - [shell](#modules_items_anyOf_i1_oneOf_i6_shell )       | No      | string           | No         | -                                                              | Set the shell program to execute the command text<br />Default: cmd for Windows, csh for FreeBSD, bash for others |
-| - [text](#modules_items_anyOf_i1_oneOf_i6_text )         | No      | string           | No         | -                                                              | Set the command text to be executed                                                                               |
-| - [key](#modules_items_anyOf_i1_oneOf_i6_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | -                                                                                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i6_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | -                                                                                                                 |
-| - [format](#modules_items_anyOf_i1_oneOf_i6_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | -                                                                                                                 |
+| Property                                                 | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                                                 |
+| -------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i6_type )         | No      | const            | No         | -                                                              | -                                                                                                 |
+| - [shell](#modules_items_anyOf_i1_oneOf_i6_shell )       | No      | string           | No         | -                                                              | Set the shell program to execute the command text<br />Default: cmd for Windows, /bin/sh for *nix |
+| - [text](#modules_items_anyOf_i1_oneOf_i6_text )         | No      | string           | No         | -                                                              | Set the command text to be executed                                                               |
+| - [key](#modules_items_anyOf_i1_oneOf_i6_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | -                                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i6_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | -                                                                                                 |
+| - [format](#modules_items_anyOf_i1_oneOf_i6_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | -                                                                                                 |
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i6_type"></a>6.1.2.7.1. Property `JSON config > modules > modules items > anyOf > Run module with custom configurations > oneOf > Command > type`
 
@@ -1690,7 +1737,7 @@ Specific value: `"command"`
 ##### <a name="modules_items_anyOf_i1_oneOf_i6_shell"></a>6.1.2.7.2. Property `JSON config > modules > modules items > anyOf > Run module with custom configurations > oneOf > Command > shell`
 
 **Title:** Set the shell program to execute the command text
-Default: cmd for Windows, csh for FreeBSD, bash for others
+Default: cmd for Windows, /bin/sh for *nix
 
 |              |          |
 | ------------ | -------- |
@@ -2466,11 +2513,11 @@ Specific value: `"title"`
 
 **Title:** Set colors of the different part of title
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 | Property                                                | Pattern | Type             | Deprecated | Definition                               | Title/Description                       |
 | ------------------------------------------------------- | ------- | ---------------- | ---------- | ---------------------------------------- | --------------------------------------- |
@@ -2628,4 +2675,4 @@ Specific value: `"weather"`
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-07-21 at 09:51:08 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-08-07 at 13:32:21 +0800
