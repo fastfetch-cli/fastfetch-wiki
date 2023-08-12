@@ -24,7 +24,7 @@ Welcome to the fastfetch wiki!
 
 ## Windows 7 (VM)
 
-![image](https://github.com/fastfetch-cli/fastfetch/assets/6134068/9649e5af-b839-4bd1-a4d2-b68d95122e8e)
+![image](https://github.com/fastfetch-cli/fastfetch/assets/6134068/330d58dd-300c-4321-83f4-f70751952cb3)
 
 ## FreeBSD
 
