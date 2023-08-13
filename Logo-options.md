@@ -16,6 +16,11 @@ All filesytem paths can be:
 * Relative to any of the directories listed by `fastfetch --list-data-paths` + `/logos`  
   For example, the file `~/.local/share/fastfetch/logos/shrek` can simply be referenced as `shrek`.
 
+Note: when using environment variables in config file:
+
+1. On Windows, only `%ENV_VAR%` syntax is supported, for example `%USERPROFILE%/path/to/logo file.txt`. See [`ExpandEnvironmentStringsA`](https://learn.microsoft.com/en-us/windows/win32/api/processenv/nf-processenv-expandenvironmentstringsa) for detail.
+2. On *nix, all special charactors (` |&;<>(){}`) must be quoted with `\`, for example `~/path/to/logo\ file.txt` or `$HOME/path/to/logo\ file.txt`. See [`wordexp`](https://man7.org/linux/man-pages/man3/wordexp.3.html) for detail.
+
 ## Text
 
 | Option | Default | Description |
