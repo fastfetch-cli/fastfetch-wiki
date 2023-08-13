@@ -11,6 +11,7 @@
 | `--logo-padding-top` | `0` | Sets the padding top of the logo |
 
 All filesytem paths can be:
+
 * Absolute
 * Relative to the current working directory
 * Relative to any of the directories listed by `fastfetch --list-data-paths` + `/logos`  
