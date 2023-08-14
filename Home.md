@@ -16,11 +16,11 @@ Welcome to the fastfetch wiki!
 
 ## Windows 11
 
-<img width="1000" alt="image" src="https://github.com/LinusDierheimer/fastfetch/assets/6134068/d3c8aa0d-36bf-4dd7-8fc6-7ebbab781b1b">
+<img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/fba64e6e-5204-4078-b7e7-19b7cc0f9823">
 
 ## WSL
 
-<img width="747" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/d2a81f1b-4f46-4ffe-9cc0-88420784bbaa">
+<img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/d2a81f1b-4f46-4ffe-9cc0-88420784bbaa">
 
 ## Windows 7 (VM)
 
