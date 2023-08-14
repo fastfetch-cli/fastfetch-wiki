@@ -13,7 +13,7 @@ Using an editor with JSON schema support is highly suggested. If unsure, I sugge
 
 ### Why use JSON?
 
-We had command line, flag based configuration for long time, so bother introducing a new config format?
+We had command line, flag based configuration for long time. Why bother introducing a new config format?
 
 1. JSON is standard. Most IDEs have builtin support of syntax highlighting, validation and formatting, without additional requirements.
 1. JSON is structure based. It's easier to read with proper indentation.
