@@ -100,6 +100,7 @@ The value of `--logo` is interpreted as the logo and directly displayed.
 
 The value of `--logo` is interpreted as the path to an image file. It is displayed using the sixel graphics protocol.
 * `fastfetch` must be compiled with the `imagemagick6` or `imagemagick7` feature.
+* Has widest terminal support.
 
 ## kitty
 
@@ -112,11 +113,13 @@ The value of `--logo` is interpreted as the path to an image file. It is display
 * Both `--logo-width` and `--logo-height` must be specified.
 * This is by far the fastest image protocol. We suggest using it if supported by the terminal you use.
 * Known to work with wezterm (`png`, `jpg` and `webp`) and kitty (`png` only).
+* Note konsole is said to support `kitty` image protocol, it doesn't support `kitty-direct`.
 
 ## iterm
 
 The value of `--logo` is interpreted as the path to an image file. It is displayed using the iTerm graphics protocol.
 * Both `--logo-width` and `--logo-height` must be specified.
+* Known to work with wezterm ( `kitty-direct` is preferred ), iterm2 and konsole.
 
 ## chafa
 
