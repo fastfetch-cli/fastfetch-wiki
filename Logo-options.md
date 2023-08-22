@@ -111,7 +111,7 @@ The value of `--logo` is interpreted as the path to an image file. It is display
 
 The value of `--logo` is interpreted as the path to an image file. It is displayed using the kitty graphics protocol, and the image is directly send to the terminal emulator.
 * Both `--logo-width` and `--logo-height` must be specified.
-* This is by far the fastest image protocol. We suggest using it if supported by the terminal you use.
+* This is by far the fastest image protocol because the image content is loaded dirently by terminal but not encoded and passed through tty. We suggest using it if supported by the terminal you use.
 * Known to work with wezterm (`png`, `jpg` and `webp`) and kitty (`png` only).
 * Note konsole is said to support `kitty` image protocol, it doesn't support `kitty-direct`.
 
