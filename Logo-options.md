@@ -139,3 +139,12 @@ The value of `--logo` is interpreted as the path to a binary file. It is printed
 * Both `--logo-width` and `--logo-height` must be specified.
 * Use this to display a pre converted image file.
 * If the file can't be read, the autodetected builtin logo is displayed.
+
+This is preferred way to display sixel images. For example
+
+```
+$ # make sure libsixel is installed
+$ img2sixel ~/Desktop/test.png > test.sixel # convert an image to sixel format
+$ cat test.sixel && echo END # check if it works fine, and get the number of rows and columns the image uses ( before `END` is printed )
+$ fastfetch --raw test.sixel --logo-width $NUMBER_OF_COLUMNS_USES --logo-height $NUMBER_OF_ROWS_USES
+```
