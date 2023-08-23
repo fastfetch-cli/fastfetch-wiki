@@ -28,7 +28,7 @@ Welcome to the fastfetch wiki!
 
 ## FreeBSD
 
-<img width="860" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/8dadec0c-5308-417e-9124-f0e13e710a68">
+<img width="860" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/da780c35-1a64-4a78-a1b5-657fcbc5266e">
 
 ## Android (without logo)
 
