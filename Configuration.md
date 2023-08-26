@@ -34,6 +34,10 @@ generate-schema-doc ~/fastfetch/doc/json_schema.json --config template_name=md J
 
 Also refer to `fastfetch --help` for more detailed explanation.
 
+### Examples
+
+`*.jsonc` in <https://github.com/fastfetch-cli/fastfetch/tree/dev/presets/examples>
+
 ### Note
 
 * When `config.jsonc` is found, `config.conf` will be ignored
