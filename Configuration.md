@@ -38,6 +38,8 @@ Also refer to `fastfetch --help` for more detailed explanation.
 
 `*.jsonc` in <https://github.com/fastfetch-cli/fastfetch/tree/dev/presets/examples>
 
+You may test it with `fastfetch --config examples/*.jsonc`
+
 ### Note
 
 * When `config.jsonc` is found, `config.conf` will be ignored
