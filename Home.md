@@ -32,4 +32,4 @@ Welcome to the fastfetch wiki!
 
 ## Android (without logo)
 
-<img width="600" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/9d608df8-e9bb-434a-bfe1-b98008e3fed2">
+![Screenshot_2023-09-03-23-00-10-881_com termux](https://github.com/fastfetch-cli/fastfetch/assets/6134068/25710427-8b4e-4d4a-aba7-18604ffd5c92)
