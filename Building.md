@@ -20,3 +20,5 @@ Currently GCC or clang is required (MSVC is not supported). MSYS2 with CLANG64 s
 ```bash
 pacman -Syu mingw-w64-clang-x86_64-cmake mingw-w64-clang-x86_64-pkgconf mingw-w64-clang-x86_64-clang mingw-w64-clang-x86_64-vulkan-loader mingw-w64-clang-x86_64-opencl-icd
 ```
+
+Follow the building instructions of Linux next.
