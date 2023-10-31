@@ -1,6 +1,7 @@
 # Docs
 
 1. [Configuration](Configuration)
+1. [Json Schema](https://github.com/fastfetch-cli/fastfetch/wiki/Json-Schema)
 1. [Logo Options](Logo-options)
 1. [Dependencies](Dependencies)
 1. [Building](Building)
