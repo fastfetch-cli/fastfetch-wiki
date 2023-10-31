@@ -1,7 +1,8 @@
 # Docs
 
-1. [Configuration](https://github.com/fastfetch-cli/fastfetch/wiki/Configuration)
+1. [Configuration](Configuration)
 1. [Logo Options](Logo-options)
+1. [Dependencies](Dependencies)
 
 # Benchmarks
 
