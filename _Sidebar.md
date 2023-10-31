@@ -4,7 +4,7 @@
 1. [Logo Options](Logo-options)
 1. [Dependencies](Dependencies)
 1. [Building](Building)
-1. [Support Status](Support Status)
+1. [Support Status](Support_Status)
 
 # Benchmarks
 
