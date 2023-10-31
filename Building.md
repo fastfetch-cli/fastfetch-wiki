@@ -7,7 +7,7 @@ cmake ..
 cmake --build . --target fastfetch --target flashfetch
 ```
 
-If the build process fails to find the headers for a library listed in [dependencies](#dependencies), fastfetch will simply build without support for that specific feature. This means, it won't look for it at runtime and just act like it isn't available.
+If the build process fails to find the headers for a library listed in [dependencies](Dependencies), fastfetch will simply build without support for that specific feature. This means, it won't look for it at runtime and just act like it isn't available.
 
 ### Building on Windows
 
