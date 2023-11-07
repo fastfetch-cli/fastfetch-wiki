@@ -24,7 +24,7 @@
       - [2.3.6.2. Property `JSON config > logo > oneOf > item 2 > padding > left`](#logo_oneOf_i2_padding_left)
       - [2.3.6.3. Property `JSON config > logo > oneOf > item 2 > padding > right`](#logo_oneOf_i2_padding_right)
     - [2.3.7. Property `JSON config > logo > oneOf > item 2 > printRemaining`](#logo_oneOf_i2_printRemaining)
-    - [2.3.8. Property `JSON config > logo > oneOf > item 2 > preserveAspectRadio`](#logo_oneOf_i2_preserveAspectRadio)
+    - [2.3.8. Property `JSON config > logo > oneOf > item 2 > preserveAspectRatio`](#logo_oneOf_i2_preserveAspectRatio)
     - [2.3.9. Property `JSON config > logo > oneOf > item 2 > recache`](#logo_oneOf_i2_recache)
     - [2.3.10. Property `JSON config > logo > oneOf > item 2 > separate`](#logo_oneOf_i2_separate)
     - [2.3.11. Property `JSON config > logo > oneOf > item 2 > chafa`](#logo_oneOf_i2_chafa)
@@ -405,7 +405,7 @@
 | - [height](#logo_oneOf_i2_height )                           | No      | integer          | No         | -          | Set the height of the logo (in characters). Required for iTerm image protocol       |
 | - [padding](#logo_oneOf_i2_padding )                         | No      | object           | No         | -          | Set the padding of the logo                                                         |
 | - [printRemaining](#logo_oneOf_i2_printRemaining )           | No      | boolean          | No         | -          | Whether to print the remaining logo, if it has more lines than modules to display   |
-| - [preserveAspectRadio](#logo_oneOf_i2_preserveAspectRadio ) | No      | boolean          | No         | -          | Whether to preserve the aspect ratio of the logo. Supported by iTerm image protocol |
+| - [preserveAspectRatio](#logo_oneOf_i2_preserveAspectRatio ) | No      | boolean          | No         | -          | Whether to preserve the aspect ratio of the logo. Supported by iTerm image protocol |
 | - [recache](#logo_oneOf_i2_recache )                         | No      | boolean          | No         | -          | If true, regenerate image logo cache                                                |
 | - [separate](#logo_oneOf_i2_separate )                       | No      | boolean          | No         | -          | If true, print modules at bottom of the logo                                        |
 | - [chafa](#logo_oneOf_i2_chafa )                             | No      | object           | No         | -          | Chafa configuration. See chafa document for details                                 |
@@ -648,7 +648,7 @@ Must be one of:
 
 **Description:** Whether to print the remaining logo, if it has more lines than modules to display
 
-#### <a name="logo_oneOf_i2_preserveAspectRadio"></a>2.3.8. Property `JSON config > logo > oneOf > item 2 > preserveAspectRadio`
+#### <a name="logo_oneOf_i2_preserveAspectRatio"></a>2.3.8. Property `JSON config > logo > oneOf > item 2 > preserveAspectRatio`
 
 |              |           |
 | ------------ | --------- |
@@ -1229,7 +1229,7 @@ Must be one of:
 | ------------ | -------- |
 | **Type**     | `number` |
 | **Required** | No       |
-| **Default**  | `1`      |
+| **Default**  | `9`      |
 
 **Description:** Set the percentage output type. 1 for percentage number, 2 for bar, 3 for both, 6 for bar only, 9 for colored number
 
@@ -1278,7 +1278,7 @@ Must be one of:
 | - [pci](#library_pci )                 | No      | string | No         | -          | GPU output (Linux and FreeBSD)                                                                                                                                                                 |
 | - [vulkan](#library_vulkan )           | No      | string | No         | -          | Vulkan module & fallback for GPU output                                                                                                                                                        |
 | - [freetype](#library_freetype )       | No      | string | No         | -          | Used for Termux font detection (Android)                                                                                                                                                       |
-| - [wayland](#library_wayland )         | No      | string | No         | -          | Better display performance and output in wayland sessions.<br />Supports different refresh rates per monitor.<br />(Linux)                                                                     |
+| - [wayland](#library_wayland )         | No      | string | No         | -          | Better display performance and output in wayland sessions.<br />Supports different refresh rates per monitor.<br />(Linux, FreeBSD)                                                            |
 | - [xcbRandr](#library_xcbRandr )       | No      | string | No         | -          | X11 sessions for better display detection and faster WM detection.<br />The *randr ones provide multi monitor support The libxcb* ones usually have better performance.<br /> (Linux, FreeBSD) |
 | - [xcb](#library_xcb )                 | No      | string | No         | -          | X11 sessions for better display detection and faster WM detection.<br />The *randr ones provide multi monitor support The libxcb* ones usually have better performance.<br /> (Linux, FreeBSD) |
 | - [xrandr](#library_xrandr )           | No      | string | No         | -          | X11 sessions for better display detection and faster WM detection.<br />The *randr ones provide multi monitor support The libxcb* ones usually have better performance.<br /> (Linux, FreeBSD) |
@@ -1336,7 +1336,7 @@ Must be one of:
 
 **Description:** Better display performance and output in wayland sessions.
 Supports different refresh rates per monitor.
-(Linux)
+(Linux, FreeBSD)
 
 ### <a name="library_xcbRandr"></a>5.5. Property `JSON config > library > xcbRandr`
 
@@ -3436,7 +3436,7 @@ Specific value: `"localip"`
 | ------------ | --------- |
 | **Type**     | `boolean` |
 | **Required** | No        |
-| **Default**  | `false`   |
+| **Default**  | `true`    |
 
 **Description:** Show ips that are used for default routing only
 
@@ -3527,7 +3527,7 @@ Specific value: `"netio"`
 | ------------ | --------- |
 | **Type**     | `boolean` |
 | **Required** | No        |
-| **Default**  | `false`   |
+| **Default**  | `true`    |
 
 **Description:** Show ips that are used for default routing only
 
@@ -4284,4 +4284,4 @@ Specific value: `"wm"`
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-10-31 at 15:39:04 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2023-11-07 at 13:28:47 +0800
