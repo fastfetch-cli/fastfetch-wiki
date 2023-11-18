@@ -26,6 +26,10 @@ Welcome to the fastfetch wiki!
 
 ![image](https://github.com/fastfetch-cli/fastfetch/assets/6134068/8706d349-419a-4cd9-b460-f9e99adf2c23)
 
+## Windows Server 2022 Core (VM)
+
+![image](https://github.com/fastfetch-cli/fastfetch/assets/6134068/5072876c-92b1-48bf-bada-2025c1b071bf)
+
 ## FreeBSD
 
 <img width="860" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/da780c35-1a64-4a78-a1b5-657fcbc5266e">
