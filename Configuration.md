@@ -1,6 +1,6 @@
 ## JSON based configuration
 
-Fastfetch uses JSONC (JSON with comments) to store configuration. It should be located in `~/.config/fastfetch`, named `config.jsonc` (NOT ~`config.json`~). You may create it with `fastfetch --gen-config jsonc`. A simplest JSONC file should be like
+Fastfetch uses JSONC (JSON with comments) to store configuration. It should be located in `~/.config/fastfetch`, named `config.jsonc` (NOT ~`config.json`~). You may create it with `fastfetch --gen-config`. A simplest JSONC file should be like
 
 ```jsonc
 // ~/.config/fastfetch/config.jsonc
@@ -15,7 +15,7 @@ Using an editor with JSON schema support is highly suggested. If unsure, I sugge
 
 ```shell
 # Make sure that `~/.config/fastfetch/config.jsonc` doesn't exist
-fastfetch --whatever-flags --migrate-config
+fastfetch --whatever-flags --gen-config
 ```
 
 ### Why use JSON?
@@ -45,7 +45,7 @@ Also refer to `fastfetch --help` for more detailed explanation.
 
 `*.jsonc` in <https://github.com/fastfetch-cli/fastfetch/tree/dev/presets/examples>
 
-You may test it with `fastfetch --config examples/*.jsonc`
+You may test it with `fastfetch --config examples/x.jsonc`
 
 ### Note
 
