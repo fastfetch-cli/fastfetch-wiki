@@ -1,19 +1,76 @@
 All categories not listed here should work without needing a specific implementation.
 
 ### Available Modules
+<!-- fastfetch --list-modules -->
 ```
-Battery, Bios, Bluetooth, Board, Break, Brightness, Colors, Command, CPU, CPUUsage, Cursor, Custom, Date, DateTime, DE, Disk, DiskIO, Display, Font, Gamepad, GPU, Host, Icons, Kernel, LM, Locale, LocalIP, Media, Memory, Monitor, NetIO, OpenCL, OpenGL, OS, Packages, Player, Power Adapter, Processes, PublicIP, Separator, Shell, Sound, Swap, Terminal, Terminal Font, Terminal Size, Theme, Time, Title, Uptime, Version, Vulkan, Wallpaper, Weather, Wifi, WM, WMTheme
+1)  Battery      : Print battery capacity, status, etc
+2)  Bios         : Print BIOS name, version, release date, etc
+3)  Bluetooth    : List bluetooth devices
+4)  Board        : Print mather board name and other info
+5)  Break        : Print a empty line
+6)  Brightness   : Print current brightness level of your monitors
+7)  Chassis      : Print chassis type (desktop, laptop, etc)
+8)  Command      : Running custom shell scripts
+9)  Colors       : Print some colored blocks
+10) CPU          : Print CPU name, frequency, etc
+11) CPUUsage     : Print CPU usage. Costs some time to collect data
+12) Cursor       : Print cursor style name
+13) Custom       : Print a custom string, with or without key
+14) DateTime     : Print current date and time
+15) DE           : Print desktop environment name
+16) Display      : Print resolutions, refresh rates, etc
+17) Disk         : Print partitions, space usage, disk type, etc
+18) DiskIO       : Print physical disk I/O throughput
+19) Font         : Print system font name
+20) Gamepad      : List connected gamepads
+21) GPU          : Print GPU names, graphic memory size, type, etc
+22) Host         : Print product name of your computer
+23) Icons        : Print icon style name
+24) Kernel       : Print system kernel version
+25) LM           : Print login manager (desktop manager) name and version
+26) Locale       : Print system locale name
+27) LocalIp      : List local IP addresses (v4 or v6), MAC addresses, etc
+28) Media        : Print playing song name
+29) Memory       : Print system memory usage info
+30) Monitor      : Print connected physical monitor information
+31) NetIO        : Print network I/O throughput
+32) OpenCL       : Print highest OpenCL version supported by the GPU
+33) OpenGL       : Print highest OpenGL version supported by the GPU
+34) OS           : Print operating system name and version
+35) Packages     : List installed package managers and count of installed packages
+36) PhysicalDisk : Print physical disk information
+37) Player       : Print music player name
+38) PowerAdapter : Print power adapter name and charging watts
+39) Processes    : Count running processes
+40) PublicIp     : Print your public IP address, etc
+41) Separator    : Print a separator line
+42) Shell        : Print current shell name and version
+43) Sound        : Print sound devices, volume, etc
+44) Swap         : Print swap (paging file) space usage
+45) Terminal     : Print current terminal name and version
+46) TerminalFont : Print font name and size used by current terminal
+47) TerminalSize : Print current terminal size
+48) Title        : Print title, which contains your user name, hostname
+49) Theme        : Print current theme of desktop environment
+50) Uptime       : Print how long system has been running
+51) Users        : Print users currently logged in
+52) Version      : Print Fastfetch version
+53) Vulkan       : Print highest Vulkan version supported by the GPU
+54) Wallpaper    : Print image file path of current wallpaper
+55) Weather      : Print weather information
+56) WM           : Print window manager name and version
+57) Wifi         : Print connected Wi-Fi info (SSID, connection and security protocol)
+58) WMTheme      : Print current theme of window manager
 ```
 
 ### Builtin logos
-
 <!-- Object.entries(Object.groupBy(`Content of src/logo/builtin.c`.split('\n').map(x => x.trim()).filter(x => x.startsWith('// ')).map(x => x.slice(3)).filter(x => x != 'LAST').sort((a, b)=>a.toUpperCase().localeCompare(b.toUpperCase())), x => x[0].toUpperCase())).map(([key, arr]) => `${key}: ${arr.join(', ')}`).join('\n') -->
 ```
 A: Adélie, AerOS, Afterglow, AIX, AlmaLinux, Alpine, Alpine2Small, AlpineSmall, Alter, Amazon, AmazonLinux, AmogOS, Anarchy, Android, AndroidSmall, Antergos, Antix, AoscOS, AoscOS_old, AoscOsRetro, AoscOsRetro_small, Aperture, Apple, AppleSmall, Apricity, Arch, Arch2, ArchBox, Archcraft, Archcraft2, Archlabs, ArchSmall, ArchStrike, ArcoLinux, ArcoLinuxSmall, ArseLinux, Artix, Artix2Small, ArtixSmall, Arya, Asahi, Aster, AsteroidOS, AstOS, Astra, Ataraxia, Athena, Azos
 B: Bedrock, BigLinux, Bitrig, BlackArch, BlackMesa, BlackPanther, BLAG, BlankOn, BlueLight, Bodhi, Bonsai, BSD, BunsenLabs
 C: CachyOS, CachyOSSmall, Calculate, CalinixOS, CalinixOSSmall, Carbs, CBL-Mariner, CelOS, Center, CentOS, CentOSSmall, Chakra, ChaletOS, Chapeau, Chimera Linux, ChonkySealOS, Chrom, Cleanjaro, CleanjaroSmall, ClearLinux, ClearOS, Clover, Cobalt, Condres, ContainerLinux, CRUX, CRUXSmall, CrystalLinux, Cucumber, CutefishOS, CuteOS, CyberOS, cycledream
 D: Dahlia, DarkOS, Debian, DebianSmall, Deepin, DesaOS, Devuan, DevuanSmall, DietPi, DracOS, DragonFly, DragonFlyOld, DragonFlySmall, Drauger, Droidian
-E: Elbrus, Elementary, ElementarySmall, Elive, EncryptOS, Endeavour, EndeavourSmall, Endless, Enso, EuroLinux, evolinx, EvolutionOS, EvolutionOS_old, EvolutionOSSmall, Exherbo, ExodiaPredator
+E: Elbrus, Elementary, ElementarySmall, Elive, EncryptOS, Endeavour, EndeavourSmall, Endless, Enso, EshanizedOS, EuroLinux, evolinx, EvolutionOS, EvolutionOS_old, EvolutionOSSmall, Exherbo, ExodiaPredator
 F: Fedora, FedoraOld, FedoraSmall, FemboyOS, Feren, Finnix, Floflis, FreeBSD, FreeBSDSmall, FreeMiNT, Frugalware, Funtoo
 G: GalliumOS, Garuda, GarudaDragon, GarudaSmall, Gentoo, GentooSmall, GhostBSD, Glaucus, GNewSense, Gnome, GNU, GoboLinux, GrapheneOS, Grombyang, Guix, GuixSmall
 H: Haiku, HaikuSmall, HamoniKR, HarDClanZ, HardenedBSD, Hash, Huayra, Hybrid, HydroOS, Hyperbola, HyperbolaSmall
