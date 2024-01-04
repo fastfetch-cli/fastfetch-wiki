@@ -14,6 +14,10 @@ Welcome to the fastfetch wiki!
 
 <img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/15bc6751-287b-4505-b1cb-36aecb968c1a">
 
+## Asahi Linux
+
+<img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/16639b18-1a27-473a-93e5-5232d169eca4">
+
 ## Windows 11 (with image logo)
 
 <img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/3778fa8a-979e-4046-bab0-634195b55fc7">
