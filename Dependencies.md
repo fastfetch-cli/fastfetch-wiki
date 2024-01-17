@@ -24,6 +24,8 @@ The following libraries are used if present at runtime:
 * [`libOpenCL`](https://www.khronos.org/opencl/): OpenCL module
 * [`libXFConf`](https://gitlab.xfce.org/xfce/xfconf): Needed for XFWM theme and XFCE Terminal font.
 * [`libsqlite3`](https://www.sqlite.org/index.html): Needed for pkg & rpm package count.
+
+### Linux only
 * [`librpm`](http://rpm.org/): Slower fallback for rpm package count. Needed on openSUSE.
 * [`libnm`](https://networkmanager.dev/docs/libnm/latest/): Used for Wifi detection.
 * [`libpulse`](https://freedesktop.org/software/pulseaudio/doxygen/): Used for Sound detection.
@@ -38,7 +40,7 @@ The following libraries are used if present at runtime:
 * [`MoltenVK`](https://github.com/KhronosGroup/MoltenVK): Vulkan driver for macOS. [`molten-vk`](https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/molten-vk.rb)
 * [`libmagickcore` (ImageMagick)](https://www.imagemagick.org/): Images in terminal using sixel graphics protocol. [`imagemagick`](https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/imagemagick.rb)
 * [`libchafa`](https://github.com/hpjansson/chafa): Image output as ascii art. [`chafa`](https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/chafa.rb)
-* [`libsqlite3`](https://www.sqlite.org/index.html): Used for fast wallpaper detection ( fallback to AppleScript )
+* [`libsqlite3`](https://www.sqlite.org/index.html): Used for fast wallpaper detection before macOS Sonoma ( fallback to AppleScript )
 
 For the image logo, iTerm with iterm image protocol should work. Apple Terminal is not supported.
 
