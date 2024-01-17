@@ -4,7 +4,7 @@ Welcome to the fastfetch wiki!
 
 ## macOS (M1 Pro with image logo)
 
-<img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/6d99b8fa-623f-46f3-bbea-61ef46501fb8">
+<img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/cd4ec30d-c482-49b4-bf99-ee93c79efa30">
 
 ## macOS (old Intel with `--stat`)
 
