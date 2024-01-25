@@ -2,7 +2,7 @@ Welcome to the fastfetch wiki!
 
 # Screenshots on different systems
 
-## macOS (M1 Pro with image logo)
+## macOS (Apple Silicon)
 
 <img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/cd4ec30d-c482-49b4-bf99-ee93c79efa30">
 
