@@ -4,7 +4,6 @@ The following libraries are used if present at runtime:
 
 ### Linux and FreeBSD
 
-* [`libpci`](https://github.com/pciutils/pciutils): GPU output.
 * [`libvulkan`](https://www.vulkan.org/): Vulkan module & fallback for GPU output.
 * [`libxcb-randr`](https://xcb.freedesktop.org/),
     [`libXrandr`](https://gitlab.freedesktop.org/xorg/lib/libxrandr),
@@ -28,9 +27,12 @@ The following libraries are used if present at runtime:
 ### Linux only
 * [`librpm`](http://rpm.org/): Slower fallback for rpm package count. Needed on openSUSE.
 * [`libnm`](https://networkmanager.dev/docs/libnm/latest/): Used for Wifi detection.
-* [`libpulse`](https://freedesktop.org/software/pulseaudio/doxygen/): Used for Sound detection.
+* [`libpulse`](https://freedesktop.org/software/pulseaudio/doxygen/): Used for Sound device detection.
 * [`libddcutil`](https://github.com/rockowitz/ddcutil): Used for brightness detection of external displays
 * [`DirectX-Headers`](https://github.com/microsoft/DirectX-Headers): Used for GPU detection in WSL
+
+### FreeBSD only
+* [`v4l_compat`](https://github.com/freebsd/freebsd-ports/tree/main/multimedia/libv4l): Used for camera devices detection. See the [official document](https://docs.freebsd.org/en/books/handbook/multimedia/#webcam-setup) for detail
 
 ### macOS
 <!-- All exported symbols can be found in `/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks/*.framework/*.tbd` -->
