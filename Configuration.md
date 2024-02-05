@@ -5,7 +5,16 @@ Fastfetch uses JSONC (JSON with comments) to store configuration. It should be l
 ```jsonc
 // ~/.config/fastfetch/config.jsonc
 {
-    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json"
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "modules": [
+        "title",
+        "separator",
+        "module1",
+        {
+            "type": "module2",
+            "module2-option": "value"
+        }
+    ]
 }
 ```
 
@@ -51,3 +60,4 @@ You may test it with `fastfetch --config examples/x.jsonc`
 
 * When `config.jsonc` is found, `config.conf` will be ignored
 * Mixing command line flags with `config.jsonc` may / may not work. Generally, module command line option flags won't work when `config.jsonc` won't work. Other flags should work.
+* Special charactors should be encoded as `\uXXXX` in JSON. Notably, `\e` or `\033` should be `\u001b`.
