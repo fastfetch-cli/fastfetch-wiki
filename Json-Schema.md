@@ -75,6 +75,10 @@
   - [4.14. Property `JSON config > display > percent`](#display_percent)
     - [4.14.1. Property `JSON config > display > percent > type`](#display_percent_type)
     - [4.14.2. Property `JSON config > display > percent > ndigits`](#display_percent_ndigits)
+    - [4.14.3. Property `JSON config > display > percent > color`](#display_percent_color)
+      - [4.14.3.1. Property `JSON config > display > percent > color > green`](#display_percent_color_green)
+      - [4.14.3.2. Property `JSON config > display > percent > color > yellow`](#display_percent_color_yellow)
+      - [4.14.3.3. Property `JSON config > display > percent > color > red`](#display_percent_color_red)
   - [4.15. Property `JSON config > display > noBuffer`](#display_noBuffer)
 - [5. Property `JSON config > library`](#library)
   - [5.1. Property `JSON config > library > pci`](#library_pci)
@@ -140,8 +144,6 @@
           - [6.1.2.2.1.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 27`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i27)
           - [6.1.2.2.1.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 28`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i28)
           - [6.1.2.2.1.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 29`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i29)
-          - [6.1.2.2.1.31. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 30`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i30)
-          - [6.1.2.2.1.32. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 31`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i31)
         - [6.1.2.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > key`](#modules_items_anyOf_i1_oneOf_i1_key)
         - [6.1.2.2.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > keyColor`](#modules_items_anyOf_i1_oneOf_i1_keyColor)
         - [6.1.2.2.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > keyWidth`](#modules_items_anyOf_i1_oneOf_i1_keyWidth)
@@ -150,20 +152,25 @@
         - [6.1.2.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > type`](#modules_items_anyOf_i1_oneOf_i2_type)
         - [6.1.2.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > useSetupApi`](#modules_items_anyOf_i1_oneOf_i2_useSetupApi)
         - [6.1.2.3.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > temp`](#modules_items_anyOf_i1_oneOf_i2_temp)
-        - [6.1.2.3.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > key`](#modules_items_anyOf_i1_oneOf_i2_key)
-        - [6.1.2.3.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > keyColor`](#modules_items_anyOf_i1_oneOf_i2_keyColor)
-        - [6.1.2.3.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > keyWidth`](#modules_items_anyOf_i1_oneOf_i2_keyWidth)
-        - [6.1.2.3.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > format`](#modules_items_anyOf_i1_oneOf_i2_format)
+        - [6.1.2.3.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > percent`](#modules_items_anyOf_i1_oneOf_i2_percent)
+          - [6.1.2.3.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > percent > green`](#modules_items_anyOf_i1_oneOf_i2_percent_green)
+          - [6.1.2.3.4.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > percent > yellow`](#modules_items_anyOf_i1_oneOf_i2_percent_yellow)
+        - [6.1.2.3.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > key`](#modules_items_anyOf_i1_oneOf_i2_key)
+        - [6.1.2.3.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > keyColor`](#modules_items_anyOf_i1_oneOf_i2_keyColor)
+        - [6.1.2.3.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > keyWidth`](#modules_items_anyOf_i1_oneOf_i2_keyWidth)
+        - [6.1.2.3.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > format`](#modules_items_anyOf_i1_oneOf_i2_format)
       - [6.1.2.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth`](#modules_items_anyOf_i1_oneOf_i3)
         - [6.1.2.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > type`](#modules_items_anyOf_i1_oneOf_i3_type)
         - [6.1.2.4.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > showDisconnected`](#modules_items_anyOf_i1_oneOf_i3_showDisconnected)
-        - [6.1.2.4.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > key`](#modules_items_anyOf_i1_oneOf_i3_key)
-        - [6.1.2.4.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyColor`](#modules_items_anyOf_i1_oneOf_i3_keyColor)
-        - [6.1.2.4.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyWidth`](#modules_items_anyOf_i1_oneOf_i3_keyWidth)
-        - [6.1.2.4.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > format`](#modules_items_anyOf_i1_oneOf_i3_format)
+        - [6.1.2.4.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > percent`](#modules_items_anyOf_i1_oneOf_i3_percent)
+        - [6.1.2.4.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > key`](#modules_items_anyOf_i1_oneOf_i3_key)
+        - [6.1.2.4.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyColor`](#modules_items_anyOf_i1_oneOf_i3_keyColor)
+        - [6.1.2.4.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyWidth`](#modules_items_anyOf_i1_oneOf_i3_keyWidth)
+        - [6.1.2.4.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > format`](#modules_items_anyOf_i1_oneOf_i3_format)
       - [6.1.2.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness`](#modules_items_anyOf_i1_oneOf_i4)
         - [6.1.2.5.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness > type`](#modules_items_anyOf_i1_oneOf_i4_type)
-        - [6.1.2.5.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness > ddcciSleep`](#modules_items_anyOf_i1_oneOf_i4_ddcciSleep)
+        - [6.1.2.5.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness > percent`](#modules_items_anyOf_i1_oneOf_i4_percent)
+        - [6.1.2.5.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness > ddcciSleep`](#modules_items_anyOf_i1_oneOf_i4_ddcciSleep)
       - [6.1.2.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Chassis`](#modules_items_anyOf_i1_oneOf_i5)
         - [6.1.2.6.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Chassis > type`](#modules_items_anyOf_i1_oneOf_i5_type)
         - [6.1.2.6.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Chassis > key`](#modules_items_anyOf_i1_oneOf_i5_key)
@@ -180,11 +187,16 @@
         - [6.1.2.7.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > format`](#modules_items_anyOf_i1_oneOf_i6_format)
       - [6.1.2.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage`](#modules_items_anyOf_i1_oneOf_i7)
         - [6.1.2.8.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > type`](#modules_items_anyOf_i1_oneOf_i7_type)
-        - [6.1.2.8.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > separate`](#modules_items_anyOf_i1_oneOf_i7_separate)
+        - [6.1.2.8.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > percent`](#modules_items_anyOf_i1_oneOf_i7_percent)
+        - [6.1.2.8.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > separate`](#modules_items_anyOf_i1_oneOf_i7_separate)
       - [6.1.2.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors`](#modules_items_anyOf_i1_oneOf_i8)
         - [6.1.2.9.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > type`](#modules_items_anyOf_i1_oneOf_i8_type)
         - [6.1.2.9.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > symbol`](#modules_items_anyOf_i1_oneOf_i8_symbol)
         - [6.1.2.9.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > paddingLeft`](#modules_items_anyOf_i1_oneOf_i8_paddingLeft)
+        - [6.1.2.9.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block`](#modules_items_anyOf_i1_oneOf_i8_block)
+          - [6.1.2.9.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > width`](#modules_items_anyOf_i1_oneOf_i8_block_width)
+          - [6.1.2.9.4.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > range`](#modules_items_anyOf_i1_oneOf_i8_block_range)
+            - [6.1.2.9.4.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > range > range items](#autogenerated_heading_3)
       - [6.1.2.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command`](#modules_items_anyOf_i1_oneOf_i9)
         - [6.1.2.10.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > type`](#modules_items_anyOf_i1_oneOf_i9_type)
         - [6.1.2.10.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > shell`](#modules_items_anyOf_i1_oneOf_i9_shell)
@@ -203,10 +215,11 @@
         - [6.1.2.12.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > type`](#modules_items_anyOf_i1_oneOf_i11_type)
         - [6.1.2.12.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > compactType`](#modules_items_anyOf_i1_oneOf_i11_compactType)
         - [6.1.2.12.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > preciseRefreshRate`](#modules_items_anyOf_i1_oneOf_i11_preciseRefreshRate)
-        - [6.1.2.12.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > key`](#modules_items_anyOf_i1_oneOf_i11_key)
-        - [6.1.2.12.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > keyColor`](#modules_items_anyOf_i1_oneOf_i11_keyColor)
-        - [6.1.2.12.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > keyWidth`](#modules_items_anyOf_i1_oneOf_i11_keyWidth)
-        - [6.1.2.12.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > format`](#modules_items_anyOf_i1_oneOf_i11_format)
+        - [6.1.2.12.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > order`](#modules_items_anyOf_i1_oneOf_i11_order)
+        - [6.1.2.12.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > key`](#modules_items_anyOf_i1_oneOf_i11_key)
+        - [6.1.2.12.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > keyColor`](#modules_items_anyOf_i1_oneOf_i11_keyColor)
+        - [6.1.2.12.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > keyWidth`](#modules_items_anyOf_i1_oneOf_i11_keyWidth)
+        - [6.1.2.12.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > format`](#modules_items_anyOf_i1_oneOf_i11_format)
       - [6.1.2.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk`](#modules_items_anyOf_i1_oneOf_i12)
         - [6.1.2.13.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > type`](#modules_items_anyOf_i1_oneOf_i12_type)
         - [6.1.2.13.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > folders`](#modules_items_anyOf_i1_oneOf_i12_folders)
@@ -216,17 +229,19 @@
         - [6.1.2.13.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showReadOnly`](#modules_items_anyOf_i1_oneOf_i12_showReadOnly)
         - [6.1.2.13.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showUnknown`](#modules_items_anyOf_i1_oneOf_i12_showUnknown)
         - [6.1.2.13.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > useAvailable`](#modules_items_anyOf_i1_oneOf_i12_useAvailable)
-        - [6.1.2.13.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > key`](#modules_items_anyOf_i1_oneOf_i12_key)
-        - [6.1.2.13.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyColor`](#modules_items_anyOf_i1_oneOf_i12_keyColor)
-        - [6.1.2.13.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyWidth`](#modules_items_anyOf_i1_oneOf_i12_keyWidth)
-        - [6.1.2.13.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > format`](#modules_items_anyOf_i1_oneOf_i12_format)
+        - [6.1.2.13.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > percent`](#modules_items_anyOf_i1_oneOf_i12_percent)
+        - [6.1.2.13.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > key`](#modules_items_anyOf_i1_oneOf_i12_key)
+        - [6.1.2.13.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyColor`](#modules_items_anyOf_i1_oneOf_i12_keyColor)
+        - [6.1.2.13.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyWidth`](#modules_items_anyOf_i1_oneOf_i12_keyWidth)
+        - [6.1.2.13.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > format`](#modules_items_anyOf_i1_oneOf_i12_format)
       - [6.1.2.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO`](#modules_items_anyOf_i1_oneOf_i13)
         - [6.1.2.14.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > type`](#modules_items_anyOf_i1_oneOf_i13_type)
         - [6.1.2.14.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > namePrefix`](#modules_items_anyOf_i1_oneOf_i13_namePrefix)
-        - [6.1.2.14.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > key`](#modules_items_anyOf_i1_oneOf_i13_key)
-        - [6.1.2.14.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > keyColor`](#modules_items_anyOf_i1_oneOf_i13_keyColor)
-        - [6.1.2.14.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > keyWidth`](#modules_items_anyOf_i1_oneOf_i13_keyWidth)
-        - [6.1.2.14.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > format`](#modules_items_anyOf_i1_oneOf_i13_format)
+        - [6.1.2.14.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > detectTotal`](#modules_items_anyOf_i1_oneOf_i13_detectTotal)
+        - [6.1.2.14.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > key`](#modules_items_anyOf_i1_oneOf_i13_key)
+        - [6.1.2.14.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > keyColor`](#modules_items_anyOf_i1_oneOf_i13_keyColor)
+        - [6.1.2.14.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > keyWidth`](#modules_items_anyOf_i1_oneOf_i13_keyWidth)
+        - [6.1.2.14.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > format`](#modules_items_anyOf_i1_oneOf_i13_format)
       - [6.1.2.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DE`](#modules_items_anyOf_i1_oneOf_i14)
         - [6.1.2.15.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DE > type`](#modules_items_anyOf_i1_oneOf_i14_type)
         - [6.1.2.15.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DE > slowVersionDetection`](#modules_items_anyOf_i1_oneOf_i14_slowVersionDetection)
@@ -234,105 +249,128 @@
         - [6.1.2.15.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DE > keyColor`](#modules_items_anyOf_i1_oneOf_i14_keyColor)
         - [6.1.2.15.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DE > keyWidth`](#modules_items_anyOf_i1_oneOf_i14_keyWidth)
         - [6.1.2.15.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DE > format`](#modules_items_anyOf_i1_oneOf_i14_format)
-      - [6.1.2.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU`](#modules_items_anyOf_i1_oneOf_i15)
-        - [6.1.2.16.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > type`](#modules_items_anyOf_i1_oneOf_i15_type)
-        - [6.1.2.16.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > temp`](#modules_items_anyOf_i1_oneOf_i15_temp)
-        - [6.1.2.16.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > driverSpecific`](#modules_items_anyOf_i1_oneOf_i15_driverSpecific)
-        - [6.1.2.16.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > forceVulkan`](#modules_items_anyOf_i1_oneOf_i15_forceVulkan)
-        - [6.1.2.16.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > hideType`](#modules_items_anyOf_i1_oneOf_i15_hideType)
-        - [6.1.2.16.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > key`](#modules_items_anyOf_i1_oneOf_i15_key)
-        - [6.1.2.16.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > keyColor`](#modules_items_anyOf_i1_oneOf_i15_keyColor)
-        - [6.1.2.16.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > keyWidth`](#modules_items_anyOf_i1_oneOf_i15_keyWidth)
-        - [6.1.2.16.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > format`](#modules_items_anyOf_i1_oneOf_i15_format)
-      - [6.1.2.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP`](#modules_items_anyOf_i1_oneOf_i16)
-        - [6.1.2.17.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > type`](#modules_items_anyOf_i1_oneOf_i16_type)
-        - [6.1.2.17.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv4`](#modules_items_anyOf_i1_oneOf_i16_showIpv4)
-        - [6.1.2.17.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6`](#modules_items_anyOf_i1_oneOf_i16_showIpv6)
-        - [6.1.2.17.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showMac`](#modules_items_anyOf_i1_oneOf_i16_showMac)
-        - [6.1.2.17.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showLoop`](#modules_items_anyOf_i1_oneOf_i16_showLoop)
-        - [6.1.2.17.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > compact`](#modules_items_anyOf_i1_oneOf_i16_compact)
-        - [6.1.2.17.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > namePrefix`](#modules_items_anyOf_i1_oneOf_i16_namePrefix)
-        - [6.1.2.17.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > defaultRouteOnly`](#modules_items_anyOf_i1_oneOf_i16_defaultRouteOnly)
-        - [6.1.2.17.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > key`](#modules_items_anyOf_i1_oneOf_i16_key)
-        - [6.1.2.17.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > keyColor`](#modules_items_anyOf_i1_oneOf_i16_keyColor)
-        - [6.1.2.17.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > keyWidth`](#modules_items_anyOf_i1_oneOf_i16_keyWidth)
-        - [6.1.2.17.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > format`](#modules_items_anyOf_i1_oneOf_i16_format)
-      - [6.1.2.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO`](#modules_items_anyOf_i1_oneOf_i17)
-        - [6.1.2.18.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > type`](#modules_items_anyOf_i1_oneOf_i17_type)
-        - [6.1.2.18.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > namePrefix`](#modules_items_anyOf_i1_oneOf_i17_namePrefix)
-        - [6.1.2.18.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > defaultRouteOnly`](#modules_items_anyOf_i1_oneOf_i17_defaultRouteOnly)
-        - [6.1.2.18.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > key`](#modules_items_anyOf_i1_oneOf_i17_key)
-        - [6.1.2.18.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > keyColor`](#modules_items_anyOf_i1_oneOf_i17_keyColor)
-        - [6.1.2.18.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > keyWidth`](#modules_items_anyOf_i1_oneOf_i17_keyWidth)
-        - [6.1.2.18.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > format`](#modules_items_anyOf_i1_oneOf_i17_format)
-      - [6.1.2.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL`](#modules_items_anyOf_i1_oneOf_i18)
-        - [6.1.2.19.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > type`](#modules_items_anyOf_i1_oneOf_i18_type)
-        - [6.1.2.19.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > library`](#modules_items_anyOf_i1_oneOf_i18_library)
-        - [6.1.2.19.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > key`](#modules_items_anyOf_i1_oneOf_i18_key)
-        - [6.1.2.19.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > keyColor`](#modules_items_anyOf_i1_oneOf_i18_keyColor)
-        - [6.1.2.19.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > keyWidth`](#modules_items_anyOf_i1_oneOf_i18_keyWidth)
-        - [6.1.2.19.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > format`](#modules_items_anyOf_i1_oneOf_i18_format)
-      - [6.1.2.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages`](#modules_items_anyOf_i1_oneOf_i19)
-        - [6.1.2.20.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > type`](#modules_items_anyOf_i1_oneOf_i19_type)
-        - [6.1.2.20.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > winget`](#modules_items_anyOf_i1_oneOf_i19_winget)
-        - [6.1.2.20.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > key`](#modules_items_anyOf_i1_oneOf_i19_key)
-        - [6.1.2.20.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > keyColor`](#modules_items_anyOf_i1_oneOf_i19_keyColor)
-        - [6.1.2.20.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > keyWidth`](#modules_items_anyOf_i1_oneOf_i19_keyWidth)
-        - [6.1.2.20.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > format`](#modules_items_anyOf_i1_oneOf_i19_format)
-      - [6.1.2.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk`](#modules_items_anyOf_i1_oneOf_i20)
-        - [6.1.2.21.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > type`](#modules_items_anyOf_i1_oneOf_i20_type)
-        - [6.1.2.21.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > namePrefix`](#modules_items_anyOf_i1_oneOf_i20_namePrefix)
-        - [6.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > temp`](#modules_items_anyOf_i1_oneOf_i20_temp)
-        - [6.1.2.21.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > key`](#modules_items_anyOf_i1_oneOf_i20_key)
-        - [6.1.2.21.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > keyColor`](#modules_items_anyOf_i1_oneOf_i20_keyColor)
-        - [6.1.2.21.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > keyWidth`](#modules_items_anyOf_i1_oneOf_i20_keyWidth)
-        - [6.1.2.21.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > format`](#modules_items_anyOf_i1_oneOf_i20_format)
-      - [6.1.2.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP`](#modules_items_anyOf_i1_oneOf_i21)
-        - [6.1.2.22.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > type`](#modules_items_anyOf_i1_oneOf_i21_type)
-        - [6.1.2.22.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > url`](#modules_items_anyOf_i1_oneOf_i21_url)
-        - [6.1.2.22.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > timeout`](#modules_items_anyOf_i1_oneOf_i21_timeout)
-        - [6.1.2.22.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > key`](#modules_items_anyOf_i1_oneOf_i21_key)
-        - [6.1.2.22.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > keyColor`](#modules_items_anyOf_i1_oneOf_i21_keyColor)
-        - [6.1.2.22.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > keyWidth`](#modules_items_anyOf_i1_oneOf_i21_keyWidth)
-        - [6.1.2.22.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > format`](#modules_items_anyOf_i1_oneOf_i21_format)
-      - [6.1.2.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator`](#modules_items_anyOf_i1_oneOf_i22)
-        - [6.1.2.23.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > type`](#modules_items_anyOf_i1_oneOf_i22_type)
-        - [6.1.2.23.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > string`](#modules_items_anyOf_i1_oneOf_i22_string)
-      - [6.1.2.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound`](#modules_items_anyOf_i1_oneOf_i23)
-        - [6.1.2.24.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > type`](#modules_items_anyOf_i1_oneOf_i23_type)
-        - [6.1.2.24.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > soundType`](#modules_items_anyOf_i1_oneOf_i23_soundType)
-        - [6.1.2.24.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > key`](#modules_items_anyOf_i1_oneOf_i23_key)
-        - [6.1.2.24.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > keyColor`](#modules_items_anyOf_i1_oneOf_i23_keyColor)
-        - [6.1.2.24.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > keyWidth`](#modules_items_anyOf_i1_oneOf_i23_keyWidth)
-        - [6.1.2.24.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > format`](#modules_items_anyOf_i1_oneOf_i23_format)
-      - [6.1.2.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title`](#modules_items_anyOf_i1_oneOf_i24)
-        - [6.1.2.25.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > type`](#modules_items_anyOf_i1_oneOf_i24_type)
-        - [6.1.2.25.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > fqdn`](#modules_items_anyOf_i1_oneOf_i24_fqdn)
-        - [6.1.2.25.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color`](#modules_items_anyOf_i1_oneOf_i24_color)
-          - [6.1.2.25.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > user`](#modules_items_anyOf_i1_oneOf_i24_color_user)
-          - [6.1.2.25.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > at`](#modules_items_anyOf_i1_oneOf_i24_color_at)
-          - [6.1.2.25.3.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > host`](#modules_items_anyOf_i1_oneOf_i24_color_host)
-        - [6.1.2.25.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > key`](#modules_items_anyOf_i1_oneOf_i24_key)
-        - [6.1.2.25.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > keyColor`](#modules_items_anyOf_i1_oneOf_i24_keyColor)
-        - [6.1.2.25.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > keyWidth`](#modules_items_anyOf_i1_oneOf_i24_keyWidth)
-        - [6.1.2.25.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > format`](#modules_items_anyOf_i1_oneOf_i24_format)
-      - [6.1.2.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather`](#modules_items_anyOf_i1_oneOf_i25)
-        - [6.1.2.26.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > type`](#modules_items_anyOf_i1_oneOf_i25_type)
-        - [6.1.2.26.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > location`](#modules_items_anyOf_i1_oneOf_i25_location)
-        - [6.1.2.26.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > timeout`](#modules_items_anyOf_i1_oneOf_i25_timeout)
-        - [6.1.2.26.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > outputFormat`](#modules_items_anyOf_i1_oneOf_i25_outputFormat)
-        - [6.1.2.26.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > key`](#modules_items_anyOf_i1_oneOf_i25_key)
-        - [6.1.2.26.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > keyColor`](#modules_items_anyOf_i1_oneOf_i25_keyColor)
-        - [6.1.2.26.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > keyWidth`](#modules_items_anyOf_i1_oneOf_i25_keyWidth)
-        - [6.1.2.26.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > format`](#modules_items_anyOf_i1_oneOf_i25_format)
-      - [6.1.2.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM`](#modules_items_anyOf_i1_oneOf_i26)
-        - [6.1.2.27.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > type`](#modules_items_anyOf_i1_oneOf_i26_type)
-        - [6.1.2.27.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > detectPlugin`](#modules_items_anyOf_i1_oneOf_i26_detectPlugin)
-        - [6.1.2.27.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > key`](#modules_items_anyOf_i1_oneOf_i26_key)
-        - [6.1.2.27.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > keyColor`](#modules_items_anyOf_i1_oneOf_i26_keyColor)
-        - [6.1.2.27.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > keyWidth`](#modules_items_anyOf_i1_oneOf_i26_keyWidth)
-        - [6.1.2.27.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > format`](#modules_items_anyOf_i1_oneOf_i26_format)
-      - [6.1.2.28. Property `JSON config > modules > modules items > anyOf > item 1 > type`](#modules_items_anyOf_i1_type)
+      - [6.1.2.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad`](#modules_items_anyOf_i1_oneOf_i15)
+        - [6.1.2.16.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > type`](#modules_items_anyOf_i1_oneOf_i15_type)
+        - [6.1.2.16.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > percent`](#modules_items_anyOf_i1_oneOf_i15_percent)
+        - [6.1.2.16.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > key`](#modules_items_anyOf_i1_oneOf_i15_key)
+        - [6.1.2.16.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyColor`](#modules_items_anyOf_i1_oneOf_i15_keyColor)
+        - [6.1.2.16.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyWidth`](#modules_items_anyOf_i1_oneOf_i15_keyWidth)
+        - [6.1.2.16.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > format`](#modules_items_anyOf_i1_oneOf_i15_format)
+      - [6.1.2.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU`](#modules_items_anyOf_i1_oneOf_i16)
+        - [6.1.2.17.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > type`](#modules_items_anyOf_i1_oneOf_i16_type)
+        - [6.1.2.17.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > temp`](#modules_items_anyOf_i1_oneOf_i16_temp)
+        - [6.1.2.17.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > driverSpecific`](#modules_items_anyOf_i1_oneOf_i16_driverSpecific)
+        - [6.1.2.17.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > forceVulkan`](#modules_items_anyOf_i1_oneOf_i16_forceVulkan)
+        - [6.1.2.17.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > hideType`](#modules_items_anyOf_i1_oneOf_i16_hideType)
+        - [6.1.2.17.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > key`](#modules_items_anyOf_i1_oneOf_i16_key)
+        - [6.1.2.17.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > keyColor`](#modules_items_anyOf_i1_oneOf_i16_keyColor)
+        - [6.1.2.17.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > keyWidth`](#modules_items_anyOf_i1_oneOf_i16_keyWidth)
+        - [6.1.2.17.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > format`](#modules_items_anyOf_i1_oneOf_i16_format)
+      - [6.1.2.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP`](#modules_items_anyOf_i1_oneOf_i17)
+        - [6.1.2.18.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > type`](#modules_items_anyOf_i1_oneOf_i17_type)
+        - [6.1.2.18.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv4`](#modules_items_anyOf_i1_oneOf_i17_showIpv4)
+        - [6.1.2.18.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6`](#modules_items_anyOf_i1_oneOf_i17_showIpv6)
+        - [6.1.2.18.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showMac`](#modules_items_anyOf_i1_oneOf_i17_showMac)
+        - [6.1.2.18.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showLoop`](#modules_items_anyOf_i1_oneOf_i17_showLoop)
+        - [6.1.2.18.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > compact`](#modules_items_anyOf_i1_oneOf_i17_compact)
+        - [6.1.2.18.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > namePrefix`](#modules_items_anyOf_i1_oneOf_i17_namePrefix)
+        - [6.1.2.18.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > defaultRouteOnly`](#modules_items_anyOf_i1_oneOf_i17_defaultRouteOnly)
+        - [6.1.2.18.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > key`](#modules_items_anyOf_i1_oneOf_i17_key)
+        - [6.1.2.18.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > keyColor`](#modules_items_anyOf_i1_oneOf_i17_keyColor)
+        - [6.1.2.18.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > keyWidth`](#modules_items_anyOf_i1_oneOf_i17_keyWidth)
+        - [6.1.2.18.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > format`](#modules_items_anyOf_i1_oneOf_i17_format)
+      - [6.1.2.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory`](#modules_items_anyOf_i1_oneOf_i18)
+        - [6.1.2.19.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > type`](#modules_items_anyOf_i1_oneOf_i18_type)
+        - [6.1.2.19.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > percent`](#modules_items_anyOf_i1_oneOf_i18_percent)
+        - [6.1.2.19.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > key`](#modules_items_anyOf_i1_oneOf_i18_key)
+        - [6.1.2.19.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > keyColor`](#modules_items_anyOf_i1_oneOf_i18_keyColor)
+        - [6.1.2.19.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > keyWidth`](#modules_items_anyOf_i1_oneOf_i18_keyWidth)
+        - [6.1.2.19.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > format`](#modules_items_anyOf_i1_oneOf_i18_format)
+      - [6.1.2.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO`](#modules_items_anyOf_i1_oneOf_i19)
+        - [6.1.2.20.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > type`](#modules_items_anyOf_i1_oneOf_i19_type)
+        - [6.1.2.20.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > namePrefix`](#modules_items_anyOf_i1_oneOf_i19_namePrefix)
+        - [6.1.2.20.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > defaultRouteOnly`](#modules_items_anyOf_i1_oneOf_i19_defaultRouteOnly)
+        - [6.1.2.20.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > detectTotal`](#modules_items_anyOf_i1_oneOf_i19_detectTotal)
+        - [6.1.2.20.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > key`](#modules_items_anyOf_i1_oneOf_i19_key)
+        - [6.1.2.20.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > keyColor`](#modules_items_anyOf_i1_oneOf_i19_keyColor)
+        - [6.1.2.20.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > keyWidth`](#modules_items_anyOf_i1_oneOf_i19_keyWidth)
+        - [6.1.2.20.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > format`](#modules_items_anyOf_i1_oneOf_i19_format)
+      - [6.1.2.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL`](#modules_items_anyOf_i1_oneOf_i20)
+        - [6.1.2.21.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > type`](#modules_items_anyOf_i1_oneOf_i20_type)
+        - [6.1.2.21.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > library`](#modules_items_anyOf_i1_oneOf_i20_library)
+        - [6.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > key`](#modules_items_anyOf_i1_oneOf_i20_key)
+        - [6.1.2.21.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > keyColor`](#modules_items_anyOf_i1_oneOf_i20_keyColor)
+        - [6.1.2.21.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > keyWidth`](#modules_items_anyOf_i1_oneOf_i20_keyWidth)
+        - [6.1.2.21.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > format`](#modules_items_anyOf_i1_oneOf_i20_format)
+      - [6.1.2.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages`](#modules_items_anyOf_i1_oneOf_i21)
+        - [6.1.2.22.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > type`](#modules_items_anyOf_i1_oneOf_i21_type)
+        - [6.1.2.22.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > disabled`](#modules_items_anyOf_i1_oneOf_i21_disabled)
+        - [6.1.2.22.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > key`](#modules_items_anyOf_i1_oneOf_i21_key)
+        - [6.1.2.22.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > keyColor`](#modules_items_anyOf_i1_oneOf_i21_keyColor)
+        - [6.1.2.22.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > keyWidth`](#modules_items_anyOf_i1_oneOf_i21_keyWidth)
+        - [6.1.2.22.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > format`](#modules_items_anyOf_i1_oneOf_i21_format)
+      - [6.1.2.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk`](#modules_items_anyOf_i1_oneOf_i22)
+        - [6.1.2.23.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > type`](#modules_items_anyOf_i1_oneOf_i22_type)
+        - [6.1.2.23.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > namePrefix`](#modules_items_anyOf_i1_oneOf_i22_namePrefix)
+        - [6.1.2.23.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > temp`](#modules_items_anyOf_i1_oneOf_i22_temp)
+        - [6.1.2.23.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > key`](#modules_items_anyOf_i1_oneOf_i22_key)
+        - [6.1.2.23.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > keyColor`](#modules_items_anyOf_i1_oneOf_i22_keyColor)
+        - [6.1.2.23.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > keyWidth`](#modules_items_anyOf_i1_oneOf_i22_keyWidth)
+        - [6.1.2.23.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > format`](#modules_items_anyOf_i1_oneOf_i22_format)
+      - [6.1.2.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP`](#modules_items_anyOf_i1_oneOf_i23)
+        - [6.1.2.24.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > type`](#modules_items_anyOf_i1_oneOf_i23_type)
+        - [6.1.2.24.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > url`](#modules_items_anyOf_i1_oneOf_i23_url)
+        - [6.1.2.24.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > timeout`](#modules_items_anyOf_i1_oneOf_i23_timeout)
+        - [6.1.2.24.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > key`](#modules_items_anyOf_i1_oneOf_i23_key)
+        - [6.1.2.24.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > keyColor`](#modules_items_anyOf_i1_oneOf_i23_keyColor)
+        - [6.1.2.24.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > keyWidth`](#modules_items_anyOf_i1_oneOf_i23_keyWidth)
+        - [6.1.2.24.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > format`](#modules_items_anyOf_i1_oneOf_i23_format)
+      - [6.1.2.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator`](#modules_items_anyOf_i1_oneOf_i24)
+        - [6.1.2.25.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > type`](#modules_items_anyOf_i1_oneOf_i24_type)
+        - [6.1.2.25.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > string`](#modules_items_anyOf_i1_oneOf_i24_string)
+      - [6.1.2.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound`](#modules_items_anyOf_i1_oneOf_i25)
+        - [6.1.2.26.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > type`](#modules_items_anyOf_i1_oneOf_i25_type)
+        - [6.1.2.26.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > soundType`](#modules_items_anyOf_i1_oneOf_i25_soundType)
+        - [6.1.2.26.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > percent`](#modules_items_anyOf_i1_oneOf_i25_percent)
+        - [6.1.2.26.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > key`](#modules_items_anyOf_i1_oneOf_i25_key)
+        - [6.1.2.26.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > keyColor`](#modules_items_anyOf_i1_oneOf_i25_keyColor)
+        - [6.1.2.26.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > keyWidth`](#modules_items_anyOf_i1_oneOf_i25_keyWidth)
+        - [6.1.2.26.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > format`](#modules_items_anyOf_i1_oneOf_i25_format)
+      - [6.1.2.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap`](#modules_items_anyOf_i1_oneOf_i26)
+        - [6.1.2.27.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > type`](#modules_items_anyOf_i1_oneOf_i26_type)
+        - [6.1.2.27.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > percent`](#modules_items_anyOf_i1_oneOf_i26_percent)
+        - [6.1.2.27.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > key`](#modules_items_anyOf_i1_oneOf_i26_key)
+        - [6.1.2.27.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > keyColor`](#modules_items_anyOf_i1_oneOf_i26_keyColor)
+        - [6.1.2.27.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > keyWidth`](#modules_items_anyOf_i1_oneOf_i26_keyWidth)
+        - [6.1.2.27.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > format`](#modules_items_anyOf_i1_oneOf_i26_format)
+      - [6.1.2.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title`](#modules_items_anyOf_i1_oneOf_i27)
+        - [6.1.2.28.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > type`](#modules_items_anyOf_i1_oneOf_i27_type)
+        - [6.1.2.28.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > fqdn`](#modules_items_anyOf_i1_oneOf_i27_fqdn)
+        - [6.1.2.28.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color`](#modules_items_anyOf_i1_oneOf_i27_color)
+          - [6.1.2.28.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > user`](#modules_items_anyOf_i1_oneOf_i27_color_user)
+          - [6.1.2.28.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > at`](#modules_items_anyOf_i1_oneOf_i27_color_at)
+          - [6.1.2.28.3.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > host`](#modules_items_anyOf_i1_oneOf_i27_color_host)
+        - [6.1.2.28.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > key`](#modules_items_anyOf_i1_oneOf_i27_key)
+        - [6.1.2.28.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > keyColor`](#modules_items_anyOf_i1_oneOf_i27_keyColor)
+        - [6.1.2.28.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > keyWidth`](#modules_items_anyOf_i1_oneOf_i27_keyWidth)
+        - [6.1.2.28.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > format`](#modules_items_anyOf_i1_oneOf_i27_format)
+      - [6.1.2.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather`](#modules_items_anyOf_i1_oneOf_i28)
+        - [6.1.2.29.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > type`](#modules_items_anyOf_i1_oneOf_i28_type)
+        - [6.1.2.29.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > location`](#modules_items_anyOf_i1_oneOf_i28_location)
+        - [6.1.2.29.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > timeout`](#modules_items_anyOf_i1_oneOf_i28_timeout)
+        - [6.1.2.29.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > outputFormat`](#modules_items_anyOf_i1_oneOf_i28_outputFormat)
+        - [6.1.2.29.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > key`](#modules_items_anyOf_i1_oneOf_i28_key)
+        - [6.1.2.29.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > keyColor`](#modules_items_anyOf_i1_oneOf_i28_keyColor)
+        - [6.1.2.29.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > keyWidth`](#modules_items_anyOf_i1_oneOf_i28_keyWidth)
+        - [6.1.2.29.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > format`](#modules_items_anyOf_i1_oneOf_i28_format)
+      - [6.1.2.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM`](#modules_items_anyOf_i1_oneOf_i29)
+        - [6.1.2.30.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > type`](#modules_items_anyOf_i1_oneOf_i29_type)
+        - [6.1.2.30.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > detectPlugin`](#modules_items_anyOf_i1_oneOf_i29_detectPlugin)
+        - [6.1.2.30.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > key`](#modules_items_anyOf_i1_oneOf_i29_key)
+        - [6.1.2.30.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > keyColor`](#modules_items_anyOf_i1_oneOf_i29_keyColor)
+        - [6.1.2.30.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > keyWidth`](#modules_items_anyOf_i1_oneOf_i29_keyWidth)
+        - [6.1.2.30.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > format`](#modules_items_anyOf_i1_oneOf_i29_format)
+      - [6.1.2.31. Property `JSON config > modules > modules items > anyOf > item 1 > type`](#modules_items_anyOf_i1_type)
 
 **Title:** JSON config
 
@@ -1272,6 +1310,7 @@ Must be one of:
 | -------------------------------------- | ------- | ------ | ---------- | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | - [type](#display_percent_type )       | No      | number | No         | -          | Set the percentage output type. 1 for percentage number, 2 for bar, 3 for both, 6 for bar only, 9 for colored number |
 | - [ndigits](#display_percent_ndigits ) | No      | number | No         | -          | Set the number of digits to keep after the decimal point when formatting percentage numbers                          |
+| - [color](#display_percent_color )     | No      | object | No         | -          | Set color used in different states of percentage bars and numbers                                                    |
 
 #### <a name="display_percent_type"></a>4.14.1. Property `JSON config > display > percent > type`
 
@@ -1302,6 +1341,52 @@ Must be one of:
 | ------------ | ------ |
 | **Minimum**  | &ge; 0 |
 | **Maximum**  | &le; 9 |
+
+#### <a name="display_percent_color"></a>4.14.3. Property `JSON config > display > percent > color`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+
+**Description:** Set color used in different states of percentage bars and numbers
+
+| Property                                   | Pattern | Type             | Deprecated | Definition                               | Title/Description          |
+| ------------------------------------------ | ------- | ---------------- | ---------- | ---------------------------------------- | -------------------------- |
+| - [green](#display_percent_color_green )   | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Color used in green state  |
+| - [yellow](#display_percent_color_yellow ) | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Color used in yellow state |
+| - [red](#display_percent_color_red )       | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Color used in red state    |
+
+##### <a name="display_percent_color_green"></a>4.14.3.1. Property `JSON config > display > percent > color > green`
+
+|                        |                                 |
+| ---------------------- | ------------------------------- |
+| **Type**               | `enum (of string)`              |
+| **Required**           | No                              |
+| **Same definition as** | [defs_keyColor](#defs_keyColor) |
+
+**Description:** Color used in green state
+
+##### <a name="display_percent_color_yellow"></a>4.14.3.2. Property `JSON config > display > percent > color > yellow`
+
+|                        |                                 |
+| ---------------------- | ------------------------------- |
+| **Type**               | `enum (of string)`              |
+| **Required**           | No                              |
+| **Same definition as** | [defs_keyColor](#defs_keyColor) |
+
+**Description:** Color used in yellow state
+
+##### <a name="display_percent_color_red"></a>4.14.3.3. Property `JSON config > display > percent > color > red`
+
+|                        |                                 |
+| ---------------------- | ------------------------------- |
+| **Type**               | `enum (of string)`              |
+| **Required**           | No                              |
+| **Same definition as** | [defs_keyColor](#defs_keyColor) |
+
+**Description:** Color used in red state
 
 ### <a name="display_noBuffer"></a>4.15. Property `JSON config > display > noBuffer`
 
@@ -1676,6 +1761,7 @@ Must be one of:
 * "terminal"
 * "terminalfont"
 * "terminalsize"
+* "terminaltheme"
 * "title"
 * "theme"
 * "uptime"
@@ -1719,18 +1805,21 @@ Must be one of:
 | [Disk](#modules_items_anyOf_i1_oneOf_i12)          |
 | [DiskIO](#modules_items_anyOf_i1_oneOf_i13)        |
 | [DE](#modules_items_anyOf_i1_oneOf_i14)            |
-| [GPU](#modules_items_anyOf_i1_oneOf_i15)           |
-| [Local IP](#modules_items_anyOf_i1_oneOf_i16)      |
-| [NetIO](#modules_items_anyOf_i1_oneOf_i17)         |
-| [OpenGL](#modules_items_anyOf_i1_oneOf_i18)        |
-| [Packages](#modules_items_anyOf_i1_oneOf_i19)      |
-| [Physical Disk](#modules_items_anyOf_i1_oneOf_i20) |
-| [Public IP](#modules_items_anyOf_i1_oneOf_i21)     |
-| [Separator](#modules_items_anyOf_i1_oneOf_i22)     |
-| [Sound](#modules_items_anyOf_i1_oneOf_i23)         |
-| [Title](#modules_items_anyOf_i1_oneOf_i24)         |
-| [Weather](#modules_items_anyOf_i1_oneOf_i25)       |
-| [WM](#modules_items_anyOf_i1_oneOf_i26)            |
+| [Gamepad](#modules_items_anyOf_i1_oneOf_i15)       |
+| [GPU](#modules_items_anyOf_i1_oneOf_i16)           |
+| [Local IP](#modules_items_anyOf_i1_oneOf_i17)      |
+| [Memory](#modules_items_anyOf_i1_oneOf_i18)        |
+| [NetIO](#modules_items_anyOf_i1_oneOf_i19)         |
+| [OpenGL](#modules_items_anyOf_i1_oneOf_i20)        |
+| [Packages](#modules_items_anyOf_i1_oneOf_i21)      |
+| [Physical Disk](#modules_items_anyOf_i1_oneOf_i22) |
+| [Public IP](#modules_items_anyOf_i1_oneOf_i23)     |
+| [Separator](#modules_items_anyOf_i1_oneOf_i24)     |
+| [Sound](#modules_items_anyOf_i1_oneOf_i25)         |
+| [Swap](#modules_items_anyOf_i1_oneOf_i26)          |
+| [Title](#modules_items_anyOf_i1_oneOf_i27)         |
+| [Weather](#modules_items_anyOf_i1_oneOf_i28)       |
+| [WM](#modules_items_anyOf_i1_oneOf_i29)            |
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i0"></a>6.1.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Break`
 
@@ -1815,8 +1904,6 @@ Specific value: `"break"`
 | [item 27](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i27) |
 | [item 28](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i28) |
 | [item 29](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i29) |
-| [item 30](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i30) |
-| [item 31](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i31) |
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i0"></a>6.1.2.2.1.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 0`
 
@@ -1880,22 +1967,11 @@ Specific value: `"font"`
 | **Type**     | `const` |
 | **Required** | No      |
 
-**Description:** List connected gamepads
-
-Specific value: `"gamepad"`
-
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i6"></a>6.1.2.2.1.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 6`
-
-|              |         |
-| ------------ | ------- |
-| **Type**     | `const` |
-| **Required** | No      |
-
 **Description:** Print product name of your computer
 
 Specific value: `"host"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i7"></a>6.1.2.2.1.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 7`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i6"></a>6.1.2.2.1.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 6`
 
 |              |         |
 | ------------ | ------- |
@@ -1906,7 +1982,7 @@ Specific value: `"host"`
 
 Specific value: `"icons"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i8"></a>6.1.2.2.1.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 8`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i7"></a>6.1.2.2.1.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 7`
 
 |              |         |
 | ------------ | ------- |
@@ -1917,7 +1993,7 @@ Specific value: `"icons"`
 
 Specific value: `"kernel"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i9"></a>6.1.2.2.1.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 9`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i8"></a>6.1.2.2.1.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 8`
 
 |              |         |
 | ------------ | ------- |
@@ -1928,7 +2004,7 @@ Specific value: `"kernel"`
 
 Specific value: `"lm"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i10"></a>6.1.2.2.1.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 10`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i9"></a>6.1.2.2.1.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 9`
 
 |              |         |
 | ------------ | ------- |
@@ -1939,7 +2015,7 @@ Specific value: `"lm"`
 
 Specific value: `"locale"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i11"></a>6.1.2.2.1.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 11`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i10"></a>6.1.2.2.1.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 10`
 
 |              |         |
 | ------------ | ------- |
@@ -1950,18 +2026,7 @@ Specific value: `"locale"`
 
 Specific value: `"media"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i12"></a>6.1.2.2.1.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 12`
-
-|              |         |
-| ------------ | ------- |
-| **Type**     | `const` |
-| **Required** | No      |
-
-**Description:** Print system memory usage info
-
-Specific value: `"memory"`
-
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i13"></a>6.1.2.2.1.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 13`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i11"></a>6.1.2.2.1.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 11`
 
 |              |         |
 | ------------ | ------- |
@@ -1972,7 +2037,7 @@ Specific value: `"memory"`
 
 Specific value: `"monitor"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i14"></a>6.1.2.2.1.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 14`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i12"></a>6.1.2.2.1.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 12`
 
 |              |         |
 | ------------ | ------- |
@@ -1983,7 +2048,7 @@ Specific value: `"monitor"`
 
 Specific value: `"opencl"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i15"></a>6.1.2.2.1.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 15`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i13"></a>6.1.2.2.1.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 13`
 
 |              |         |
 | ------------ | ------- |
@@ -1994,7 +2059,7 @@ Specific value: `"opencl"`
 
 Specific value: `"os"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i16"></a>6.1.2.2.1.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 16`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i14"></a>6.1.2.2.1.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 14`
 
 |              |         |
 | ------------ | ------- |
@@ -2005,7 +2070,7 @@ Specific value: `"os"`
 
 Specific value: `"player"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i17"></a>6.1.2.2.1.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 17`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i15"></a>6.1.2.2.1.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 15`
 
 |              |         |
 | ------------ | ------- |
@@ -2016,7 +2081,7 @@ Specific value: `"player"`
 
 Specific value: `"poweradapter"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i18"></a>6.1.2.2.1.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 18`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i16"></a>6.1.2.2.1.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 16`
 
 |              |         |
 | ------------ | ------- |
@@ -2027,7 +2092,7 @@ Specific value: `"poweradapter"`
 
 Specific value: `"processes"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i19"></a>6.1.2.2.1.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 19`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i17"></a>6.1.2.2.1.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 17`
 
 |              |         |
 | ------------ | ------- |
@@ -2038,18 +2103,7 @@ Specific value: `"processes"`
 
 Specific value: `"shell"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i20"></a>6.1.2.2.1.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 20`
-
-|              |         |
-| ------------ | ------- |
-| **Type**     | `const` |
-| **Required** | No      |
-
-**Description:** Print swap (paging file) space usage
-
-Specific value: `"swap"`
-
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i21"></a>6.1.2.2.1.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 21`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i18"></a>6.1.2.2.1.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 18`
 
 |              |         |
 | ------------ | ------- |
@@ -2060,7 +2114,7 @@ Specific value: `"swap"`
 
 Specific value: `"terminal"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i22"></a>6.1.2.2.1.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 22`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i19"></a>6.1.2.2.1.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 19`
 
 |              |         |
 | ------------ | ------- |
@@ -2071,7 +2125,7 @@ Specific value: `"terminal"`
 
 Specific value: `"terminalfont"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i23"></a>6.1.2.2.1.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 23`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i20"></a>6.1.2.2.1.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 20`
 
 |              |         |
 | ------------ | ------- |
@@ -2082,7 +2136,18 @@ Specific value: `"terminalfont"`
 
 Specific value: `"terminalsize"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i24"></a>6.1.2.2.1.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 24`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i21"></a>6.1.2.2.1.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 21`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Print current terminal theme (foreground and background colors)
+
+Specific value: `"terminaltheme"`
+
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i22"></a>6.1.2.2.1.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 22`
 
 |              |         |
 | ------------ | ------- |
@@ -2093,7 +2158,7 @@ Specific value: `"terminalsize"`
 
 Specific value: `"theme"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i25"></a>6.1.2.2.1.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 25`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i23"></a>6.1.2.2.1.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 23`
 
 |              |         |
 | ------------ | ------- |
@@ -2104,7 +2169,7 @@ Specific value: `"theme"`
 
 Specific value: `"uptime"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i26"></a>6.1.2.2.1.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 26`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i24"></a>6.1.2.2.1.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 24`
 
 |              |         |
 | ------------ | ------- |
@@ -2115,7 +2180,7 @@ Specific value: `"uptime"`
 
 Specific value: `"users"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i27"></a>6.1.2.2.1.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 27`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i25"></a>6.1.2.2.1.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 25`
 
 |              |         |
 | ------------ | ------- |
@@ -2126,7 +2191,7 @@ Specific value: `"users"`
 
 Specific value: `"version"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i28"></a>6.1.2.2.1.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 28`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i26"></a>6.1.2.2.1.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 26`
 
 |              |         |
 | ------------ | ------- |
@@ -2137,7 +2202,7 @@ Specific value: `"version"`
 
 Specific value: `"vulkan"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i29"></a>6.1.2.2.1.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 29`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i27"></a>6.1.2.2.1.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 27`
 
 |              |         |
 | ------------ | ------- |
@@ -2148,7 +2213,7 @@ Specific value: `"vulkan"`
 
 Specific value: `"wallpaper"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i30"></a>6.1.2.2.1.31. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 30`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i28"></a>6.1.2.2.1.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 28`
 
 |              |         |
 | ------------ | ------- |
@@ -2159,7 +2224,7 @@ Specific value: `"wallpaper"`
 
 Specific value: `"wifi"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i31"></a>6.1.2.2.1.32. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 31`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i29"></a>6.1.2.2.1.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 29`
 
 |              |         |
 | ------------ | ------- |
@@ -2230,6 +2295,7 @@ Specific value: `"wmtheme"`
 | - [type](#modules_items_anyOf_i1_oneOf_i2_type )               | No      | const            | No         | -                                                              | Print battery capacity, status, etc                                                                                            |
 | - [useSetupApi](#modules_items_anyOf_i1_oneOf_i2_useSetupApi ) | No      | boolean          | No         | -                                                              | Set if \`SetupAPI\` should be used on Windows to detect battery info, which supports multi batteries, but slower. Windows only |
 | - [temp](#modules_items_anyOf_i1_oneOf_i2_temp )               | No      | boolean          | No         | -                                                              | Detect and display Battery temperature if supported                                                                            |
+| - [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | No      | object           | No         | In #/$defs/percent                                             | Threshold of percentage colors                                                                                                 |
 | - [key](#modules_items_anyOf_i1_oneOf_i2_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                                                                              |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i2_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`                                                              |
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i2_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`                                                                     |
@@ -2266,7 +2332,52 @@ Specific value: `"battery"`
 
 **Description:** Detect and display Battery temperature if supported
 
-##### <a name="modules_items_anyOf_i1_oneOf_i2_key"></a>6.1.2.3.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i2_percent"></a>6.1.2.3.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > percent`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Defined in**            | #/$defs/percent                                                           |
+
+**Description:** Threshold of percentage colors
+
+| Property                                                     | Pattern | Type    | Deprecated | Definition | Title/Description                                                                                                          |
+| ------------------------------------------------------------ | ------- | ------- | ---------- | ---------- | -------------------------------------------------------------------------------------------------------------------------- |
+| - [green](#modules_items_anyOf_i1_oneOf_i2_percent_green )   | No      | integer | No         | -          | Value less then green will be shown in green                                                                               |
+| - [yellow](#modules_items_anyOf_i1_oneOf_i2_percent_yellow ) | No      | integer | No         | -          | Value greater than green and less then yellow will be shown in yellow.<br />Value greater than yellow will be shown in red |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i2_percent_green"></a>6.1.2.3.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > percent > green`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `integer` |
+| **Required** | No        |
+
+**Description:** Value less then green will be shown in green
+
+| Restrictions |          |
+| ------------ | -------- |
+| **Minimum**  | &ge; 0   |
+| **Maximum**  | &le; 100 |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i2_percent_yellow"></a>6.1.2.3.4.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > percent > yellow`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `integer` |
+| **Required** | No        |
+
+**Description:** Value greater than green and less then yellow will be shown in yellow.
+Value greater than yellow will be shown in red
+
+| Restrictions |          |
+| ------------ | -------- |
+| **Minimum**  | &ge; 0   |
+| **Maximum**  | &le; 100 |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i2_key"></a>6.1.2.3.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -2276,7 +2387,7 @@ Specific value: `"battery"`
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i2_keyColor"></a>6.1.2.3.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i2_keyColor"></a>6.1.2.3.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -2286,7 +2397,7 @@ Specific value: `"battery"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i2_keyWidth"></a>6.1.2.3.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i2_keyWidth"></a>6.1.2.3.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -2297,7 +2408,7 @@ Specific value: `"battery"`
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i2_format"></a>6.1.2.3.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i2_format"></a>6.1.2.3.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -2321,6 +2432,7 @@ Specific value: `"battery"`
 | ------------------------------------------------------------------------ | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
 | - [type](#modules_items_anyOf_i1_oneOf_i3_type )                         | No      | const            | No         | -                                                              | List bluetooth devices                                            |
 | - [showDisconnected](#modules_items_anyOf_i1_oneOf_i3_showDisconnected ) | No      | boolean          | No         | -                                                              | Set if disconnected bluetooth devices should be printed           |
+| - [percent](#modules_items_anyOf_i1_oneOf_i3_percent )                   | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )   | Threshold of percentage colors                                    |
 | - [key](#modules_items_anyOf_i1_oneOf_i3_key )                           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i3_keyColor )                 | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i3_keyWidth )                 | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
@@ -2347,7 +2459,18 @@ Specific value: `"bluetooth"`
 
 **Description:** Set if disconnected bluetooth devices should be printed
 
-##### <a name="modules_items_anyOf_i1_oneOf_i3_key"></a>6.1.2.4.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i3_percent"></a>6.1.2.4.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > percent`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+
+**Description:** Threshold of percentage colors
+
+##### <a name="modules_items_anyOf_i1_oneOf_i3_key"></a>6.1.2.4.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -2357,7 +2480,7 @@ Specific value: `"bluetooth"`
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i3_keyColor"></a>6.1.2.4.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i3_keyColor"></a>6.1.2.4.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -2367,7 +2490,7 @@ Specific value: `"bluetooth"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i3_keyWidth"></a>6.1.2.4.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i3_keyWidth"></a>6.1.2.4.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -2378,7 +2501,7 @@ Specific value: `"bluetooth"`
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i3_format"></a>6.1.2.4.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i3_format"></a>6.1.2.4.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -2398,10 +2521,11 @@ Specific value: `"bluetooth"`
 | **Required**              | No                                                                        |
 | **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
 
-| Property                                                     | Pattern | Type    | Deprecated | Definition | Title/Description                                                                                                                                    |
-| ------------------------------------------------------------ | ------- | ------- | ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i4_type )             | No      | const   | No         | -          | Print current brightness level of your monitors                                                                                                      |
-| - [ddcciSleep](#modules_items_anyOf_i1_oneOf_i4_ddcciSleep ) | No      | integer | No         | -          | Set the sleep times (in ms) when sending DDC/CI requests.<br />See <https://www.ddcutil.com/performance_options/#option-sleep-multiplier> for detail |
+| Property                                                     | Pattern | Type    | Deprecated | Definition                                                   | Title/Description                                                                                                                                    |
+| ------------------------------------------------------------ | ------- | ------- | ---------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i4_type )             | No      | const   | No         | -                                                            | Print current brightness level of your monitors                                                                                                      |
+| - [percent](#modules_items_anyOf_i1_oneOf_i4_percent )       | No      | object  | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent ) | Threshold of percentage colors                                                                                                                       |
+| - [ddcciSleep](#modules_items_anyOf_i1_oneOf_i4_ddcciSleep ) | No      | integer | No         | -                                                            | Set the sleep times (in ms) when sending DDC/CI requests.<br />See <https://www.ddcutil.com/performance_options/#option-sleep-multiplier> for detail |
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i4_type"></a>6.1.2.5.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness > type`
 
@@ -2414,7 +2538,18 @@ Specific value: `"bluetooth"`
 
 Specific value: `"brightness"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i4_ddcciSleep"></a>6.1.2.5.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness > ddcciSleep`
+##### <a name="modules_items_anyOf_i1_oneOf_i4_percent"></a>6.1.2.5.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness > percent`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+
+**Description:** Threshold of percentage colors
+
+##### <a name="modules_items_anyOf_i1_oneOf_i4_ddcciSleep"></a>6.1.2.5.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness > ddcciSleep`
 
 |              |           |
 | ------------ | --------- |
@@ -2607,10 +2742,11 @@ Specific value: `"cpu"`
 | **Required**              | No                                                                        |
 | **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
 
-| Property                                                 | Pattern | Type    | Deprecated | Definition | Title/Description                                                    |
-| -------------------------------------------------------- | ------- | ------- | ---------- | ---------- | -------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i7_type )         | No      | const   | No         | -          | Print CPU usage. Costs some time to collect data                     |
-| - [separate](#modules_items_anyOf_i1_oneOf_i7_separate ) | No      | boolean | No         | -          | Display CPU usage per CPU logical core, instead of an average result |
+| Property                                                 | Pattern | Type    | Deprecated | Definition                                                   | Title/Description                                                    |
+| -------------------------------------------------------- | ------- | ------- | ---------- | ------------------------------------------------------------ | -------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i7_type )         | No      | const   | No         | -                                                            | Print CPU usage. Costs some time to collect data                     |
+| - [percent](#modules_items_anyOf_i1_oneOf_i7_percent )   | No      | object  | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent ) | Threshold of percentage colors                                       |
+| - [separate](#modules_items_anyOf_i1_oneOf_i7_separate ) | No      | boolean | No         | -                                                            | Display CPU usage per CPU logical core, instead of an average result |
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i7_type"></a>6.1.2.8.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > type`
 
@@ -2623,7 +2759,18 @@ Specific value: `"cpu"`
 
 Specific value: `"cpuusage"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i7_separate"></a>6.1.2.8.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > separate`
+##### <a name="modules_items_anyOf_i1_oneOf_i7_percent"></a>6.1.2.8.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > percent`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+
+**Description:** Threshold of percentage colors
+
+##### <a name="modules_items_anyOf_i1_oneOf_i7_separate"></a>6.1.2.8.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > separate`
 
 |              |           |
 | ------------ | --------- |
@@ -2648,6 +2795,7 @@ Specific value: `"cpuusage"`
 | - [type](#modules_items_anyOf_i1_oneOf_i8_type )               | No      | const            | No         | -          | Print some colored blocks                                 |
 | - [symbol](#modules_items_anyOf_i1_oneOf_i8_symbol )           | No      | enum (of string) | No         | -          | Set the symbol to use                                     |
 | - [paddingLeft](#modules_items_anyOf_i1_oneOf_i8_paddingLeft ) | No      | integer          | No         | -          | Set the number of white spaces to print before the symbol |
+| - [block](#modules_items_anyOf_i1_oneOf_i8_block )             | No      | object           | No         | -          | Set behavior of block printing                            |
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i8_type"></a>6.1.2.9.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > type`
 
@@ -2691,6 +2839,68 @@ Must be one of:
 | Restrictions |        |
 | ------------ | ------ |
 | **Minimum**  | &ge; 0 |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i8_block"></a>6.1.2.9.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+
+**Description:** Set behavior of block printing
+
+| Property                                                 | Pattern | Type             | Deprecated | Definition | Title/Description                              |
+| -------------------------------------------------------- | ------- | ---------------- | ---------- | ---------- | ---------------------------------------------- |
+| - [width](#modules_items_anyOf_i1_oneOf_i8_block_width ) | No      | integer          | No         | -          | Set the block width in spaces                  |
+| - [range](#modules_items_anyOf_i1_oneOf_i8_block_range ) | No      | array of integer | No         | -          | Set the range of colors in the blocks to print |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i8_block_width"></a>6.1.2.9.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > width`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `integer` |
+| **Required** | No        |
+| **Default**  | `3`       |
+
+**Description:** Set the block width in spaces
+
+| Restrictions |        |
+| ------------ | ------ |
+| **Minimum**  | &ge; 1 |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i8_block_range"></a>6.1.2.9.4.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > range`
+
+|              |                    |
+| ------------ | ------------------ |
+| **Type**     | `array of integer` |
+| **Required** | No                 |
+
+**Description:** Set the range of colors in the blocks to print
+
+|                      | Array restrictions |
+| -------------------- | ------------------ |
+| **Min items**        | 2                  |
+| **Max items**        | 2                  |
+| **Items unicity**    | False              |
+| **Additional items** | False              |
+| **Tuple validation** | See below          |
+
+| Each item of this array must be                                   | Description |
+| ----------------------------------------------------------------- | ----------- |
+| [range items](#modules_items_anyOf_i1_oneOf_i8_block_range_items) | -           |
+
+##### <a name="autogenerated_heading_3"></a>6.1.2.9.4.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > range > range items
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `integer` |
+| **Required** | No        |
+
+| Restrictions |         |
+| ------------ | ------- |
+| **Minimum**  | &ge; 0  |
+| **Maximum**  | &le; 15 |
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i9"></a>6.1.2.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command`
 
@@ -2866,6 +3076,7 @@ Specific value: `"custom"`
 | - [type](#modules_items_anyOf_i1_oneOf_i11_type )                             | No      | const            | No         | -                                                              | Print resolutions, refresh rates, etc                                          |
 | - [compactType](#modules_items_anyOf_i1_oneOf_i11_compactType )               | No      | enum (of string) | No         | -                                                              | Set if all displays should be printed in one line                              |
 | - [preciseRefreshRate](#modules_items_anyOf_i1_oneOf_i11_preciseRefreshRate ) | No      | boolean          | No         | -                                                              | Set if decimal refresh rates should not be rounded into integers when printing |
+| - [order](#modules_items_anyOf_i1_oneOf_i11_order )                           | No      | enum (of string) | No         | -                                                              | Set the order should be used when printing                                     |
 | - [key](#modules_items_anyOf_i1_oneOf_i11_key )                               | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                              |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i11_keyColor )                     | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`              |
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i11_keyWidth )                     | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`                     |
@@ -2896,6 +3107,8 @@ Must be one of:
 * "none"
 * "original"
 * "scaled"
+* "original-with-refresh-rate"
+* "scaled-with-refresh-rate"
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i11_preciseRefreshRate"></a>6.1.2.12.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > preciseRefreshRate`
 
@@ -2907,7 +3120,22 @@ Must be one of:
 
 **Description:** Set if decimal refresh rates should not be rounded into integers when printing
 
-##### <a name="modules_items_anyOf_i1_oneOf_i11_key"></a>6.1.2.12.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i11_order"></a>6.1.2.12.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > order`
+
+|              |                    |
+| ------------ | ------------------ |
+| **Type**     | `enum (of string)` |
+| **Required** | No                 |
+| **Default**  | `"none"`           |
+
+**Description:** Set the order should be used when printing
+
+Must be one of:
+* "none"
+* "asc"
+* "desc"
+
+##### <a name="modules_items_anyOf_i1_oneOf_i11_key"></a>6.1.2.12.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -2917,7 +3145,7 @@ Must be one of:
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i11_keyColor"></a>6.1.2.12.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i11_keyColor"></a>6.1.2.12.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -2927,7 +3155,7 @@ Must be one of:
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i11_keyWidth"></a>6.1.2.12.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i11_keyWidth"></a>6.1.2.12.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -2938,7 +3166,7 @@ Must be one of:
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i11_format"></a>6.1.2.12.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i11_format"></a>6.1.2.12.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -2968,6 +3196,7 @@ Must be one of:
 | - [showReadOnly](#modules_items_anyOf_i1_oneOf_i12_showReadOnly )     | No      | boolean          | No         | -                                                              | Set if read only volumes should be printed                                                                                        |
 | - [showUnknown](#modules_items_anyOf_i1_oneOf_i12_showUnknown )       | No      | boolean          | No         | -                                                              | Set if unknown (unable to detect sizes) volumes should be printed                                                                 |
 | - [useAvailable](#modules_items_anyOf_i1_oneOf_i12_useAvailable )     | No      | boolean          | No         | -                                                              | Use f_bavail (lpFreeBytesAvailableToCaller for Windows) instead of f_bfree to calculate used bytes                                |
+| - [percent](#modules_items_anyOf_i1_oneOf_i12_percent )               | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )   | Threshold of percentage colors                                                                                                    |
 | - [key](#modules_items_anyOf_i1_oneOf_i12_key )                       | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                                                                                 |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i12_keyColor )             | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`                                                                 |
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i12_keyWidth )             | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`                                                                        |
@@ -3054,7 +3283,18 @@ Default: auto detection using mount-points
 
 **Description:** Use f_bavail (lpFreeBytesAvailableToCaller for Windows) instead of f_bfree to calculate used bytes
 
-##### <a name="modules_items_anyOf_i1_oneOf_i12_key"></a>6.1.2.13.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i12_percent"></a>6.1.2.13.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > percent`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+
+**Description:** Threshold of percentage colors
+
+##### <a name="modules_items_anyOf_i1_oneOf_i12_key"></a>6.1.2.13.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -3064,7 +3304,7 @@ Default: auto detection using mount-points
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i12_keyColor"></a>6.1.2.13.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i12_keyColor"></a>6.1.2.13.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3074,7 +3314,7 @@ Default: auto detection using mount-points
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i12_keyWidth"></a>6.1.2.13.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i12_keyWidth"></a>6.1.2.13.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3085,7 +3325,7 @@ Default: auto detection using mount-points
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i12_format"></a>6.1.2.13.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i12_format"></a>6.1.2.13.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -3105,14 +3345,15 @@ Default: auto detection using mount-points
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                      | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
-| ------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i13_type )             | No      | const            | No         | -                                                              | Print physical disk I/O throughput                                |
-| - [namePrefix](#modules_items_anyOf_i1_oneOf_i13_namePrefix ) | No      | string           | No         | -                                                              | Show disks with given name prefix only                            |
-| - [key](#modules_items_anyOf_i1_oneOf_i13_key )               | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i13_keyColor )     | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i13_keyWidth )     | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
-| - [format](#modules_items_anyOf_i1_oneOf_i13_format )         | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i13_type )               | No      | const            | No         | -                                                              | Print physical disk I/O throughput                                |
+| - [namePrefix](#modules_items_anyOf_i1_oneOf_i13_namePrefix )   | No      | string           | No         | -                                                              | Show disks with given name prefix only                            |
+| - [detectTotal](#modules_items_anyOf_i1_oneOf_i13_detectTotal ) | No      | boolean          | No         | -                                                              | Detect total bytes instead of current rate                        |
+| - [key](#modules_items_anyOf_i1_oneOf_i13_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i13_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i13_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
+| - [format](#modules_items_anyOf_i1_oneOf_i13_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i13_type"></a>6.1.2.14.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > type`
 
@@ -3134,7 +3375,17 @@ Specific value: `"diskio"`
 
 **Description:** Show disks with given name prefix only
 
-##### <a name="modules_items_anyOf_i1_oneOf_i13_key"></a>6.1.2.14.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i13_detectTotal"></a>6.1.2.14.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > detectTotal`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `boolean` |
+| **Required** | No        |
+| **Default**  | `false`   |
+
+**Description:** Detect total bytes instead of current rate
+
+##### <a name="modules_items_anyOf_i1_oneOf_i13_key"></a>6.1.2.14.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -3144,7 +3395,7 @@ Specific value: `"diskio"`
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i13_keyColor"></a>6.1.2.14.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i13_keyColor"></a>6.1.2.14.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3154,7 +3405,7 @@ Specific value: `"diskio"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i13_keyWidth"></a>6.1.2.14.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i13_keyWidth"></a>6.1.2.14.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3165,7 +3416,7 @@ Specific value: `"diskio"`
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i13_format"></a>6.1.2.14.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i13_format"></a>6.1.2.14.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -3257,7 +3508,89 @@ Should be unnecessary for most cases.
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i15"></a>6.1.2.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU`
+##### <a name="modules_items_anyOf_i1_oneOf_i15"></a>6.1.2.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad`
+
+**Title:** Gamepad
+
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+
+| Property                                                  | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
+| --------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i15_type )         | No      | const            | No         | -                                                              | List connected gamepads                                           |
+| - [percent](#modules_items_anyOf_i1_oneOf_i15_percent )   | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )   | Threshold of percentage colors                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i15_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i15_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i15_keyWidth ) | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
+| - [format](#modules_items_anyOf_i1_oneOf_i15_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i15_type"></a>6.1.2.16.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > type`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** List connected gamepads
+
+Specific value: `"gamepad"`
+
+##### <a name="modules_items_anyOf_i1_oneOf_i15_percent"></a>6.1.2.16.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > percent`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+
+**Description:** Threshold of percentage colors
+
+##### <a name="modules_items_anyOf_i1_oneOf_i15_key"></a>6.1.2.16.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > key`
+
+|                        |                                             |
+| ---------------------- | ------------------------------------------- |
+| **Type**               | `string`                                    |
+| **Required**           | No                                          |
+| **Same definition as** | [key](#modules_items_anyOf_i1_oneOf_i1_key) |
+
+**Description:** Key of the module
+
+##### <a name="modules_items_anyOf_i1_oneOf_i15_keyColor"></a>6.1.2.16.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyColor`
+
+|                        |                                                       |
+| ---------------------- | ----------------------------------------------------- |
+| **Type**               | `enum (of string)`                                    |
+| **Required**           | No                                                    |
+| **Same definition as** | [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor) |
+
+**Description:** Color of the module key. Left empty to use `display.color.keys`
+
+##### <a name="modules_items_anyOf_i1_oneOf_i15_keyWidth"></a>6.1.2.16.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyWidth`
+
+|                        |                                                       |
+| ---------------------- | ----------------------------------------------------- |
+| **Type**               | `integer`                                             |
+| **Required**           | No                                                    |
+| **Default**            | `0`                                                   |
+| **Same definition as** | [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth) |
+
+**Description:** Width of the module key. Use 0 to use `display.keyWidth`
+
+##### <a name="modules_items_anyOf_i1_oneOf_i15_format"></a>6.1.2.16.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > format`
+
+|                        |                                                   |
+| ---------------------- | ------------------------------------------------- |
+| **Type**               | `string`                                          |
+| **Required**           | No                                                |
+| **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
+
+**Description:** Output format of the module
+
+##### <a name="modules_items_anyOf_i1_oneOf_i16"></a>6.1.2.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU`
 
 **Title:** GPU
 
@@ -3269,17 +3602,17 @@ Should be unnecessary for most cases.
 
 | Property                                                              | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                                                              |
 | --------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i15_type )                     | No      | const            | No         | -                                                              | Print GPU names, graphic memory size, type, etc                                                                |
-| - [temp](#modules_items_anyOf_i1_oneOf_i15_temp )                     | No      | boolean          | No         | -                                                              | Detect and display GPU temperature if supported                                                                |
-| - [driverSpecific](#modules_items_anyOf_i1_oneOf_i15_driverSpecific ) | No      | boolean          | No         | -                                                              | Use driver specific method to detect more detailed GPU information (memory usage, core count, etc)             |
-| - [forceVulkan](#modules_items_anyOf_i1_oneOf_i15_forceVulkan )       | No      | boolean          | No         | -                                                              | Force using vulkan to detect GPUs, which support video memory usage detection with \`--allow-slow-operations\` |
-| - [hideType](#modules_items_anyOf_i1_oneOf_i15_hideType )             | No      | enum (of string) | No         | -                                                              | Specify the type of GPUs should not be printed                                                                 |
-| - [key](#modules_items_anyOf_i1_oneOf_i15_key )                       | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                                                              |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i15_keyColor )             | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`                                              |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i15_keyWidth )             | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`                                                     |
-| - [format](#modules_items_anyOf_i1_oneOf_i15_format )                 | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                                                                    |
+| - [type](#modules_items_anyOf_i1_oneOf_i16_type )                     | No      | const            | No         | -                                                              | Print GPU names, graphic memory size, type, etc                                                                |
+| - [temp](#modules_items_anyOf_i1_oneOf_i16_temp )                     | No      | boolean          | No         | -                                                              | Detect and display GPU temperature if supported                                                                |
+| - [driverSpecific](#modules_items_anyOf_i1_oneOf_i16_driverSpecific ) | No      | boolean          | No         | -                                                              | Use driver specific method to detect more detailed GPU information (memory usage, core count, etc)             |
+| - [forceVulkan](#modules_items_anyOf_i1_oneOf_i16_forceVulkan )       | No      | boolean          | No         | -                                                              | Force using vulkan to detect GPUs, which support video memory usage detection with \`--allow-slow-operations\` |
+| - [hideType](#modules_items_anyOf_i1_oneOf_i16_hideType )             | No      | enum (of string) | No         | -                                                              | Specify the type of GPUs should not be printed                                                                 |
+| - [key](#modules_items_anyOf_i1_oneOf_i16_key )                       | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                                                              |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i16_keyColor )             | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`                                              |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i16_keyWidth )             | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`                                                     |
+| - [format](#modules_items_anyOf_i1_oneOf_i16_format )                 | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                                                                    |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i15_type"></a>6.1.2.16.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i16_type"></a>6.1.2.17.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > type`
 
 |              |         |
 | ------------ | ------- |
@@ -3290,7 +3623,7 @@ Should be unnecessary for most cases.
 
 Specific value: `"gpu"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i15_temp"></a>6.1.2.16.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > temp`
+##### <a name="modules_items_anyOf_i1_oneOf_i16_temp"></a>6.1.2.17.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > temp`
 
 |              |           |
 | ------------ | --------- |
@@ -3300,7 +3633,7 @@ Specific value: `"gpu"`
 
 **Description:** Detect and display GPU temperature if supported
 
-##### <a name="modules_items_anyOf_i1_oneOf_i15_driverSpecific"></a>6.1.2.16.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > driverSpecific`
+##### <a name="modules_items_anyOf_i1_oneOf_i16_driverSpecific"></a>6.1.2.17.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > driverSpecific`
 
 |              |           |
 | ------------ | --------- |
@@ -3310,7 +3643,7 @@ Specific value: `"gpu"`
 
 **Description:** Use driver specific method to detect more detailed GPU information (memory usage, core count, etc)
 
-##### <a name="modules_items_anyOf_i1_oneOf_i15_forceVulkan"></a>6.1.2.16.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > forceVulkan`
+##### <a name="modules_items_anyOf_i1_oneOf_i16_forceVulkan"></a>6.1.2.17.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > forceVulkan`
 
 |              |           |
 | ------------ | --------- |
@@ -3320,7 +3653,7 @@ Specific value: `"gpu"`
 
 **Description:** Force using vulkan to detect GPUs, which support video memory usage detection with `--allow-slow-operations`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i15_hideType"></a>6.1.2.16.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > hideType`
+##### <a name="modules_items_anyOf_i1_oneOf_i16_hideType"></a>6.1.2.17.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > hideType`
 
 |              |                    |
 | ------------ | ------------------ |
@@ -3335,7 +3668,7 @@ Must be one of:
 * "discrete"
 * "none"
 
-##### <a name="modules_items_anyOf_i1_oneOf_i15_key"></a>6.1.2.16.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i16_key"></a>6.1.2.17.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -3345,7 +3678,7 @@ Must be one of:
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i15_keyColor"></a>6.1.2.16.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i16_keyColor"></a>6.1.2.17.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3355,7 +3688,7 @@ Must be one of:
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i15_keyWidth"></a>6.1.2.16.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i16_keyWidth"></a>6.1.2.17.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3366,7 +3699,7 @@ Must be one of:
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i15_format"></a>6.1.2.16.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i16_format"></a>6.1.2.17.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -3376,7 +3709,7 @@ Must be one of:
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16"></a>6.1.2.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP`
+##### <a name="modules_items_anyOf_i1_oneOf_i17"></a>6.1.2.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP`
 
 **Title:** Local IP
 
@@ -3388,20 +3721,20 @@ Must be one of:
 
 | Property                                                                  | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
 | ------------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i16_type )                         | No      | const            | No         | -                                                              | List local IP addresses (v4 or v6), MAC addresses, etc            |
-| - [showIpv4](#modules_items_anyOf_i1_oneOf_i16_showIpv4 )                 | No      | boolean          | No         | -                                                              | Show IPv4 addresses                                               |
-| - [showIpv6](#modules_items_anyOf_i1_oneOf_i16_showIpv6 )                 | No      | boolean          | No         | -                                                              | Show IPv6 addresses                                               |
-| - [showMac](#modules_items_anyOf_i1_oneOf_i16_showMac )                   | No      | boolean          | No         | -                                                              | Show MAC addresses                                                |
-| - [showLoop](#modules_items_anyOf_i1_oneOf_i16_showLoop )                 | No      | boolean          | No         | -                                                              | Show loop back addresses (127.0.0.1)                              |
-| - [compact](#modules_items_anyOf_i1_oneOf_i16_compact )                   | No      | boolean          | No         | -                                                              | Show all IPs in one line                                          |
-| - [namePrefix](#modules_items_anyOf_i1_oneOf_i16_namePrefix )             | No      | string           | No         | -                                                              | Show IPs with given name prefix only                              |
-| - [defaultRouteOnly](#modules_items_anyOf_i1_oneOf_i16_defaultRouteOnly ) | No      | boolean          | No         | -                                                              | Show ips that are used for default routing only                   |
-| - [key](#modules_items_anyOf_i1_oneOf_i16_key )                           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i16_keyColor )                 | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i16_keyWidth )                 | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
-| - [format](#modules_items_anyOf_i1_oneOf_i16_format )                     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
+| - [type](#modules_items_anyOf_i1_oneOf_i17_type )                         | No      | const            | No         | -                                                              | List local IP addresses (v4 or v6), MAC addresses, etc            |
+| - [showIpv4](#modules_items_anyOf_i1_oneOf_i17_showIpv4 )                 | No      | boolean          | No         | -                                                              | Show IPv4 addresses                                               |
+| - [showIpv6](#modules_items_anyOf_i1_oneOf_i17_showIpv6 )                 | No      | boolean          | No         | -                                                              | Show IPv6 addresses                                               |
+| - [showMac](#modules_items_anyOf_i1_oneOf_i17_showMac )                   | No      | boolean          | No         | -                                                              | Show MAC addresses                                                |
+| - [showLoop](#modules_items_anyOf_i1_oneOf_i17_showLoop )                 | No      | boolean          | No         | -                                                              | Show loop back addresses (127.0.0.1)                              |
+| - [compact](#modules_items_anyOf_i1_oneOf_i17_compact )                   | No      | boolean          | No         | -                                                              | Show all IPs in one line                                          |
+| - [namePrefix](#modules_items_anyOf_i1_oneOf_i17_namePrefix )             | No      | string           | No         | -                                                              | Show IPs with given name prefix only                              |
+| - [defaultRouteOnly](#modules_items_anyOf_i1_oneOf_i17_defaultRouteOnly ) | No      | boolean          | No         | -                                                              | Show ips that are used for default routing only                   |
+| - [key](#modules_items_anyOf_i1_oneOf_i17_key )                           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i17_keyColor )                 | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i17_keyWidth )                 | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
+| - [format](#modules_items_anyOf_i1_oneOf_i17_format )                     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_type"></a>6.1.2.17.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_type"></a>6.1.2.18.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > type`
 
 |              |         |
 | ------------ | ------- |
@@ -3412,7 +3745,7 @@ Must be one of:
 
 Specific value: `"localip"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_showIpv4"></a>6.1.2.17.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv4`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_showIpv4"></a>6.1.2.18.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv4`
 
 |              |           |
 | ------------ | --------- |
@@ -3422,7 +3755,7 @@ Specific value: `"localip"`
 
 **Description:** Show IPv4 addresses
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_showIpv6"></a>6.1.2.17.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_showIpv6"></a>6.1.2.18.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6`
 
 |              |           |
 | ------------ | --------- |
@@ -3432,7 +3765,7 @@ Specific value: `"localip"`
 
 **Description:** Show IPv6 addresses
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_showMac"></a>6.1.2.17.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showMac`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_showMac"></a>6.1.2.18.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showMac`
 
 |              |           |
 | ------------ | --------- |
@@ -3442,7 +3775,7 @@ Specific value: `"localip"`
 
 **Description:** Show MAC addresses
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_showLoop"></a>6.1.2.17.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showLoop`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_showLoop"></a>6.1.2.18.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showLoop`
 
 |              |           |
 | ------------ | --------- |
@@ -3452,7 +3785,7 @@ Specific value: `"localip"`
 
 **Description:** Show loop back addresses (127.0.0.1)
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_compact"></a>6.1.2.17.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > compact`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_compact"></a>6.1.2.18.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > compact`
 
 |              |           |
 | ------------ | --------- |
@@ -3462,7 +3795,7 @@ Specific value: `"localip"`
 
 **Description:** Show all IPs in one line
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_namePrefix"></a>6.1.2.17.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > namePrefix`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_namePrefix"></a>6.1.2.18.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > namePrefix`
 
 |              |          |
 | ------------ | -------- |
@@ -3471,7 +3804,7 @@ Specific value: `"localip"`
 
 **Description:** Show IPs with given name prefix only
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_defaultRouteOnly"></a>6.1.2.17.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > defaultRouteOnly`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_defaultRouteOnly"></a>6.1.2.18.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > defaultRouteOnly`
 
 |              |           |
 | ------------ | --------- |
@@ -3481,7 +3814,7 @@ Specific value: `"localip"`
 
 **Description:** Show ips that are used for default routing only
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_key"></a>6.1.2.17.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_key"></a>6.1.2.18.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -3491,7 +3824,7 @@ Specific value: `"localip"`
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_keyColor"></a>6.1.2.17.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_keyColor"></a>6.1.2.18.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3501,7 +3834,7 @@ Specific value: `"localip"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_keyWidth"></a>6.1.2.17.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_keyWidth"></a>6.1.2.18.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3512,7 +3845,7 @@ Specific value: `"localip"`
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i16_format"></a>6.1.2.17.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i17_format"></a>6.1.2.18.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -3522,7 +3855,89 @@ Specific value: `"localip"`
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i17"></a>6.1.2.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO`
+##### <a name="modules_items_anyOf_i1_oneOf_i18"></a>6.1.2.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory`
+
+**Title:** Memory
+
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+
+| Property                                                  | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
+| --------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i18_type )         | No      | const            | No         | -                                                              | Print system memory usage info                                    |
+| - [percent](#modules_items_anyOf_i1_oneOf_i18_percent )   | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )   | Threshold of percentage colors                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i18_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i18_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i18_keyWidth ) | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
+| - [format](#modules_items_anyOf_i1_oneOf_i18_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i18_type"></a>6.1.2.19.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > type`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Print system memory usage info
+
+Specific value: `"memory"`
+
+##### <a name="modules_items_anyOf_i1_oneOf_i18_percent"></a>6.1.2.19.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > percent`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+
+**Description:** Threshold of percentage colors
+
+##### <a name="modules_items_anyOf_i1_oneOf_i18_key"></a>6.1.2.19.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > key`
+
+|                        |                                             |
+| ---------------------- | ------------------------------------------- |
+| **Type**               | `string`                                    |
+| **Required**           | No                                          |
+| **Same definition as** | [key](#modules_items_anyOf_i1_oneOf_i1_key) |
+
+**Description:** Key of the module
+
+##### <a name="modules_items_anyOf_i1_oneOf_i18_keyColor"></a>6.1.2.19.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > keyColor`
+
+|                        |                                                       |
+| ---------------------- | ----------------------------------------------------- |
+| **Type**               | `enum (of string)`                                    |
+| **Required**           | No                                                    |
+| **Same definition as** | [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor) |
+
+**Description:** Color of the module key. Left empty to use `display.color.keys`
+
+##### <a name="modules_items_anyOf_i1_oneOf_i18_keyWidth"></a>6.1.2.19.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > keyWidth`
+
+|                        |                                                       |
+| ---------------------- | ----------------------------------------------------- |
+| **Type**               | `integer`                                             |
+| **Required**           | No                                                    |
+| **Default**            | `0`                                                   |
+| **Same definition as** | [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth) |
+
+**Description:** Width of the module key. Use 0 to use `display.keyWidth`
+
+##### <a name="modules_items_anyOf_i1_oneOf_i18_format"></a>6.1.2.19.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > format`
+
+|                        |                                                   |
+| ---------------------- | ------------------------------------------------- |
+| **Type**               | `string`                                          |
+| **Required**           | No                                                |
+| **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
+
+**Description:** Output format of the module
+
+##### <a name="modules_items_anyOf_i1_oneOf_i19"></a>6.1.2.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO`
 
 **Title:** NetIO
 
@@ -3534,15 +3949,16 @@ Specific value: `"localip"`
 
 | Property                                                                  | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
 | ------------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i17_type )                         | No      | const            | No         | -                                                              | Print network I/O throughput                                      |
-| - [namePrefix](#modules_items_anyOf_i1_oneOf_i17_namePrefix )             | No      | string           | No         | -                                                              | Show IPs with given name prefix only                              |
-| - [defaultRouteOnly](#modules_items_anyOf_i1_oneOf_i17_defaultRouteOnly ) | No      | boolean          | No         | -                                                              | Show ips that are used for default routing only                   |
-| - [key](#modules_items_anyOf_i1_oneOf_i17_key )                           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i17_keyColor )                 | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i17_keyWidth )                 | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
-| - [format](#modules_items_anyOf_i1_oneOf_i17_format )                     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
+| - [type](#modules_items_anyOf_i1_oneOf_i19_type )                         | No      | const            | No         | -                                                              | Print network I/O throughput                                      |
+| - [namePrefix](#modules_items_anyOf_i1_oneOf_i19_namePrefix )             | No      | string           | No         | -                                                              | Show IPs with given name prefix only                              |
+| - [defaultRouteOnly](#modules_items_anyOf_i1_oneOf_i19_defaultRouteOnly ) | No      | boolean          | No         | -                                                              | Show ips that are used for default routing only                   |
+| - [detectTotal](#modules_items_anyOf_i1_oneOf_i19_detectTotal )           | No      | boolean          | No         | -                                                              | Detect total bytes instead of current rate                        |
+| - [key](#modules_items_anyOf_i1_oneOf_i19_key )                           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i19_keyColor )                 | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i19_keyWidth )                 | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
+| - [format](#modules_items_anyOf_i1_oneOf_i19_format )                     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i17_type"></a>6.1.2.18.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i19_type"></a>6.1.2.20.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > type`
 
 |              |         |
 | ------------ | ------- |
@@ -3553,7 +3969,7 @@ Specific value: `"localip"`
 
 Specific value: `"netio"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i17_namePrefix"></a>6.1.2.18.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > namePrefix`
+##### <a name="modules_items_anyOf_i1_oneOf_i19_namePrefix"></a>6.1.2.20.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > namePrefix`
 
 |              |          |
 | ------------ | -------- |
@@ -3562,7 +3978,7 @@ Specific value: `"netio"`
 
 **Description:** Show IPs with given name prefix only
 
-##### <a name="modules_items_anyOf_i1_oneOf_i17_defaultRouteOnly"></a>6.1.2.18.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > defaultRouteOnly`
+##### <a name="modules_items_anyOf_i1_oneOf_i19_defaultRouteOnly"></a>6.1.2.20.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > defaultRouteOnly`
 
 |              |           |
 | ------------ | --------- |
@@ -3572,7 +3988,17 @@ Specific value: `"netio"`
 
 **Description:** Show ips that are used for default routing only
 
-##### <a name="modules_items_anyOf_i1_oneOf_i17_key"></a>6.1.2.18.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i19_detectTotal"></a>6.1.2.20.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > detectTotal`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `boolean` |
+| **Required** | No        |
+| **Default**  | `false`   |
+
+**Description:** Detect total bytes instead of current rate
+
+##### <a name="modules_items_anyOf_i1_oneOf_i19_key"></a>6.1.2.20.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -3582,7 +4008,7 @@ Specific value: `"netio"`
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i17_keyColor"></a>6.1.2.18.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i19_keyColor"></a>6.1.2.20.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3592,7 +4018,7 @@ Specific value: `"netio"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i17_keyWidth"></a>6.1.2.18.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i19_keyWidth"></a>6.1.2.20.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3603,7 +4029,7 @@ Specific value: `"netio"`
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i17_format"></a>6.1.2.18.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i19_format"></a>6.1.2.20.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -3613,7 +4039,7 @@ Specific value: `"netio"`
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i18"></a>6.1.2.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL`
+##### <a name="modules_items_anyOf_i1_oneOf_i20"></a>6.1.2.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL`
 
 **Title:** OpenGL
 
@@ -3625,14 +4051,14 @@ Specific value: `"netio"`
 
 | Property                                                  | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
 | --------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i18_type )         | No      | const            | No         | -                                                              | Print highest OpenGL version supported by the GPU                 |
-| - [library](#modules_items_anyOf_i1_oneOf_i18_library )   | No      | enum (of string) | No         | -                                                              | Set the OpenGL context creation library to use. Linux only        |
-| - [key](#modules_items_anyOf_i1_oneOf_i18_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i18_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i18_keyWidth ) | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
-| - [format](#modules_items_anyOf_i1_oneOf_i18_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
+| - [type](#modules_items_anyOf_i1_oneOf_i20_type )         | No      | const            | No         | -                                                              | Print highest OpenGL version supported by the GPU                 |
+| - [library](#modules_items_anyOf_i1_oneOf_i20_library )   | No      | enum (of string) | No         | -                                                              | Set the OpenGL context creation library to use. Linux only        |
+| - [key](#modules_items_anyOf_i1_oneOf_i20_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i20_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i20_keyWidth ) | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
+| - [format](#modules_items_anyOf_i1_oneOf_i20_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i18_type"></a>6.1.2.19.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i20_type"></a>6.1.2.21.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > type`
 
 |              |         |
 | ------------ | ------- |
@@ -3643,7 +4069,7 @@ Specific value: `"netio"`
 
 Specific value: `"opengl"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i18_library"></a>6.1.2.19.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > library`
+##### <a name="modules_items_anyOf_i1_oneOf_i20_library"></a>6.1.2.21.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > library`
 
 |              |                    |
 | ------------ | ------------------ |
@@ -3659,7 +4085,7 @@ Must be one of:
 * "glx"
 * "osmesa"
 
-##### <a name="modules_items_anyOf_i1_oneOf_i18_key"></a>6.1.2.19.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i20_key"></a>6.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -3669,7 +4095,7 @@ Must be one of:
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i18_keyColor"></a>6.1.2.19.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i20_keyColor"></a>6.1.2.21.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3679,7 +4105,7 @@ Must be one of:
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i18_keyWidth"></a>6.1.2.19.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i20_keyWidth"></a>6.1.2.21.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3690,7 +4116,7 @@ Must be one of:
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i18_format"></a>6.1.2.19.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i20_format"></a>6.1.2.21.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -3700,7 +4126,7 @@ Must be one of:
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i19"></a>6.1.2.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages`
+##### <a name="modules_items_anyOf_i1_oneOf_i21"></a>6.1.2.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages`
 
 **Title:** Packages
 
@@ -3710,16 +4136,16 @@ Must be one of:
 | **Required**              | No                                                                        |
 | **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
 
-| Property                                                  | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                                                                                                                         |
-| --------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i19_type )         | No      | const            | No         | -                                                              | List installed package managers and count of installed packages                                                                                                           |
-| - [winget](#modules_items_anyOf_i1_oneOf_i19_winget )     | No      | boolean          | No         | -                                                              | Set if winget package count should be detected.<br />Note this is very slow operation. Please make sure \`winget list\` works before enable this option<br />Windows only |
-| - [key](#modules_items_anyOf_i1_oneOf_i19_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                                                                                                                         |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i19_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`                                                                                                         |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i19_keyWidth ) | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`                                                                                                                |
-| - [format](#modules_items_anyOf_i1_oneOf_i19_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                                                                                                                               |
+| Property                                                  | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                        |
+| --------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| - [type](#modules_items_anyOf_i1_oneOf_i21_type )         | No      | const            | No         | -                                                              | List installed package managers and count of installed packages          |
+| - [disabled](#modules_items_anyOf_i1_oneOf_i21_disabled ) | No      | string           | No         | -                                                              | A colon separated list of package managers to be disabled when detecting |
+| - [key](#modules_items_anyOf_i1_oneOf_i21_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                        |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i21_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`        |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i21_keyWidth ) | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`               |
+| - [format](#modules_items_anyOf_i1_oneOf_i21_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                              |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i19_type"></a>6.1.2.20.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i21_type"></a>6.1.2.22.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > type`
 
 |              |         |
 | ------------ | ------- |
@@ -3730,19 +4156,17 @@ Must be one of:
 
 Specific value: `"packages"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i19_winget"></a>6.1.2.20.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > winget`
+##### <a name="modules_items_anyOf_i1_oneOf_i21_disabled"></a>6.1.2.22.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > disabled`
 
-|              |           |
-| ------------ | --------- |
-| **Type**     | `boolean` |
-| **Required** | No        |
-| **Default**  | `false`   |
+|              |            |
+| ------------ | ---------- |
+| **Type**     | `string`   |
+| **Required** | No         |
+| **Default**  | `"winget"` |
 
-**Description:** Set if winget package count should be detected.
-Note this is very slow operation. Please make sure `winget list` works before enable this option
-Windows only
+**Description:** A colon separated list of package managers to be disabled when detecting
 
-##### <a name="modules_items_anyOf_i1_oneOf_i19_key"></a>6.1.2.20.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i21_key"></a>6.1.2.22.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -3752,7 +4176,7 @@ Windows only
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i19_keyColor"></a>6.1.2.20.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i21_keyColor"></a>6.1.2.22.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3762,7 +4186,7 @@ Windows only
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i19_keyWidth"></a>6.1.2.20.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i21_keyWidth"></a>6.1.2.22.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3773,7 +4197,7 @@ Windows only
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i19_format"></a>6.1.2.20.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i21_format"></a>6.1.2.22.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -3783,7 +4207,7 @@ Windows only
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i20"></a>6.1.2.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk`
+##### <a name="modules_items_anyOf_i1_oneOf_i22"></a>6.1.2.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk`
 
 **Title:** Physical Disk
 
@@ -3795,15 +4219,15 @@ Windows only
 
 | Property                                                      | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
 | ------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i20_type )             | No      | const            | No         | -                                                              | Print physical disk information                                   |
-| - [namePrefix](#modules_items_anyOf_i1_oneOf_i20_namePrefix ) | No      | string           | No         | -                                                              | Show disks with given name prefix only                            |
-| - [temp](#modules_items_anyOf_i1_oneOf_i20_temp )             | No      | boolean          | No         | -                                                              | Detect and display SSD temperature if supported                   |
-| - [key](#modules_items_anyOf_i1_oneOf_i20_key )               | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i20_keyColor )     | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i20_keyWidth )     | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
-| - [format](#modules_items_anyOf_i1_oneOf_i20_format )         | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
+| - [type](#modules_items_anyOf_i1_oneOf_i22_type )             | No      | const            | No         | -                                                              | Print physical disk information                                   |
+| - [namePrefix](#modules_items_anyOf_i1_oneOf_i22_namePrefix ) | No      | string           | No         | -                                                              | Show disks with given name prefix only                            |
+| - [temp](#modules_items_anyOf_i1_oneOf_i22_temp )             | No      | boolean          | No         | -                                                              | Detect and display SSD temperature if supported                   |
+| - [key](#modules_items_anyOf_i1_oneOf_i22_key )               | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i22_keyColor )     | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i22_keyWidth )     | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
+| - [format](#modules_items_anyOf_i1_oneOf_i22_format )         | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i20_type"></a>6.1.2.21.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i22_type"></a>6.1.2.23.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > type`
 
 |              |         |
 | ------------ | ------- |
@@ -3814,7 +4238,7 @@ Windows only
 
 Specific value: `"physicaldisk"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i20_namePrefix"></a>6.1.2.21.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > namePrefix`
+##### <a name="modules_items_anyOf_i1_oneOf_i22_namePrefix"></a>6.1.2.23.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > namePrefix`
 
 |              |          |
 | ------------ | -------- |
@@ -3823,7 +4247,7 @@ Specific value: `"physicaldisk"`
 
 **Description:** Show disks with given name prefix only
 
-##### <a name="modules_items_anyOf_i1_oneOf_i20_temp"></a>6.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > temp`
+##### <a name="modules_items_anyOf_i1_oneOf_i22_temp"></a>6.1.2.23.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > temp`
 
 |              |           |
 | ------------ | --------- |
@@ -3833,7 +4257,7 @@ Specific value: `"physicaldisk"`
 
 **Description:** Detect and display SSD temperature if supported
 
-##### <a name="modules_items_anyOf_i1_oneOf_i20_key"></a>6.1.2.21.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i22_key"></a>6.1.2.23.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -3843,7 +4267,7 @@ Specific value: `"physicaldisk"`
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i20_keyColor"></a>6.1.2.21.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i22_keyColor"></a>6.1.2.23.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3853,7 +4277,7 @@ Specific value: `"physicaldisk"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i20_keyWidth"></a>6.1.2.21.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i22_keyWidth"></a>6.1.2.23.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3864,7 +4288,7 @@ Specific value: `"physicaldisk"`
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i20_format"></a>6.1.2.21.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i22_format"></a>6.1.2.23.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -3874,7 +4298,7 @@ Specific value: `"physicaldisk"`
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i21"></a>6.1.2.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP`
+##### <a name="modules_items_anyOf_i1_oneOf_i23"></a>6.1.2.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP`
 
 **Title:** Public IP
 
@@ -3886,15 +4310,15 @@ Specific value: `"physicaldisk"`
 
 | Property                                                  | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                                 |
 | --------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i21_type )         | No      | const            | No         | -                                                              | Print your public IP address, etc                                                 |
-| - [url](#modules_items_anyOf_i1_oneOf_i21_url )           | No      | string           | No         | -                                                              | The URL of public IP detection server to be used. Only HTTP protocol is supported |
-| - [timeout](#modules_items_anyOf_i1_oneOf_i21_timeout )   | No      | integer          | No         | -                                                              | Time in milliseconds to wait for the public ip server to respond                  |
-| - [key](#modules_items_anyOf_i1_oneOf_i21_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i21_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`                 |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i21_keyWidth ) | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`                        |
-| - [format](#modules_items_anyOf_i1_oneOf_i21_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                                       |
+| - [type](#modules_items_anyOf_i1_oneOf_i23_type )         | No      | const            | No         | -                                                              | Print your public IP address, etc                                                 |
+| - [url](#modules_items_anyOf_i1_oneOf_i23_url )           | No      | string           | No         | -                                                              | The URL of public IP detection server to be used. Only HTTP protocol is supported |
+| - [timeout](#modules_items_anyOf_i1_oneOf_i23_timeout )   | No      | integer          | No         | -                                                              | Time in milliseconds to wait for the public ip server to respond                  |
+| - [key](#modules_items_anyOf_i1_oneOf_i23_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i23_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`                 |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i23_keyWidth ) | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i23_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                                       |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i21_type"></a>6.1.2.22.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i23_type"></a>6.1.2.24.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > type`
 
 |              |         |
 | ------------ | ------- |
@@ -3905,7 +4329,7 @@ Specific value: `"physicaldisk"`
 
 Specific value: `"publicip"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i21_url"></a>6.1.2.22.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > url`
+##### <a name="modules_items_anyOf_i1_oneOf_i23_url"></a>6.1.2.24.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > url`
 
 |              |                         |
 | ------------ | ----------------------- |
@@ -3916,7 +4340,7 @@ Specific value: `"publicip"`
 
 **Description:** The URL of public IP detection server to be used. Only HTTP protocol is supported
 
-##### <a name="modules_items_anyOf_i1_oneOf_i21_timeout"></a>6.1.2.22.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > timeout`
+##### <a name="modules_items_anyOf_i1_oneOf_i23_timeout"></a>6.1.2.24.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > timeout`
 
 |              |                  |
 | ------------ | ---------------- |
@@ -3930,7 +4354,7 @@ Specific value: `"publicip"`
 | ------------ | ------ |
 | **Minimum**  | &ge; 0 |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i21_key"></a>6.1.2.22.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i23_key"></a>6.1.2.24.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -3940,7 +4364,7 @@ Specific value: `"publicip"`
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i21_keyColor"></a>6.1.2.22.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i23_keyColor"></a>6.1.2.24.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3950,7 +4374,7 @@ Specific value: `"publicip"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i21_keyWidth"></a>6.1.2.22.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i23_keyWidth"></a>6.1.2.24.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3961,7 +4385,7 @@ Specific value: `"publicip"`
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i21_format"></a>6.1.2.22.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i23_format"></a>6.1.2.24.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -3971,7 +4395,7 @@ Specific value: `"publicip"`
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i22"></a>6.1.2.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator`
+##### <a name="modules_items_anyOf_i1_oneOf_i24"></a>6.1.2.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator`
 
 **Title:** Separator
 
@@ -3983,10 +4407,10 @@ Specific value: `"publicip"`
 
 | Property                                              | Pattern | Type   | Deprecated | Definition | Title/Description            |
 | ----------------------------------------------------- | ------- | ------ | ---------- | ---------- | ---------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i22_type )     | No      | const  | No         | -          | Print a separator line       |
-| - [string](#modules_items_anyOf_i1_oneOf_i22_string ) | No      | string | No         | -          | Set the string to be printed |
+| - [type](#modules_items_anyOf_i1_oneOf_i24_type )     | No      | const  | No         | -          | Print a separator line       |
+| - [string](#modules_items_anyOf_i1_oneOf_i24_string ) | No      | string | No         | -          | Set the string to be printed |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i22_type"></a>6.1.2.23.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i24_type"></a>6.1.2.25.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > type`
 
 |              |         |
 | ------------ | ------- |
@@ -3997,7 +4421,7 @@ Specific value: `"publicip"`
 
 Specific value: `"separator"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i22_string"></a>6.1.2.23.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > string`
+##### <a name="modules_items_anyOf_i1_oneOf_i24_string"></a>6.1.2.25.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > string`
 
 |              |          |
 | ------------ | -------- |
@@ -4007,7 +4431,7 @@ Specific value: `"separator"`
 
 **Description:** Set the string to be printed
 
-##### <a name="modules_items_anyOf_i1_oneOf_i23"></a>6.1.2.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound`
+##### <a name="modules_items_anyOf_i1_oneOf_i25"></a>6.1.2.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound`
 
 **Title:** Sound
 
@@ -4019,14 +4443,15 @@ Specific value: `"separator"`
 
 | Property                                                    | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
 | ----------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i23_type )           | No      | const            | No         | -                                                              | Print sound devices, volume, etc                                  |
-| - [soundType](#modules_items_anyOf_i1_oneOf_i23_soundType ) | No      | enum (of string) | No         | -                                                              | Set what type of sound devices should be printed                  |
-| - [key](#modules_items_anyOf_i1_oneOf_i23_key )             | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i23_keyColor )   | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i23_keyWidth )   | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
-| - [format](#modules_items_anyOf_i1_oneOf_i23_format )       | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
+| - [type](#modules_items_anyOf_i1_oneOf_i25_type )           | No      | const            | No         | -                                                              | Print sound devices, volume, etc                                  |
+| - [soundType](#modules_items_anyOf_i1_oneOf_i25_soundType ) | No      | enum (of string) | No         | -                                                              | Set what type of sound devices should be printed                  |
+| - [percent](#modules_items_anyOf_i1_oneOf_i25_percent )     | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )   | Threshold of percentage colors                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i25_key )             | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i25_keyColor )   | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i25_keyWidth )   | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
+| - [format](#modules_items_anyOf_i1_oneOf_i25_format )       | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i23_type"></a>6.1.2.24.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i25_type"></a>6.1.2.26.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > type`
 
 |              |         |
 | ------------ | ------- |
@@ -4037,7 +4462,7 @@ Specific value: `"separator"`
 
 Specific value: `"sound"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i23_soundType"></a>6.1.2.24.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > soundType`
+##### <a name="modules_items_anyOf_i1_oneOf_i25_soundType"></a>6.1.2.26.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > soundType`
 
 |              |                    |
 | ------------ | ------------------ |
@@ -4052,7 +4477,18 @@ Must be one of:
 * "active"
 * "all"
 
-##### <a name="modules_items_anyOf_i1_oneOf_i23_key"></a>6.1.2.24.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i25_percent"></a>6.1.2.26.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > percent`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+
+**Description:** Threshold of percentage colors
+
+##### <a name="modules_items_anyOf_i1_oneOf_i25_key"></a>6.1.2.26.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -4062,7 +4498,7 @@ Must be one of:
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i23_keyColor"></a>6.1.2.24.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i25_keyColor"></a>6.1.2.26.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -4072,7 +4508,7 @@ Must be one of:
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i23_keyWidth"></a>6.1.2.24.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i25_keyWidth"></a>6.1.2.26.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -4083,7 +4519,7 @@ Must be one of:
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i23_format"></a>6.1.2.24.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i25_format"></a>6.1.2.26.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -4093,7 +4529,89 @@ Must be one of:
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i24"></a>6.1.2.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title`
+##### <a name="modules_items_anyOf_i1_oneOf_i26"></a>6.1.2.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap`
+
+**Title:** Swap
+
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+
+| Property                                                  | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
+| --------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i26_type )         | No      | const            | No         | -                                                              | Print swap (paging file) space usage                              |
+| - [percent](#modules_items_anyOf_i1_oneOf_i26_percent )   | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )   | Threshold of percentage colors                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i26_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i26_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i26_keyWidth ) | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
+| - [format](#modules_items_anyOf_i1_oneOf_i26_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i26_type"></a>6.1.2.27.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > type`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Print swap (paging file) space usage
+
+Specific value: `"swap"`
+
+##### <a name="modules_items_anyOf_i1_oneOf_i26_percent"></a>6.1.2.27.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > percent`
+
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `object`                                                                  |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+
+**Description:** Threshold of percentage colors
+
+##### <a name="modules_items_anyOf_i1_oneOf_i26_key"></a>6.1.2.27.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > key`
+
+|                        |                                             |
+| ---------------------- | ------------------------------------------- |
+| **Type**               | `string`                                    |
+| **Required**           | No                                          |
+| **Same definition as** | [key](#modules_items_anyOf_i1_oneOf_i1_key) |
+
+**Description:** Key of the module
+
+##### <a name="modules_items_anyOf_i1_oneOf_i26_keyColor"></a>6.1.2.27.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > keyColor`
+
+|                        |                                                       |
+| ---------------------- | ----------------------------------------------------- |
+| **Type**               | `enum (of string)`                                    |
+| **Required**           | No                                                    |
+| **Same definition as** | [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor) |
+
+**Description:** Color of the module key. Left empty to use `display.color.keys`
+
+##### <a name="modules_items_anyOf_i1_oneOf_i26_keyWidth"></a>6.1.2.27.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > keyWidth`
+
+|                        |                                                       |
+| ---------------------- | ----------------------------------------------------- |
+| **Type**               | `integer`                                             |
+| **Required**           | No                                                    |
+| **Default**            | `0`                                                   |
+| **Same definition as** | [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth) |
+
+**Description:** Width of the module key. Use 0 to use `display.keyWidth`
+
+##### <a name="modules_items_anyOf_i1_oneOf_i26_format"></a>6.1.2.27.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > format`
+
+|                        |                                                   |
+| ---------------------- | ------------------------------------------------- |
+| **Type**               | `string`                                          |
+| **Required**           | No                                                |
+| **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
+
+**Description:** Output format of the module
+
+##### <a name="modules_items_anyOf_i1_oneOf_i27"></a>6.1.2.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title`
 
 **Title:** Title
 
@@ -4105,15 +4623,15 @@ Must be one of:
 
 | Property                                                  | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
 | --------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i24_type )         | No      | const            | No         | -                                                              | Print title, which contains your user name, hostname              |
-| - [fqdn](#modules_items_anyOf_i1_oneOf_i24_fqdn )         | No      | boolean          | No         | -                                                              | Set if the title should use fully qualified domain name           |
-| - [color](#modules_items_anyOf_i1_oneOf_i24_color )       | No      | object           | No         | -                                                              | Set colors of the different part of title                         |
-| - [key](#modules_items_anyOf_i1_oneOf_i24_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i24_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i24_keyWidth ) | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
-| - [format](#modules_items_anyOf_i1_oneOf_i24_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
+| - [type](#modules_items_anyOf_i1_oneOf_i27_type )         | No      | const            | No         | -                                                              | Print title, which contains your user name, hostname              |
+| - [fqdn](#modules_items_anyOf_i1_oneOf_i27_fqdn )         | No      | boolean          | No         | -                                                              | Set if the title should use fully qualified domain name           |
+| - [color](#modules_items_anyOf_i1_oneOf_i27_color )       | No      | object           | No         | -                                                              | Set colors of the different part of title                         |
+| - [key](#modules_items_anyOf_i1_oneOf_i27_key )           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i27_keyColor ) | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i27_keyWidth ) | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
+| - [format](#modules_items_anyOf_i1_oneOf_i27_format )     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i24_type"></a>6.1.2.25.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i27_type"></a>6.1.2.28.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > type`
 
 |              |         |
 | ------------ | ------- |
@@ -4124,7 +4642,7 @@ Must be one of:
 
 Specific value: `"title"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i24_fqdn"></a>6.1.2.25.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > fqdn`
+##### <a name="modules_items_anyOf_i1_oneOf_i27_fqdn"></a>6.1.2.28.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > fqdn`
 
 |              |           |
 | ------------ | --------- |
@@ -4134,7 +4652,7 @@ Specific value: `"title"`
 
 **Description:** Set if the title should use fully qualified domain name
 
-##### <a name="modules_items_anyOf_i1_oneOf_i24_color"></a>6.1.2.25.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color`
+##### <a name="modules_items_anyOf_i1_oneOf_i27_color"></a>6.1.2.28.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -4146,11 +4664,11 @@ Specific value: `"title"`
 
 | Property                                                | Pattern | Type             | Deprecated | Definition                               | Title/Description                       |
 | ------------------------------------------------------- | ------- | ---------------- | ---------- | ---------------------------------------- | --------------------------------------- |
-| - [user](#modules_items_anyOf_i1_oneOf_i24_color_user ) | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Set color of the user name (left part)  |
-| - [at](#modules_items_anyOf_i1_oneOf_i24_color_at )     | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Set color of the @ symbol (middle part) |
-| - [host](#modules_items_anyOf_i1_oneOf_i24_color_host ) | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Set color of the host name (right part) |
+| - [user](#modules_items_anyOf_i1_oneOf_i27_color_user ) | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Set color of the user name (left part)  |
+| - [at](#modules_items_anyOf_i1_oneOf_i27_color_at )     | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Set color of the @ symbol (middle part) |
+| - [host](#modules_items_anyOf_i1_oneOf_i27_color_host ) | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Set color of the host name (right part) |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i24_color_user"></a>6.1.2.25.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > user`
+##### <a name="modules_items_anyOf_i1_oneOf_i27_color_user"></a>6.1.2.28.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > user`
 
 |                        |                                 |
 | ---------------------- | ------------------------------- |
@@ -4160,7 +4678,7 @@ Specific value: `"title"`
 
 **Description:** Set color of the user name (left part)
 
-##### <a name="modules_items_anyOf_i1_oneOf_i24_color_at"></a>6.1.2.25.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > at`
+##### <a name="modules_items_anyOf_i1_oneOf_i27_color_at"></a>6.1.2.28.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > at`
 
 |                        |                                 |
 | ---------------------- | ------------------------------- |
@@ -4170,7 +4688,7 @@ Specific value: `"title"`
 
 **Description:** Set color of the @ symbol (middle part)
 
-##### <a name="modules_items_anyOf_i1_oneOf_i24_color_host"></a>6.1.2.25.3.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > host`
+##### <a name="modules_items_anyOf_i1_oneOf_i27_color_host"></a>6.1.2.28.3.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > color > host`
 
 |                        |                                 |
 | ---------------------- | ------------------------------- |
@@ -4180,7 +4698,7 @@ Specific value: `"title"`
 
 **Description:** Set color of the host name (right part)
 
-##### <a name="modules_items_anyOf_i1_oneOf_i24_key"></a>6.1.2.25.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i27_key"></a>6.1.2.28.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -4190,7 +4708,7 @@ Specific value: `"title"`
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i24_keyColor"></a>6.1.2.25.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i27_keyColor"></a>6.1.2.28.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -4200,7 +4718,7 @@ Specific value: `"title"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i24_keyWidth"></a>6.1.2.25.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i27_keyWidth"></a>6.1.2.28.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -4211,7 +4729,7 @@ Specific value: `"title"`
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i24_format"></a>6.1.2.25.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i27_format"></a>6.1.2.28.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -4221,7 +4739,7 @@ Specific value: `"title"`
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i25"></a>6.1.2.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather`
+##### <a name="modules_items_anyOf_i1_oneOf_i28"></a>6.1.2.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather`
 
 **Title:** Weather
 
@@ -4233,16 +4751,16 @@ Specific value: `"title"`
 
 | Property                                                          | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
 | ----------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i25_type )                 | No      | const            | No         | -                                                              | Print weather information                                         |
-| - [location](#modules_items_anyOf_i1_oneOf_i25_location )         | No      | string           | No         | -                                                              | The location to display                                           |
-| - [timeout](#modules_items_anyOf_i1_oneOf_i25_timeout )           | No      | integer          | No         | -                                                              | Time in milliseconds to wait for the weather server to respond    |
-| - [outputFormat](#modules_items_anyOf_i1_oneOf_i25_outputFormat ) | No      | string           | No         | -                                                              | The output weather format to be used (must be URI encoded)        |
-| - [key](#modules_items_anyOf_i1_oneOf_i25_key )                   | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i25_keyColor )         | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i25_keyWidth )         | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
-| - [format](#modules_items_anyOf_i1_oneOf_i25_format )             | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
+| - [type](#modules_items_anyOf_i1_oneOf_i28_type )                 | No      | const            | No         | -                                                              | Print weather information                                         |
+| - [location](#modules_items_anyOf_i1_oneOf_i28_location )         | No      | string           | No         | -                                                              | The location to display                                           |
+| - [timeout](#modules_items_anyOf_i1_oneOf_i28_timeout )           | No      | integer          | No         | -                                                              | Time in milliseconds to wait for the weather server to respond    |
+| - [outputFormat](#modules_items_anyOf_i1_oneOf_i28_outputFormat ) | No      | string           | No         | -                                                              | The output weather format to be used (must be URI encoded)        |
+| - [key](#modules_items_anyOf_i1_oneOf_i28_key )                   | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i28_keyColor )         | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i28_keyWidth )         | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
+| - [format](#modules_items_anyOf_i1_oneOf_i28_format )             | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                       |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i25_type"></a>6.1.2.26.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i28_type"></a>6.1.2.29.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > type`
 
 |              |         |
 | ------------ | ------- |
@@ -4253,7 +4771,7 @@ Specific value: `"title"`
 
 Specific value: `"weather"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i25_location"></a>6.1.2.26.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > location`
+##### <a name="modules_items_anyOf_i1_oneOf_i28_location"></a>6.1.2.29.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > location`
 
 |              |          |
 | ------------ | -------- |
@@ -4262,7 +4780,7 @@ Specific value: `"weather"`
 
 **Description:** The location to display
 
-##### <a name="modules_items_anyOf_i1_oneOf_i25_timeout"></a>6.1.2.26.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > timeout`
+##### <a name="modules_items_anyOf_i1_oneOf_i28_timeout"></a>6.1.2.29.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > timeout`
 
 |              |                  |
 | ------------ | ---------------- |
@@ -4276,7 +4794,7 @@ Specific value: `"weather"`
 | ------------ | ------ |
 | **Minimum**  | &ge; 0 |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i25_outputFormat"></a>6.1.2.26.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > outputFormat`
+##### <a name="modules_items_anyOf_i1_oneOf_i28_outputFormat"></a>6.1.2.29.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > outputFormat`
 
 |              |                  |
 | ------------ | ---------------- |
@@ -4286,7 +4804,7 @@ Specific value: `"weather"`
 
 **Description:** The output weather format to be used (must be URI encoded)
 
-##### <a name="modules_items_anyOf_i1_oneOf_i25_key"></a>6.1.2.26.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i28_key"></a>6.1.2.29.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -4296,7 +4814,7 @@ Specific value: `"weather"`
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i25_keyColor"></a>6.1.2.26.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i28_keyColor"></a>6.1.2.29.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -4306,7 +4824,7 @@ Specific value: `"weather"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i25_keyWidth"></a>6.1.2.26.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i28_keyWidth"></a>6.1.2.29.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -4317,7 +4835,7 @@ Specific value: `"weather"`
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i25_format"></a>6.1.2.26.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i28_format"></a>6.1.2.29.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -4327,7 +4845,7 @@ Specific value: `"weather"`
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i26"></a>6.1.2.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM`
+##### <a name="modules_items_anyOf_i1_oneOf_i29"></a>6.1.2.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM`
 
 **Title:** WM
 
@@ -4339,14 +4857,14 @@ Specific value: `"weather"`
 
 | Property                                                          | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                      |
 | ----------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i26_type )                 | No      | const            | No         | -                                                              | Print window manager name and version                                  |
-| - [detectPlugin](#modules_items_anyOf_i1_oneOf_i26_detectPlugin ) | No      | boolean          | No         | -                                                              | Set if window manager plugin should be detected on supported platforms |
-| - [key](#modules_items_anyOf_i1_oneOf_i26_key )                   | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                      |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i26_keyColor )         | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`      |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i26_keyWidth )         | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`             |
-| - [format](#modules_items_anyOf_i1_oneOf_i26_format )             | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                            |
+| - [type](#modules_items_anyOf_i1_oneOf_i29_type )                 | No      | const            | No         | -                                                              | Print window manager name and version                                  |
+| - [detectPlugin](#modules_items_anyOf_i1_oneOf_i29_detectPlugin ) | No      | boolean          | No         | -                                                              | Set if window manager plugin should be detected on supported platforms |
+| - [key](#modules_items_anyOf_i1_oneOf_i29_key )                   | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                      |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i29_keyColor )         | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`      |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i29_keyWidth )         | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`             |
+| - [format](#modules_items_anyOf_i1_oneOf_i29_format )             | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )     | Output format of the module                                            |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i26_type"></a>6.1.2.27.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i29_type"></a>6.1.2.30.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > type`
 
 |              |         |
 | ------------ | ------- |
@@ -4357,7 +4875,7 @@ Specific value: `"weather"`
 
 Specific value: `"wm"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i26_detectPlugin"></a>6.1.2.27.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > detectPlugin`
+##### <a name="modules_items_anyOf_i1_oneOf_i29_detectPlugin"></a>6.1.2.30.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > detectPlugin`
 
 |              |           |
 | ------------ | --------- |
@@ -4367,7 +4885,7 @@ Specific value: `"wm"`
 
 **Description:** Set if window manager plugin should be detected on supported platforms
 
-##### <a name="modules_items_anyOf_i1_oneOf_i26_key"></a>6.1.2.27.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i29_key"></a>6.1.2.30.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -4377,7 +4895,7 @@ Specific value: `"wm"`
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i26_keyColor"></a>6.1.2.27.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i29_keyColor"></a>6.1.2.30.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -4387,7 +4905,7 @@ Specific value: `"wm"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i26_keyWidth"></a>6.1.2.27.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i29_keyWidth"></a>6.1.2.30.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -4398,7 +4916,7 @@ Specific value: `"wm"`
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i26_format"></a>6.1.2.27.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i29_format"></a>6.1.2.30.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -4408,7 +4926,7 @@ Specific value: `"wm"`
 
 **Description:** Output format of the module
 
-##### <a name="modules_items_anyOf_i1_type"></a>6.1.2.28. Property `JSON config > modules > modules items > anyOf > item 1 > type`
+##### <a name="modules_items_anyOf_i1_type"></a>6.1.2.31. Property `JSON config > modules > modules items > anyOf > item 1 > type`
 
 |              |          |
 | ------------ | -------- |
@@ -4416,4 +4934,4 @@ Specific value: `"wm"`
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-01-17 at 15:07:16 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-02-23 at 16:04:45 +0800
