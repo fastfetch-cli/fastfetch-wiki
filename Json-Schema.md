@@ -66,7 +66,13 @@
   - [4.11. Property `JSON config > display > size`](#display_size)
     - [4.11.1. Property `JSON config > display > size > maxPrefix`](#display_size_maxPrefix)
     - [4.11.2. Property `JSON config > display > size > ndigits`](#display_size_ndigits)
-  - [4.12. Property `JSON config > display > temperatureUnit`](#display_temperatureUnit)
+  - [4.12. Property `JSON config > display > temp`](#display_temp)
+    - [4.12.1. Property `JSON config > display > temp > unit`](#display_temp_unit)
+    - [4.12.2. Property `JSON config > display > temp > ndigits`](#display_temp_ndigits)
+    - [4.12.3. Property `JSON config > display > temp > color`](#display_temp_color)
+      - [4.12.3.1. Property `JSON config > display > temp > color > green`](#display_temp_color_green)
+      - [4.12.3.2. Property `JSON config > display > temp > color > yellow`](#display_temp_color_yellow)
+      - [4.12.3.3. Property `JSON config > display > temp > color > red`](#display_temp_color_red)
   - [4.13. Property `JSON config > display > bar`](#display_bar)
     - [4.13.1. Property `JSON config > display > bar > charElapsed`](#display_bar_charElapsed)
     - [4.13.2. Property `JSON config > display > bar > charTotal`](#display_bar_charTotal)
@@ -112,46 +118,50 @@
     - [6.1.2. Property `JSON config > modules > modules items > anyOf > item 1`](#modules_items_anyOf_i1)
       - [6.1.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Break`](#modules_items_anyOf_i1_oneOf_i0)
         - [6.1.2.1.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Break > type`](#modules_items_anyOf_i1_oneOf_i0_type)
-      - [6.1.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1`](#modules_items_anyOf_i1_oneOf_i1)
-        - [6.1.2.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type`](#modules_items_anyOf_i1_oneOf_i1_type)
-          - [6.1.2.2.1.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 0`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i0)
-          - [6.1.2.2.1.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 1`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i1)
-          - [6.1.2.2.1.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 2`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i2)
-          - [6.1.2.2.1.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 3`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i3)
-          - [6.1.2.2.1.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 4`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i4)
-          - [6.1.2.2.1.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 5`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i5)
-          - [6.1.2.2.1.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 6`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i6)
-          - [6.1.2.2.1.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 7`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i7)
-          - [6.1.2.2.1.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 8`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i8)
-          - [6.1.2.2.1.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 9`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i9)
-          - [6.1.2.2.1.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 10`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i10)
-          - [6.1.2.2.1.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 11`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i11)
-          - [6.1.2.2.1.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 12`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i12)
-          - [6.1.2.2.1.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 13`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i13)
-          - [6.1.2.2.1.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 14`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i14)
-          - [6.1.2.2.1.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 15`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i15)
-          - [6.1.2.2.1.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 16`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i16)
-          - [6.1.2.2.1.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 17`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i17)
-          - [6.1.2.2.1.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 18`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i18)
-          - [6.1.2.2.1.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 19`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i19)
-          - [6.1.2.2.1.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 20`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i20)
-          - [6.1.2.2.1.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 21`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i21)
-          - [6.1.2.2.1.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 22`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i22)
-          - [6.1.2.2.1.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 23`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i23)
-          - [6.1.2.2.1.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 24`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i24)
-          - [6.1.2.2.1.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 25`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i25)
-          - [6.1.2.2.1.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 26`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i26)
-          - [6.1.2.2.1.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 27`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i27)
-          - [6.1.2.2.1.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 28`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i28)
-          - [6.1.2.2.1.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 29`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i29)
-        - [6.1.2.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > key`](#modules_items_anyOf_i1_oneOf_i1_key)
-        - [6.1.2.2.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > keyColor`](#modules_items_anyOf_i1_oneOf_i1_keyColor)
-        - [6.1.2.2.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > keyWidth`](#modules_items_anyOf_i1_oneOf_i1_keyWidth)
-        - [6.1.2.2.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > format`](#modules_items_anyOf_i1_oneOf_i1_format)
+      - [6.1.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module`](#modules_items_anyOf_i1_oneOf_i1)
+        - [6.1.2.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type`](#modules_items_anyOf_i1_oneOf_i1_type)
+          - [6.1.2.2.1.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 0`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i0)
+          - [6.1.2.2.1.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 1`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i1)
+          - [6.1.2.2.1.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 2`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i2)
+          - [6.1.2.2.1.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 3`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i3)
+          - [6.1.2.2.1.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 4`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i4)
+          - [6.1.2.2.1.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 5`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i5)
+          - [6.1.2.2.1.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 6`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i6)
+          - [6.1.2.2.1.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 7`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i7)
+          - [6.1.2.2.1.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 8`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i8)
+          - [6.1.2.2.1.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 9`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i9)
+          - [6.1.2.2.1.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 10`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i10)
+          - [6.1.2.2.1.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 11`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i11)
+          - [6.1.2.2.1.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 12`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i12)
+          - [6.1.2.2.1.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 13`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i13)
+          - [6.1.2.2.1.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 14`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i14)
+          - [6.1.2.2.1.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 15`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i15)
+          - [6.1.2.2.1.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 16`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i16)
+          - [6.1.2.2.1.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 17`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i17)
+          - [6.1.2.2.1.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 18`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i18)
+          - [6.1.2.2.1.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 19`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i19)
+          - [6.1.2.2.1.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 20`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i20)
+          - [6.1.2.2.1.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 21`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i21)
+          - [6.1.2.2.1.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 22`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i22)
+          - [6.1.2.2.1.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 23`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i23)
+          - [6.1.2.2.1.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 24`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i24)
+          - [6.1.2.2.1.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 25`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i25)
+          - [6.1.2.2.1.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 26`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i26)
+          - [6.1.2.2.1.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 27`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i27)
+          - [6.1.2.2.1.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 28`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i28)
+          - [6.1.2.2.1.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 29`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i29)
+        - [6.1.2.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > key`](#modules_items_anyOf_i1_oneOf_i1_key)
+        - [6.1.2.2.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > keyColor`](#modules_items_anyOf_i1_oneOf_i1_keyColor)
+        - [6.1.2.2.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > keyWidth`](#modules_items_anyOf_i1_oneOf_i1_keyWidth)
+        - [6.1.2.2.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > format`](#modules_items_anyOf_i1_oneOf_i1_format)
       - [6.1.2.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery`](#modules_items_anyOf_i1_oneOf_i2)
         - [6.1.2.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > type`](#modules_items_anyOf_i1_oneOf_i2_type)
         - [6.1.2.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > useSetupApi`](#modules_items_anyOf_i1_oneOf_i2_useSetupApi)
         - [6.1.2.3.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > temp`](#modules_items_anyOf_i1_oneOf_i2_temp)
+          - [6.1.2.3.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > temp > oneOf > item 0`](#modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i0)
+          - [6.1.2.3.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > temp > oneOf > item 1`](#modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i1)
+            - [6.1.2.3.3.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > temp > oneOf > item 1 > green`](#modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i1_green)
+            - [6.1.2.3.3.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > temp > oneOf > item 1 > yellow`](#modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i1_yellow)
         - [6.1.2.3.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > percent`](#modules_items_anyOf_i1_oneOf_i2_percent)
           - [6.1.2.3.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > percent > green`](#modules_items_anyOf_i1_oneOf_i2_percent_green)
           - [6.1.2.3.4.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > percent > yellow`](#modules_items_anyOf_i1_oneOf_i2_percent_yellow)
@@ -958,23 +968,23 @@ Specific value: `true`
 
 **Description:** Configure how things to be displayed
 
-| Property                                       | Pattern | Type             | Deprecated | Definition | Title/Description                                                       |
-| ---------------------------------------------- | ------- | ---------------- | ---------- | ---------- | ----------------------------------------------------------------------- |
-| - [stat](#display_stat )                       | No      | boolean          | No         | -          | Show time usage (in ms) for individual modules                          |
-| - [pipe](#display_pipe )                       | No      | boolean          | No         | -          | Whether to enable pipe mode (disable logo and all escape sequences)     |
-| - [showErrors](#display_showErrors )           | No      | boolean          | No         | -          | Print occurring errors to the console. False to ignore errored modules  |
-| - [disableLinewrap](#display_disableLinewrap ) | No      | boolean          | No         | -          | Whether to disable line wrap during the run                             |
-| - [hideCursor](#display_hideCursor )           | No      | boolean          | No         | -          | Whether to hide the cursor during the run                               |
-| - [separator](#display_separator )             | No      | string           | No         | -          | Set the separator between key and value                                 |
-| - [color](#display_color )                     | No      | Combination      | No         | -          | Set the color of the keys and title                                     |
-| - [brightColor](#display_brightColor )         | No      | boolean          | No         | -          | Set if the keys, title and ASCII logo should be printed in bright color |
-| - [keyWidth](#display_keyWidth )               | No      | integer          | No         | -          | Align the width of keys to number of characters, 0 to disable           |
-| - [binaryPrefix](#display_binaryPrefix )       | No      | Combination      | No         | -          | Set the binary prefix to used when printing bytes                       |
-| - [size](#display_size )                       | No      | object           | No         | -          | Set how a size value should be displayed                                |
-| - [temperatureUnit](#display_temperatureUnit ) | No      | enum (of string) | No         | -          | Set the unit of the temperature                                         |
-| - [bar](#display_bar )                         | No      | object           | No         | -          | Set the bar configuration                                               |
-| - [percent](#display_percent )                 | No      | object           | No         | -          | Set how a percentage value should be displayed                          |
-| - [noBuffer](#display_noBuffer )               | No      | boolean          | No         | -          | Whether to disable the stdout application buffer                        |
+| Property                                       | Pattern | Type        | Deprecated | Definition | Title/Description                                                       |
+| ---------------------------------------------- | ------- | ----------- | ---------- | ---------- | ----------------------------------------------------------------------- |
+| - [stat](#display_stat )                       | No      | boolean     | No         | -          | Show time usage (in ms) for individual modules                          |
+| - [pipe](#display_pipe )                       | No      | boolean     | No         | -          | Whether to enable pipe mode (disable logo and all escape sequences)     |
+| - [showErrors](#display_showErrors )           | No      | boolean     | No         | -          | Print occurring errors to the console. False to ignore errored modules  |
+| - [disableLinewrap](#display_disableLinewrap ) | No      | boolean     | No         | -          | Whether to disable line wrap during the run                             |
+| - [hideCursor](#display_hideCursor )           | No      | boolean     | No         | -          | Whether to hide the cursor during the run                               |
+| - [separator](#display_separator )             | No      | string      | No         | -          | Set the separator between key and value                                 |
+| - [color](#display_color )                     | No      | Combination | No         | -          | Set the color of the keys and title                                     |
+| - [brightColor](#display_brightColor )         | No      | boolean     | No         | -          | Set if the keys, title and ASCII logo should be printed in bright color |
+| - [keyWidth](#display_keyWidth )               | No      | integer     | No         | -          | Align the width of keys to number of characters, 0 to disable           |
+| - [binaryPrefix](#display_binaryPrefix )       | No      | Combination | No         | -          | Set the binary prefix to used when printing bytes                       |
+| - [size](#display_size )                       | No      | object      | No         | -          | Set how a size value should be displayed                                |
+| - [temp](#display_temp )                       | No      | object      | No         | -          | Set how temperature values should be displayed                          |
+| - [bar](#display_bar )                         | No      | object      | No         | -          | Set the bar configuration                                               |
+| - [percent](#display_percent )                 | No      | object      | No         | -          | Set how a percentage value should be displayed                          |
+| - [noBuffer](#display_noBuffer )               | No      | boolean     | No         | -          | Whether to disable the stdout application buffer                        |
 
 ### <a name="display_stat"></a>4.1. Property `JSON config > display > stat`
 
@@ -1168,11 +1178,11 @@ Specific value: `"jedec"`
 
 ### <a name="display_size"></a>4.11. Property `JSON config > display > size`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 **Description:** Set how a size value should be displayed
 
@@ -1217,7 +1227,23 @@ Must be one of:
 | **Minimum**  | &ge; 0 |
 | **Maximum**  | &le; 9 |
 
-### <a name="display_temperatureUnit"></a>4.12. Property `JSON config > display > temperatureUnit`
+### <a name="display_temp"></a>4.12. Property `JSON config > display > temp`
+
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+
+**Description:** Set how temperature values should be displayed
+
+| Property                            | Pattern | Type             | Deprecated | Definition | Title/Description                                                                           |
+| ----------------------------------- | ------- | ---------------- | ---------- | ---------- | ------------------------------------------------------------------------------------------- |
+| - [unit](#display_temp_unit )       | No      | enum (of string) | No         | -          | Set the unit of the temperature                                                             |
+| - [ndigits](#display_temp_ndigits ) | No      | integer          | No         | -          | Set the number of digits to keep after the decimal point when formatting temperature values |
+| - [color](#display_temp_color )     | No      | object           | No         | -          | Set color used in different states of temperature values                                    |
+
+#### <a name="display_temp_unit"></a>4.12.1. Property `JSON config > display > temp > unit`
 
 |              |                    |
 | ------------ | ------------------ |
@@ -1235,13 +1261,74 @@ Must be one of:
 * "KELVIN"
 * "K"
 
+#### <a name="display_temp_ndigits"></a>4.12.2. Property `JSON config > display > temp > ndigits`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `integer` |
+| **Required** | No        |
+| **Default**  | `1`       |
+
+**Description:** Set the number of digits to keep after the decimal point when formatting temperature values
+
+| Restrictions |        |
+| ------------ | ------ |
+| **Minimum**  | &ge; 0 |
+| **Maximum**  | &le; 9 |
+
+#### <a name="display_temp_color"></a>4.12.3. Property `JSON config > display > temp > color`
+
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+
+**Description:** Set color used in different states of temperature values
+
+| Property                                | Pattern | Type             | Deprecated | Definition                               | Title/Description          |
+| --------------------------------------- | ------- | ---------------- | ---------- | ---------------------------------------- | -------------------------- |
+| - [green](#display_temp_color_green )   | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Color used in green state  |
+| - [yellow](#display_temp_color_yellow ) | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Color used in yellow state |
+| - [red](#display_temp_color_red )       | No      | enum (of string) | No         | Same as [defs_keyColor](#defs_keyColor ) | Color used in red state    |
+
+##### <a name="display_temp_color_green"></a>4.12.3.1. Property `JSON config > display > temp > color > green`
+
+|                        |                                 |
+| ---------------------- | ------------------------------- |
+| **Type**               | `enum (of string)`              |
+| **Required**           | No                              |
+| **Same definition as** | [defs_keyColor](#defs_keyColor) |
+
+**Description:** Color used in green state
+
+##### <a name="display_temp_color_yellow"></a>4.12.3.2. Property `JSON config > display > temp > color > yellow`
+
+|                        |                                 |
+| ---------------------- | ------------------------------- |
+| **Type**               | `enum (of string)`              |
+| **Required**           | No                              |
+| **Same definition as** | [defs_keyColor](#defs_keyColor) |
+
+**Description:** Color used in yellow state
+
+##### <a name="display_temp_color_red"></a>4.12.3.3. Property `JSON config > display > temp > color > red`
+
+|                        |                                 |
+| ---------------------- | ------------------------------- |
+| **Type**               | `enum (of string)`              |
+| **Required**           | No                              |
+| **Same definition as** | [defs_keyColor](#defs_keyColor) |
+
+**Description:** Color used in red state
+
 ### <a name="display_bar"></a>4.13. Property `JSON config > display > bar`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 **Description:** Set the bar configuration
 
@@ -1298,11 +1385,11 @@ Must be one of:
 
 ### <a name="display_percent"></a>4.14. Property `JSON config > display > percent`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 **Description:** Set how a percentage value should be displayed
 
@@ -1344,11 +1431,11 @@ Must be one of:
 
 #### <a name="display_percent_color"></a>4.14.3. Property `JSON config > display > percent > color`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 **Description:** Set color used in different states of percentage bars and numbers
 
@@ -1776,11 +1863,11 @@ Must be one of:
 
 #### <a name="modules_items_anyOf_i1"></a>6.1.2. Property `JSON config > modules > modules items > anyOf > item 1`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `combining`                                                               |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `combining`                                             |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 **Description:** Run module with custom configurations
 
@@ -1791,7 +1878,7 @@ Must be one of:
 | One of(Option)                                     |
 | -------------------------------------------------- |
 | [Break](#modules_items_anyOf_i1_oneOf_i0)          |
-| [item 1](#modules_items_anyOf_i1_oneOf_i1)         |
+| [module](#modules_items_anyOf_i1_oneOf_i1)         |
 | [Battery](#modules_items_anyOf_i1_oneOf_i2)        |
 | [Bluetooth](#modules_items_anyOf_i1_oneOf_i3)      |
 | [Brightness](#modules_items_anyOf_i1_oneOf_i4)     |
@@ -1846,7 +1933,9 @@ Must be one of:
 
 Specific value: `"break"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1"></a>6.1.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1`
+##### <a name="modules_items_anyOf_i1_oneOf_i1"></a>6.1.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module`
+
+**Title:** module
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -1864,7 +1953,7 @@ Specific value: `"break"`
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | No      | integer          | No         | In #/$defs/keyWidth | Width of the module key. Use 0 to use \`display.keyWidth\`        |
 | - [format](#modules_items_anyOf_i1_oneOf_i1_format )     | No      | string           | No         | In #/$defs/format   | Output format of the module                                       |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type"></a>6.1.2.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type"></a>6.1.2.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type`
 
 |                           |                                                                           |
 | ------------------------- | ------------------------------------------------------------------------- |
@@ -1905,7 +1994,7 @@ Specific value: `"break"`
 | [item 28](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i28) |
 | [item 29](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i29) |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i0"></a>6.1.2.2.1.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 0`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i0"></a>6.1.2.2.1.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 0`
 
 |              |         |
 | ------------ | ------- |
@@ -1916,7 +2005,7 @@ Specific value: `"break"`
 
 Specific value: `"bios"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i1"></a>6.1.2.2.1.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 1`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i1"></a>6.1.2.2.1.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 1`
 
 |              |         |
 | ------------ | ------- |
@@ -1927,7 +2016,7 @@ Specific value: `"bios"`
 
 Specific value: `"board"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i2"></a>6.1.2.2.1.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 2`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i2"></a>6.1.2.2.1.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 2`
 
 |              |         |
 | ------------ | ------- |
@@ -1938,7 +2027,7 @@ Specific value: `"board"`
 
 Specific value: `"cursor"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i3"></a>6.1.2.2.1.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 3`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i3"></a>6.1.2.2.1.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 3`
 
 |              |         |
 | ------------ | ------- |
@@ -1949,7 +2038,7 @@ Specific value: `"cursor"`
 
 Specific value: `"datetime"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i4"></a>6.1.2.2.1.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 4`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i4"></a>6.1.2.2.1.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 4`
 
 |              |         |
 | ------------ | ------- |
@@ -1960,7 +2049,7 @@ Specific value: `"datetime"`
 
 Specific value: `"font"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i5"></a>6.1.2.2.1.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 5`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i5"></a>6.1.2.2.1.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 5`
 
 |              |         |
 | ------------ | ------- |
@@ -1971,7 +2060,7 @@ Specific value: `"font"`
 
 Specific value: `"host"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i6"></a>6.1.2.2.1.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 6`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i6"></a>6.1.2.2.1.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 6`
 
 |              |         |
 | ------------ | ------- |
@@ -1982,7 +2071,7 @@ Specific value: `"host"`
 
 Specific value: `"icons"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i7"></a>6.1.2.2.1.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 7`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i7"></a>6.1.2.2.1.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 7`
 
 |              |         |
 | ------------ | ------- |
@@ -1993,7 +2082,7 @@ Specific value: `"icons"`
 
 Specific value: `"kernel"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i8"></a>6.1.2.2.1.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 8`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i8"></a>6.1.2.2.1.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 8`
 
 |              |         |
 | ------------ | ------- |
@@ -2004,7 +2093,7 @@ Specific value: `"kernel"`
 
 Specific value: `"lm"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i9"></a>6.1.2.2.1.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 9`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i9"></a>6.1.2.2.1.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 9`
 
 |              |         |
 | ------------ | ------- |
@@ -2015,7 +2104,7 @@ Specific value: `"lm"`
 
 Specific value: `"locale"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i10"></a>6.1.2.2.1.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 10`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i10"></a>6.1.2.2.1.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 10`
 
 |              |         |
 | ------------ | ------- |
@@ -2026,7 +2115,7 @@ Specific value: `"locale"`
 
 Specific value: `"media"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i11"></a>6.1.2.2.1.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 11`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i11"></a>6.1.2.2.1.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 11`
 
 |              |         |
 | ------------ | ------- |
@@ -2037,7 +2126,7 @@ Specific value: `"media"`
 
 Specific value: `"monitor"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i12"></a>6.1.2.2.1.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 12`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i12"></a>6.1.2.2.1.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 12`
 
 |              |         |
 | ------------ | ------- |
@@ -2048,7 +2137,7 @@ Specific value: `"monitor"`
 
 Specific value: `"opencl"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i13"></a>6.1.2.2.1.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 13`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i13"></a>6.1.2.2.1.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 13`
 
 |              |         |
 | ------------ | ------- |
@@ -2059,7 +2148,7 @@ Specific value: `"opencl"`
 
 Specific value: `"os"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i14"></a>6.1.2.2.1.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 14`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i14"></a>6.1.2.2.1.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 14`
 
 |              |         |
 | ------------ | ------- |
@@ -2070,7 +2159,7 @@ Specific value: `"os"`
 
 Specific value: `"player"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i15"></a>6.1.2.2.1.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 15`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i15"></a>6.1.2.2.1.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 15`
 
 |              |         |
 | ------------ | ------- |
@@ -2081,7 +2170,7 @@ Specific value: `"player"`
 
 Specific value: `"poweradapter"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i16"></a>6.1.2.2.1.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 16`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i16"></a>6.1.2.2.1.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 16`
 
 |              |         |
 | ------------ | ------- |
@@ -2092,7 +2181,7 @@ Specific value: `"poweradapter"`
 
 Specific value: `"processes"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i17"></a>6.1.2.2.1.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 17`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i17"></a>6.1.2.2.1.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 17`
 
 |              |         |
 | ------------ | ------- |
@@ -2103,7 +2192,7 @@ Specific value: `"processes"`
 
 Specific value: `"shell"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i18"></a>6.1.2.2.1.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 18`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i18"></a>6.1.2.2.1.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 18`
 
 |              |         |
 | ------------ | ------- |
@@ -2114,7 +2203,7 @@ Specific value: `"shell"`
 
 Specific value: `"terminal"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i19"></a>6.1.2.2.1.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 19`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i19"></a>6.1.2.2.1.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 19`
 
 |              |         |
 | ------------ | ------- |
@@ -2125,7 +2214,7 @@ Specific value: `"terminal"`
 
 Specific value: `"terminalfont"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i20"></a>6.1.2.2.1.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 20`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i20"></a>6.1.2.2.1.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 20`
 
 |              |         |
 | ------------ | ------- |
@@ -2136,7 +2225,7 @@ Specific value: `"terminalfont"`
 
 Specific value: `"terminalsize"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i21"></a>6.1.2.2.1.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 21`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i21"></a>6.1.2.2.1.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 21`
 
 |              |         |
 | ------------ | ------- |
@@ -2147,7 +2236,7 @@ Specific value: `"terminalsize"`
 
 Specific value: `"terminaltheme"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i22"></a>6.1.2.2.1.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 22`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i22"></a>6.1.2.2.1.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 22`
 
 |              |         |
 | ------------ | ------- |
@@ -2158,7 +2247,7 @@ Specific value: `"terminaltheme"`
 
 Specific value: `"theme"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i23"></a>6.1.2.2.1.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 23`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i23"></a>6.1.2.2.1.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 23`
 
 |              |         |
 | ------------ | ------- |
@@ -2169,7 +2258,7 @@ Specific value: `"theme"`
 
 Specific value: `"uptime"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i24"></a>6.1.2.2.1.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 24`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i24"></a>6.1.2.2.1.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 24`
 
 |              |         |
 | ------------ | ------- |
@@ -2180,7 +2269,7 @@ Specific value: `"uptime"`
 
 Specific value: `"users"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i25"></a>6.1.2.2.1.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 25`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i25"></a>6.1.2.2.1.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 25`
 
 |              |         |
 | ------------ | ------- |
@@ -2191,7 +2280,7 @@ Specific value: `"users"`
 
 Specific value: `"version"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i26"></a>6.1.2.2.1.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 26`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i26"></a>6.1.2.2.1.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 26`
 
 |              |         |
 | ------------ | ------- |
@@ -2202,7 +2291,7 @@ Specific value: `"version"`
 
 Specific value: `"vulkan"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i27"></a>6.1.2.2.1.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 27`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i27"></a>6.1.2.2.1.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 27`
 
 |              |         |
 | ------------ | ------- |
@@ -2213,7 +2302,7 @@ Specific value: `"vulkan"`
 
 Specific value: `"wallpaper"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i28"></a>6.1.2.2.1.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 28`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i28"></a>6.1.2.2.1.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 28`
 
 |              |         |
 | ------------ | ------- |
@@ -2224,7 +2313,7 @@ Specific value: `"wallpaper"`
 
 Specific value: `"wifi"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i29"></a>6.1.2.2.1.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > type > anyOf > item 29`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i29"></a>6.1.2.2.1.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 29`
 
 |              |         |
 | ------------ | ------- |
@@ -2235,7 +2324,7 @@ Specific value: `"wifi"`
 
 Specific value: `"wmtheme"`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_key"></a>6.1.2.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > key`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_key"></a>6.1.2.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > key`
 
 |                |             |
 | -------------- | ----------- |
@@ -2245,7 +2334,7 @@ Specific value: `"wmtheme"`
 
 **Description:** Key of the module
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_keyColor"></a>6.1.2.2.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > keyColor`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_keyColor"></a>6.1.2.2.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > keyColor`
 
 |                |                    |
 | -------------- | ------------------ |
@@ -2255,7 +2344,7 @@ Specific value: `"wmtheme"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_keyWidth"></a>6.1.2.2.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > keyWidth`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_keyWidth"></a>6.1.2.2.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > keyWidth`
 
 |                |                  |
 | -------------- | ---------------- |
@@ -2270,7 +2359,7 @@ Specific value: `"wmtheme"`
 | ------------ | ------ |
 | **Minimum**  | &ge; 0 |
 
-##### <a name="modules_items_anyOf_i1_oneOf_i1_format"></a>6.1.2.2.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > item 1 > format`
+##### <a name="modules_items_anyOf_i1_oneOf_i1_format"></a>6.1.2.2.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > format`
 
 |                |                |
 | -------------- | -------------- |
@@ -2294,7 +2383,7 @@ Specific value: `"wmtheme"`
 | -------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | - [type](#modules_items_anyOf_i1_oneOf_i2_type )               | No      | const            | No         | -                                                              | Print battery capacity, status, etc                                                                                            |
 | - [useSetupApi](#modules_items_anyOf_i1_oneOf_i2_useSetupApi ) | No      | boolean          | No         | -                                                              | Set if \`SetupAPI\` should be used on Windows to detect battery info, which supports multi batteries, but slower. Windows only |
-| - [temp](#modules_items_anyOf_i1_oneOf_i2_temp )               | No      | boolean          | No         | -                                                              | Detect and display Battery temperature if supported                                                                            |
+| - [temp](#modules_items_anyOf_i1_oneOf_i2_temp )               | No      | object           | No         | In #/$defs/temperature                                         | Detect and display temperature if supported                                                                                    |
 | - [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | No      | object           | No         | In #/$defs/percent                                             | Threshold of percentage colors                                                                                                 |
 | - [key](#modules_items_anyOf_i1_oneOf_i2_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                                                                              |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i2_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`                                                              |
@@ -2324,22 +2413,78 @@ Specific value: `"battery"`
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i2_temp"></a>6.1.2.3.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > temp`
 
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `combining`                                                               |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Defined in**            | #/$defs/temperature                                                       |
+
+**Description:** Detect and display temperature if supported
+
+| One of(Option)                                           |
+| -------------------------------------------------------- |
+| [item 0](#modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i0) |
+| [item 1](#modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i1) |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i0"></a>6.1.2.3.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > temp > oneOf > item 0`
+
 |              |           |
 | ------------ | --------- |
 | **Type**     | `boolean` |
 | **Required** | No        |
 | **Default**  | `false`   |
 
-**Description:** Detect and display Battery temperature if supported
+##### <a name="modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i1"></a>6.1.2.3.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > temp > oneOf > item 1`
+
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+
+| Property                                                           | Pattern | Type    | Deprecated | Definition | Title/Description                                                                                                                       |
+| ------------------------------------------------------------------ | ------- | ------- | ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| - [green](#modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i1_green )   | No      | integer | No         | -          | Value (in celsius) less then green will be shown in green                                                                               |
+| - [yellow](#modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i1_yellow ) | No      | integer | No         | -          | Value (in celsius) greater than green and less then yellow will be shown in yellow.<br />Value greater than yellow will be shown in red |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i1_green"></a>6.1.2.3.3.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > temp > oneOf > item 1 > green`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `integer` |
+| **Required** | No        |
+
+**Description:** Value (in celsius) less then green will be shown in green
+
+| Restrictions |          |
+| ------------ | -------- |
+| **Minimum**  | &ge; 0   |
+| **Maximum**  | &le; 100 |
+
+##### <a name="modules_items_anyOf_i1_oneOf_i2_temp_oneOf_i1_yellow"></a>6.1.2.3.3.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > temp > oneOf > item 1 > yellow`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `integer` |
+| **Required** | No        |
+
+**Description:** Value (in celsius) greater than green and less then yellow will be shown in yellow.
+Value greater than yellow will be shown in red
+
+| Restrictions |          |
+| ------------ | -------- |
+| **Minimum**  | &ge; 0   |
+| **Maximum**  | &le; 100 |
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i2_percent"></a>6.1.2.3.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > percent`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
-| **Defined in**            | #/$defs/percent                                                           |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+| **Defined in**            | #/$defs/percent                                         |
 
 **Description:** Threshold of percentage colors
 
@@ -2461,12 +2606,12 @@ Specific value: `"bluetooth"`
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i3_percent"></a>6.1.2.4.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > percent`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
-| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)     |
 
 **Description:** Threshold of percentage colors
 
@@ -2515,11 +2660,11 @@ Specific value: `"bluetooth"`
 
 **Title:** Brightness
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 | Property                                                     | Pattern | Type    | Deprecated | Definition                                                   | Title/Description                                                                                                                                    |
 | ------------------------------------------------------------ | ------- | ------- | ---------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2540,12 +2685,12 @@ Specific value: `"brightness"`
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i4_percent"></a>6.1.2.5.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness > percent`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
-| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)     |
 
 **Description:** Threshold of percentage colors
 
@@ -2569,11 +2714,11 @@ See <https://www.ddcutil.com/performance_options/#option-sleep-multiplier> for d
 
 **Title:** Chassis
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 | Property                                                 | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                 |
 | -------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
@@ -2648,7 +2793,7 @@ Specific value: `"chassis"`
 | Property                                                       | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                                    |
 | -------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | - [type](#modules_items_anyOf_i1_oneOf_i6_type )               | No      | const            | No         | -                                                              | Print CPU name, frequency, etc                                                       |
-| - [temp](#modules_items_anyOf_i1_oneOf_i6_temp )               | No      | boolean          | No         | -                                                              | Detect and display CPU temperature if supported                                      |
+| - [temp](#modules_items_anyOf_i1_oneOf_i6_temp )               | No      | object           | No         | Same as [temp](#modules_items_anyOf_i1_oneOf_i2_temp )         | Detect and display temperature if supported                                          |
 | - [freqNdigits](#modules_items_anyOf_i1_oneOf_i6_freqNdigits ) | No      | integer          | No         | -                                                              | Set the number of digits to keep after the decimal point when printing CPU frequency |
 | - [key](#modules_items_anyOf_i1_oneOf_i6_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                                    |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i6_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\`                    |
@@ -2668,13 +2813,14 @@ Specific value: `"cpu"`
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i6_temp"></a>6.1.2.7.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > temp`
 
-|              |           |
-| ------------ | --------- |
-| **Type**     | `boolean` |
-| **Required** | No        |
-| **Default**  | `false`   |
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `combining`                                                               |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Same definition as**    | [temp](#modules_items_anyOf_i1_oneOf_i2_temp)                             |
 
-**Description:** Detect and display CPU temperature if supported
+**Description:** Detect and display temperature if supported
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i6_freqNdigits"></a>6.1.2.7.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > freqNdigits`
 
@@ -2736,11 +2882,11 @@ Specific value: `"cpu"`
 
 **Title:** CPU Usage
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 | Property                                                 | Pattern | Type    | Deprecated | Definition                                                   | Title/Description                                                    |
 | -------------------------------------------------------- | ------- | ------- | ---------- | ------------------------------------------------------------ | -------------------------------------------------------------------- |
@@ -2761,12 +2907,12 @@ Specific value: `"cpuusage"`
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i7_percent"></a>6.1.2.8.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > percent`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
-| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)     |
 
 **Description:** Threshold of percentage colors
 
@@ -2784,11 +2930,11 @@ Specific value: `"cpuusage"`
 
 **Title:** Colors
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 | Property                                                       | Pattern | Type             | Deprecated | Definition | Title/Description                                         |
 | -------------------------------------------------------------- | ------- | ---------------- | ---------- | ---------- | --------------------------------------------------------- |
@@ -2842,11 +2988,11 @@ Must be one of:
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i8_block"></a>6.1.2.9.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 **Description:** Set behavior of block printing
 
@@ -3285,12 +3431,12 @@ Default: auto detection using mount-points
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i12_percent"></a>6.1.2.13.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > percent`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
-| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)     |
 
 **Description:** Threshold of percentage colors
 
@@ -3430,11 +3576,11 @@ Specific value: `"diskio"`
 
 **Title:** DE
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 | Property                                                                          | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                                                     |
 | --------------------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
@@ -3540,12 +3686,12 @@ Specific value: `"gamepad"`
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i15_percent"></a>6.1.2.16.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > percent`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
-| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)     |
 
 **Description:** Threshold of percentage colors
 
@@ -3603,7 +3749,7 @@ Specific value: `"gamepad"`
 | Property                                                              | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                                                              |
 | --------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | - [type](#modules_items_anyOf_i1_oneOf_i16_type )                     | No      | const            | No         | -                                                              | Print GPU names, graphic memory size, type, etc                                                                |
-| - [temp](#modules_items_anyOf_i1_oneOf_i16_temp )                     | No      | boolean          | No         | -                                                              | Detect and display GPU temperature if supported                                                                |
+| - [temp](#modules_items_anyOf_i1_oneOf_i16_temp )                     | No      | object           | No         | Same as [temp](#modules_items_anyOf_i1_oneOf_i2_temp )         | Detect and display temperature if supported                                                                    |
 | - [driverSpecific](#modules_items_anyOf_i1_oneOf_i16_driverSpecific ) | No      | boolean          | No         | -                                                              | Use driver specific method to detect more detailed GPU information (memory usage, core count, etc)             |
 | - [forceVulkan](#modules_items_anyOf_i1_oneOf_i16_forceVulkan )       | No      | boolean          | No         | -                                                              | Force using vulkan to detect GPUs, which support video memory usage detection with \`--allow-slow-operations\` |
 | - [hideType](#modules_items_anyOf_i1_oneOf_i16_hideType )             | No      | enum (of string) | No         | -                                                              | Specify the type of GPUs should not be printed                                                                 |
@@ -3625,13 +3771,14 @@ Specific value: `"gpu"`
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i16_temp"></a>6.1.2.17.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > temp`
 
-|              |           |
-| ------------ | --------- |
-| **Type**     | `boolean` |
-| **Required** | No        |
-| **Default**  | `false`   |
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `combining`                                                               |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Same definition as**    | [temp](#modules_items_anyOf_i1_oneOf_i2_temp)                             |
 
-**Description:** Detect and display GPU temperature if supported
+**Description:** Detect and display temperature if supported
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i16_driverSpecific"></a>6.1.2.17.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > driverSpecific`
 
@@ -3887,12 +4034,12 @@ Specific value: `"memory"`
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i18_percent"></a>6.1.2.19.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > percent`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
-| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)     |
 
 **Description:** Threshold of percentage colors
 
@@ -4130,11 +4277,11 @@ Must be one of:
 
 **Title:** Packages
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 | Property                                                  | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                        |
 | --------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ------------------------------------------------------------------------ |
@@ -4221,7 +4368,7 @@ Specific value: `"packages"`
 | ------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
 | - [type](#modules_items_anyOf_i1_oneOf_i22_type )             | No      | const            | No         | -                                                              | Print physical disk information                                   |
 | - [namePrefix](#modules_items_anyOf_i1_oneOf_i22_namePrefix ) | No      | string           | No         | -                                                              | Show disks with given name prefix only                            |
-| - [temp](#modules_items_anyOf_i1_oneOf_i22_temp )             | No      | boolean          | No         | -                                                              | Detect and display SSD temperature if supported                   |
+| - [temp](#modules_items_anyOf_i1_oneOf_i22_temp )             | No      | object           | No         | Same as [temp](#modules_items_anyOf_i1_oneOf_i2_temp )         | Detect and display temperature if supported                       |
 | - [key](#modules_items_anyOf_i1_oneOf_i22_key )               | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )           | Key of the module                                                 |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i22_keyColor )     | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor ) | Color of the module key. Left empty to use \`display.color.keys\` |
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i22_keyWidth )     | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth ) | Width of the module key. Use 0 to use \`display.keyWidth\`        |
@@ -4249,13 +4396,14 @@ Specific value: `"physicaldisk"`
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i22_temp"></a>6.1.2.23.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > temp`
 
-|              |           |
-| ------------ | --------- |
-| **Type**     | `boolean` |
-| **Required** | No        |
-| **Default**  | `false`   |
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `combining`                                                               |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+| **Same definition as**    | [temp](#modules_items_anyOf_i1_oneOf_i2_temp)                             |
 
-**Description:** Detect and display SSD temperature if supported
+**Description:** Detect and display temperature if supported
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i22_key"></a>6.1.2.23.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > key`
 
@@ -4479,12 +4627,12 @@ Must be one of:
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i25_percent"></a>6.1.2.26.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > percent`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
-| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)     |
 
 **Description:** Threshold of percentage colors
 
@@ -4561,12 +4709,12 @@ Specific value: `"swap"`
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i26_percent"></a>6.1.2.27.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > percent`
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
-| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)                       |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+| **Same definition as**    | [percent](#modules_items_anyOf_i1_oneOf_i2_percent)     |
 
 **Description:** Threshold of percentage colors
 
@@ -4849,11 +4997,11 @@ Specific value: `"weather"`
 
 **Title:** WM
 
-|                           |                                                                           |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Type**                  | `object`                                                                  |
-| **Required**              | No                                                                        |
-| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
 | Property                                                          | Pattern | Type             | Deprecated | Definition                                                     | Title/Description                                                      |
 | ----------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------- | ---------------------------------------------------------------------- |
@@ -4934,4 +5082,4 @@ Specific value: `"wm"`
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-02-23 at 16:04:45 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-02-28 at 09:16:57 +0800
