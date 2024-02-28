@@ -1,1 +1,0 @@
-Compares performance of fastfetch to alternatives.
