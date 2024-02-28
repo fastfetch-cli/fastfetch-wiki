@@ -105,7 +105,9 @@ $ # When using raw ANSI escape codes, the prefix `\e[` and the suffix `m` should
 $ fastfetch -l /path/to/logo.txt --logo-color-1 white --logo-color-2 red --logo-color-3 '38;2;23;147;209'
 ```
 
-4. If anything is okay, save it into `config.jsonc`
+<img width="372" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/dfca3cac-a572-4849-be80-062dcf249cc5">
+
+4. If everything is okay, save it into `config.jsonc`
 
 ```jsonc
 {
