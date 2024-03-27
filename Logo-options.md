@@ -102,6 +102,8 @@ The value of `--logo` is interpreted as the path to an image file. It is display
 * `fastfetch` must be compiled with the `imagemagick6` or `imagemagick7` feature.
 * Has widest terminal support.
 
+See also [this issue](https://github.com/fastfetch-cli/fastfetch/issues/656#issuecomment-1849448969) for rendering transparent backgrounds.
+
 ## kitty
 
 The value of `--logo` is interpreted as the path to an image file. It is displayed using the kitty graphics protocol.
