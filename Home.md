@@ -28,7 +28,7 @@ Welcome to the fastfetch wiki!
 
 ## Windows 7 (VM)
 
-![image](https://github.com/fastfetch-cli/fastfetch/assets/6134068/8706d349-419a-4cd9-b460-f9e99adf2c23)
+![image](https://github.com/fastfetch-cli/fastfetch/assets/6134068/66afbe7e-e0d7-4269-b9bd-1a73380ebdd1)
 
 ## Windows Server 2022 Core (VM)
 
