@@ -21,6 +21,7 @@ Note: when using environment variables in config file:
 
 1. On Windows, only `%ENV_VAR%` syntax is supported, for example `%USERPROFILE%/path/to/logo file.txt`. See [`ExpandEnvironmentStringsA`](https://learn.microsoft.com/en-us/windows/win32/api/processenv/nf-processenv-expandenvironmentstringsa) for detail.
 2. On *nix, all special charactors (` |&;<>(){}`) must be quoted with `\`, for example `~/path/to/logo\ file.txt` or `$HOME/path/to/logo\ file.txt`. See [`wordexp`](https://man7.org/linux/man-pages/man3/wordexp.3.html) for detail.
+    * Command substitution is allowed. For example, it's possible to use `"source": "$(ls ~/path/to/images/*.png | shuf -n 1)"` to randomly choose an image to display
 
 ## Text
 
