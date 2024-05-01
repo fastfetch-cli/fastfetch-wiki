@@ -159,3 +159,7 @@ $ imgcat /path/to/image > image.bin $ convert an image to whatever format that t
 $ cat image.bin && echo END
 $ fastfetch --raw image.bin --logo-width $NUMBER_OF_COLUMNS_USES --logo-height $NUMBER_OF_ROWS_USES
 ```
+
+## Troubleshooting
+
+1. My logo won't display: Try `--pipe false`. Fastfetch detects if its output is piped ( stdout is not a tty ), in this case, all colors and logo will be removed. See `fastfetch -h pipe`
