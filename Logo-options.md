@@ -85,6 +85,8 @@ The value of `--logo` is interpreted as the path to a file. The content of the f
 The value of `--logo` is interpreted as the path to a file. The content of the file is displayed.
 * No color placeholder replacement is done.
 * If the file can't be read, the autodetected builtin logo is displayed.
+* Single dash (`-`) is alias of `/dev/stdin`, which can be used to pipe another program's output to fastfetch.
+    * For example, [display a pokemon sprite](https://github.com/talwat/pokeget-rs): `pokeget random --hide-name | fastfetch --file-raw -`
 
 ## data
 
