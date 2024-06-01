@@ -8,7 +8,7 @@ Welcome to the fastfetch wiki!
 
 ## macOS (old Intel with `--stat`)
 
-<img width="962" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/9e08a5fc-c838-4079-af4e-01d126746261">
+<img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/8cc376a6-492f-432c-a6b1-2858bea5d83b">
 
 ## Linux
 
