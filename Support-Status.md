@@ -15,59 +15,60 @@ All categories not listed here should work without needing a specific implementa
 10) Command       : Running custom shell scripts
 11) Colors        : Print some colored blocks
 12) CPU           : Print CPU name, frequency, etc
-13) CPUUsage      : Print CPU usage. Costs some time to collect data
-14) Cursor        : Print cursor style name
-15) Custom        : Print a custom string, with or without key
-16) DateTime      : Print current date and time
-17) DE            : Print desktop environment name
-18) Display       : Print resolutions, refresh rates, etc
-19) Disk          : Print partitions, space usage, disk type, etc
-20) DiskIO        : Print physical disk I/O throughput
-21) Editor        : Print information of the default editor ($VISUAL or $EDITOR)
-22) Font          : Print system font name
-23) Gamepad       : List connected gamepads
-24) GPU           : Print GPU names, graphic memory size, type, etc
-25) Host          : Print product name of your computer
-26) Icons         : Print icon style name
-27) InitSystem    : Print init system (pid 1) name and version
-28) Kernel        : Print system kernel version
-29) LM            : Print login manager (desktop manager) name and version
-30) Loadavg       : Print system load averages
-31) Locale        : Print system locale name
-32) LocalIp       : List local IP addresses (v4 or v6), MAC addresses, etc
-33) Media         : Print playing song name
-34) Memory        : Print system memory usage info
-35) Monitor       : Print connected physical monitor information
-36) NetIO         : Print network I/O throughput
-37) OpenCL        : Print highest OpenCL version supported by the GPU
-38) OpenGL        : Print highest OpenGL version supported by the GPU
-39) OS            : Print operating system name and version
-40) Packages      : List installed package managers and count of installed packages
-41) PhysicalDisk  : Print physical disk information
-42) PhysicalMemory: Print system physical memory devices
-43) Player        : Print music player name
-44) PowerAdapter  : Print power adapter name and charging watts
-45) Processes     : Count running processes
-46) PublicIp      : Print your public IP address, etc
-47) Separator     : Print a separator line
-48) Shell         : Print current shell name and version
-49) Sound         : Print sound devices, volume, etc
-50) Swap          : Print swap (paging file) space usage
-51) Terminal      : Print current terminal name and version
-52) TerminalFont  : Print font name and size used by current terminal
-53) TerminalSize  : Print current terminal size
-54) TerminalTheme : Print current terminal theme (foreground and background colors)
-55) Title         : Print title, which contains your user name, hostname
-56) Theme         : Print current theme of desktop environment
-57) Uptime        : Print how long system has been running
-58) Users         : Print users currently logged in
-59) Version       : Print Fastfetch version
-60) Vulkan        : Print highest Vulkan version supported by the GPU
-61) Wallpaper     : Print image file path of current wallpaper
-62) Weather       : Print weather information
-63) WM            : Print window manager name and version
-64) Wifi          : Print connected Wi-Fi info (SSID, connection and security protocol)
-65) WMTheme       : Print current theme of window manager
+13) CPUCache      : Print CPU cache sizes
+14) CPUUsage      : Print CPU usage. Costs some time to collect data
+15) Cursor        : Print cursor style name
+16) Custom        : Print a custom string, with or without key
+17) DateTime      : Print current date and time
+18) DE            : Print desktop environment name
+19) Display       : Print resolutions, refresh rates, etc
+20) Disk          : Print partitions, space usage, disk type, etc
+21) DiskIO        : Print physical disk I/O throughput
+22) Editor        : Print information of the default editor ($VISUAL or $EDITOR)
+23) Font          : Print system font name
+24) Gamepad       : List connected gamepads
+25) GPU           : Print GPU names, graphic memory size, type, etc
+26) Host          : Print product name of your computer
+27) Icons         : Print icon style name
+28) InitSystem    : Print init system (pid 1) name and version
+29) Kernel        : Print system kernel version
+30) LM            : Print login manager (desktop manager) name and version
+31) Loadavg       : Print system load averages
+32) Locale        : Print system locale name
+33) LocalIp       : List local IP addresses (v4 or v6), MAC addresses, etc
+34) Media         : Print playing song name
+35) Memory        : Print system memory usage info
+36) Monitor       : Print connected physical monitor information
+37) NetIO         : Print network I/O throughput
+38) OpenCL        : Print highest OpenCL version supported by the GPU
+39) OpenGL        : Print highest OpenGL version supported by the GPU
+40) OS            : Print operating system name and version
+41) Packages      : List installed package managers and count of installed packages
+42) PhysicalDisk  : Print physical disk information
+43) PhysicalMemory: Print system physical memory devices
+44) Player        : Print music player name
+45) PowerAdapter  : Print power adapter name and charging watts
+46) Processes     : Count running processes
+47) PublicIp      : Print your public IP address, etc
+48) Separator     : Print a separator line
+49) Shell         : Print current shell name and version
+50) Sound         : Print sound devices, volume, etc
+51) Swap          : Print swap (paging file) space usage
+52) Terminal      : Print current terminal name and version
+53) TerminalFont  : Print font name and size used by current terminal
+54) TerminalSize  : Print current terminal size
+55) TerminalTheme : Print current terminal theme (foreground and background colors)
+56) Title         : Print title, which contains your user name, hostname
+57) Theme         : Print current theme of desktop environment
+58) Uptime        : Print how long system has been running
+59) Users         : Print users currently logged in
+60) Version       : Print Fastfetch version
+61) Vulkan        : Print highest Vulkan version supported by the GPU
+62) Wallpaper     : Print image file path of current wallpaper
+63) Weather       : Print weather information
+64) WM            : Print window manager name and version
+65) Wifi          : Print connected Wi-Fi info (SSID, connection and security protocol)
+66) WMTheme       : Print current theme of window manager
 ```
 
 Worth noting that not all modules are supported on all platforms.
