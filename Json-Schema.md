@@ -77,8 +77,9 @@
   - [4.13. Property `JSON config > display > bar`](#display_bar)
     - [4.13.1. Property `JSON config > display > bar > charElapsed`](#display_bar_charElapsed)
     - [4.13.2. Property `JSON config > display > bar > charTotal`](#display_bar_charTotal)
-    - [4.13.3. Property `JSON config > display > bar > border`](#display_bar_border)
-    - [4.13.4. Property `JSON config > display > bar > width`](#display_bar_width)
+    - [4.13.3. Property `JSON config > display > bar > borderLeft`](#display_bar_borderLeft)
+    - [4.13.4. Property `JSON config > display > bar > borderRight`](#display_bar_borderRight)
+    - [4.13.5. Property `JSON config > display > bar > width`](#display_bar_width)
   - [4.14. Property `JSON config > display > percent`](#display_percent)
     - [4.14.1. Property `JSON config > display > percent > type`](#display_percent_type)
     - [4.14.2. Property `JSON config > display > percent > ndigits`](#display_percent_ndigits)
@@ -156,6 +157,8 @@
           - [6.1.2.2.1.32. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 31`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i31)
           - [6.1.2.2.1.33. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 32`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i32)
           - [6.1.2.2.1.34. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 33`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i33)
+          - [6.1.2.2.1.35. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 34`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i34)
+          - [6.1.2.2.1.36. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 35`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i35)
         - [6.1.2.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > key`](#modules_items_anyOf_i1_oneOf_i1_key)
         - [6.1.2.2.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > keyColor`](#modules_items_anyOf_i1_oneOf_i1_keyColor)
         - [6.1.2.2.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > outputColor`](#modules_items_anyOf_i1_oneOf_i1_outputColor)
@@ -1421,7 +1424,8 @@ Must be one of:
 | ------------------------------------------ | ------- | ------- | ---------- | ---------- | ------------------------------------------------- |
 | - [charElapsed](#display_bar_charElapsed ) | No      | string  | No         | -          | Set the character to use in elapsed part          |
 | - [charTotal](#display_bar_charTotal )     | No      | string  | No         | -          | Set the character to use in total part            |
-| - [border](#display_bar_border )           | No      | boolean | No         | -          | Whether to show a border around the bar           |
+| - [borderLeft](#display_bar_borderLeft )   | No      | string  | No         | -          | Set the string to use at left border              |
+| - [borderRight](#display_bar_borderRight ) | No      | string  | No         | -          | Set the string to use at right border             |
 | - [width](#display_bar_width )             | No      | integer | No         | -          | Set the width of the bar, in number of characters |
 
 #### <a name="display_bar_charElapsed"></a>4.13.1. Property `JSON config > display > bar > charElapsed`
@@ -1444,17 +1448,27 @@ Must be one of:
 
 **Description:** Set the character to use in total part
 
-#### <a name="display_bar_border"></a>4.13.3. Property `JSON config > display > bar > border`
+#### <a name="display_bar_borderLeft"></a>4.13.3. Property `JSON config > display > bar > borderLeft`
 
-|              |           |
-| ------------ | --------- |
-| **Type**     | `boolean` |
-| **Required** | No        |
-| **Default**  | `true`    |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+| **Default**  | `"[ "`   |
 
-**Description:** Whether to show a border around the bar
+**Description:** Set the string to use at left border
 
-#### <a name="display_bar_width"></a>4.13.4. Property `JSON config > display > bar > width`
+#### <a name="display_bar_borderRight"></a>4.13.4. Property `JSON config > display > bar > borderRight`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+| **Default**  | `" ]"`   |
+
+**Description:** Set the string to use at right border
+
+#### <a name="display_bar_width"></a>4.13.5. Property `JSON config > display > bar > width`
 
 |              |           |
 | ------------ | --------- |
@@ -1907,6 +1921,7 @@ Must be one of:
 * "camera"
 * "chassis"
 * "cpu"
+* "cpucache"
 * "cpuusage"
 * "command"
 * "colors"
@@ -1922,6 +1937,7 @@ Must be one of:
 * "gpu"
 * "host"
 * "icons"
+* "initsystem"
 * "kernel"
 * "lm"
 * "loadavg"
@@ -2099,6 +2115,8 @@ Specific value: `"break"`
 | [item 31](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i31) |
 | [item 32](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i32) |
 | [item 33](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i33) |
+| [item 34](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i34) |
+| [item 35](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i35) |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i0"></a>6.1.2.2.1.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 0`
 
@@ -2151,11 +2169,22 @@ Specific value: `"camera"`
 | **Type**     | `const` |
 | **Required** | No      |
 
+**Description:** Print CPU cache sizes
+
+Specific value: `"cpucache"`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i5"></a>6.1.2.2.1.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 5`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
 **Description:** Print cursor style name
 
 Specific value: `"cursor"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i5"></a>6.1.2.2.1.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 5`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i6"></a>6.1.2.2.1.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 6`
 
 |              |         |
 | ------------ | ------- |
@@ -2166,7 +2195,7 @@ Specific value: `"cursor"`
 
 Specific value: `"datetime"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i6"></a>6.1.2.2.1.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 6`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i7"></a>6.1.2.2.1.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 7`
 
 |              |         |
 | ------------ | ------- |
@@ -2177,7 +2206,7 @@ Specific value: `"datetime"`
 
 Specific value: `"editor"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i7"></a>6.1.2.2.1.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 7`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i8"></a>6.1.2.2.1.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 8`
 
 |              |         |
 | ------------ | ------- |
@@ -2188,7 +2217,7 @@ Specific value: `"editor"`
 
 Specific value: `"font"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i8"></a>6.1.2.2.1.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 8`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i9"></a>6.1.2.2.1.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 9`
 
 |              |         |
 | ------------ | ------- |
@@ -2199,7 +2228,7 @@ Specific value: `"font"`
 
 Specific value: `"host"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i9"></a>6.1.2.2.1.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 9`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i10"></a>6.1.2.2.1.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 10`
 
 |              |         |
 | ------------ | ------- |
@@ -2210,7 +2239,18 @@ Specific value: `"host"`
 
 Specific value: `"icons"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i10"></a>6.1.2.2.1.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 10`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i11"></a>6.1.2.2.1.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 11`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Print init system (pid 1) name and version
+
+Specific value: `"initsystem"`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i12"></a>6.1.2.2.1.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 12`
 
 |              |         |
 | ------------ | ------- |
@@ -2221,7 +2261,7 @@ Specific value: `"icons"`
 
 Specific value: `"kernel"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i11"></a>6.1.2.2.1.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 11`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i13"></a>6.1.2.2.1.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 13`
 
 |              |         |
 | ------------ | ------- |
@@ -2232,7 +2272,7 @@ Specific value: `"kernel"`
 
 Specific value: `"lm"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i12"></a>6.1.2.2.1.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 12`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i14"></a>6.1.2.2.1.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 14`
 
 |              |         |
 | ------------ | ------- |
@@ -2243,7 +2283,7 @@ Specific value: `"lm"`
 
 Specific value: `"locale"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i13"></a>6.1.2.2.1.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 13`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i15"></a>6.1.2.2.1.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 15`
 
 |              |         |
 | ------------ | ------- |
@@ -2254,7 +2294,7 @@ Specific value: `"locale"`
 
 Specific value: `"media"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i14"></a>6.1.2.2.1.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 14`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i16"></a>6.1.2.2.1.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 16`
 
 |              |         |
 | ------------ | ------- |
@@ -2265,7 +2305,7 @@ Specific value: `"media"`
 
 Specific value: `"monitor"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i15"></a>6.1.2.2.1.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 15`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i17"></a>6.1.2.2.1.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 17`
 
 |              |         |
 | ------------ | ------- |
@@ -2276,7 +2316,7 @@ Specific value: `"monitor"`
 
 Specific value: `"opencl"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i16"></a>6.1.2.2.1.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 16`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i18"></a>6.1.2.2.1.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 18`
 
 |              |         |
 | ------------ | ------- |
@@ -2287,7 +2327,7 @@ Specific value: `"opencl"`
 
 Specific value: `"os"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i17"></a>6.1.2.2.1.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 17`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i19"></a>6.1.2.2.1.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 19`
 
 |              |         |
 | ------------ | ------- |
@@ -2298,7 +2338,7 @@ Specific value: `"os"`
 
 Specific value: `"physicalmemory"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i18"></a>6.1.2.2.1.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 18`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i20"></a>6.1.2.2.1.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 20`
 
 |              |         |
 | ------------ | ------- |
@@ -2309,7 +2349,7 @@ Specific value: `"physicalmemory"`
 
 Specific value: `"player"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i19"></a>6.1.2.2.1.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 19`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i21"></a>6.1.2.2.1.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 21`
 
 |              |         |
 | ------------ | ------- |
@@ -2320,7 +2360,7 @@ Specific value: `"player"`
 
 Specific value: `"poweradapter"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i20"></a>6.1.2.2.1.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 20`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i22"></a>6.1.2.2.1.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 22`
 
 |              |         |
 | ------------ | ------- |
@@ -2331,7 +2371,7 @@ Specific value: `"poweradapter"`
 
 Specific value: `"processes"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i21"></a>6.1.2.2.1.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 21`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i23"></a>6.1.2.2.1.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 23`
 
 |              |         |
 | ------------ | ------- |
@@ -2342,7 +2382,7 @@ Specific value: `"processes"`
 
 Specific value: `"shell"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i22"></a>6.1.2.2.1.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 22`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i24"></a>6.1.2.2.1.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 24`
 
 |              |         |
 | ------------ | ------- |
@@ -2353,7 +2393,7 @@ Specific value: `"shell"`
 
 Specific value: `"terminal"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i23"></a>6.1.2.2.1.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 23`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i25"></a>6.1.2.2.1.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 25`
 
 |              |         |
 | ------------ | ------- |
@@ -2364,7 +2404,7 @@ Specific value: `"terminal"`
 
 Specific value: `"terminalfont"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i24"></a>6.1.2.2.1.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 24`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i26"></a>6.1.2.2.1.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 26`
 
 |              |         |
 | ------------ | ------- |
@@ -2375,7 +2415,7 @@ Specific value: `"terminalfont"`
 
 Specific value: `"terminalsize"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i25"></a>6.1.2.2.1.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 25`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i27"></a>6.1.2.2.1.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 27`
 
 |              |         |
 | ------------ | ------- |
@@ -2386,7 +2426,7 @@ Specific value: `"terminalsize"`
 
 Specific value: `"terminaltheme"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i26"></a>6.1.2.2.1.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 26`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i28"></a>6.1.2.2.1.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 28`
 
 |              |         |
 | ------------ | ------- |
@@ -2397,7 +2437,7 @@ Specific value: `"terminaltheme"`
 
 Specific value: `"theme"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i27"></a>6.1.2.2.1.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 27`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i29"></a>6.1.2.2.1.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 29`
 
 |              |         |
 | ------------ | ------- |
@@ -2408,7 +2448,7 @@ Specific value: `"theme"`
 
 Specific value: `"uptime"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i28"></a>6.1.2.2.1.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 28`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i30"></a>6.1.2.2.1.31. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 30`
 
 |              |         |
 | ------------ | ------- |
@@ -2419,7 +2459,7 @@ Specific value: `"uptime"`
 
 Specific value: `"users"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i29"></a>6.1.2.2.1.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 29`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i31"></a>6.1.2.2.1.32. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 31`
 
 |              |         |
 | ------------ | ------- |
@@ -2430,7 +2470,7 @@ Specific value: `"users"`
 
 Specific value: `"version"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i30"></a>6.1.2.2.1.31. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 30`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i32"></a>6.1.2.2.1.33. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 32`
 
 |              |         |
 | ------------ | ------- |
@@ -2441,7 +2481,7 @@ Specific value: `"version"`
 
 Specific value: `"vulkan"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i31"></a>6.1.2.2.1.32. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 31`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i33"></a>6.1.2.2.1.34. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 33`
 
 |              |         |
 | ------------ | ------- |
@@ -2452,7 +2492,7 @@ Specific value: `"vulkan"`
 
 Specific value: `"wallpaper"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i32"></a>6.1.2.2.1.33. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 32`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i34"></a>6.1.2.2.1.35. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 34`
 
 |              |         |
 | ------------ | ------- |
@@ -2463,7 +2503,7 @@ Specific value: `"wallpaper"`
 
 Specific value: `"wifi"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i33"></a>6.1.2.2.1.34. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 33`
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i35"></a>6.1.2.2.1.36. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 35`
 
 |              |         |
 | ------------ | ------- |
@@ -5774,4 +5814,4 @@ Specific value: `"wm"`
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-05-30 at 14:00:55 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-06-07 at 15:35:13 +0800
