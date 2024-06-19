@@ -29,7 +29,7 @@ The following libraries are used if present at runtime:
 * [`libnm`](https://networkmanager.dev/docs/libnm/latest/): Used for Wifi detection.
 * [`libpulse`](https://freedesktop.org/software/pulseaudio/doxygen/): Used for Sound device detection.
 * [`libddcutil`](https://github.com/rockowitz/ddcutil): Used for brightness detection of external displays
-* [`DirectX-Headers`](https://github.com/microsoft/DirectX-Headers): Used for GPU detection in WSL
+* [`DirectX-Headers`](https://github.com/microsoft/DirectX-Headers): Used for GPU detection in WSL (Bulid only)
 
 ### FreeBSD only
 * [`v4l_compat`](https://github.com/freebsd/freebsd-ports/tree/main/multimedia/libv4l): Used for camera devices detection. See the [official document](https://docs.freebsd.org/en/books/handbook/multimedia/#webcam-setup) for detail
@@ -51,6 +51,7 @@ For the image logo, iTerm with iterm image protocol should work. Apple Terminal 
 * [`wlanapi`](https://learn.microsoft.com/en-us/windows/win32/api/wlanapi/): A system dll which isn't supported by Windows Server by default. Used for Wifi info detection.
 * [`libvulkan`](https://www.vulkan.org/): Vulkan module. Usually has been provided by GPU drivers. [`vulkan-loader`](https://github.com/msys2/MINGW-packages/tree/master/mingw-w64-vulkan-loader) [`vulkan-headers`](https://github.com/msys2/MINGW-packages/tree/master/mingw-w64-vulkan-headers)
 * [`libOpenCL`](https://www.khronos.org/opencl/): OpenCL module. [`opencl-icd`](https://github.com/msys2/MINGW-packages/tree/master/mingw-w64-opencl-icd)
+* [`cppwinrt`](https://github.com/microsoft/cppwinrt): C++/WinRT headers for MinGW. Used for media detection. [`cppwinrt`](https://github.com/msys2/MINGW-packages/tree/master/mingw-w64-cppwinrt)
 
 Note: In Windows 7, 8 and 8.1, [ConEmu](https://conemu.github.io/en/AnsiEscapeCodes.html) is required to run fastfetch due to [the lack of ASCII escape code native support](https://en.wikipedia.org/wiki/ANSI_escape_code#DOS,_OS/2,_and_Windows). In addition, as fastfetch for Windows targets [UCRT](https://learn.microsoft.com/en-us/cpp/windows/universal-crt-deployment) C runtime library, [it must be installed manually](https://support.microsoft.com/en-us/topic/update-for-universal-c-runtime-in-windows-c0514201-7fe6-95a3-b0a5-287930f3560c) as UCRT is only pre-installed in Windows 10 and later.
 
