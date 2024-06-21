@@ -41,3 +41,7 @@ Welcome to the fastfetch wiki!
 ## Android
 
 ![1000012286](https://github.com/fastfetch-cli/fastfetch/assets/6134068/a8d3c3e2-f506-4266-9ee5-cf924418a3ad)
+
+## OpenIndiana (SunOS)
+
+![image](https://github.com/fastfetch-cli/fastfetch/assets/6134068/0790f416-fa3d-4978-bd61-1340d79b4637)
