@@ -26,7 +26,7 @@
     - [2.3.7. Property `JSON config > logo > oneOf > item 2 > printRemaining`](#logo_oneOf_i2_printRemaining)
     - [2.3.8. Property `JSON config > logo > oneOf > item 2 > preserveAspectRatio`](#logo_oneOf_i2_preserveAspectRatio)
     - [2.3.9. Property `JSON config > logo > oneOf > item 2 > recache`](#logo_oneOf_i2_recache)
-    - [2.3.10. Property `JSON config > logo > oneOf > item 2 > separate`](#logo_oneOf_i2_separate)
+    - [2.3.10. Property `JSON config > logo > oneOf > item 2 > position`](#logo_oneOf_i2_position)
     - [2.3.11. Property `JSON config > logo > oneOf > item 2 > chafa`](#logo_oneOf_i2_chafa)
       - [2.3.11.1. Property `JSON config > logo > oneOf > item 2 > chafa > fgOnly`](#logo_oneOf_i2_chafa_fgOnly)
       - [2.3.11.2. Property `JSON config > logo > oneOf > item 2 > chafa > symbols`](#logo_oneOf_i2_chafa_symbols)
@@ -44,6 +44,7 @@
     - [3.5.3. Property `JSON config > general > dsForceDrm > oneOf > item 2`](#general_dsForceDrm_oneOf_i2)
   - [3.6. Property `JSON config > general > wmiTimeout`](#general_wmiTimeout)
   - [3.7. Property `JSON config > general > processingTimeout`](#general_processingTimeout)
+  - [3.8. Property `JSON config > general > preRun`](#general_preRun)
 - [4. Property `JSON config > display`](#display)
   - [4.1. Property `JSON config > display > stat`](#display_stat)
   - [4.2. Property `JSON config > display > pipe`](#display_pipe)
@@ -218,6 +219,11 @@
         - [6.1.2.8.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > type`](#modules_items_anyOf_i1_oneOf_i7_type)
         - [6.1.2.8.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > percent`](#modules_items_anyOf_i1_oneOf_i7_percent)
         - [6.1.2.8.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > separate`](#modules_items_anyOf_i1_oneOf_i7_separate)
+        - [6.1.2.8.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > key`](#modules_items_anyOf_i1_oneOf_i7_key)
+        - [6.1.2.8.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > keyColor`](#modules_items_anyOf_i1_oneOf_i7_keyColor)
+        - [6.1.2.8.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > outputColor`](#modules_items_anyOf_i1_oneOf_i7_outputColor)
+        - [6.1.2.8.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > keyWidth`](#modules_items_anyOf_i1_oneOf_i7_keyWidth)
+        - [6.1.2.8.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > format`](#modules_items_anyOf_i1_oneOf_i7_format)
       - [6.1.2.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors`](#modules_items_anyOf_i1_oneOf_i8)
         - [6.1.2.9.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > type`](#modules_items_anyOf_i1_oneOf_i8_type)
         - [6.1.2.9.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > symbol`](#modules_items_anyOf_i1_oneOf_i8_symbol)
@@ -544,7 +550,7 @@ Specific value: `{
 | - [printRemaining](#logo_oneOf_i2_printRemaining )           | No      | boolean          | No         | -          | Whether to print the remaining logo, if it has more lines than modules to display   |
 | - [preserveAspectRatio](#logo_oneOf_i2_preserveAspectRatio ) | No      | boolean          | No         | -          | Whether to preserve the aspect ratio of the logo. Supported by iTerm image protocol |
 | - [recache](#logo_oneOf_i2_recache )                         | No      | boolean          | No         | -          | If true, regenerate image logo cache                                                |
-| - [separate](#logo_oneOf_i2_separate )                       | No      | boolean          | No         | -          | If true, print modules at bottom of the logo                                        |
+| - [position](#logo_oneOf_i2_position )                       | No      | enum (of string) | No         | -          | Set the position of the logo should be displayed                                    |
 | - [chafa](#logo_oneOf_i2_chafa )                             | No      | object           | No         | -          | Chafa configuration. See chafa document for details                                 |
 
 #### <a name="logo_oneOf_i2_type"></a>2.3.1. Property `JSON config > logo > oneOf > item 2 > type`
@@ -826,15 +832,20 @@ Must be one of:
 
 **Description:** If true, regenerate image logo cache
 
-#### <a name="logo_oneOf_i2_separate"></a>2.3.10. Property `JSON config > logo > oneOf > item 2 > separate`
+#### <a name="logo_oneOf_i2_position"></a>2.3.10. Property `JSON config > logo > oneOf > item 2 > position`
 
-|              |           |
-| ------------ | --------- |
-| **Type**     | `boolean` |
-| **Required** | No        |
-| **Default**  | `false`   |
+|              |                    |
+| ------------ | ------------------ |
+| **Type**     | `enum (of string)` |
+| **Required** | No                 |
+| **Default**  | `"left"`           |
 
-**Description:** If true, print modules at bottom of the logo
+**Description:** Set the position of the logo should be displayed
+
+Must be one of:
+* "left"
+* "top"
+* "right"
 
 #### <a name="logo_oneOf_i2_chafa"></a>2.3.11. Property `JSON config > logo > oneOf > item 2 > chafa`
 
@@ -938,6 +949,7 @@ Must be one of:
 | - [dsForceDrm](#general_dsForceDrm )               | No      | Combination | No         | -          | Force display detection to use DRM. Linux only                               |
 | - [wmiTimeout](#general_wmiTimeout )               | No      | integer     | No         | -          | Set the timeout (ms) for WMI queries, \`-1\` for no timeout. Windows only    |
 | - [processingTimeout](#general_processingTimeout ) | No      | integer     | No         | -          | Set the timeout (ms) when waiting for child processes, \`-1\` for no timeout |
+| - [preRun](#general_preRun )                       | No      | string      | No         | -          | Set the command to be executed before printing logos                         |
 
 ### <a name="general_multithreading"></a>3.1. Property `JSON config > general > multithreading`
 
@@ -1048,6 +1060,16 @@ Specific value: `true`
 
 **Description:** Set the timeout (ms) when waiting for child processes, `-1` for no timeout
 
+### <a name="general_preRun"></a>3.8. Property `JSON config > general > preRun`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+| **Default**  | `""`     |
+
+**Description:** Set the command to be executed before printing logos
+
 ## <a name="display"></a>4. Property `JSON config > display`
 
 |                           |                                                         |
@@ -1058,24 +1080,24 @@ Specific value: `true`
 
 **Description:** Configure how things to be displayed
 
-| Property                                       | Pattern | Type        | Deprecated | Definition | Title/Description                                                                        |
-| ---------------------------------------------- | ------- | ----------- | ---------- | ---------- | ---------------------------------------------------------------------------------------- |
-| - [stat](#display_stat )                       | No      | boolean     | No         | -          | Show time usage (in ms) for individual modules                                           |
-| - [pipe](#display_pipe )                       | No      | boolean     | No         | -          | Whether to enable pipe mode (disable logo and all escape sequences)                      |
-| - [showErrors](#display_showErrors )           | No      | boolean     | No         | -          | Print occurring errors to the console. False to ignore errored modules                   |
-| - [disableLinewrap](#display_disableLinewrap ) | No      | boolean     | No         | -          | Whether to disable line wrap during the run                                              |
-| - [hideCursor](#display_hideCursor )           | No      | boolean     | No         | -          | Whether to hide the cursor during the run                                                |
-| - [separator](#display_separator )             | No      | string      | No         | -          | Set the separator between key and value                                                  |
-| - [color](#display_color )                     | No      | Combination | No         | -          | Set the color of the keys and title                                                      |
-| - [brightColor](#display_brightColor )         | No      | boolean     | No         | -          | Set if the keys, title and ASCII logo should be printed in bright color                  |
-| - [keyWidth](#display_keyWidth )               | No      | integer     | No         | -          | Align the width of keys to number of characters, 0 to disable                            |
-| - [binaryPrefix](#display_binaryPrefix )       | No      | Combination | No         | -          | Set the binary prefix to used when printing bytes                                        |
-| - [size](#display_size )                       | No      | object      | No         | -          | Set how a size value should be displayed                                                 |
-| - [temp](#display_temp )                       | No      | object      | No         | -          | Set how temperature values should be displayed                                           |
-| - [bar](#display_bar )                         | No      | object      | No         | -          | Set the bar configuration                                                                |
-| - [percent](#display_percent )                 | No      | object      | No         | -          | Set how a percentage value should be displayed                                           |
-| - [noBuffer](#display_noBuffer )               | No      | boolean     | No         | -          | Whether to disable the stdout application buffer                                         |
-| - [tsVersion](#display_tsVersion )             | No      | boolean     | No         | -          | Whether to detect and display the version of terminal and shell. Mainly for benchmarking |
+| Property                                       | Pattern | Type        | Deprecated | Definition | Title/Description                                                                                |
+| ---------------------------------------------- | ------- | ----------- | ---------- | ---------- | ------------------------------------------------------------------------------------------------ |
+| - [stat](#display_stat )                       | No      | boolean     | No         | -          | Show time usage (in ms) for individual modules                                                   |
+| - [pipe](#display_pipe )                       | No      | boolean     | No         | -          | Whether to enable pipe mode (disable logo and all escape sequences)                              |
+| - [showErrors](#display_showErrors )           | No      | boolean     | No         | -          | Print occurring errors to the console. False to ignore errored modules                           |
+| - [disableLinewrap](#display_disableLinewrap ) | No      | boolean     | No         | -          | Whether to disable line wrap during the run                                                      |
+| - [hideCursor](#display_hideCursor )           | No      | boolean     | No         | -          | Whether to hide the cursor during the run                                                        |
+| - [separator](#display_separator )             | No      | string      | No         | -          | Set the separator between key and value                                                          |
+| - [color](#display_color )                     | No      | Combination | No         | -          | Set the color of the keys and title                                                              |
+| - [brightColor](#display_brightColor )         | No      | boolean     | No         | -          | Set if the keys, title and ASCII logo should be printed in bright color                          |
+| - [keyWidth](#display_keyWidth )               | No      | integer     | No         | -          | Align the width of keys to number of characters, 0 to disable                                    |
+| - [binaryPrefix](#display_binaryPrefix )       | No      | Combination | No         | -          | Set the binary prefix to used when printing bytes                                                |
+| - [size](#display_size )                       | No      | object      | No         | -          | Set how a size value should be displayed                                                         |
+| - [temp](#display_temp )                       | No      | object      | No         | -          | Set how temperature values should be displayed                                                   |
+| - [bar](#display_bar )                         | No      | object      | No         | -          | Set the bar configuration                                                                        |
+| - [percent](#display_percent )                 | No      | object      | No         | -          | Set how a percentage value should be displayed                                                   |
+| - [noBuffer](#display_noBuffer )               | No      | boolean     | No         | -          | Whether to disable the stdout application buffer                                                 |
+| - [tsVersion](#display_tsVersion )             | No      | boolean     | No         | -          | Whether to detect and display the version of terminal, shell and editor. Mainly for benchmarking |
 
 ### <a name="display_stat"></a>4.1. Property `JSON config > display > stat`
 
@@ -1617,7 +1639,7 @@ Must be one of:
 | **Required** | No        |
 | **Default**  | `true`    |
 
-**Description:** Whether to detect and display the version of terminal and shell. Mainly for benchmarking
+**Description:** Whether to detect and display the version of terminal, shell and editor. Mainly for benchmarking
 
 ## <a name="library"></a>5. Property `JSON config > library`
 
@@ -2090,14 +2112,14 @@ Specific value: `"break"`
 
 **Description:** No additional properties
 
-| Property                                                       | Pattern | Type             | Deprecated | Definition             | Title/Description                                                        |
-| -------------------------------------------------------------- | ------- | ---------------- | ---------- | ---------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i1_type )               | No      | Combination      | No         | -                      | -                                                                        |
-| - [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | No      | string           | No         | In #/$defs/key         | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | No      | enum (of string) | No         | In #/$defs/keyColor    | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | No      | enum (of string) | No         | In #/$defs/outputColor | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | No      | integer          | No         | In #/$defs/keyWidth    | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i1_format )           | No      | string           | No         | In #/$defs/format      | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                       | Pattern | Type             | Deprecated | Definition             | Title/Description                                                                                 |
+| -------------------------------------------------------------- | ------- | ---------------- | ---------- | ---------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i1_type )               | No      | Combination      | No         | -                      | -                                                                                                 |
+| - [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | No      | string           | No         | In #/$defs/key         | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | No      | enum (of string) | No         | In #/$defs/keyColor    | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | No      | enum (of string) | No         | In #/$defs/outputColor | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | No      | integer          | No         | In #/$defs/keyWidth    | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i1_format )           | No      | string           | No         | In #/$defs/format      | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i1_type"></a>6.1.2.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type`
 
@@ -2583,7 +2605,7 @@ Specific value: `"wmtheme"`
 | **Required**   | No             |
 | **Defined in** | #/$defs/format |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i2"></a>6.1.2.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery`
 
@@ -2605,7 +2627,7 @@ Specific value: `"wmtheme"`
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i2_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                                              |
 | - [outputColor](#modules_items_anyOf_i1_oneOf_i2_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                                                         |
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i2_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                                                     |
-| - [format](#modules_items_anyOf_i1_oneOf_i2_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail                                                       |
+| - [format](#modules_items_anyOf_i1_oneOf_i2_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format                              |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i2_type"></a>6.1.2.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > type`
 
@@ -2788,7 +2810,7 @@ Value greater than yellow will be shown in red
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i3"></a>6.1.2.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth`
 
@@ -2800,16 +2822,16 @@ Value greater than yellow will be shown in red
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                                 | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| ------------------------------------------------------------------------ | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i3_type )                         | No      | const            | No         | -                                                                    | List bluetooth devices                                                   |
-| - [showDisconnected](#modules_items_anyOf_i1_oneOf_i3_showDisconnected ) | No      | boolean          | No         | -                                                                    | Set if disconnected bluetooth devices should be printed                  |
-| - [percent](#modules_items_anyOf_i1_oneOf_i3_percent )                   | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                           |
-| - [key](#modules_items_anyOf_i1_oneOf_i3_key )                           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i3_keyColor )                 | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i3_outputColor )           | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i3_keyWidth )                 | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i3_format )                     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                                 | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| ------------------------------------------------------------------------ | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i3_type )                         | No      | const            | No         | -                                                                    | List bluetooth devices                                                                            |
+| - [showDisconnected](#modules_items_anyOf_i1_oneOf_i3_showDisconnected ) | No      | boolean          | No         | -                                                                    | Set if disconnected bluetooth devices should be printed                                           |
+| - [percent](#modules_items_anyOf_i1_oneOf_i3_percent )                   | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i3_key )                           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i3_keyColor )                 | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i3_outputColor )           | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i3_keyWidth )                 | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i3_format )                     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i3_type"></a>6.1.2.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > type`
 
@@ -2892,7 +2914,7 @@ Specific value: `"bluetooth"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i4"></a>6.1.2.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness`
 
@@ -2913,7 +2935,7 @@ Specific value: `"bluetooth"`
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i4_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                                                                    |
 | - [outputColor](#modules_items_anyOf_i1_oneOf_i4_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                                                                               |
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i4_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                                                                           |
-| - [format](#modules_items_anyOf_i1_oneOf_i4_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail                                                                             |
+| - [format](#modules_items_anyOf_i1_oneOf_i4_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format                                                    |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i4_type"></a>6.1.2.5.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Brightness > type`
 
@@ -3002,7 +3024,7 @@ See <https://www.ddcutil.com/performance_options/#option-sleep-multiplier> for d
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i5"></a>6.1.2.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Chassis`
 
@@ -3014,14 +3036,14 @@ See <https://www.ddcutil.com/performance_options/#option-sleep-multiplier> for d
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                       | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| -------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i5_type )               | No      | const            | No         | -                                                                    | Print chassis type (desktop, laptop, etc)                                |
-| - [key](#modules_items_anyOf_i1_oneOf_i5_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i5_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i5_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i5_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i5_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                       | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| -------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i5_type )               | No      | const            | No         | -                                                                    | Print chassis type (desktop, laptop, etc)                                                         |
+| - [key](#modules_items_anyOf_i1_oneOf_i5_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i5_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i5_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i5_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i5_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i5_type"></a>6.1.2.6.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Chassis > type`
 
@@ -3083,7 +3105,7 @@ Specific value: `"chassis"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i6"></a>6.1.2.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU`
 
@@ -3095,17 +3117,17 @@ Specific value: `"chassis"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                               | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                           |
-| ---------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i6_type )                       | No      | const            | No         | -                                                                    | Print CPU name, frequency, etc                                                              |
-| - [temp](#modules_items_anyOf_i1_oneOf_i6_temp )                       | No      | object           | No         | Same as [temp](#modules_items_anyOf_i1_oneOf_i2_temp )               | Detect and display temperature if supported                                                 |
-| - [freqNdigits](#modules_items_anyOf_i1_oneOf_i6_freqNdigits )         | No      | integer          | No         | -                                                                    | Set the number of digits to keep after the decimal point when printing CPU frequency        |
-| - [showPeCoreCount](#modules_items_anyOf_i1_oneOf_i6_showPeCoreCount ) | No      | boolean          | No         | -                                                                    | Detect and display CPU frequency of different core types (eg. Pcore and Ecore) if supported |
-| - [key](#modules_items_anyOf_i1_oneOf_i6_key )                         | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                           |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i6_keyColor )               | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                           |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i6_outputColor )         | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                      |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i6_keyWidth )               | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                  |
-| - [format](#modules_items_anyOf_i1_oneOf_i6_format )                   | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail                    |
+| Property                                                               | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| ---------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i6_type )                       | No      | const            | No         | -                                                                    | Print CPU name, frequency, etc                                                                    |
+| - [temp](#modules_items_anyOf_i1_oneOf_i6_temp )                       | No      | object           | No         | Same as [temp](#modules_items_anyOf_i1_oneOf_i2_temp )               | Detect and display temperature if supported                                                       |
+| - [freqNdigits](#modules_items_anyOf_i1_oneOf_i6_freqNdigits )         | No      | integer          | No         | -                                                                    | Set the number of digits to keep after the decimal point when printing CPU frequency              |
+| - [showPeCoreCount](#modules_items_anyOf_i1_oneOf_i6_showPeCoreCount ) | No      | boolean          | No         | -                                                                    | Detect and display CPU frequency of different core types (eg. Pcore and Ecore) if supported       |
+| - [key](#modules_items_anyOf_i1_oneOf_i6_key )                         | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i6_keyColor )               | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i6_outputColor )         | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i6_keyWidth )               | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i6_format )                   | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i6_type"></a>6.1.2.7.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > type`
 
@@ -3203,7 +3225,7 @@ Specific value: `"cpu"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i7"></a>6.1.2.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage`
 
@@ -3215,11 +3237,16 @@ Specific value: `"cpu"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                 | Pattern | Type    | Deprecated | Definition                                                   | Title/Description                                                    |
-| -------------------------------------------------------- | ------- | ------- | ---------- | ------------------------------------------------------------ | -------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i7_type )         | No      | const   | No         | -                                                            | Print CPU usage. Costs some time to collect data                     |
-| - [percent](#modules_items_anyOf_i1_oneOf_i7_percent )   | No      | object  | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent ) | Threshold of percentage colors                                       |
-| - [separate](#modules_items_anyOf_i1_oneOf_i7_separate ) | No      | boolean | No         | -                                                            | Display CPU usage per CPU logical core, instead of an average result |
+| Property                                                       | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| -------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i7_type )               | No      | const            | No         | -                                                                    | Print CPU usage. Costs some time to collect data                                                  |
+| - [percent](#modules_items_anyOf_i1_oneOf_i7_percent )         | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                                                    |
+| - [separate](#modules_items_anyOf_i1_oneOf_i7_separate )       | No      | boolean          | No         | -                                                                    | Display CPU usage per CPU logical core, instead of an average result                              |
+| - [key](#modules_items_anyOf_i1_oneOf_i7_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i7_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i7_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i7_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i7_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i7_type"></a>6.1.2.8.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > type`
 
@@ -3252,6 +3279,57 @@ Specific value: `"cpuusage"`
 | **Default**  | `false`   |
 
 **Description:** Display CPU usage per CPU logical core, instead of an average result
+
+###### <a name="modules_items_anyOf_i1_oneOf_i7_key"></a>6.1.2.8.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > key`
+
+|                        |                                             |
+| ---------------------- | ------------------------------------------- |
+| **Type**               | `string`                                    |
+| **Required**           | No                                          |
+| **Same definition as** | [key](#modules_items_anyOf_i1_oneOf_i1_key) |
+
+**Description:** Key of the module
+
+###### <a name="modules_items_anyOf_i1_oneOf_i7_keyColor"></a>6.1.2.8.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > keyColor`
+
+|                        |                                                       |
+| ---------------------- | ----------------------------------------------------- |
+| **Type**               | `enum (of string)`                                    |
+| **Required**           | No                                                    |
+| **Same definition as** | [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor) |
+
+**Description:** Color of the module key. Left empty to use `display.color.keys`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i7_outputColor"></a>6.1.2.8.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > outputColor`
+
+|                        |                                                             |
+| ---------------------- | ----------------------------------------------------------- |
+| **Type**               | `enum (of string)`                                          |
+| **Required**           | No                                                          |
+| **Same definition as** | [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor) |
+
+**Description:** Output color of the module. Left empty to use `display.color.output`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i7_keyWidth"></a>6.1.2.8.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > keyWidth`
+
+|                        |                                                       |
+| ---------------------- | ----------------------------------------------------- |
+| **Type**               | `integer`                                             |
+| **Required**           | No                                                    |
+| **Default**            | `0`                                                   |
+| **Same definition as** | [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth) |
+
+**Description:** Width of the module key. Use 0 to use `display.keyWidth`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i7_format"></a>6.1.2.8.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > format`
+
+|                        |                                                   |
+| ---------------------- | ------------------------------------------------- |
+| **Type**               | `string`                                          |
+| **Required**           | No                                                |
+| **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
+
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i8"></a>6.1.2.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors`
 
@@ -3405,7 +3483,7 @@ Must be one of:
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i9_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
 | - [outputColor](#modules_items_anyOf_i1_oneOf_i9_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i9_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
-| - [format](#modules_items_anyOf_i1_oneOf_i9_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail                          |
+| - [format](#modules_items_anyOf_i1_oneOf_i9_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i9_type"></a>6.1.2.10.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > type`
 
@@ -3486,7 +3564,7 @@ Default: cmd for Windows, /bin/sh for *nix
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i10"></a>6.1.2.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Custom`
 
@@ -3577,17 +3655,17 @@ Specific value: `"custom"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                                      | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                              |
-| ----------------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i11_type )                             | No      | const            | No         | -                                                                    | Print resolutions, refresh rates, etc                                          |
-| - [compactType](#modules_items_anyOf_i1_oneOf_i11_compactType )               | No      | enum (of string) | No         | -                                                                    | Set if all displays should be printed in one line                              |
-| - [preciseRefreshRate](#modules_items_anyOf_i1_oneOf_i11_preciseRefreshRate ) | No      | boolean          | No         | -                                                                    | Set if decimal refresh rates should not be rounded into integers when printing |
-| - [order](#modules_items_anyOf_i1_oneOf_i11_order )                           | No      | enum (of string) | No         | -                                                                    | Set the order should be used when printing                                     |
-| - [key](#modules_items_anyOf_i1_oneOf_i11_key )                               | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                              |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i11_keyColor )                     | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`              |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i11_outputColor )               | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`         |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i11_keyWidth )                     | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                     |
-| - [format](#modules_items_anyOf_i1_oneOf_i11_format )                         | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail       |
+| Property                                                                      | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| ----------------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i11_type )                             | No      | const            | No         | -                                                                    | Print resolutions, refresh rates, etc                                                             |
+| - [compactType](#modules_items_anyOf_i1_oneOf_i11_compactType )               | No      | enum (of string) | No         | -                                                                    | Set if all displays should be printed in one line                                                 |
+| - [preciseRefreshRate](#modules_items_anyOf_i1_oneOf_i11_preciseRefreshRate ) | No      | boolean          | No         | -                                                                    | Set if decimal refresh rates should not be rounded into integers when printing                    |
+| - [order](#modules_items_anyOf_i1_oneOf_i11_order )                           | No      | enum (of string) | No         | -                                                                    | Set the order should be used when printing                                                        |
+| - [key](#modules_items_anyOf_i1_oneOf_i11_key )                               | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i11_keyColor )                     | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i11_outputColor )               | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i11_keyWidth )                     | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i11_format )                         | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i11_type"></a>6.1.2.12.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Display > type`
 
@@ -3691,7 +3769,7 @@ Must be one of:
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i12"></a>6.1.2.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk`
 
@@ -3718,7 +3796,7 @@ Must be one of:
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i12_keyColor )             | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                                                                                                    |
 | - [outputColor](#modules_items_anyOf_i1_oneOf_i12_outputColor )       | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                                                                                                               |
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i12_keyWidth )             | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                                                                                                           |
-| - [format](#modules_items_anyOf_i1_oneOf_i12_format )                 | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail                                                                                                             |
+| - [format](#modules_items_anyOf_i1_oneOf_i12_format )                 | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format                                                                                    |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i12_type"></a>6.1.2.13.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > type`
 
@@ -3862,7 +3940,7 @@ This option overrides other `show*` options
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i13"></a>6.1.2.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO`
 
@@ -3874,16 +3952,16 @@ This option overrides other `show*` options
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i13_type )               | No      | const            | No         | -                                                                    | Print physical disk I/O throughput                                       |
-| - [namePrefix](#modules_items_anyOf_i1_oneOf_i13_namePrefix )   | No      | string           | No         | -                                                                    | Show disks with given name prefix only                                   |
-| - [detectTotal](#modules_items_anyOf_i1_oneOf_i13_detectTotal ) | No      | boolean          | No         | -                                                                    | Detect total bytes instead of current rate                               |
-| - [key](#modules_items_anyOf_i1_oneOf_i13_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i13_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i13_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i13_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i13_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i13_type )               | No      | const            | No         | -                                                                    | Print physical disk I/O throughput                                                                |
+| - [namePrefix](#modules_items_anyOf_i1_oneOf_i13_namePrefix )   | No      | string           | No         | -                                                                    | Show disks with given name prefix only                                                            |
+| - [detectTotal](#modules_items_anyOf_i1_oneOf_i13_detectTotal ) | No      | boolean          | No         | -                                                                    | Detect total bytes instead of current rate                                                        |
+| - [key](#modules_items_anyOf_i1_oneOf_i13_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i13_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i13_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i13_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i13_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i13_type"></a>6.1.2.14.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > type`
 
@@ -3964,7 +4042,7 @@ Specific value: `"diskio"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i14"></a>6.1.2.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DE`
 
@@ -3984,7 +4062,7 @@ Specific value: `"diskio"`
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i14_keyColor )                         | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                     |
 | - [outputColor](#modules_items_anyOf_i1_oneOf_i14_outputColor )                   | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                                |
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i14_keyWidth )                         | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                            |
-| - [format](#modules_items_anyOf_i1_oneOf_i14_format )                             | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail                              |
+| - [format](#modules_items_anyOf_i1_oneOf_i14_format )                             | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format     |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i14_type"></a>6.1.2.15.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DE > type`
 
@@ -4057,7 +4135,7 @@ Should be unnecessary for most cases.
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i15"></a>6.1.2.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DNS`
 
@@ -4069,15 +4147,15 @@ Should be unnecessary for most cases.
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i15_type )               | No      | const            | No         | -                                                                    | Print DNS servers                                                        |
-| - [showType](#modules_items_anyOf_i1_oneOf_i15_showType )       | No      | enum (of string) | No         | -                                                                    | Specify the type of DNS servers should be detected                       |
-| - [key](#modules_items_anyOf_i1_oneOf_i15_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i15_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i15_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i15_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i15_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i15_type )               | No      | const            | No         | -                                                                    | Print DNS servers                                                                                 |
+| - [showType](#modules_items_anyOf_i1_oneOf_i15_showType )       | No      | enum (of string) | No         | -                                                                    | Specify the type of DNS servers should be detected                                                |
+| - [key](#modules_items_anyOf_i1_oneOf_i15_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i15_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i15_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i15_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i15_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i15_type"></a>6.1.2.16.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DNS > type`
 
@@ -4154,7 +4232,7 @@ Must be one of:
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i16"></a>6.1.2.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad`
 
@@ -4166,15 +4244,15 @@ Must be one of:
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i16_type )               | No      | const            | No         | -                                                                    | List connected gamepads                                                  |
-| - [percent](#modules_items_anyOf_i1_oneOf_i16_percent )         | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                           |
-| - [key](#modules_items_anyOf_i1_oneOf_i16_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i16_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i16_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i16_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i16_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i16_type )               | No      | const            | No         | -                                                                    | List connected gamepads                                                                           |
+| - [percent](#modules_items_anyOf_i1_oneOf_i16_percent )         | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i16_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i16_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i16_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i16_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i16_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i16_type"></a>6.1.2.17.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > type`
 
@@ -4247,7 +4325,7 @@ Specific value: `"gamepad"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i17"></a>6.1.2.18. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU`
 
@@ -4270,7 +4348,7 @@ Specific value: `"gamepad"`
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i17_keyColor )               | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                  |
 | - [outputColor](#modules_items_anyOf_i1_oneOf_i17_outputColor )         | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                             |
 | - [keyWidth](#modules_items_anyOf_i1_oneOf_i17_keyWidth )               | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                         |
-| - [format](#modules_items_anyOf_i1_oneOf_i17_format )                   | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail                           |
+| - [format](#modules_items_anyOf_i1_oneOf_i17_format )                   | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format  |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i17_type"></a>6.1.2.18.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > type`
 
@@ -4385,7 +4463,7 @@ Must be one of:
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i18"></a>6.1.2.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP`
 
@@ -4397,23 +4475,23 @@ Must be one of:
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                                  | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                    |
-| ------------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i18_type )                         | No      | const            | No         | -                                                                    | List local IP addresses (v4 or v6), MAC addresses, etc                               |
-| - [showIpv4](#modules_items_anyOf_i1_oneOf_i18_showIpv4 )                 | No      | boolean          | No         | -                                                                    | Show IPv4 addresses                                                                  |
-| - [showIpv6](#modules_items_anyOf_i1_oneOf_i18_showIpv6 )                 | No      | boolean          | No         | -                                                                    | Show IPv6 addresses                                                                  |
-| - [showMac](#modules_items_anyOf_i1_oneOf_i18_showMac )                   | No      | boolean          | No         | -                                                                    | Show MAC addresses                                                                   |
-| - [showLoop](#modules_items_anyOf_i1_oneOf_i18_showLoop )                 | No      | boolean          | No         | -                                                                    | Show loop back addresses (127.0.0.1)                                                 |
-| - [showPrefixLen](#modules_items_anyOf_i1_oneOf_i18_showPrefixLen )       | No      | boolean          | No         | -                                                                    | Show network prefix length (/N)                                                      |
-| - [showAllIps](#modules_items_anyOf_i1_oneOf_i18_showAllIps )             | No      | boolean          | No         | -                                                                    | Show all IPs bound to the same interface.<br />By default only the first IP is shown |
-| - [compact](#modules_items_anyOf_i1_oneOf_i18_compact )                   | No      | boolean          | No         | -                                                                    | Show all IPs in one line                                                             |
-| - [namePrefix](#modules_items_anyOf_i1_oneOf_i18_namePrefix )             | No      | string           | No         | -                                                                    | Show IPs with given name prefix only                                                 |
-| - [defaultRouteOnly](#modules_items_anyOf_i1_oneOf_i18_defaultRouteOnly ) | No      | boolean          | No         | -                                                                    | Show ips that are used for default routing only                                      |
-| - [key](#modules_items_anyOf_i1_oneOf_i18_key )                           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                    |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i18_keyColor )                 | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                    |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i18_outputColor )           | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`               |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i18_keyWidth )                 | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                           |
-| - [format](#modules_items_anyOf_i1_oneOf_i18_format )                     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail             |
+| Property                                                                  | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| ------------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i18_type )                         | No      | const            | No         | -                                                                    | List local IP addresses (v4 or v6), MAC addresses, etc                                            |
+| - [showIpv4](#modules_items_anyOf_i1_oneOf_i18_showIpv4 )                 | No      | boolean          | No         | -                                                                    | Show IPv4 addresses                                                                               |
+| - [showIpv6](#modules_items_anyOf_i1_oneOf_i18_showIpv6 )                 | No      | boolean          | No         | -                                                                    | Show IPv6 addresses                                                                               |
+| - [showMac](#modules_items_anyOf_i1_oneOf_i18_showMac )                   | No      | boolean          | No         | -                                                                    | Show MAC addresses                                                                                |
+| - [showLoop](#modules_items_anyOf_i1_oneOf_i18_showLoop )                 | No      | boolean          | No         | -                                                                    | Show loop back addresses (127.0.0.1)                                                              |
+| - [showPrefixLen](#modules_items_anyOf_i1_oneOf_i18_showPrefixLen )       | No      | boolean          | No         | -                                                                    | Show network prefix length (/N)                                                                   |
+| - [showAllIps](#modules_items_anyOf_i1_oneOf_i18_showAllIps )             | No      | boolean          | No         | -                                                                    | Show all IPs bound to the same interface.<br />By default only the first IP is shown              |
+| - [compact](#modules_items_anyOf_i1_oneOf_i18_compact )                   | No      | boolean          | No         | -                                                                    | Show all IPs in one line                                                                          |
+| - [namePrefix](#modules_items_anyOf_i1_oneOf_i18_namePrefix )             | No      | string           | No         | -                                                                    | Show IPs with given name prefix only                                                              |
+| - [defaultRouteOnly](#modules_items_anyOf_i1_oneOf_i18_defaultRouteOnly ) | No      | boolean          | No         | -                                                                    | Show ips that are used for default routing only                                                   |
+| - [key](#modules_items_anyOf_i1_oneOf_i18_key )                           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i18_keyColor )                 | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i18_outputColor )           | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i18_keyWidth )                 | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i18_format )                     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i18_type"></a>6.1.2.19.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > type`
 
@@ -4565,7 +4643,7 @@ By default only the first IP is shown
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i19"></a>6.1.2.20. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory`
 
@@ -4577,15 +4655,15 @@ By default only the first IP is shown
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i19_type )               | No      | const            | No         | -                                                                    | Print system memory usage info                                           |
-| - [percent](#modules_items_anyOf_i1_oneOf_i19_percent )         | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                           |
-| - [key](#modules_items_anyOf_i1_oneOf_i19_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i19_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i19_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i19_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i19_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i19_type )               | No      | const            | No         | -                                                                    | Print system memory usage info                                                                    |
+| - [percent](#modules_items_anyOf_i1_oneOf_i19_percent )         | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i19_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i19_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i19_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i19_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i19_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i19_type"></a>6.1.2.20.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > type`
 
@@ -4658,7 +4736,7 @@ Specific value: `"memory"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i20"></a>6.1.2.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Loadavg`
 
@@ -4670,17 +4748,17 @@ Specific value: `"memory"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i20_type )               | No      | const            | No         | -                                                                    | Print system load averages                                               |
-| - [ndigits](#modules_items_anyOf_i1_oneOf_i20_ndigits )         | No      | integer          | No         | -                                                                    | Set the number of digits to keep after the decimal point                 |
-| - [compact](#modules_items_anyOf_i1_oneOf_i20_compact )         | No      | boolean          | No         | -                                                                    | Show values in one line                                                  |
-| - [percent](#modules_items_anyOf_i1_oneOf_i20_percent )         | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                           |
-| - [key](#modules_items_anyOf_i1_oneOf_i20_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i20_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i20_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i20_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i20_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i20_type )               | No      | const            | No         | -                                                                    | Print system load averages                                                                        |
+| - [ndigits](#modules_items_anyOf_i1_oneOf_i20_ndigits )         | No      | integer          | No         | -                                                                    | Set the number of digits to keep after the decimal point                                          |
+| - [compact](#modules_items_anyOf_i1_oneOf_i20_compact )         | No      | boolean          | No         | -                                                                    | Show values in one line                                                                           |
+| - [percent](#modules_items_anyOf_i1_oneOf_i20_percent )         | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i20_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i20_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i20_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i20_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i20_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i20_type"></a>6.1.2.21.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Loadavg > type`
 
@@ -4778,7 +4856,7 @@ Specific value: `"loadavg"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i21"></a>6.1.2.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO`
 
@@ -4790,17 +4868,17 @@ Specific value: `"loadavg"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                                  | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| ------------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i21_type )                         | No      | const            | No         | -                                                                    | Print network I/O throughput                                             |
-| - [namePrefix](#modules_items_anyOf_i1_oneOf_i21_namePrefix )             | No      | string           | No         | -                                                                    | Show IPs with given name prefix only                                     |
-| - [defaultRouteOnly](#modules_items_anyOf_i1_oneOf_i21_defaultRouteOnly ) | No      | boolean          | No         | -                                                                    | Show ips that are used for default routing only                          |
-| - [detectTotal](#modules_items_anyOf_i1_oneOf_i21_detectTotal )           | No      | boolean          | No         | -                                                                    | Detect total bytes instead of current rate                               |
-| - [key](#modules_items_anyOf_i1_oneOf_i21_key )                           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i21_keyColor )                 | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i21_outputColor )           | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i21_keyWidth )                 | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i21_format )                     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                                  | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| ------------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i21_type )                         | No      | const            | No         | -                                                                    | Print network I/O throughput                                                                      |
+| - [namePrefix](#modules_items_anyOf_i1_oneOf_i21_namePrefix )             | No      | string           | No         | -                                                                    | Show IPs with given name prefix only                                                              |
+| - [defaultRouteOnly](#modules_items_anyOf_i1_oneOf_i21_defaultRouteOnly ) | No      | boolean          | No         | -                                                                    | Show ips that are used for default routing only                                                   |
+| - [detectTotal](#modules_items_anyOf_i1_oneOf_i21_detectTotal )           | No      | boolean          | No         | -                                                                    | Detect total bytes instead of current rate                                                        |
+| - [key](#modules_items_anyOf_i1_oneOf_i21_key )                           | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i21_keyColor )                 | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i21_outputColor )           | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i21_keyWidth )                 | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i21_format )                     | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i21_type"></a>6.1.2.22.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > NetIO > type`
 
@@ -4891,7 +4969,7 @@ Specific value: `"netio"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i22"></a>6.1.2.23. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL`
 
@@ -4903,15 +4981,15 @@ Specific value: `"netio"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i22_type )               | No      | const            | No         | -                                                                    | Print highest OpenGL version supported by the GPU                        |
-| - [library](#modules_items_anyOf_i1_oneOf_i22_library )         | No      | enum (of string) | No         | -                                                                    | Set the OpenGL context creation library to use. Linux only               |
-| - [key](#modules_items_anyOf_i1_oneOf_i22_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i22_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i22_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i22_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i22_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i22_type )               | No      | const            | No         | -                                                                    | Print highest OpenGL version supported by the GPU                                                 |
+| - [library](#modules_items_anyOf_i1_oneOf_i22_library )         | No      | enum (of string) | No         | -                                                                    | Set the OpenGL context creation library to use. Linux only                                        |
+| - [key](#modules_items_anyOf_i1_oneOf_i22_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i22_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i22_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i22_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i22_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i22_type"></a>6.1.2.23.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > OpenGL > type`
 
@@ -4989,7 +5067,7 @@ Must be one of:
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i23"></a>6.1.2.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages`
 
@@ -5001,15 +5079,15 @@ Must be one of:
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type                      | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ------------------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i23_type )               | No      | const                     | No         | -                                                                    | List installed package managers and count of installed packages          |
-| - [disabled](#modules_items_anyOf_i1_oneOf_i23_disabled )       | No      | array of enum (of string) | No         | -                                                                    | List of package managers to be disabled when detecting                   |
-| - [key](#modules_items_anyOf_i1_oneOf_i23_key )                 | No      | string                    | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i23_keyColor )       | No      | enum (of string)          | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i23_outputColor ) | No      | enum (of string)          | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i23_keyWidth )       | No      | integer                   | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i23_format )           | No      | string                    | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type                      | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ------------------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i23_type )               | No      | const                     | No         | -                                                                    | List installed package managers and count of installed packages                                   |
+| - [disabled](#modules_items_anyOf_i1_oneOf_i23_disabled )       | No      | array of enum (of string) | No         | -                                                                    | List of package managers to be disabled when detecting                                            |
+| - [key](#modules_items_anyOf_i1_oneOf_i23_key )                 | No      | string                    | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i23_keyColor )       | No      | enum (of string)          | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i23_outputColor ) | No      | enum (of string)          | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i23_keyWidth )       | No      | integer                   | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i23_format )           | No      | string                    | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i23_type"></a>6.1.2.24.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > type`
 
@@ -5122,7 +5200,7 @@ Must be one of:
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i24"></a>6.1.2.25. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk`
 
@@ -5134,16 +5212,16 @@ Must be one of:
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i24_type )               | No      | const            | No         | -                                                                    | Print physical disk information                                          |
-| - [namePrefix](#modules_items_anyOf_i1_oneOf_i24_namePrefix )   | No      | string           | No         | -                                                                    | Show disks with given name prefix only                                   |
-| - [temp](#modules_items_anyOf_i1_oneOf_i24_temp )               | No      | object           | No         | Same as [temp](#modules_items_anyOf_i1_oneOf_i2_temp )               | Detect and display temperature if supported                              |
-| - [key](#modules_items_anyOf_i1_oneOf_i24_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i24_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i24_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i24_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i24_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i24_type )               | No      | const            | No         | -                                                                    | Print physical disk information                                                                   |
+| - [namePrefix](#modules_items_anyOf_i1_oneOf_i24_namePrefix )   | No      | string           | No         | -                                                                    | Show disks with given name prefix only                                                            |
+| - [temp](#modules_items_anyOf_i1_oneOf_i24_temp )               | No      | object           | No         | Same as [temp](#modules_items_anyOf_i1_oneOf_i2_temp )               | Detect and display temperature if supported                                                       |
+| - [key](#modules_items_anyOf_i1_oneOf_i24_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i24_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i24_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i24_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i24_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i24_type"></a>6.1.2.25.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Physical Disk > type`
 
@@ -5225,7 +5303,7 @@ Specific value: `"physicaldisk"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i25"></a>6.1.2.26. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP`
 
@@ -5237,17 +5315,17 @@ Specific value: `"physicaldisk"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                 |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i25_type )               | No      | const            | No         | -                                                                    | Print your public IP address, etc                                                 |
-| - [url](#modules_items_anyOf_i1_oneOf_i25_url )                 | No      | string           | No         | -                                                                    | The URL of public IP detection server to be used. Only HTTP protocol is supported |
-| - [timeout](#modules_items_anyOf_i1_oneOf_i25_timeout )         | No      | integer          | No         | -                                                                    | Time in milliseconds to wait for the public ip server to respond                  |
-| - [ipv6](#modules_items_anyOf_i1_oneOf_i25_ipv6 )               | No      | boolean          | No         | -                                                                    | Whether to use IPv6 for public IP detection server                                |
-| - [key](#modules_items_anyOf_i1_oneOf_i25_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i25_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                 |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i25_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`            |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i25_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                        |
-| - [format](#modules_items_anyOf_i1_oneOf_i25_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail          |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i25_type )               | No      | const            | No         | -                                                                    | Print your public IP address, etc                                                                 |
+| - [url](#modules_items_anyOf_i1_oneOf_i25_url )                 | No      | string           | No         | -                                                                    | The URL of public IP detection server to be used. Only HTTP protocol is supported                 |
+| - [timeout](#modules_items_anyOf_i1_oneOf_i25_timeout )         | No      | integer          | No         | -                                                                    | Time in milliseconds to wait for the public ip server to respond                                  |
+| - [ipv6](#modules_items_anyOf_i1_oneOf_i25_ipv6 )               | No      | boolean          | No         | -                                                                    | Whether to use IPv6 for public IP detection server                                                |
+| - [key](#modules_items_anyOf_i1_oneOf_i25_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i25_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i25_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i25_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i25_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i25_type"></a>6.1.2.26.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > type`
 
@@ -5344,7 +5422,7 @@ Specific value: `"publicip"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i26"></a>6.1.2.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator`
 
@@ -5403,16 +5481,16 @@ Specific value: `"separator"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i27_type )               | No      | const            | No         | -                                                                    | Print sound devices, volume, etc                                         |
-| - [soundType](#modules_items_anyOf_i1_oneOf_i27_soundType )     | No      | enum (of string) | No         | -                                                                    | Set what type of sound devices should be printed                         |
-| - [percent](#modules_items_anyOf_i1_oneOf_i27_percent )         | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                           |
-| - [key](#modules_items_anyOf_i1_oneOf_i27_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i27_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i27_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i27_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i27_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i27_type )               | No      | const            | No         | -                                                                    | Print sound devices, volume, etc                                                                  |
+| - [soundType](#modules_items_anyOf_i1_oneOf_i27_soundType )     | No      | enum (of string) | No         | -                                                                    | Set what type of sound devices should be printed                                                  |
+| - [percent](#modules_items_anyOf_i1_oneOf_i27_percent )         | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i27_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i27_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i27_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i27_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i27_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i27_type"></a>6.1.2.28.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > type`
 
@@ -5500,7 +5578,7 @@ Must be one of:
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i28"></a>6.1.2.29. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap`
 
@@ -5512,15 +5590,15 @@ Must be one of:
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i28_type )               | No      | const            | No         | -                                                                    | Print swap (paging file) space usage                                     |
-| - [percent](#modules_items_anyOf_i1_oneOf_i28_percent )         | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                           |
-| - [key](#modules_items_anyOf_i1_oneOf_i28_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i28_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i28_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i28_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i28_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i28_type )               | No      | const            | No         | -                                                                    | Print swap (paging file) space usage                                                              |
+| - [percent](#modules_items_anyOf_i1_oneOf_i28_percent )         | No      | object           | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i2_percent )         | Threshold of percentage colors                                                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i28_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i28_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i28_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i28_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i28_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i28_type"></a>6.1.2.29.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Swap > type`
 
@@ -5593,7 +5671,7 @@ Specific value: `"swap"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i29"></a>6.1.2.30. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title`
 
@@ -5605,16 +5683,16 @@ Specific value: `"swap"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i29_type )               | No      | const            | No         | -                                                                    | Print title, which contains your user name, hostname                     |
-| - [fqdn](#modules_items_anyOf_i1_oneOf_i29_fqdn )               | No      | boolean          | No         | -                                                                    | Set if the title should use fully qualified domain name                  |
-| - [color](#modules_items_anyOf_i1_oneOf_i29_color )             | No      | object           | No         | -                                                                    | Set colors of the different part of title                                |
-| - [key](#modules_items_anyOf_i1_oneOf_i29_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i29_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i29_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i29_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i29_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i29_type )               | No      | const            | No         | -                                                                    | Print title, which contains your user name, hostname                                              |
+| - [fqdn](#modules_items_anyOf_i1_oneOf_i29_fqdn )               | No      | boolean          | No         | -                                                                    | Set if the title should use fully qualified domain name                                           |
+| - [color](#modules_items_anyOf_i1_oneOf_i29_color )             | No      | object           | No         | -                                                                    | Set colors of the different part of title                                                         |
+| - [key](#modules_items_anyOf_i1_oneOf_i29_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i29_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i29_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i29_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i29_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i29_type"></a>6.1.2.30.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Title > type`
 
@@ -5732,7 +5810,7 @@ Specific value: `"title"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i30"></a>6.1.2.31. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Users`
 
@@ -5744,16 +5822,16 @@ Specific value: `"title"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i30_type )               | No      | const            | No         | -                                                                    | Print users currently logged in                                          |
-| - [compact](#modules_items_anyOf_i1_oneOf_i30_compact )         | No      | boolean          | No         | -                                                                    | Show all active users in one line                                        |
-| - [myselfOnly](#modules_items_anyOf_i1_oneOf_i30_myselfOnly )   | No      | boolean          | No         | -                                                                    | Show only the current user                                               |
-| - [key](#modules_items_anyOf_i1_oneOf_i30_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i30_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i30_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i30_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i30_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i30_type )               | No      | const            | No         | -                                                                    | Print users currently logged in                                                                   |
+| - [compact](#modules_items_anyOf_i1_oneOf_i30_compact )         | No      | boolean          | No         | -                                                                    | Show all active users in one line                                                                 |
+| - [myselfOnly](#modules_items_anyOf_i1_oneOf_i30_myselfOnly )   | No      | boolean          | No         | -                                                                    | Show only the current user                                                                        |
+| - [key](#modules_items_anyOf_i1_oneOf_i30_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i30_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i30_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i30_keyWidth )       | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i30_format )           | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i30_type"></a>6.1.2.31.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Users > type`
 
@@ -5835,7 +5913,7 @@ Specific value: `"users"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i31"></a>6.1.2.32. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather`
 
@@ -5847,17 +5925,17 @@ Specific value: `"users"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                          | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| ----------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i31_type )                 | No      | const            | No         | -                                                                    | Print weather information                                                |
-| - [location](#modules_items_anyOf_i1_oneOf_i31_location )         | No      | string           | No         | -                                                                    | The location to display                                                  |
-| - [timeout](#modules_items_anyOf_i1_oneOf_i31_timeout )           | No      | integer          | No         | -                                                                    | Time in milliseconds to wait for the weather server to respond           |
-| - [outputFormat](#modules_items_anyOf_i1_oneOf_i31_outputFormat ) | No      | string           | No         | -                                                                    | The output weather format to be used (must be URI encoded)               |
-| - [key](#modules_items_anyOf_i1_oneOf_i31_key )                   | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i31_keyColor )         | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i31_outputColor )   | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i31_keyWidth )         | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i31_format )             | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                          | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| ----------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i31_type )                 | No      | const            | No         | -                                                                    | Print weather information                                                                         |
+| - [location](#modules_items_anyOf_i1_oneOf_i31_location )         | No      | string           | No         | -                                                                    | The location to display                                                                           |
+| - [timeout](#modules_items_anyOf_i1_oneOf_i31_timeout )           | No      | integer          | No         | -                                                                    | Time in milliseconds to wait for the weather server to respond                                    |
+| - [outputFormat](#modules_items_anyOf_i1_oneOf_i31_outputFormat ) | No      | string           | No         | -                                                                    | The output weather format to be used (must be URI encoded)                                        |
+| - [key](#modules_items_anyOf_i1_oneOf_i31_key )                   | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i31_keyColor )         | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i31_outputColor )   | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i31_keyWidth )         | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i31_format )             | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i31_type"></a>6.1.2.32.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Weather > type`
 
@@ -5952,7 +6030,7 @@ Specific value: `"weather"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i32"></a>6.1.2.33. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM`
 
@@ -5964,15 +6042,15 @@ Specific value: `"weather"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                          | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                        |
-| ----------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i32_type )                 | No      | const            | No         | -                                                                    | Print window manager name and version                                    |
-| - [detectPlugin](#modules_items_anyOf_i1_oneOf_i32_detectPlugin ) | No      | boolean          | No         | -                                                                    | Set if window manager plugin should be detected on supported platforms   |
-| - [key](#modules_items_anyOf_i1_oneOf_i32_key )                   | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i32_keyColor )         | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i32_outputColor )   | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i32_keyWidth )         | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`               |
-| - [format](#modules_items_anyOf_i1_oneOf_i32_format )             | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h &lt;module&gt;-format\` for detail |
+| Property                                                          | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
+| ----------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i32_type )                 | No      | const            | No         | -                                                                    | Print window manager name and version                                                             |
+| - [detectPlugin](#modules_items_anyOf_i1_oneOf_i32_detectPlugin ) | No      | boolean          | No         | -                                                                    | Set if window manager plugin should be detected on supported platforms                            |
+| - [key](#modules_items_anyOf_i1_oneOf_i32_key )                   | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i32_keyColor )         | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i32_outputColor )   | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i32_keyWidth )         | No      | integer          | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Use 0 to use \`display.keyWidth\`                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i32_format )             | No      | string           | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i1_format )           | Output format of the module. See \`-h <module>-format\` for detail. I.e: fastfetch -h disk-format |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i32_type"></a>6.1.2.33.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > WM > type`
 
@@ -6044,7 +6122,7 @@ Specific value: `"wm"`
 | **Required**           | No                                                |
 | **Same definition as** | [format](#modules_items_anyOf_i1_oneOf_i1_format) |
 
-**Description:** Output format of the module. See `-h &lt;module&gt;-format` for detail
+**Description:** Output format of the module. See `-h <module>-format` for detail. I.e: fastfetch -h disk-format
 
 ##### <a name="modules_items_anyOf_i1_type"></a>6.1.2.34. Property `JSON config > modules > modules items > anyOf > item 1 > type`
 
@@ -6054,4 +6132,4 @@ Specific value: `"wm"`
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-06-21 at 10:06:48 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-07-04 at 10:41:41 +0800
