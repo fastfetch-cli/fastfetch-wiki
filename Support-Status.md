@@ -109,7 +109,7 @@ Run `fastfetch --print-logos` to print them
 
 ### Package managers
 ```
-am, apk, brew, Chocolatey, dpkg, emerge, eopkg, Flatpak, Guix, MacPorts, nix, opkg, Pacman, paludis, pkg, pkgtool, rpm, scoop, Snap, sorcery, winget (disabled by default), xbps
+am, apk, brew, Chocolatey, dpkg, emerge, eopkg, Flatpak, Guix, lpkg, lpkgbuild, MacPorts, nix, opkg, Pacman, paludis, pkg, pkgtool, rpm, scoop, Snap, sorcery, winget (disabled by default), xbps
 ```
 
 ### WM themes
