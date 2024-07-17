@@ -56,8 +56,7 @@ Also refer to `fastfetch --help` for more detailed explanation.
 
 You may test it with `fastfetch --config examples/x.jsonc`
 
-### Note
+### Notes
 
-* When `config.jsonc` is found, `config.conf` will be ignored
 * Mixing command line flags with `config.jsonc` may / may not work. Generally, module command line option flags won't work when `config.jsonc` won't work. Other flags should work.
 * Special charactors should be encoded as `\uXXXX` in JSON. Notably, `\e` or `\033` should be `\u001b`.
