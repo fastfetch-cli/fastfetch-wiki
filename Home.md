@@ -4,7 +4,7 @@ Welcome to the fastfetch wiki!
 
 ## macOS (Apple Silicon)
 
-<img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/cd4ec30d-c482-49b4-bf99-ee93c79efa30">
+<img width="1000" alt="image" src="https://github.com/user-attachments/assets/dd438557-75ec-42cd-bb45-4b30051b8ca2">
 
 ## macOS (old Intel with `--stat`)
 
