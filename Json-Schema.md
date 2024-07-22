@@ -45,6 +45,7 @@
   - [3.6. Property `JSON config > general > wmiTimeout`](#general_wmiTimeout)
   - [3.7. Property `JSON config > general > processingTimeout`](#general_processingTimeout)
   - [3.8. Property `JSON config > general > preRun`](#general_preRun)
+  - [3.9. Property `JSON config > general > showVersion`](#general_showVersion)
 - [4. Property `JSON config > display`](#display)
   - [4.1. Property `JSON config > display > stat`](#display_stat)
   - [4.2. Property `JSON config > display > pipe`](#display_pipe)
@@ -61,63 +62,65 @@
       - [4.7.2.4. Property `JSON config > display > color > oneOf > item 1 > separator`](#display_color_oneOf_i1_separator)
   - [4.8. Property `JSON config > display > brightColor`](#display_brightColor)
   - [4.9. Property `JSON config > display > keyWidth`](#display_keyWidth)
-  - [4.10. Property `JSON config > display > binaryPrefix`](#display_binaryPrefix)
-    - [4.10.1. Property `JSON config > display > binaryPrefix > oneOf > item 0`](#display_binaryPrefix_oneOf_i0)
-    - [4.10.2. Property `JSON config > display > binaryPrefix > oneOf > item 1`](#display_binaryPrefix_oneOf_i1)
-    - [4.10.3. Property `JSON config > display > binaryPrefix > oneOf > item 2`](#display_binaryPrefix_oneOf_i2)
-  - [4.11. Property `JSON config > display > size`](#display_size)
-    - [4.11.1. Property `JSON config > display > size > maxPrefix`](#display_size_maxPrefix)
-    - [4.11.2. Property `JSON config > display > size > ndigits`](#display_size_ndigits)
-  - [4.12. Property `JSON config > display > temp`](#display_temp)
-    - [4.12.1. Property `JSON config > display > temp > unit`](#display_temp_unit)
-    - [4.12.2. Property `JSON config > display > temp > ndigits`](#display_temp_ndigits)
-    - [4.12.3. Property `JSON config > display > temp > color`](#display_temp_color)
-      - [4.12.3.1. Property `JSON config > display > temp > color > green`](#display_temp_color_green)
-      - [4.12.3.2. Property `JSON config > display > temp > color > yellow`](#display_temp_color_yellow)
-      - [4.12.3.3. Property `JSON config > display > temp > color > red`](#display_temp_color_red)
-  - [4.13. Property `JSON config > display > bar`](#display_bar)
-    - [4.13.1. Property `JSON config > display > bar > charElapsed`](#display_bar_charElapsed)
-    - [4.13.2. Property `JSON config > display > bar > charTotal`](#display_bar_charTotal)
-    - [4.13.3. Property `JSON config > display > bar > borderLeft`](#display_bar_borderLeft)
-    - [4.13.4. Property `JSON config > display > bar > borderRight`](#display_bar_borderRight)
-    - [4.13.5. Property `JSON config > display > bar > width`](#display_bar_width)
-  - [4.14. Property `JSON config > display > percent`](#display_percent)
-    - [4.14.1. Property `JSON config > display > percent > type`](#display_percent_type)
-    - [4.14.2. Property `JSON config > display > percent > ndigits`](#display_percent_ndigits)
-    - [4.14.3. Property `JSON config > display > percent > color`](#display_percent_color)
-      - [4.14.3.1. Property `JSON config > display > percent > color > green`](#display_percent_color_green)
-      - [4.14.3.2. Property `JSON config > display > percent > color > yellow`](#display_percent_color_yellow)
-      - [4.14.3.3. Property `JSON config > display > percent > color > red`](#display_percent_color_red)
+  - [4.10. Property `JSON config > display > size`](#display_size)
+    - [4.10.1. Property `JSON config > display > size > binaryPrefix`](#display_size_binaryPrefix)
+      - [4.10.1.1. Property `JSON config > display > size > binaryPrefix > oneOf > item 0`](#display_size_binaryPrefix_oneOf_i0)
+      - [4.10.1.2. Property `JSON config > display > size > binaryPrefix > oneOf > item 1`](#display_size_binaryPrefix_oneOf_i1)
+      - [4.10.1.3. Property `JSON config > display > size > binaryPrefix > oneOf > item 2`](#display_size_binaryPrefix_oneOf_i2)
+    - [4.10.2. Property `JSON config > display > size > maxPrefix`](#display_size_maxPrefix)
+    - [4.10.3. Property `JSON config > display > size > ndigits`](#display_size_ndigits)
+  - [4.11. Property `JSON config > display > temp`](#display_temp)
+    - [4.11.1. Property `JSON config > display > temp > unit`](#display_temp_unit)
+    - [4.11.2. Property `JSON config > display > temp > ndigits`](#display_temp_ndigits)
+    - [4.11.3. Property `JSON config > display > temp > color`](#display_temp_color)
+      - [4.11.3.1. Property `JSON config > display > temp > color > green`](#display_temp_color_green)
+      - [4.11.3.2. Property `JSON config > display > temp > color > yellow`](#display_temp_color_yellow)
+      - [4.11.3.3. Property `JSON config > display > temp > color > red`](#display_temp_color_red)
+  - [4.12. Property `JSON config > display > bar`](#display_bar)
+    - [4.12.1. Property `JSON config > display > bar > charElapsed`](#display_bar_charElapsed)
+    - [4.12.2. Property `JSON config > display > bar > charTotal`](#display_bar_charTotal)
+    - [4.12.3. Property `JSON config > display > bar > borderLeft`](#display_bar_borderLeft)
+    - [4.12.4. Property `JSON config > display > bar > borderRight`](#display_bar_borderRight)
+    - [4.12.5. Property `JSON config > display > bar > width`](#display_bar_width)
+  - [4.13. Property `JSON config > display > percent`](#display_percent)
+    - [4.13.1. Property `JSON config > display > percent > type`](#display_percent_type)
+    - [4.13.2. Property `JSON config > display > percent > ndigits`](#display_percent_ndigits)
+    - [4.13.3. Property `JSON config > display > percent > color`](#display_percent_color)
+      - [4.13.3.1. Property `JSON config > display > percent > color > green`](#display_percent_color_green)
+      - [4.13.3.2. Property `JSON config > display > percent > color > yellow`](#display_percent_color_yellow)
+      - [4.13.3.3. Property `JSON config > display > percent > color > red`](#display_percent_color_red)
+  - [4.14. Property `JSON config > display > freq`](#display_freq)
+    - [4.14.1. Property `JSON config > display > freq > ndigits`](#display_freq_ndigits)
   - [4.15. Property `JSON config > display > noBuffer`](#display_noBuffer)
-  - [4.16. Property `JSON config > display > tsVersion`](#display_tsVersion)
+  - [4.16. Property `JSON config > display > constants`](#display_constants)
+    - [4.16.1. JSON config > display > constants > constants items](#autogenerated_heading_2)
 - [5. Property `JSON config > library`](#library)
-  - [5.1. Property `JSON config > library > pci`](#library_pci)
-  - [5.2. Property `JSON config > library > vulkan`](#library_vulkan)
-  - [5.3. Property `JSON config > library > freetype`](#library_freetype)
-  - [5.4. Property `JSON config > library > wayland`](#library_wayland)
-  - [5.5. Property `JSON config > library > xcbRandr`](#library_xcbRandr)
-  - [5.6. Property `JSON config > library > xcb`](#library_xcb)
-  - [5.7. Property `JSON config > library > xrandr`](#library_xrandr)
-  - [5.8. Property `JSON config > library > x11`](#library_x11)
-  - [5.9. Property `JSON config > library > drm`](#library_drm)
-  - [5.10. Property `JSON config > library > gio`](#library_gio)
-  - [5.11. Property `JSON config > library > dconf`](#library_dconf)
-  - [5.12. Property `JSON config > library > dbus`](#library_dbus)
-  - [5.13. Property `JSON config > library > xfconf`](#library_xfconf)
-  - [5.14. Property `JSON config > library > sqlite3`](#library_sqlite3)
-  - [5.15. Property `JSON config > library > rpm`](#library_rpm)
-  - [5.16. Property `JSON config > library > imagemagick`](#library_imagemagick)
-  - [5.17. Property `JSON config > library > z`](#library_z)
-  - [5.18. Property `JSON config > library > chafa`](#library_chafa)
-  - [5.19. Property `JSON config > library > egl`](#library_egl)
-  - [5.20. Property `JSON config > library > glx`](#library_glx)
-  - [5.21. Property `JSON config > library > osmesa`](#library_osmesa)
-  - [5.22. Property `JSON config > library > opencl`](#library_opencl)
-  - [5.23. Property `JSON config > library > pulse`](#library_pulse)
-  - [5.24. Property `JSON config > library > nm`](#library_nm)
-  - [5.25. Property `JSON config > library > ddcutil`](#library_ddcutil)
+  - [5.1. Property `JSON config > library > vulkan`](#library_vulkan)
+  - [5.2. Property `JSON config > library > freetype`](#library_freetype)
+  - [5.3. Property `JSON config > library > wayland`](#library_wayland)
+  - [5.4. Property `JSON config > library > xcbRandr`](#library_xcbRandr)
+  - [5.5. Property `JSON config > library > xcb`](#library_xcb)
+  - [5.6. Property `JSON config > library > xrandr`](#library_xrandr)
+  - [5.7. Property `JSON config > library > x11`](#library_x11)
+  - [5.8. Property `JSON config > library > drm`](#library_drm)
+  - [5.9. Property `JSON config > library > gio`](#library_gio)
+  - [5.10. Property `JSON config > library > dconf`](#library_dconf)
+  - [5.11. Property `JSON config > library > dbus`](#library_dbus)
+  - [5.12. Property `JSON config > library > xfconf`](#library_xfconf)
+  - [5.13. Property `JSON config > library > sqlite3`](#library_sqlite3)
+  - [5.14. Property `JSON config > library > rpm`](#library_rpm)
+  - [5.15. Property `JSON config > library > imagemagick`](#library_imagemagick)
+  - [5.16. Property `JSON config > library > z`](#library_z)
+  - [5.17. Property `JSON config > library > chafa`](#library_chafa)
+  - [5.18. Property `JSON config > library > egl`](#library_egl)
+  - [5.19. Property `JSON config > library > glx`](#library_glx)
+  - [5.20. Property `JSON config > library > osmesa`](#library_osmesa)
+  - [5.21. Property `JSON config > library > opencl`](#library_opencl)
+  - [5.22. Property `JSON config > library > pulse`](#library_pulse)
+  - [5.23. Property `JSON config > library > nm`](#library_nm)
+  - [5.24. Property `JSON config > library > ddcutil`](#library_ddcutil)
 - [6. Property `JSON config > modules`](#modules)
-  - [6.1. JSON config > modules > modules items](#autogenerated_heading_2)
+  - [6.1. JSON config > modules > modules items](#autogenerated_heading_3)
     - [6.1.1. Property `JSON config > modules > modules items > anyOf > item 0`](#modules_items_anyOf_i0)
     - [6.1.2. Property `JSON config > modules > modules items > anyOf > item 1`](#modules_items_anyOf_i1)
       - [6.1.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Break`](#modules_items_anyOf_i1_oneOf_i0)
@@ -208,13 +211,12 @@
       - [6.1.2.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU`](#modules_items_anyOf_i1_oneOf_i6)
         - [6.1.2.7.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > type`](#modules_items_anyOf_i1_oneOf_i6_type)
         - [6.1.2.7.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > temp`](#modules_items_anyOf_i1_oneOf_i6_temp)
-        - [6.1.2.7.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > freqNdigits`](#modules_items_anyOf_i1_oneOf_i6_freqNdigits)
-        - [6.1.2.7.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > showPeCoreCount`](#modules_items_anyOf_i1_oneOf_i6_showPeCoreCount)
-        - [6.1.2.7.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > key`](#modules_items_anyOf_i1_oneOf_i6_key)
-        - [6.1.2.7.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyColor`](#modules_items_anyOf_i1_oneOf_i6_keyColor)
-        - [6.1.2.7.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > outputColor`](#modules_items_anyOf_i1_oneOf_i6_outputColor)
-        - [6.1.2.7.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyWidth`](#modules_items_anyOf_i1_oneOf_i6_keyWidth)
-        - [6.1.2.7.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > format`](#modules_items_anyOf_i1_oneOf_i6_format)
+        - [6.1.2.7.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > showPeCoreCount`](#modules_items_anyOf_i1_oneOf_i6_showPeCoreCount)
+        - [6.1.2.7.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > key`](#modules_items_anyOf_i1_oneOf_i6_key)
+        - [6.1.2.7.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyColor`](#modules_items_anyOf_i1_oneOf_i6_keyColor)
+        - [6.1.2.7.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > outputColor`](#modules_items_anyOf_i1_oneOf_i6_outputColor)
+        - [6.1.2.7.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyWidth`](#modules_items_anyOf_i1_oneOf_i6_keyWidth)
+        - [6.1.2.7.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > format`](#modules_items_anyOf_i1_oneOf_i6_format)
       - [6.1.2.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage`](#modules_items_anyOf_i1_oneOf_i7)
         - [6.1.2.8.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > type`](#modules_items_anyOf_i1_oneOf_i7_type)
         - [6.1.2.8.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Usage > percent`](#modules_items_anyOf_i1_oneOf_i7_percent)
@@ -231,7 +233,7 @@
         - [6.1.2.9.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block`](#modules_items_anyOf_i1_oneOf_i8_block)
           - [6.1.2.9.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > width`](#modules_items_anyOf_i1_oneOf_i8_block_width)
           - [6.1.2.9.4.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > range`](#modules_items_anyOf_i1_oneOf_i8_block_range)
-            - [6.1.2.9.4.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > range > range items](#autogenerated_heading_3)
+            - [6.1.2.9.4.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > range > range items](#autogenerated_heading_4)
         - [6.1.2.9.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > key`](#modules_items_anyOf_i1_oneOf_i8_key)
       - [6.1.2.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command`](#modules_items_anyOf_i1_oneOf_i9)
         - [6.1.2.10.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > type`](#modules_items_anyOf_i1_oneOf_i9_type)
@@ -373,7 +375,7 @@
       - [6.1.2.24. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages`](#modules_items_anyOf_i1_oneOf_i23)
         - [6.1.2.24.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > type`](#modules_items_anyOf_i1_oneOf_i23_type)
         - [6.1.2.24.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > disabled`](#modules_items_anyOf_i1_oneOf_i23_disabled)
-          - [6.1.2.24.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > disabled > disabled items](#autogenerated_heading_4)
+          - [6.1.2.24.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > disabled > disabled items](#autogenerated_heading_5)
         - [6.1.2.24.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > key`](#modules_items_anyOf_i1_oneOf_i23_key)
         - [6.1.2.24.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > keyColor`](#modules_items_anyOf_i1_oneOf_i23_keyColor)
         - [6.1.2.24.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > outputColor`](#modules_items_anyOf_i1_oneOf_i23_outputColor)
@@ -402,6 +404,7 @@
         - [6.1.2.27.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > type`](#modules_items_anyOf_i1_oneOf_i26_type)
         - [6.1.2.27.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > string`](#modules_items_anyOf_i1_oneOf_i26_string)
         - [6.1.2.27.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > outputColor`](#modules_items_anyOf_i1_oneOf_i26_outputColor)
+        - [6.1.2.27.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > length`](#modules_items_anyOf_i1_oneOf_i26_length)
       - [6.1.2.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound`](#modules_items_anyOf_i1_oneOf_i27)
         - [6.1.2.28.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > type`](#modules_items_anyOf_i1_oneOf_i27_type)
         - [6.1.2.28.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound > soundType`](#modules_items_anyOf_i1_oneOf_i27_soundType)
@@ -950,6 +953,7 @@ Must be one of:
 | - [wmiTimeout](#general_wmiTimeout )               | No      | integer     | No         | -          | Set the timeout (ms) for WMI queries, \`-1\` for no timeout. Windows only    |
 | - [processingTimeout](#general_processingTimeout ) | No      | integer     | No         | -          | Set the timeout (ms) when waiting for child processes, \`-1\` for no timeout |
 | - [preRun](#general_preRun )                       | No      | string      | No         | -          | Set the command to be executed before printing logos                         |
+| - [showVersion](#general_showVersion )             | No      | boolean     | No         | -          | Whether to detect and display component versions. Mainly for benchmarking    |
 
 ### <a name="general_multithreading"></a>3.1. Property `JSON config > general > multithreading`
 
@@ -1070,6 +1074,16 @@ Specific value: `true`
 
 **Description:** Set the command to be executed before printing logos
 
+### <a name="general_showVersion"></a>3.9. Property `JSON config > general > showVersion`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `boolean` |
+| **Required** | No        |
+| **Default**  | `true`    |
+
+**Description:** Whether to detect and display component versions. Mainly for benchmarking
+
 ## <a name="display"></a>4. Property `JSON config > display`
 
 |                           |                                                         |
@@ -1080,24 +1094,24 @@ Specific value: `true`
 
 **Description:** Configure how things to be displayed
 
-| Property                                       | Pattern | Type        | Deprecated | Definition | Title/Description                                                                                |
-| ---------------------------------------------- | ------- | ----------- | ---------- | ---------- | ------------------------------------------------------------------------------------------------ |
-| - [stat](#display_stat )                       | No      | boolean     | No         | -          | Show time usage (in ms) for individual modules                                                   |
-| - [pipe](#display_pipe )                       | No      | boolean     | No         | -          | Whether to enable pipe mode (disable logo and all escape sequences)                              |
-| - [showErrors](#display_showErrors )           | No      | boolean     | No         | -          | Print occurring errors to the console. False to ignore errored modules                           |
-| - [disableLinewrap](#display_disableLinewrap ) | No      | boolean     | No         | -          | Whether to disable line wrap during the run                                                      |
-| - [hideCursor](#display_hideCursor )           | No      | boolean     | No         | -          | Whether to hide the cursor during the run                                                        |
-| - [separator](#display_separator )             | No      | string      | No         | -          | Set the separator between key and value                                                          |
-| - [color](#display_color )                     | No      | Combination | No         | -          | Set the color of the keys and title                                                              |
-| - [brightColor](#display_brightColor )         | No      | boolean     | No         | -          | Set if the keys, title and ASCII logo should be printed in bright color                          |
-| - [keyWidth](#display_keyWidth )               | No      | integer     | No         | -          | Align the width of keys to number of characters, 0 to disable                                    |
-| - [binaryPrefix](#display_binaryPrefix )       | No      | Combination | No         | -          | Set the binary prefix to used when printing bytes                                                |
-| - [size](#display_size )                       | No      | object      | No         | -          | Set how a size value should be displayed                                                         |
-| - [temp](#display_temp )                       | No      | object      | No         | -          | Set how temperature values should be displayed                                                   |
-| - [bar](#display_bar )                         | No      | object      | No         | -          | Set the bar configuration                                                                        |
-| - [percent](#display_percent )                 | No      | object      | No         | -          | Set how a percentage value should be displayed                                                   |
-| - [noBuffer](#display_noBuffer )               | No      | boolean     | No         | -          | Whether to disable the stdout application buffer                                                 |
-| - [tsVersion](#display_tsVersion )             | No      | boolean     | No         | -          | Whether to detect and display the version of terminal, shell and editor. Mainly for benchmarking |
+| Property                                       | Pattern | Type            | Deprecated | Definition | Title/Description                                                       |
+| ---------------------------------------------- | ------- | --------------- | ---------- | ---------- | ----------------------------------------------------------------------- |
+| - [stat](#display_stat )                       | No      | boolean         | No         | -          | Show time usage (in ms) for individual modules                          |
+| - [pipe](#display_pipe )                       | No      | boolean         | No         | -          | Whether to enable pipe mode (disable logo and all escape sequences)     |
+| - [showErrors](#display_showErrors )           | No      | boolean         | No         | -          | Print occurring errors to the console. False to ignore errored modules  |
+| - [disableLinewrap](#display_disableLinewrap ) | No      | boolean         | No         | -          | Whether to disable line wrap during the run                             |
+| - [hideCursor](#display_hideCursor )           | No      | boolean         | No         | -          | Whether to hide the cursor during the run                               |
+| - [separator](#display_separator )             | No      | string          | No         | -          | Set the separator between key and value                                 |
+| - [color](#display_color )                     | No      | Combination     | No         | -          | Set the color of the keys and title                                     |
+| - [brightColor](#display_brightColor )         | No      | boolean         | No         | -          | Set if the keys, title and ASCII logo should be printed in bright color |
+| - [keyWidth](#display_keyWidth )               | No      | integer         | No         | -          | Align the width of keys to number of characters, 0 to disable           |
+| - [size](#display_size )                       | No      | object          | No         | -          | Set how a size value should be displayed                                |
+| - [temp](#display_temp )                       | No      | object          | No         | -          | Set how temperature values should be displayed                          |
+| - [bar](#display_bar )                         | No      | object          | No         | -          | Set the bar configuration                                               |
+| - [percent](#display_percent )                 | No      | object          | No         | -          | Set how a percentage value should be displayed                          |
+| - [freq](#display_freq )                       | No      | object          | No         | -          | Set how frequency values should be displayed                            |
+| - [noBuffer](#display_noBuffer )               | No      | boolean         | No         | -          | Whether to disable the stdout application buffer                        |
+| - [constants](#display_constants )             | No      | array of string | No         | -          | List of strings to be used in custom format of modules                  |
 
 ### <a name="display_stat"></a>4.1. Property `JSON config > display > stat`
 
@@ -1263,22 +1277,38 @@ Specific value: `true`
 | ------------ | ------ |
 | **Minimum**  | &ge; 0 |
 
-### <a name="display_binaryPrefix"></a>4.10. Property `JSON config > display > binaryPrefix`
+### <a name="display_size"></a>4.10. Property `JSON config > display > size`
+
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+
+**Description:** Set how a size value should be displayed
+
+| Property                                      | Pattern | Type             | Deprecated | Definition | Title/Description                                                              |
+| --------------------------------------------- | ------- | ---------------- | ---------- | ---------- | ------------------------------------------------------------------------------ |
+| - [binaryPrefix](#display_size_binaryPrefix ) | No      | Combination      | No         | -          | Set the binary prefix to used when formatting sizes                            |
+| - [maxPrefix](#display_size_maxPrefix )       | No      | enum (of string) | No         | -          | Set the largest binary prefix to use when formatting sizes                     |
+| - [ndigits](#display_size_ndigits )           | No      | integer          | No         | -          | Set the number of digits to keep after the decimal point when formatting sizes |
+
+#### <a name="display_size_binaryPrefix"></a>4.10.1. Property `JSON config > display > size > binaryPrefix`
 
 |              |             |
 | ------------ | ----------- |
 | **Type**     | `combining` |
 | **Required** | No          |
 
-**Description:** Set the binary prefix to used when printing bytes
+**Description:** Set the binary prefix to used when formatting sizes
 
-| One of(Option)                           |
-| ---------------------------------------- |
-| [item 0](#display_binaryPrefix_oneOf_i0) |
-| [item 1](#display_binaryPrefix_oneOf_i1) |
-| [item 2](#display_binaryPrefix_oneOf_i2) |
+| One of(Option)                                |
+| --------------------------------------------- |
+| [item 0](#display_size_binaryPrefix_oneOf_i0) |
+| [item 1](#display_size_binaryPrefix_oneOf_i1) |
+| [item 2](#display_size_binaryPrefix_oneOf_i2) |
 
-#### <a name="display_binaryPrefix_oneOf_i0"></a>4.10.1. Property `JSON config > display > binaryPrefix > oneOf > item 0`
+##### <a name="display_size_binaryPrefix_oneOf_i0"></a>4.10.1.1. Property `JSON config > display > size > binaryPrefix > oneOf > item 0`
 
 |              |         |
 | ------------ | ------- |
@@ -1289,7 +1319,7 @@ Specific value: `true`
 
 Specific value: `"iec"`
 
-#### <a name="display_binaryPrefix_oneOf_i1"></a>4.10.2. Property `JSON config > display > binaryPrefix > oneOf > item 1`
+##### <a name="display_size_binaryPrefix_oneOf_i1"></a>4.10.1.2. Property `JSON config > display > size > binaryPrefix > oneOf > item 1`
 
 |              |         |
 | ------------ | ------- |
@@ -1300,7 +1330,7 @@ Specific value: `"iec"`
 
 Specific value: `"si"`
 
-#### <a name="display_binaryPrefix_oneOf_i2"></a>4.10.3. Property `JSON config > display > binaryPrefix > oneOf > item 2`
+##### <a name="display_size_binaryPrefix_oneOf_i2"></a>4.10.1.3. Property `JSON config > display > size > binaryPrefix > oneOf > item 2`
 
 |              |         |
 | ------------ | ------- |
@@ -1311,22 +1341,7 @@ Specific value: `"si"`
 
 Specific value: `"jedec"`
 
-### <a name="display_size"></a>4.11. Property `JSON config > display > size`
-
-|                           |                                                         |
-| ------------------------- | ------------------------------------------------------- |
-| **Type**                  | `object`                                                |
-| **Required**              | No                                                      |
-| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
-
-**Description:** Set how a size value should be displayed
-
-| Property                                | Pattern | Type             | Deprecated | Definition | Title/Description                                                              |
-| --------------------------------------- | ------- | ---------------- | ---------- | ---------- | ------------------------------------------------------------------------------ |
-| - [maxPrefix](#display_size_maxPrefix ) | No      | enum (of string) | No         | -          | Set the largest binary prefix to use when formatting sizes                     |
-| - [ndigits](#display_size_ndigits )     | No      | integer          | No         | -          | Set the number of digits to keep after the decimal point when formatting sizes |
-
-#### <a name="display_size_maxPrefix"></a>4.11.1. Property `JSON config > display > size > maxPrefix`
+#### <a name="display_size_maxPrefix"></a>4.10.2. Property `JSON config > display > size > maxPrefix`
 
 |              |                    |
 | ------------ | ------------------ |
@@ -1347,7 +1362,7 @@ Must be one of:
 * "ZB"
 * "YB"
 
-#### <a name="display_size_ndigits"></a>4.11.2. Property `JSON config > display > size > ndigits`
+#### <a name="display_size_ndigits"></a>4.10.3. Property `JSON config > display > size > ndigits`
 
 |              |           |
 | ------------ | --------- |
@@ -1362,7 +1377,7 @@ Must be one of:
 | **Minimum**  | &ge; 0 |
 | **Maximum**  | &le; 9 |
 
-### <a name="display_temp"></a>4.12. Property `JSON config > display > temp`
+### <a name="display_temp"></a>4.11. Property `JSON config > display > temp`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -1378,7 +1393,7 @@ Must be one of:
 | - [ndigits](#display_temp_ndigits ) | No      | integer          | No         | -          | Set the number of digits to keep after the decimal point when formatting temperature values |
 | - [color](#display_temp_color )     | No      | object           | No         | -          | Set color used in different states of temperature values                                    |
 
-#### <a name="display_temp_unit"></a>4.12.1. Property `JSON config > display > temp > unit`
+#### <a name="display_temp_unit"></a>4.11.1. Property `JSON config > display > temp > unit`
 
 |              |                    |
 | ------------ | ------------------ |
@@ -1396,7 +1411,7 @@ Must be one of:
 * "KELVIN"
 * "K"
 
-#### <a name="display_temp_ndigits"></a>4.12.2. Property `JSON config > display > temp > ndigits`
+#### <a name="display_temp_ndigits"></a>4.11.2. Property `JSON config > display > temp > ndigits`
 
 |              |           |
 | ------------ | --------- |
@@ -1411,7 +1426,7 @@ Must be one of:
 | **Minimum**  | &ge; 0 |
 | **Maximum**  | &le; 9 |
 
-#### <a name="display_temp_color"></a>4.12.3. Property `JSON config > display > temp > color`
+#### <a name="display_temp_color"></a>4.11.3. Property `JSON config > display > temp > color`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -1427,7 +1442,7 @@ Must be one of:
 | - [yellow](#display_temp_color_yellow ) | No      | enum (of string) | No         | Same as [1](#logo_oneOf_i2_color_1 ) | Color used in yellow state |
 | - [red](#display_temp_color_red )       | No      | enum (of string) | No         | Same as [1](#logo_oneOf_i2_color_1 ) | Color used in red state    |
 
-##### <a name="display_temp_color_green"></a>4.12.3.1. Property `JSON config > display > temp > color > green`
+##### <a name="display_temp_color_green"></a>4.11.3.1. Property `JSON config > display > temp > color > green`
 
 |                        |                             |
 | ---------------------- | --------------------------- |
@@ -1437,7 +1452,7 @@ Must be one of:
 
 **Description:** Color used in green state
 
-##### <a name="display_temp_color_yellow"></a>4.12.3.2. Property `JSON config > display > temp > color > yellow`
+##### <a name="display_temp_color_yellow"></a>4.11.3.2. Property `JSON config > display > temp > color > yellow`
 
 |                        |                             |
 | ---------------------- | --------------------------- |
@@ -1447,7 +1462,7 @@ Must be one of:
 
 **Description:** Color used in yellow state
 
-##### <a name="display_temp_color_red"></a>4.12.3.3. Property `JSON config > display > temp > color > red`
+##### <a name="display_temp_color_red"></a>4.11.3.3. Property `JSON config > display > temp > color > red`
 
 |                        |                             |
 | ---------------------- | --------------------------- |
@@ -1457,7 +1472,7 @@ Must be one of:
 
 **Description:** Color used in red state
 
-### <a name="display_bar"></a>4.13. Property `JSON config > display > bar`
+### <a name="display_bar"></a>4.12. Property `JSON config > display > bar`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -1475,7 +1490,7 @@ Must be one of:
 | - [borderRight](#display_bar_borderRight ) | No      | string  | No         | -          | Set the string to use at right border             |
 | - [width](#display_bar_width )             | No      | integer | No         | -          | Set the width of the bar, in number of characters |
 
-#### <a name="display_bar_charElapsed"></a>4.13.1. Property `JSON config > display > bar > charElapsed`
+#### <a name="display_bar_charElapsed"></a>4.12.1. Property `JSON config > display > bar > charElapsed`
 
 |              |          |
 | ------------ | -------- |
@@ -1485,7 +1500,7 @@ Must be one of:
 
 **Description:** Set the character to use in elapsed part
 
-#### <a name="display_bar_charTotal"></a>4.13.2. Property `JSON config > display > bar > charTotal`
+#### <a name="display_bar_charTotal"></a>4.12.2. Property `JSON config > display > bar > charTotal`
 
 |              |          |
 | ------------ | -------- |
@@ -1495,7 +1510,7 @@ Must be one of:
 
 **Description:** Set the character to use in total part
 
-#### <a name="display_bar_borderLeft"></a>4.13.3. Property `JSON config > display > bar > borderLeft`
+#### <a name="display_bar_borderLeft"></a>4.12.3. Property `JSON config > display > bar > borderLeft`
 
 |              |          |
 | ------------ | -------- |
@@ -1505,7 +1520,7 @@ Must be one of:
 
 **Description:** Set the string to use at left border
 
-#### <a name="display_bar_borderRight"></a>4.13.4. Property `JSON config > display > bar > borderRight`
+#### <a name="display_bar_borderRight"></a>4.12.4. Property `JSON config > display > bar > borderRight`
 
 |              |          |
 | ------------ | -------- |
@@ -1515,7 +1530,7 @@ Must be one of:
 
 **Description:** Set the string to use at right border
 
-#### <a name="display_bar_width"></a>4.13.5. Property `JSON config > display > bar > width`
+#### <a name="display_bar_width"></a>4.12.5. Property `JSON config > display > bar > width`
 
 |              |           |
 | ------------ | --------- |
@@ -1529,7 +1544,7 @@ Must be one of:
 | ------------ | ------ |
 | **Minimum**  | &ge; 1 |
 
-### <a name="display_percent"></a>4.14. Property `JSON config > display > percent`
+### <a name="display_percent"></a>4.13. Property `JSON config > display > percent`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -1545,7 +1560,7 @@ Must be one of:
 | - [ndigits](#display_percent_ndigits ) | No      | number | No         | -          | Set the number of digits to keep after the decimal point when formatting percentage numbers                                                             |
 | - [color](#display_percent_color )     | No      | object | No         | -          | Set color used in different states of percentage bars and numbers                                                                                       |
 
-#### <a name="display_percent_type"></a>4.14.1. Property `JSON config > display > percent > type`
+#### <a name="display_percent_type"></a>4.13.1. Property `JSON config > display > percent > type`
 
 |              |          |
 | ------------ | -------- |
@@ -1560,7 +1575,7 @@ Must be one of:
 | **Minimum**  | &ge; 0   |
 | **Maximum**  | &le; 255 |
 
-#### <a name="display_percent_ndigits"></a>4.14.2. Property `JSON config > display > percent > ndigits`
+#### <a name="display_percent_ndigits"></a>4.13.2. Property `JSON config > display > percent > ndigits`
 
 |              |          |
 | ------------ | -------- |
@@ -1575,7 +1590,7 @@ Must be one of:
 | **Minimum**  | &ge; 0 |
 | **Maximum**  | &le; 9 |
 
-#### <a name="display_percent_color"></a>4.14.3. Property `JSON config > display > percent > color`
+#### <a name="display_percent_color"></a>4.13.3. Property `JSON config > display > percent > color`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -1591,7 +1606,7 @@ Must be one of:
 | - [yellow](#display_percent_color_yellow ) | No      | enum (of string) | No         | Same as [1](#logo_oneOf_i2_color_1 ) | Color used in yellow state |
 | - [red](#display_percent_color_red )       | No      | enum (of string) | No         | Same as [1](#logo_oneOf_i2_color_1 ) | Color used in red state    |
 
-##### <a name="display_percent_color_green"></a>4.14.3.1. Property `JSON config > display > percent > color > green`
+##### <a name="display_percent_color_green"></a>4.13.3.1. Property `JSON config > display > percent > color > green`
 
 |                        |                             |
 | ---------------------- | --------------------------- |
@@ -1601,7 +1616,7 @@ Must be one of:
 
 **Description:** Color used in green state
 
-##### <a name="display_percent_color_yellow"></a>4.14.3.2. Property `JSON config > display > percent > color > yellow`
+##### <a name="display_percent_color_yellow"></a>4.13.3.2. Property `JSON config > display > percent > color > yellow`
 
 |                        |                             |
 | ---------------------- | --------------------------- |
@@ -1611,7 +1626,7 @@ Must be one of:
 
 **Description:** Color used in yellow state
 
-##### <a name="display_percent_color_red"></a>4.14.3.3. Property `JSON config > display > percent > color > red`
+##### <a name="display_percent_color_red"></a>4.13.3.3. Property `JSON config > display > percent > color > red`
 
 |                        |                             |
 | ---------------------- | --------------------------- |
@@ -1620,6 +1635,37 @@ Must be one of:
 | **Same definition as** | [1](#logo_oneOf_i2_color_1) |
 
 **Description:** Color used in red state
+
+### <a name="display_freq"></a>4.14. Property `JSON config > display > freq`
+
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| **Type**                  | `object`                                                |
+| **Required**              | No                                                      |
+| **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
+
+**Description:** Set how frequency values should be displayed
+
+| Property                            | Pattern | Type    | Deprecated | Definition | Title/Description                                                                                                                                                                                |
+| ----------------------------------- | ------- | ------- | ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - [ndigits](#display_freq_ndigits ) | No      | integer | No         | -          | Set the number of digits to keep after the decimal point when formatting frequency values<br />A positive value will show the frequency in GHz of decimal<br />-1 will show the frequency in MHz |
+
+#### <a name="display_freq_ndigits"></a>4.14.1. Property `JSON config > display > freq > ndigits`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `integer` |
+| **Required** | No        |
+| **Default**  | `2`       |
+
+**Description:** Set the number of digits to keep after the decimal point when formatting frequency values
+A positive value will show the frequency in GHz of decimal
+-1 will show the frequency in MHz
+
+| Restrictions |         |
+| ------------ | ------- |
+| **Minimum**  | &ge; -1 |
+| **Maximum**  | &le; 9  |
 
 ### <a name="display_noBuffer"></a>4.15. Property `JSON config > display > noBuffer`
 
@@ -1631,15 +1677,33 @@ Must be one of:
 
 **Description:** Whether to disable the stdout application buffer
 
-### <a name="display_tsVersion"></a>4.16. Property `JSON config > display > tsVersion`
+### <a name="display_constants"></a>4.16. Property `JSON config > display > constants`
 
-|              |           |
-| ------------ | --------- |
-| **Type**     | `boolean` |
-| **Required** | No        |
-| **Default**  | `true`    |
+|              |                   |
+| ------------ | ----------------- |
+| **Type**     | `array of string` |
+| **Required** | No                |
 
-**Description:** Whether to detect and display the version of terminal, shell and editor. Mainly for benchmarking
+**Description:** List of strings to be used in custom format of modules
+
+|                      | Array restrictions |
+| -------------------- | ------------------ |
+| **Min items**        | N/A                |
+| **Max items**        | N/A                |
+| **Items unicity**    | False              |
+| **Additional items** | False              |
+| **Tuple validation** | See below          |
+
+| Each item of this array must be             | Description |
+| ------------------------------------------- | ----------- |
+| [constants items](#display_constants_items) | -           |
+
+#### <a name="autogenerated_heading_2"></a>4.16.1. JSON config > display > constants > constants items
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
 
 ## <a name="library"></a>5. Property `JSON config > library`
 
@@ -1651,44 +1715,34 @@ Must be one of:
 
 **Description:** Set the path of a library to load
 
-| Property                               | Pattern | Type   | Deprecated | Definition | Title/Description                                                                                                                                                                              |
-| -------------------------------------- | ------- | ------ | ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [pci](#library_pci )                 | No      | string | No         | -          | GPU output (Linux and FreeBSD)                                                                                                                                                                 |
-| - [vulkan](#library_vulkan )           | No      | string | No         | -          | Vulkan module & fallback for GPU output                                                                                                                                                        |
-| - [freetype](#library_freetype )       | No      | string | No         | -          | Used for Termux font detection (Android)                                                                                                                                                       |
-| - [wayland](#library_wayland )         | No      | string | No         | -          | Better display performance and output in wayland sessions.<br />Supports different refresh rates per monitor.<br />(Linux, FreeBSD)                                                            |
-| - [xcbRandr](#library_xcbRandr )       | No      | string | No         | -          | X11 sessions for better display detection and faster WM detection.<br />The *randr ones provide multi monitor support The libxcb* ones usually have better performance.<br /> (Linux, FreeBSD) |
-| - [xcb](#library_xcb )                 | No      | string | No         | -          | X11 sessions for better display detection and faster WM detection.<br />The *randr ones provide multi monitor support The libxcb* ones usually have better performance.<br /> (Linux, FreeBSD) |
-| - [xrandr](#library_xrandr )           | No      | string | No         | -          | X11 sessions for better display detection and faster WM detection.<br />The *randr ones provide multi monitor support The libxcb* ones usually have better performance.<br /> (Linux, FreeBSD) |
-| - [x11](#library_x11 )                 | No      | string | No         | -          | X11 sessions for better display detection and faster WM detection.<br />The *randr ones provide multi monitor support The libxcb* ones usually have better performance.<br /> (Linux, FreeBSD) |
-| - [drm](#library_drm )                 | No      | string | No         | -          | Used for fast resolution and refresh rate detection (Linux)                                                                                                                                    |
-| - [gio](#library_gio )                 | No      | string | No         | -          | Needed for values that are only stored GSettings (Linux, FreeBSD)                                                                                                                              |
-| - [dconf](#library_dconf )             | No      | string | No         | -          | Needed for values that are only stored in DConf + Fallback for GSettings (Linux, FreeBSD)                                                                                                      |
-| - [dbus](#library_dbus )               | No      | string | No         | -          | Bluetooth, Player & Media detection (Linux, FreeBSD)                                                                                                                                           |
-| - [xfconf](#library_xfconf )           | No      | string | No         | -          | Needed for XFWM theme and XFCE Terminal font (Linux, FreeBSD)                                                                                                                                  |
-| - [sqlite3](#library_sqlite3 )         | No      | string | No         | -          | Needed for pkg & rpm package count (Linux, FreeBSD)                                                                                                                                            |
-| - [rpm](#library_rpm )                 | No      | string | No         | -          | Slower fallback for rpm package count. Needed on openSUSE & old CentOS / Redhat. (Linux)                                                                                                       |
-| - [imagemagick](#library_imagemagick ) | No      | string | No         | -          | Images in terminal using sixel or kitty graphics protocol (Linux, FreeBSD, macOS)                                                                                                              |
-| - [z](#library_z )                     | No      | string | No         | -          | Libz. Faster image output when using kitty graphics protocol (Linux, FreeBSD, macOS)                                                                                                           |
-| - [chafa](#library_chafa )             | No      | string | No         | -          | Image output as ascii art (Linux, FreeBSD, macOS)                                                                                                                                              |
-| - [egl](#library_egl )                 | No      | string | No         | -          | Needed by the OpenGL module for gl context creation (Linux, FreeBSD)                                                                                                                           |
-| - [glx](#library_glx )                 | No      | string | No         | -          | Needed by the OpenGL module for gl context creation (Linux, FreeBSD)                                                                                                                           |
-| - [osmesa](#library_osmesa )           | No      | string | No         | -          | Needed by the OpenGL module for gl context creation (Linux, FreeBSD)                                                                                                                           |
-| - [opencl](#library_opencl )           | No      | string | No         | -          | OpenCL module (Linux, FreeBSD, Windows)                                                                                                                                                        |
-| - [pulse](#library_pulse )             | No      | string | No         | -          | Pulseaudio. Used for Sound detection (Linux, FreeBSD)                                                                                                                                          |
-| - [nm](#library_nm )                   | No      | string | No         | -          | NetworkManager. Used for Wifi detection (Linux)                                                                                                                                                |
-| - [ddcutil](#library_ddcutil )         | No      | string | No         | -          | Used for brightness detection of external displays (Linux)                                                                                                                                     |
+| Property                               | Pattern | Type   | Deprecated | Definition | Title/Description                                                                                                                                                                                     |
+| -------------------------------------- | ------- | ------ | ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [vulkan](#library_vulkan )           | No      | string | No         | -          | Vulkan module & fallback for GPU output                                                                                                                                                               |
+| - [freetype](#library_freetype )       | No      | string | No         | -          | Used for Termux font detection (Android)                                                                                                                                                              |
+| - [wayland](#library_wayland )         | No      | string | No         | -          | Better display performance and output in wayland sessions.<br />Supports different refresh rates per monitor.<br />(Linux, FreeBSD)                                                                   |
+| - [xcbRandr](#library_xcbRandr )       | No      | string | No         | -          | X11 sessions for better display detection and faster WM detection.<br />The *randr ones provide multi monitor support The libxcb* ones usually have better performance.<br /> (Linux, FreeBSD, SunOS) |
+| - [xcb](#library_xcb )                 | No      | string | No         | -          | X11 sessions for better display detection and faster WM detection.<br />The *randr ones provide multi monitor support The libxcb* ones usually have better performance.<br /> (Linux, FreeBSD, SunOS) |
+| - [xrandr](#library_xrandr )           | No      | string | No         | -          | X11 sessions for better display detection and faster WM detection.<br />The *randr ones provide multi monitor support The libxcb* ones usually have better performance.<br /> (Linux, FreeBSD, SunOS) |
+| - [x11](#library_x11 )                 | No      | string | No         | -          | X11 sessions for better display detection and faster WM detection.<br />The *randr ones provide multi monitor support The libxcb* ones usually have better performance.<br /> (Linux, FreeBSD, SunOS) |
+| - [drm](#library_drm )                 | No      | string | No         | -          | Used for fast resolution and refresh rate detection (Linux, FreeBSD)                                                                                                                                  |
+| - [gio](#library_gio )                 | No      | string | No         | -          | Needed for values that are only stored GSettings (Linux, FreeBSD, SunOS)                                                                                                                              |
+| - [dconf](#library_dconf )             | No      | string | No         | -          | Needed for values that are only stored in DConf + Fallback for GSettings (Linux, FreeBSD, SunOS)                                                                                                      |
+| - [dbus](#library_dbus )               | No      | string | No         | -          | Bluetooth, Player & Media detection (Linux, FreeBSD, SunOS)                                                                                                                                           |
+| - [xfconf](#library_xfconf )           | No      | string | No         | -          | Needed for XFWM theme and XFCE Terminal font (Linux, FreeBSD, SunOS)                                                                                                                                  |
+| - [sqlite3](#library_sqlite3 )         | No      | string | No         | -          | Needed for pkg & rpm package count (Linux, FreeBSD)                                                                                                                                                   |
+| - [rpm](#library_rpm )                 | No      | string | No         | -          | Slower fallback for rpm package count. Needed on openSUSE & old CentOS / Redhat. (Linux)                                                                                                              |
+| - [imagemagick](#library_imagemagick ) | No      | string | No         | -          | Images in terminal using sixel or kitty graphics protocol (Linux, FreeBSD, SunOS, macOS)                                                                                                              |
+| - [z](#library_z )                     | No      | string | No         | -          | Libz. Faster image output when using kitty graphics protocol (Linux, FreeBSD, SunOS, macOS)                                                                                                           |
+| - [chafa](#library_chafa )             | No      | string | No         | -          | Image output as ascii art (Linux, FreeBSD, SunOS, macOS)                                                                                                                                              |
+| - [egl](#library_egl )                 | No      | string | No         | -          | Library used by the OpenGL module for gl context creation (Linux, FreeBSD, SunOS, Windows)                                                                                                            |
+| - [glx](#library_glx )                 | No      | string | No         | -          | Library used by the OpenGL module for gl context creation (Linux, FreeBSD, SunOS)                                                                                                                     |
+| - [osmesa](#library_osmesa )           | No      | string | No         | -          | Library used by the OpenGL module for gl context creation (Linux, FreeBSD, SunOS)                                                                                                                     |
+| - [opencl](#library_opencl )           | No      | string | No         | -          | OpenCL module (Linux, FreeBSD, SunOS, Windows)                                                                                                                                                        |
+| - [pulse](#library_pulse )             | No      | string | No         | -          | Pulseaudio. Used for Sound detection (Linux, FreeBSD, SunOS)                                                                                                                                          |
+| - [nm](#library_nm )                   | No      | string | No         | -          | NetworkManager. Used for Wifi detection (Linux)                                                                                                                                                       |
+| - [ddcutil](#library_ddcutil )         | No      | string | No         | -          | Used for brightness detection of external displays (Linux)                                                                                                                                            |
 
-### <a name="library_pci"></a>5.1. Property `JSON config > library > pci`
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
-
-**Description:** GPU output (Linux and FreeBSD)
-
-### <a name="library_vulkan"></a>5.2. Property `JSON config > library > vulkan`
+### <a name="library_vulkan"></a>5.1. Property `JSON config > library > vulkan`
 
 |              |          |
 | ------------ | -------- |
@@ -1697,7 +1751,7 @@ Must be one of:
 
 **Description:** Vulkan module & fallback for GPU output
 
-### <a name="library_freetype"></a>5.3. Property `JSON config > library > freetype`
+### <a name="library_freetype"></a>5.2. Property `JSON config > library > freetype`
 
 |              |          |
 | ------------ | -------- |
@@ -1706,7 +1760,7 @@ Must be one of:
 
 **Description:** Used for Termux font detection (Android)
 
-### <a name="library_wayland"></a>5.4. Property `JSON config > library > wayland`
+### <a name="library_wayland"></a>5.3. Property `JSON config > library > wayland`
 
 |              |          |
 | ------------ | -------- |
@@ -1717,7 +1771,7 @@ Must be one of:
 Supports different refresh rates per monitor.
 (Linux, FreeBSD)
 
-### <a name="library_xcbRandr"></a>5.5. Property `JSON config > library > xcbRandr`
+### <a name="library_xcbRandr"></a>5.4. Property `JSON config > library > xcbRandr`
 
 |              |          |
 | ------------ | -------- |
@@ -1726,20 +1780,9 @@ Supports different refresh rates per monitor.
 
 **Description:** X11 sessions for better display detection and faster WM detection.
 The *randr ones provide multi monitor support The libxcb* ones usually have better performance.
- (Linux, FreeBSD)
+ (Linux, FreeBSD, SunOS)
 
-### <a name="library_xcb"></a>5.6. Property `JSON config > library > xcb`
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
-
-**Description:** X11 sessions for better display detection and faster WM detection.
-The *randr ones provide multi monitor support The libxcb* ones usually have better performance.
- (Linux, FreeBSD)
-
-### <a name="library_xrandr"></a>5.7. Property `JSON config > library > xrandr`
+### <a name="library_xcb"></a>5.5. Property `JSON config > library > xcb`
 
 |              |          |
 | ------------ | -------- |
@@ -1748,9 +1791,9 @@ The *randr ones provide multi monitor support The libxcb* ones usually have bett
 
 **Description:** X11 sessions for better display detection and faster WM detection.
 The *randr ones provide multi monitor support The libxcb* ones usually have better performance.
- (Linux, FreeBSD)
+ (Linux, FreeBSD, SunOS)
 
-### <a name="library_x11"></a>5.8. Property `JSON config > library > x11`
+### <a name="library_xrandr"></a>5.6. Property `JSON config > library > xrandr`
 
 |              |          |
 | ------------ | -------- |
@@ -1759,54 +1802,65 @@ The *randr ones provide multi monitor support The libxcb* ones usually have bett
 
 **Description:** X11 sessions for better display detection and faster WM detection.
 The *randr ones provide multi monitor support The libxcb* ones usually have better performance.
- (Linux, FreeBSD)
+ (Linux, FreeBSD, SunOS)
 
-### <a name="library_drm"></a>5.9. Property `JSON config > library > drm`
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
-
-**Description:** Used for fast resolution and refresh rate detection (Linux)
-
-### <a name="library_gio"></a>5.10. Property `JSON config > library > gio`
+### <a name="library_x11"></a>5.7. Property `JSON config > library > x11`
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
 | **Required** | No       |
 
-**Description:** Needed for values that are only stored GSettings (Linux, FreeBSD)
+**Description:** X11 sessions for better display detection and faster WM detection.
+The *randr ones provide multi monitor support The libxcb* ones usually have better performance.
+ (Linux, FreeBSD, SunOS)
 
-### <a name="library_dconf"></a>5.11. Property `JSON config > library > dconf`
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
-
-**Description:** Needed for values that are only stored in DConf + Fallback for GSettings (Linux, FreeBSD)
-
-### <a name="library_dbus"></a>5.12. Property `JSON config > library > dbus`
+### <a name="library_drm"></a>5.8. Property `JSON config > library > drm`
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
 | **Required** | No       |
 
-**Description:** Bluetooth, Player & Media detection (Linux, FreeBSD)
+**Description:** Used for fast resolution and refresh rate detection (Linux, FreeBSD)
 
-### <a name="library_xfconf"></a>5.13. Property `JSON config > library > xfconf`
+### <a name="library_gio"></a>5.9. Property `JSON config > library > gio`
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
 | **Required** | No       |
 
-**Description:** Needed for XFWM theme and XFCE Terminal font (Linux, FreeBSD)
+**Description:** Needed for values that are only stored GSettings (Linux, FreeBSD, SunOS)
 
-### <a name="library_sqlite3"></a>5.14. Property `JSON config > library > sqlite3`
+### <a name="library_dconf"></a>5.10. Property `JSON config > library > dconf`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** Needed for values that are only stored in DConf + Fallback for GSettings (Linux, FreeBSD, SunOS)
+
+### <a name="library_dbus"></a>5.11. Property `JSON config > library > dbus`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** Bluetooth, Player & Media detection (Linux, FreeBSD, SunOS)
+
+### <a name="library_xfconf"></a>5.12. Property `JSON config > library > xfconf`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** Needed for XFWM theme and XFCE Terminal font (Linux, FreeBSD, SunOS)
+
+### <a name="library_sqlite3"></a>5.13. Property `JSON config > library > sqlite3`
 
 |              |          |
 | ------------ | -------- |
@@ -1815,7 +1869,7 @@ The *randr ones provide multi monitor support The libxcb* ones usually have bett
 
 **Description:** Needed for pkg & rpm package count (Linux, FreeBSD)
 
-### <a name="library_rpm"></a>5.15. Property `JSON config > library > rpm`
+### <a name="library_rpm"></a>5.14. Property `JSON config > library > rpm`
 
 |              |          |
 | ------------ | -------- |
@@ -1824,79 +1878,79 @@ The *randr ones provide multi monitor support The libxcb* ones usually have bett
 
 **Description:** Slower fallback for rpm package count. Needed on openSUSE & old CentOS / Redhat. (Linux)
 
-### <a name="library_imagemagick"></a>5.16. Property `JSON config > library > imagemagick`
+### <a name="library_imagemagick"></a>5.15. Property `JSON config > library > imagemagick`
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
 | **Required** | No       |
 
-**Description:** Images in terminal using sixel or kitty graphics protocol (Linux, FreeBSD, macOS)
+**Description:** Images in terminal using sixel or kitty graphics protocol (Linux, FreeBSD, SunOS, macOS)
 
-### <a name="library_z"></a>5.17. Property `JSON config > library > z`
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
-
-**Description:** Libz. Faster image output when using kitty graphics protocol (Linux, FreeBSD, macOS)
-
-### <a name="library_chafa"></a>5.18. Property `JSON config > library > chafa`
+### <a name="library_z"></a>5.16. Property `JSON config > library > z`
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
 | **Required** | No       |
 
-**Description:** Image output as ascii art (Linux, FreeBSD, macOS)
+**Description:** Libz. Faster image output when using kitty graphics protocol (Linux, FreeBSD, SunOS, macOS)
 
-### <a name="library_egl"></a>5.19. Property `JSON config > library > egl`
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
-
-**Description:** Needed by the OpenGL module for gl context creation (Linux, FreeBSD)
-
-### <a name="library_glx"></a>5.20. Property `JSON config > library > glx`
+### <a name="library_chafa"></a>5.17. Property `JSON config > library > chafa`
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
 | **Required** | No       |
 
-**Description:** Needed by the OpenGL module for gl context creation (Linux, FreeBSD)
+**Description:** Image output as ascii art (Linux, FreeBSD, SunOS, macOS)
 
-### <a name="library_osmesa"></a>5.21. Property `JSON config > library > osmesa`
-
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
-
-**Description:** Needed by the OpenGL module for gl context creation (Linux, FreeBSD)
-
-### <a name="library_opencl"></a>5.22. Property `JSON config > library > opencl`
+### <a name="library_egl"></a>5.18. Property `JSON config > library > egl`
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
 | **Required** | No       |
 
-**Description:** OpenCL module (Linux, FreeBSD, Windows)
+**Description:** Library used by the OpenGL module for gl context creation (Linux, FreeBSD, SunOS, Windows)
 
-### <a name="library_pulse"></a>5.23. Property `JSON config > library > pulse`
+### <a name="library_glx"></a>5.19. Property `JSON config > library > glx`
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
 | **Required** | No       |
 
-**Description:** Pulseaudio. Used for Sound detection (Linux, FreeBSD)
+**Description:** Library used by the OpenGL module for gl context creation (Linux, FreeBSD, SunOS)
 
-### <a name="library_nm"></a>5.24. Property `JSON config > library > nm`
+### <a name="library_osmesa"></a>5.20. Property `JSON config > library > osmesa`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** Library used by the OpenGL module for gl context creation (Linux, FreeBSD, SunOS)
+
+### <a name="library_opencl"></a>5.21. Property `JSON config > library > opencl`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** OpenCL module (Linux, FreeBSD, SunOS, Windows)
+
+### <a name="library_pulse"></a>5.22. Property `JSON config > library > pulse`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** Pulseaudio. Used for Sound detection (Linux, FreeBSD, SunOS)
+
+### <a name="library_nm"></a>5.23. Property `JSON config > library > nm`
 
 |              |          |
 | ------------ | -------- |
@@ -1905,7 +1959,7 @@ The *randr ones provide multi monitor support The libxcb* ones usually have bett
 
 **Description:** NetworkManager. Used for Wifi detection (Linux)
 
-### <a name="library_ddcutil"></a>5.25. Property `JSON config > library > ddcutil`
+### <a name="library_ddcutil"></a>5.24. Property `JSON config > library > ddcutil`
 
 |              |          |
 | ------------ | -------- |
@@ -1935,7 +1989,7 @@ The *randr ones provide multi monitor support The libxcb* ones usually have bett
 | ------------------------------- | ----------- |
 | [modules items](#modules_items) | -           |
 
-### <a name="autogenerated_heading_2"></a>6.1. JSON config > modules > modules items
+### <a name="autogenerated_heading_3"></a>6.1. JSON config > modules > modules items
 
 |                           |                                                                           |
 | ------------------------- | ------------------------------------------------------------------------- |
@@ -3121,7 +3175,6 @@ Specific value: `"chassis"`
 | ---------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | - [type](#modules_items_anyOf_i1_oneOf_i6_type )                       | No      | const            | No         | -                                                                    | Print CPU name, frequency, etc                                                                    |
 | - [temp](#modules_items_anyOf_i1_oneOf_i6_temp )                       | No      | object           | No         | Same as [temp](#modules_items_anyOf_i1_oneOf_i2_temp )               | Detect and display temperature if supported                                                       |
-| - [freqNdigits](#modules_items_anyOf_i1_oneOf_i6_freqNdigits )         | No      | integer          | No         | -                                                                    | Set the number of digits to keep after the decimal point when printing CPU frequency              |
 | - [showPeCoreCount](#modules_items_anyOf_i1_oneOf_i6_showPeCoreCount ) | No      | boolean          | No         | -                                                                    | Detect and display CPU frequency of different core types (eg. Pcore and Ecore) if supported       |
 | - [key](#modules_items_anyOf_i1_oneOf_i6_key )                         | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i6_keyColor )               | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
@@ -3151,22 +3204,7 @@ Specific value: `"cpu"`
 
 **Description:** Detect and display temperature if supported
 
-###### <a name="modules_items_anyOf_i1_oneOf_i6_freqNdigits"></a>6.1.2.7.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > freqNdigits`
-
-|              |           |
-| ------------ | --------- |
-| **Type**     | `integer` |
-| **Required** | No        |
-| **Default**  | `2`       |
-
-**Description:** Set the number of digits to keep after the decimal point when printing CPU frequency
-
-| Restrictions |        |
-| ------------ | ------ |
-| **Minimum**  | &ge; 0 |
-| **Maximum**  | &le; 9 |
-
-###### <a name="modules_items_anyOf_i1_oneOf_i6_showPeCoreCount"></a>6.1.2.7.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > showPeCoreCount`
+###### <a name="modules_items_anyOf_i1_oneOf_i6_showPeCoreCount"></a>6.1.2.7.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > showPeCoreCount`
 
 |              |           |
 | ------------ | --------- |
@@ -3176,7 +3214,7 @@ Specific value: `"cpu"`
 
 **Description:** Detect and display CPU frequency of different core types (eg. Pcore and Ecore) if supported
 
-###### <a name="modules_items_anyOf_i1_oneOf_i6_key"></a>6.1.2.7.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > key`
+###### <a name="modules_items_anyOf_i1_oneOf_i6_key"></a>6.1.2.7.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -3186,7 +3224,7 @@ Specific value: `"cpu"`
 
 **Description:** Key of the module
 
-###### <a name="modules_items_anyOf_i1_oneOf_i6_keyColor"></a>6.1.2.7.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i6_keyColor"></a>6.1.2.7.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3196,7 +3234,7 @@ Specific value: `"cpu"`
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i6_outputColor"></a>6.1.2.7.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > outputColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i6_outputColor"></a>6.1.2.7.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > outputColor`
 
 |                        |                                                             |
 | ---------------------- | ----------------------------------------------------------- |
@@ -3206,7 +3244,7 @@ Specific value: `"cpu"`
 
 **Description:** Output color of the module. Left empty to use `display.color.output`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i6_keyWidth"></a>6.1.2.7.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyWidth`
+###### <a name="modules_items_anyOf_i1_oneOf_i6_keyWidth"></a>6.1.2.7.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -3217,7 +3255,7 @@ Specific value: `"cpu"`
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i6_format"></a>6.1.2.7.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > format`
+###### <a name="modules_items_anyOf_i1_oneOf_i6_format"></a>6.1.2.7.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > format`
 
 |                        |                                                   |
 | ---------------------- | ------------------------------------------------- |
@@ -3366,12 +3404,13 @@ Specific value: `"colors"`
 | ------------ | ------------------ |
 | **Type**     | `enum (of string)` |
 | **Required** | No                 |
-| **Default**  | `"block"`          |
+| **Default**  | `"background"`     |
 
 **Description:** Set the symbol to use
 
 Must be one of:
 * "block"
+* "background"
 * "circle"
 * "diamond"
 * "triangle"
@@ -3442,7 +3481,7 @@ Must be one of:
 | ----------------------------------------------------------------- | ----------- |
 | [range items](#modules_items_anyOf_i1_oneOf_i8_block_range_items) | -           |
 
-###### <a name="autogenerated_heading_3"></a>6.1.2.9.4.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > range > range items
+###### <a name="autogenerated_heading_4"></a>6.1.2.9.4.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Colors > block > range > range items
 
 |              |           |
 | ------------ | --------- |
@@ -4984,7 +5023,7 @@ Specific value: `"netio"`
 | Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                                                 |
 | --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | - [type](#modules_items_anyOf_i1_oneOf_i22_type )               | No      | const            | No         | -                                                                    | Print highest OpenGL version supported by the GPU                                                 |
-| - [library](#modules_items_anyOf_i1_oneOf_i22_library )         | No      | enum (of string) | No         | -                                                                    | Set the OpenGL context creation library to use. Linux only                                        |
+| - [library](#modules_items_anyOf_i1_oneOf_i22_library )         | No      | enum (of string) | No         | -                                                                    | Set the OpenGL context creation library to use                                                    |
 | - [key](#modules_items_anyOf_i1_oneOf_i22_key )                 | No      | string           | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module                                                                                 |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i22_keyColor )       | No      | enum (of string) | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Left empty to use \`display.color.keys\`                                 |
 | - [outputColor](#modules_items_anyOf_i1_oneOf_i22_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\`                            |
@@ -5010,7 +5049,7 @@ Specific value: `"opengl"`
 | **Required** | No                 |
 | **Default**  | `"auto"`           |
 
-**Description:** Set the OpenGL context creation library to use. Linux only
+**Description:** Set the OpenGL context creation library to use
 
 Must be one of:
 * "auto"
@@ -5122,7 +5161,7 @@ Specific value: `"packages"`
 | ------------------------------------------------------------------ | ----------- |
 | [disabled items](#modules_items_anyOf_i1_oneOf_i23_disabled_items) | -           |
 
-###### <a name="autogenerated_heading_4"></a>6.1.2.24.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > disabled > disabled items
+###### <a name="autogenerated_heading_5"></a>6.1.2.24.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Packages > disabled > disabled items
 
 |              |                    |
 | ------------ | ------------------ |
@@ -5138,6 +5177,9 @@ Must be one of:
 * "emerge"
 * "eopkg"
 * "flatpak"
+* "guix"
+* "lpkg"
+* "lpkgbuild"
 * "macports"
 * "nix"
 * "opkg"
@@ -5148,6 +5190,7 @@ Must be one of:
 * "rpm"
 * "scoop"
 * "snap"
+* "sorcery"
 * "winget"
 * "xbps"
 
@@ -5434,11 +5477,12 @@ Specific value: `"publicip"`
 | **Required**              | No                                                      |
 | **Additional properties** | [[Not allowed]](# "Additional Properties not allowed.") |
 
-| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                                      |
-| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i26_type )               | No      | const            | No         | -                                                                    | Print a separator line                                                 |
-| - [string](#modules_items_anyOf_i1_oneOf_i26_string )           | No      | string           | No         | -                                                                    | Set the string to be printed                                           |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i26_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module. Left empty to use \`display.color.output\` |
+| Property                                                        | Pattern | Type             | Deprecated | Definition                                                           | Title/Description                                         |
+| --------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | --------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i26_type )               | No      | const            | No         | -                                                                    | Print a separator line                                    |
+| - [string](#modules_items_anyOf_i1_oneOf_i26_string )           | No      | string           | No         | -                                                                    | Set the string to be printed by the separator line        |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i26_outputColor ) | No      | enum (of string) | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Set the color of the separator line                       |
+| - [length](#modules_items_anyOf_i1_oneOf_i26_length )           | No      | integer          | No         | -                                                                    | Set the length of the separator line, or 0 to auto-detect |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i26_type"></a>6.1.2.27.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > type`
 
@@ -5459,7 +5503,7 @@ Specific value: `"separator"`
 | **Required** | No       |
 | **Default**  | `"-"`    |
 
-**Description:** Set the string to be printed
+**Description:** Set the string to be printed by the separator line
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i26_outputColor"></a>6.1.2.27.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > outputColor`
 
@@ -5469,7 +5513,21 @@ Specific value: `"separator"`
 | **Required**           | No                                                          |
 | **Same definition as** | [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor) |
 
-**Description:** Output color of the module. Left empty to use `display.color.output`
+**Description:** Set the color of the separator line
+
+###### <a name="modules_items_anyOf_i1_oneOf_i26_length"></a>6.1.2.27.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > length`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `integer` |
+| **Required** | No        |
+| **Default**  | `0`       |
+
+**Description:** Set the length of the separator line, or 0 to auto-detect
+
+| Restrictions |        |
+| ------------ | ------ |
+| **Minimum**  | &ge; 0 |
 
 ##### <a name="modules_items_anyOf_i1_oneOf_i27"></a>6.1.2.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Sound`
 
@@ -6132,4 +6190,4 @@ Specific value: `"wm"`
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-07-04 at 10:41:41 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-07-22 at 16:07:17 +0800
