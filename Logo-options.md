@@ -171,3 +171,4 @@ Disable logo printing
 
 1. My logo won't display: Try `--pipe false`. Fastfetch detects if its output is piped ( stdout is not a tty ), in this case, all colors and logo will be removed. See `fastfetch -h pipe`
 2. Image collapses command line text: This is a known issue. Try specifying `--logo-width` and `--logo-height`, or prefix `fastfetch` with `clear && ` to clear screen before printing logos ( this matches the behavior of neofetch )
+3. My image logo won't display and the default ascii is displayed instead: Likely some errors happened. Try specifying `--show-errors` to see the error message
