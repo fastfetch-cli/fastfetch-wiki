@@ -9,13 +9,12 @@
 | `--logo-padding-left` | `0` | Sets the padding left of the logo |
 | `--logo-padding-right` | `4` | Sets the padding right of the logo |
 | `--logo-padding-top` | `0` | Sets the padding top of the logo |
+| `--logo-position` | `left` | Sets the position to display the logo |
 
 All filesytem paths can be:
 
-* Absolute
-* Relative to the current working directory
-* Relative to any of the directories listed by `fastfetch --list-data-paths` + `/logos`  
-  For example, the file `~/.local/share/fastfetch/logos/shrek` can simply be referenced as `shrek`.
+* Absolute. Environment variables and `~` are allowed, See below.
+* Relative to the current working directory.
 
 Note: when using environment variables in config file:
 
