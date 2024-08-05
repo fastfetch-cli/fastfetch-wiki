@@ -16,7 +16,7 @@ The following libraries are used if present at runtime:
 * [`libmagickcore` (ImageMagick)](https://www.imagemagick.org/): Images in terminal using sixel or kitty graphics protocol.
 * [`libchafa`](https://github.com/hpjansson/chafa): Image output as ascii art.
 * [`libZ`](https://www.zlib.net/): Faster image output when using kitty graphics protocol.
-* [`libDBus`](https://www.freedesktop.org/wiki/Software/dbus): Bluetooth, Player & Media detection.
+* [`libDBus`](https://www.freedesktop.org/wiki/Software/dbus): Bluetooth, Wifi (for connecting NetworkManager), Player & Media detection.
 * [`libEGL`](https://www.khronos.org/registry/EGL/),
     [`libGLX`](https://dri.freedesktop.org/wiki/GLX/),
     [`libOSMesa`](https://docs.mesa3d.org/osmesa.html): At least one of them is needed by the OpenGL module for gl context creation.
@@ -26,7 +26,6 @@ The following libraries are used if present at runtime:
 
 ### Linux only
 * [`librpm`](http://rpm.org/): Slower fallback for rpm package count. Needed on openSUSE.
-* [`libnm`](https://networkmanager.dev/docs/libnm/latest/): Used for Wifi detection.
 * [`libpulse`](https://freedesktop.org/software/pulseaudio/doxygen/): Used for Sound device detection.
 * [`libddcutil`](https://github.com/rockowitz/ddcutil): Used for brightness detection of external displays
 * [`DirectX-Headers`](https://github.com/microsoft/DirectX-Headers): Used for GPU detection in WSL (Bulid only)
