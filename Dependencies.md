@@ -23,6 +23,7 @@ The following libraries are used if present at runtime:
 * [`libOpenCL`](https://www.khronos.org/opencl/): OpenCL module
 * [`libXFConf`](https://gitlab.xfce.org/xfce/xfconf): Needed for XFWM theme and XFCE Terminal font.
 * [`libsqlite3`](https://www.sqlite.org/index.html): Needed for pkg & rpm package count.
+* [`libelf`](https://sourceware.org/elfutils/): Needed for st terminal font detection.
 
 ### Linux only
 * [`librpm`](http://rpm.org/): Slower fallback for rpm package count. Needed on openSUSE.
