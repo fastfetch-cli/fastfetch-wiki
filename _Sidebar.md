@@ -7,4 +7,3 @@
 1. [Dependencies](Dependencies)
 1. [Building](Building)
 1. [Support Status](Support+Status)
-1. [Benchmark](Benchmark)
