@@ -48,6 +48,8 @@
   - [3.9. Property `JSON config > general > showVersion`](#general_showVersion)
 - [4. Property `JSON config > display`](#display)
   - [4.1. Property `JSON config > display > stat`](#display_stat)
+    - [4.1.1. Property `JSON config > display > stat > oneOf > item 0`](#display_stat_oneOf_i0)
+    - [4.1.2. Property `JSON config > display > stat > oneOf > item 1`](#display_stat_oneOf_i1)
   - [4.2. Property `JSON config > display > pipe`](#display_pipe)
   - [4.3. Property `JSON config > display > showErrors`](#display_showErrors)
   - [4.4. Property `JSON config > display > disableLinewrap`](#display_disableLinewrap)
@@ -1139,7 +1141,7 @@ Specific value: `true`
 
 | Property                                       | Pattern | Type            | Deprecated | Definition | Title/Description                                                       |
 | ---------------------------------------------- | ------- | --------------- | ---------- | ---------- | ----------------------------------------------------------------------- |
-| - [stat](#display_stat )                       | No      | boolean         | No         | -          | Show time usage (in ms) for individual modules                          |
+| - [stat](#display_stat )                       | No      | Combination     | No         | -          | Show time usage (in ms) for individual modules with optional threshold  |
 | - [pipe](#display_pipe )                       | No      | boolean         | No         | -          | Whether to enable pipe mode (disable logo and all escape sequences)     |
 | - [showErrors](#display_showErrors )           | No      | boolean         | No         | -          | Print occurring errors to the console. False to ignore errored modules  |
 | - [disableLinewrap](#display_disableLinewrap ) | No      | boolean         | No         | -          | Whether to disable line wrap during the run                             |
@@ -1158,13 +1160,37 @@ Specific value: `true`
 
 ### <a name="display_stat"></a>4.1. Property `JSON config > display > stat`
 
+|                           |                                                                           |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **Type**                  | `combining`                                                               |
+| **Required**              | No                                                                        |
+| **Additional properties** | [[Any type: allowed]](# "Additional Properties of any type are allowed.") |
+
+**Description:** Show time usage (in ms) for individual modules with optional threshold
+
+| One of(Option)                   |
+| -------------------------------- |
+| [item 0](#display_stat_oneOf_i0) |
+| [item 1](#display_stat_oneOf_i1) |
+
+#### <a name="display_stat_oneOf_i0"></a>4.1.1. Property `JSON config > display > stat > oneOf > item 0`
+
 |              |           |
 | ------------ | --------- |
 | **Type**     | `boolean` |
 | **Required** | No        |
 | **Default**  | `false`   |
 
-**Description:** Show time usage (in ms) for individual modules
+#### <a name="display_stat_oneOf_i1"></a>4.1.2. Property `JSON config > display > stat > oneOf > item 1`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `integer` |
+| **Required** | No        |
+
+| Restrictions |        |
+| ------------ | ------ |
+| **Minimum**  | &ge; 1 |
 
 ### <a name="display_pipe"></a>4.2. Property `JSON config > display > pipe`
 
@@ -6724,4 +6750,4 @@ Specific value: `"wm"`
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-08-09 at 14:31:46 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-08-16 at 09:47:10 +0800
