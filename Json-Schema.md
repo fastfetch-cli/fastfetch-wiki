@@ -168,6 +168,7 @@
           - [6.1.2.2.1.33. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 32`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i32)
           - [6.1.2.2.1.34. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 33`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i33)
           - [6.1.2.2.1.35. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 34`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i34)
+          - [6.1.2.2.1.36. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 35`](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i35)
         - [6.1.2.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > key`](#modules_items_anyOf_i1_oneOf_i1_key)
         - [6.1.2.2.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > keyColor`](#modules_items_anyOf_i1_oneOf_i1_keyColor)
         - [6.1.2.2.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > keyIcon`](#modules_items_anyOf_i1_oneOf_i1_keyIcon)
@@ -2204,6 +2205,7 @@ Must be one of:
 * "wm"
 * "wifi"
 * "wmtheme"
+* "zpool"
 
 #### <a name="modules_items_anyOf_i1"></a>6.1.2. Property `JSON config > modules > modules items > anyOf > item 1`
 
@@ -2348,6 +2350,7 @@ Specific value: `"break"`
 | [item 32](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i32) |
 | [item 33](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i33) |
 | [item 34](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i34) |
+| [item 35](#modules_items_anyOf_i1_oneOf_i1_type_anyOf_i35) |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i0"></a>6.1.2.2.1.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 0`
 
@@ -2733,6 +2736,17 @@ Specific value: `"wifi"`
 **Description:** Print current theme of window manager
 
 Specific value: `"wmtheme"`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i1_type_anyOf_i35"></a>6.1.2.2.1.36. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > type > anyOf > item 35`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Print ZFS storage pools
+
+Specific value: `"zpool"`
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i1_key"></a>6.1.2.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > module > key`
 
@@ -6750,4 +6764,4 @@ Specific value: `"wm"`
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-08-16 at 09:47:10 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2024-09-03 at 10:08:42 +0800
