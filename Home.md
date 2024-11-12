@@ -24,7 +24,7 @@ Welcome to the fastfetch wiki!
 
 ## WSL
 
-<img width="800" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/4f72d5bb-4e85-458c-9d60-20af01346728">
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/656a44e6-6c9c-46cf-9a4a-6a881cf953ac">
 
 ## Windows 7 (VM)
 
