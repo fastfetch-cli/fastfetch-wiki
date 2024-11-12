@@ -20,7 +20,7 @@ Welcome to the fastfetch wiki!
 
 ## Windows 11 (with image logo)
 
-<img width="1000" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/3778fa8a-979e-4046-bab0-634195b55fc7">
+<img width="1000" alt="image" src="https://github.com/user-attachments/assets/89ee3b2c-f365-4c7e-b4b0-04cded95031e">
 
 ## WSL
 
