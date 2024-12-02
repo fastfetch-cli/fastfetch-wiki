@@ -149,8 +149,8 @@ This is preferred way to display sixel images. For example
 ```
 $ # make sure libsixel is installed
 $ img2sixel /path/to/image > image.sixel # convert an image to sixel format
-$ cat image.sixel && echo END # check if it works fine, and get the number of rows and columns the image uses ( before `END` is printed )
-$ fastfetch --raw image.sixel --logo-width $NUMBER_OF_COLUMNS_USES --logo-height $NUMBER_OF_ROWS_USES
+$ cat image.sixel && echo END # check if it works fine. `END` should be print at the right bottom corner of the image
+$ fastfetch --raw image.sixel # optionally set --logo-width $NUMBER_OF_COLUMNS_USES --logo-height $NUMBER_OF_ROWS_USES
 ```
 
 Some terminal provided `imgcat`. It can be used for `--raw` too
@@ -158,7 +158,15 @@ Some terminal provided `imgcat`. It can be used for `--raw` too
 ```
 $ imgcat /path/to/image > image.bin $ convert an image to whatever format that terminal supports
 $ cat image.bin && echo END
-$ fastfetch --raw image.bin --logo-width $NUMBER_OF_COLUMNS_USES --logo-height $NUMBER_OF_ROWS_USES
+$ fastfetch --raw image.bin # optionally set --logo-width $NUMBER_OF_COLUMNS_USES --logo-height $NUMBER_OF_ROWS_USES
+```
+
+When working with kitty
+
+```
+$ kitten icat -n --align=left --transfer-mode=stream /path/to/image > image.bin
+$ cat image.bin && echo END
+$ fastfetch --raw image.bin
 ```
 
 ## none
