@@ -45,3 +45,7 @@ Welcome to the fastfetch wiki!
 ## OpenIndiana (SunOS)
 
 ![image](https://github.com/fastfetch-cli/fastfetch/assets/6134068/0790f416-fa3d-4978-bd61-1340d79b4637)
+
+## NetBSD
+
+![2024-12-21-234327_1366x768_scrot](https://github.com/user-attachments/assets/78333d6f-5657-49d8-81f4-ed79b2a9eee6)
