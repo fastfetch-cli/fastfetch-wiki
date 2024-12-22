@@ -49,3 +49,7 @@ Welcome to the fastfetch wiki!
 ## NetBSD
 
 ![2024-12-21-234327_1366x768_scrot](https://github.com/user-attachments/assets/78333d6f-5657-49d8-81f4-ed79b2a9eee6)
+
+## OpenBSD
+
+![2024-12-22-210045_1366x768_scrot](https://github.com/user-attachments/assets/599c0985-711a-4afd-9954-defe4c5f73f7)
