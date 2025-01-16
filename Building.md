@@ -4,7 +4,7 @@ fastfetch uses [`cmake`](https://cmake.org/) for building. [`pkg-config`](https:
 mkdir -p build
 cd build
 cmake ..
-cmake --build . --target fastfetch --target flashfetch
+cmake --build . --target fastfetch
 ```
 
 If the build process fails to find the headers for a library listed in [dependencies](Dependencies), fastfetch will simply build without support for that specific feature. This means, it won't look for it at runtime and just act like it isn't available.
