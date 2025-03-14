@@ -18,8 +18,7 @@ The following libraries are used if present at runtime:
 * [`libZ`](https://www.zlib.net/): Faster image output when using kitty graphics protocol.
 * [`libDBus`](https://www.freedesktop.org/wiki/Software/dbus): Bluetooth, Wifi (for connecting NetworkManager), Player & Media detection.
 * [`libEGL`](https://www.khronos.org/registry/EGL/),
-    [`libGLX`](https://dri.freedesktop.org/wiki/GLX/),
-    [`libOSMesa`](https://docs.mesa3d.org/osmesa.html): At least one of them is needed by the OpenGL module for gl context creation.
+    [`libGLX`](https://dri.freedesktop.org/wiki/GLX/): At least one of them is needed by the OpenGL module for gl context creation.
 * [`libOpenCL`](https://www.khronos.org/opencl/): OpenCL module
 * [`libXFConf`](https://gitlab.xfce.org/xfce/xfconf): Needed for XFWM theme and XFCE Terminal font.
 * [`libsqlite3`](https://www.sqlite.org/index.html): Needed for pkg & rpm package count.
