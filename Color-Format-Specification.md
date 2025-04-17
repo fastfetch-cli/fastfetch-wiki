@@ -1,7 +1,7 @@
 All color settings use the following format:
 
 The `<color>` parameter must be a color encoding in ANSI escape sequence format, which is inserted between "ESC[" and "m".
-For more information about ANSI escape codes, visit: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
+For more information about ANSI escape codes, visit: <https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters>
 
 ## Examples
 
