@@ -34,7 +34,7 @@ bg_blue                # Equivalent to `44` (blue background)
 ## Use in `--<module>-format` or JSONC config file
 
 ### Syntax
-Use `{#color_code}` (e.g. `{#bold_red}`) to set color and `{#}` to reset
+Use `{#color_code}` (e.g. `{#bold_red}`) to set color and `{#}` to reset. Note when using RGB Colors, two `#`s are required (`{##FF0000}`)
 
 ### Special Keywords
 The following special keywords can be used to reference colors set by other options:
