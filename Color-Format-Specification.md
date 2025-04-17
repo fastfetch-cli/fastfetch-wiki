@@ -12,7 +12,7 @@ For more information about ANSI escape codes, visit: <https://en.wikipedia.org/w
 4;92            # Bright green with underline
 5;104           # Blinking text on a blue background (terminal support varies)
 38;2;255;0;0    # RGB red (255,0,0)
-1;38;5;220      # Bold orange (#ffdf00)
+1;38;5;220      # Bold orange (ANSI 256 color)
 ```
 
 ### Named Colors
