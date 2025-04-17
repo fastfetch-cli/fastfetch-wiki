@@ -24,6 +24,13 @@ bold_red               # Equivalent to `1;31`
 bg_blue                # Equivalent to `44` (blue background)
 ```
 
+### RGB Colors
+#RRGGBB or #RGB (v2.42.0)
+```
+#FF0000                # Equivalent to `38:2;255;0;0` (red)
+#F00                   # Same as #FF0000
+```
+
 ## Use in `--<module>-format` or JSONC config file
 
 ### Syntax
