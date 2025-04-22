@@ -19,6 +19,7 @@ All filesystem paths can be:
 Note when using environment variables in config files:
 
 1. On Windows, only `%ENV_VAR%` syntax is supported, for example `%USERPROFILE%/path/to/logo file.txt`. See [`ExpandEnvironmentStringsA`](https://learn.microsoft.com/en-us/windows/win32/api/processenv/nf-processenv-expandenvironmentstringsa) for details.
+    * In [v2.41.0](https://github.com/fastfetch-cli/fastfetch/releases/tag/2.41.0) or newer, `~` expansion is supported.
 2. On *nix, all special characters (` |&;<>(){}`) must be escaped with `\` or quoted with `"`, for example `~/path/to/logo\ file.txt` or `$HOME/path/to/"logo file".txt`. See [`wordexp`](https://man7.org/linux/man-pages/man3/wordexp.3.html) for details.
     * If you run a script that prints a path that contains white spaces, [it must also be quoted](https://github.com/fastfetch-cli/fastfetch/discussions/1707#discussioncomment-12904822).
     * Command substitution is allowed
