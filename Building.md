@@ -18,7 +18,7 @@ Currently GCC or clang is required (MSVC is not supported). MSYS2 with CLANG64 s
 1. Install dependencies
 
 ```bash
-pacman -Syu mingw-w64-clang-x86_64-cmake mingw-w64-clang-x86_64-pkgconf mingw-w64-clang-x86_64-clang mingw-w64-clang-x86_64-vulkan-loader mingw-w64-clang-x86_64-vulkan-headers mingw-w64-clang-x86_64-opencl-icd
+pacman -Syu mingw-w64-clang-x86_64-cmake mingw-w64-clang-x86_64-pkgconf mingw-w64-clang-x86_64-clang mingw-w64-clang-x86_64-vulkan-loader mingw-w64-clang-x86_64-vulkan-headers mingw-w64-clang-x86_64-opencl-icd mingw-w64-clang-x86_64-cppwinrt
 ```
 
 Follow the building instructions of Linux next.
