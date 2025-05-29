@@ -138,7 +138,7 @@ Use `fastfetch -h <module>-format` to see available format options for each modu
 
 ### Documentation
 
-Refer to: <https://github.com/fastfetch-cli/fastfetch/wiki/Json-Schema> ([truncated because of Github limitation](https://github.com/fastfetch-cli/fastfetch/issues/1587))
+Refer to: <https://gitlab.com/CarterLi/fastfetch/-/wikis/Json-Schema> ([Gitlab link is used because of Github Wiki limitation](https://github.com/fastfetch-cli/fastfetch/issues/1587))
 
 Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) with
 
