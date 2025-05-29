@@ -294,19 +294,21 @@
       - [5.1.2.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk`](#modules_items_anyOf_i1_oneOf_i20)
         - [5.1.2.21.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > type`](#modules_items_anyOf_i1_oneOf_i20_type)
         - [5.1.2.21.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > folders`](#modules_items_anyOf_i1_oneOf_i20_folders)
-        - [5.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showExternal`](#modules_items_anyOf_i1_oneOf_i20_showExternal)
-        - [5.1.2.21.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showHidden`](#modules_items_anyOf_i1_oneOf_i20_showHidden)
-        - [5.1.2.21.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showSubvolumes`](#modules_items_anyOf_i1_oneOf_i20_showSubvolumes)
-        - [5.1.2.21.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showReadOnly`](#modules_items_anyOf_i1_oneOf_i20_showReadOnly)
-        - [5.1.2.21.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showUnknown`](#modules_items_anyOf_i1_oneOf_i20_showUnknown)
-        - [5.1.2.21.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > useAvailable`](#modules_items_anyOf_i1_oneOf_i20_useAvailable)
-        - [5.1.2.21.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > percent`](#modules_items_anyOf_i1_oneOf_i20_percent)
-        - [5.1.2.21.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > key`](#modules_items_anyOf_i1_oneOf_i20_key)
-        - [5.1.2.21.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyColor`](#modules_items_anyOf_i1_oneOf_i20_keyColor)
-        - [5.1.2.21.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyIcon`](#modules_items_anyOf_i1_oneOf_i20_keyIcon)
-        - [5.1.2.21.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyWidth`](#modules_items_anyOf_i1_oneOf_i20_keyWidth)
-        - [5.1.2.21.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > outputColor`](#modules_items_anyOf_i1_oneOf_i20_outputColor)
-        - [5.1.2.21.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > format`](#modules_items_anyOf_i1_oneOf_i20_format)
+        - [5.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders`](#modules_items_anyOf_i1_oneOf_i20_hideFolders)
+        - [5.1.2.21.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFS`](#modules_items_anyOf_i1_oneOf_i20_hideFS)
+        - [5.1.2.21.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showExternal`](#modules_items_anyOf_i1_oneOf_i20_showExternal)
+        - [5.1.2.21.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showHidden`](#modules_items_anyOf_i1_oneOf_i20_showHidden)
+        - [5.1.2.21.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showSubvolumes`](#modules_items_anyOf_i1_oneOf_i20_showSubvolumes)
+        - [5.1.2.21.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showReadOnly`](#modules_items_anyOf_i1_oneOf_i20_showReadOnly)
+        - [5.1.2.21.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showUnknown`](#modules_items_anyOf_i1_oneOf_i20_showUnknown)
+        - [5.1.2.21.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > useAvailable`](#modules_items_anyOf_i1_oneOf_i20_useAvailable)
+        - [5.1.2.21.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > percent`](#modules_items_anyOf_i1_oneOf_i20_percent)
+        - [5.1.2.21.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > key`](#modules_items_anyOf_i1_oneOf_i20_key)
+        - [5.1.2.21.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyColor`](#modules_items_anyOf_i1_oneOf_i20_keyColor)
+        - [5.1.2.21.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyIcon`](#modules_items_anyOf_i1_oneOf_i20_keyIcon)
+        - [5.1.2.21.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyWidth`](#modules_items_anyOf_i1_oneOf_i20_keyWidth)
+        - [5.1.2.21.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > outputColor`](#modules_items_anyOf_i1_oneOf_i20_outputColor)
+        - [5.1.2.21.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > format`](#modules_items_anyOf_i1_oneOf_i20_format)
       - [5.1.2.22. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO`](#modules_items_anyOf_i1_oneOf_i21)
         - [5.1.2.22.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > type`](#modules_items_anyOf_i1_oneOf_i21_type)
         - [5.1.2.22.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > DiskIO > namePrefix`](#modules_items_anyOf_i1_oneOf_i21_namePrefix)
@@ -4819,6 +4821,8 @@ Must be one of:
 | --------------------------------------------------------------------- | ------- | ---------------- | ---------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | - [type](#modules_items_anyOf_i1_oneOf_i20_type )                     | No      | const            | No         | -                                                                    | Print partitions, space usage, disk type, etc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | - [folders](#modules_items_anyOf_i1_oneOf_i20_folders )               | No      | string           | No         | -                                                                    | A colon (semicolon on Windows) separated list of folder paths for the disk output<br />Default: auto detection using mount-points<br />This option overrides other \`show*\` options                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| - [hideFolders](#modules_items_anyOf_i1_oneOf_i20_hideFolders )       | No      | string           | No         | -                                                                    | A colon (semicolon on Windows) separated list of folder paths to hide from the disk output<br />Default: /efi:/boot:/boot/efi                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| - [hideFS](#modules_items_anyOf_i1_oneOf_i20_hideFS )                 | No      | string           | No         | -                                                                    | A colon separated file systems to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | - [showExternal](#modules_items_anyOf_i1_oneOf_i20_showExternal )     | No      | boolean          | No         | -                                                                    | Set if external volume should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | - [showHidden](#modules_items_anyOf_i1_oneOf_i20_showHidden )         | No      | boolean          | No         | -                                                                    | Set if hidden volumes should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | - [showSubvolumes](#modules_items_anyOf_i1_oneOf_i20_showSubvolumes ) | No      | boolean          | No         | -                                                                    | Set if subvolumes should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -4855,7 +4859,26 @@ Specific value: `"disk"`
 Default: auto detection using mount-points
 This option overrides other `show*` options
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_showExternal"></a>5.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showExternal`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFolders"></a>5.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** A colon (semicolon on Windows) separated list of folder paths to hide from the disk output
+Default: /efi:/boot:/boot/efi
+
+###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFS"></a>5.1.2.21.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFS`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** A colon separated file systems to hide from the disk output
+
+###### <a name="modules_items_anyOf_i1_oneOf_i20_showExternal"></a>5.1.2.21.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showExternal`
 
 |              |           |
 | ------------ | --------- |
@@ -4865,7 +4888,7 @@ This option overrides other `show*` options
 
 **Description:** Set if external volume should be printed
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_showHidden"></a>5.1.2.21.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showHidden`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_showHidden"></a>5.1.2.21.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showHidden`
 
 |              |           |
 | ------------ | --------- |
@@ -4875,7 +4898,7 @@ This option overrides other `show*` options
 
 **Description:** Set if hidden volumes should be printed
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_showSubvolumes"></a>5.1.2.21.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showSubvolumes`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_showSubvolumes"></a>5.1.2.21.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showSubvolumes`
 
 |              |           |
 | ------------ | --------- |
@@ -4885,7 +4908,7 @@ This option overrides other `show*` options
 
 **Description:** Set if subvolumes should be printed
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_showReadOnly"></a>5.1.2.21.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showReadOnly`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_showReadOnly"></a>5.1.2.21.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showReadOnly`
 
 |              |           |
 | ------------ | --------- |
@@ -4895,7 +4918,7 @@ This option overrides other `show*` options
 
 **Description:** Set if read only volumes should be printed
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_showUnknown"></a>5.1.2.21.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showUnknown`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_showUnknown"></a>5.1.2.21.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showUnknown`
 
 |              |           |
 | ------------ | --------- |
@@ -4905,7 +4928,7 @@ This option overrides other `show*` options
 
 **Description:** Set if unknown (unable to detect sizes) volumes should be printed
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_useAvailable"></a>5.1.2.21.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > useAvailable`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_useAvailable"></a>5.1.2.21.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > useAvailable`
 
 |              |           |
 | ------------ | --------- |
@@ -4915,7 +4938,7 @@ This option overrides other `show*` options
 
 **Description:** Use f_bavail (lpFreeBytesAvailableToCaller for Windows) instead of f_bfree to calculate used bytes
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_percent"></a>5.1.2.21.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > percent`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_percent"></a>5.1.2.21.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > percent`
 
 |                           |                                                     |
 | ------------------------- | --------------------------------------------------- |
@@ -4926,7 +4949,7 @@ This option overrides other `show*` options
 
 **Description:** Thresholds for percentage colors
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_key"></a>5.1.2.21.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > key`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_key"></a>5.1.2.21.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -4936,7 +4959,7 @@ This option overrides other `show*` options
 
 **Description:** Key of the module
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_keyColor"></a>5.1.2.21.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_keyColor"></a>5.1.2.21.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyColor`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -4946,7 +4969,7 @@ This option overrides other `show*` options
 
 **Description:** Color of the module key. Left empty to use `display.color.keys`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_keyIcon"></a>5.1.2.21.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyIcon`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_keyIcon"></a>5.1.2.21.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyIcon`
 
 |                        |                                                     |
 | ---------------------- | --------------------------------------------------- |
@@ -4956,7 +4979,7 @@ This option overrides other `show*` options
 
 **Description:** Set the icon to be displayed by `display.keyType: "icon"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_keyWidth"></a>5.1.2.21.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyWidth`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_keyWidth"></a>5.1.2.21.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -4967,7 +4990,7 @@ This option overrides other `show*` options
 
 **Description:** Width of the module key. Use 0 to use `display.keyWidth`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_outputColor"></a>5.1.2.21.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > outputColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_outputColor"></a>5.1.2.21.16. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > outputColor`
 
 |                        |                                                             |
 | ---------------------- | ----------------------------------------------------------- |
@@ -4977,7 +5000,7 @@ This option overrides other `show*` options
 
 **Description:** Output color of the module. Left empty to use `display.color.output`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_format"></a>5.1.2.21.15. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > format`
+###### <a name="modules_items_anyOf_i1_oneOf_i20_format"></a>5.1.2.21.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > format`
 
 |                |                    |
 | -------------- | ------------------ |
@@ -5772,6 +5795,7 @@ Must be one of:
 Must be one of:
 * "integrated"
 * "discrete"
+* "unknown"
 * "none"
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i27_key"></a>5.1.2.28.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > key`
@@ -10614,4 +10638,4 @@ Specific value: `"zpool"`
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-04-07 at 09:55:51 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-05-29 at 09:32:48 +0800
