@@ -871,6 +871,7 @@ Must be one of:
 * "file-raw"
 * "data"
 * "data-raw"
+* "command-raw"
 * "sixel"
 * "kitty"
 * "kitty-direct"
@@ -10639,4 +10640,4 @@ Specific value: `"zpool"`
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-05-29 at 10:14:18 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-06-05 at 10:18:25 +0800
