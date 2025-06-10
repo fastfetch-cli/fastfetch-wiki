@@ -12,7 +12,7 @@ Welcome to the fastfetch wiki!
 
 ## Linux
 
-<img width="1000" alt="image" src="https://github.com/user-attachments/assets/af618f5f-8353-418b-bf79-c2cf307aa5c2">
+<img width="1000" alt="image" src="https://github.com/user-attachments/assets/347e5f3d-9724-4f90-8e1b-ef7b2f028223">
 
 ## Asahi Linux
 
