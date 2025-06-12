@@ -46,7 +46,6 @@ For the image logo, iTerm with iterm image protocol should work. Apple Terminal 
 
 ### Windows
 
-* [`wlanapi`](https://learn.microsoft.com/en-us/windows/win32/api/wlanapi/): A system dll which isn't supported by Windows Server by default. Used for Wifi info detection.
 * [`libvulkan`](https://www.vulkan.org/): Vulkan module. Usually has been provided by GPU drivers. [`vulkan-loader`](https://github.com/msys2/MINGW-packages/tree/master/mingw-w64-vulkan-loader) [`vulkan-headers`](https://github.com/msys2/MINGW-packages/tree/master/mingw-w64-vulkan-headers)
 * [`libOpenCL`](https://www.khronos.org/opencl/): OpenCL module. [`opencl-icd`](https://github.com/msys2/MINGW-packages/tree/master/mingw-w64-opencl-icd)
 * [`cppwinrt`](https://github.com/microsoft/cppwinrt): C++/WinRT headers for MinGW. Used for media detection. [`cppwinrt`](https://github.com/msys2/MINGW-packages/tree/master/mingw-w64-cppwinrt) (Build only)
