@@ -83,30 +83,30 @@ Worth noting that not all modules are supported on all platforms.
 ### Builtin logos
 <!-- a = `Content of src/logo/builtin.c`; Object.entries(Object.groupBy(a.split('\n').map(x => x.trim()).filter(x => x.startsWith('// ')).map(x => x.slice(3)).filter(x => x != 'LAST').sort((a, b)=>a.toUpperCase().localeCompare(b.toUpperCase())), x => x[0].toUpperCase())).map(([key, arr]) => `${key}: ${arr.join(', ')}`).join('\n') -->
 ```
-A: Adélie, AerOS, Afterglow, AIX, AlmaLinux, Alpine, Alpine2Small, AlpineSmall, Alter, ALTLinux, Amazon, AmazonLinux, AmogOS, Anarchy, Android, AndroidSmall, Antergos, Antix, AoscOS, AoscOS_old, AoscOsRetro, AoscOsRetro_small, Aperture, Apple, AppleSmall, Apricity, Arch, Arch2, Arch3, ArchBox, Archcraft, Archcraft2, Archlabs, ArchOld, ArchSmall, ArchStrike, ArcoLinux, ArcoLinuxSmall, Arkane, Armbian, Armbian2, ArseLinux, Artix, Artix2Small, ArtixSmall, Arya, Asahi, Asahi2, Aster, AsteroidOS, AstOS, Astra, Ataraxia, Athena, Azos
+A: Adélie, AerOS, Afterglow, AIX, AlmaLinux, Alpine, Alpine2, Alpine2Small, Alpine3Small, AlpineSmall, Alter, ALTLinux, Amazon, AmazonLinux, AmogOS, Anarchy, Android, AndroidSmall, Antergos, Antix, AnushOS, AoscOS, AoscOS_old, AoscOsRetro, AoscOsRetro_small, Aperture, Apple, AppleSmall, Apricity, Arch, Arch2, Arch3, ArchBox, Archcraft, Archcraft2, Archlabs, ArchOld, ArchSmall, ArchStrike, ArcoLinux, ArcoLinuxSmall, Arkane, Armbian, Armbian2, ArseLinux, Artix, Artix2Small, ArtixSmall, Arya, Asahi, Asahi2, Aster, AsteroidOS, AstOS, Astra, Ataraxia, AthenaOS, AthenaOS_old, Aurora, Azos
 B: Bedrock, BedrockSmall, BigLinux, Bitrig, BlackArch, BlackMesa, BlackPanther, BLAG, BlankOn, BlueLight, Bodhi, Bonsai, BredOS, BSD, BunsenLabs
-C: CachyOS, CachyOSSmall, Calculate, CalinixOS, CalinixOSSmall, Carbs, CBL-Mariner, CelOS, Center, CentOS, CentOSSmall, Cereus, Chakra, ChaletOS, Chapeau, Chimera, ChonkySealOS, Chrom, Cleanjaro, CleanjaroSmall, ClearLinux, ClearOS, Clover, Cobalt, Common Torizon, Condres, ContainerLinux, Cosmic DE, CRUX, CRUXSmall, CrystalLinux, Cucumber, CuerdOS, CutefishOS, CuteOS, CyberOS, cycledream
+C: CachyOS, CachyOSSmall, Calculate, CalinixOS, CalinixOSSmall, Carbs, CBL-Mariner, CelOS, Center, CentOS, CentOSSmall, Cereus, Chakra, ChaletOS, Chapeau, Chimera, ChonkySealOS, Chrom, Cleanjaro, CleanjaroSmall, ClearLinux, ClearOS, Clover, Cobalt, Codex Linux (reMarkable OS), Common Torizon, Condres, ContainerLinux, Cosmic DE, CRUX, CRUXSmall, CrystalLinux, Cucumber, CuerdOS, CutefishOS, CuteOS, CyberOS, cycledream
 D: DahliaOS, DarkOS, Debian, DebianSmall, Deepin, DesaOS, Devuan, DevuanSmall, DietPi, DracOS, DragonFly, DragonFlyOld, DragonFlySmall, DraugerOS, Droidian
 E: Elbrus, Elementary, ElementarySmall, Elive, EncryptOS, EndeavourOS, EndeavourOSSmall, Endless, Enso, EshanizedOS, EuroLinux, evolinx, EvolutionOS, EvolutionOS_old, EvolutionOSSmall, eweOS, Exherbo, ExodiaPredator
 F: Fastfetch, Fedora, FedoraAsahiRemix, FedoraCoreOS, FedoraKinoite, FedoraOld, FedoraSericea, FedoraSilverblue, FedoraSmall, FemboyOS, Feren, Filotimo, Finnix, Floflis, FreeBSD, FreeBSDSmall, FreeMiNT, Frugalware, Funtoo, Furreto
-G: GalliumOS, Garuda, GarudaDragon, GarudaSmall, Gentoo, GentooSmall, GhostBSD, Glaucus, GNewSense, GNOME, GNU, GoboLinux, GoldenDogLinux, GoralixOS, GrapheneOS, Grombyang, Guix, GuixSmall, GXDE
-H: Haiku, Haiku2, HaikuSmall, HamoniKR, HarDClanZ, HardenedBSD, Hash, HeliumOS, Huawei Cloud EulerOS, Huayra, Hybrid, HydroOS, Hyperbola, HyperbolaSmall, HyprOS
+G: GalliumOS, Garuda, GarudaDragon, GarudaSmall, Gentoo, GentooSmall, GhostBSD, GhostFreak, Glaucus, GNewSense, GNOME, GNU, GoboLinux, GoldenDogLinux, GrapheneOS, Grombyang, Guix, GuixSmall, GXDE
+H: Haiku, Haiku2, HaikuSmall, HamoniKR, HarDClanZ, HardenedBSD, HarmonyOS, Hash, HeliumOS, Huawei Cloud EulerOS, Huayra, Hybrid, HydraPWK, HydroOS, Hyperbola, HyperbolaSmall, HyprOS
 I: Iglunix, InstantOS, Interix, IRIX, Ironclad, Itc
 J: Januslinux
-K: Kaisen, Kali, KaliSmall, KaOS, KDE Neon, KDELinux, KernelOS, Kibojoe, KISSLinux, Kogaion, Korora, KrassOS, KSLinux, Kubuntu
+K: Kaisen, Kali, KaliSmall, Kalpa Desktop, KaOS, KDE Neon, KDELinux, KernelOS, Kibojoe, KISSLinux, Kogaion, Korora, KrassOS, KSLinux, Kubuntu, Kylin
 L: LainOS, LangitKetujuh, Laxeros, LEDE, LibreELEC, Lilidog, Lingmo OS, Linspire, Linux, LinuxFromScratch, LinuxLight, LinuxLightSmall, LinuxMint, LinuxMintOld, LinuxMintSmall, LinuxSmall, Live_Raizo, LliureX, LMDE, Loc-OS, Lubuntu, Lunar
 M: MacOS, MacOS2, MacOS2Small, MacOS3, MacOSSmall, Mageia, MageiaSmall, Magix, MagpieOS, MainsailOS, MainsailOSSmall, Mandriva, Manjaro, ManjaroSmall, MassOS, MatuusOS, MaUI, Mauna, Meowix, Mer, MidnightBSD, MidOS, MidOSOld, Minix, MiracleLinux, MOS, Msys2, MX, MX2, MXSmall
 N: Namib, Nekos, Neptune, NetBSD, NetBSD Small, NetBSD2, NetRunner, NexaLinux, Nitrux, NixOS, NixOSOld, NixOsOldSmall, NixOSSmall, Nobara, NomadBSD, NurOS, Nurunner, NuTyX
 O: Obarun, OBRevenge, OmniOS, Opak, OpenBSD, OpenBSDSmall, OpenEuler, OpenIndiana, OpenKylin, OpenMamba, OpenMandriva, OpenStage, OpenSuse, OpenSuseLeap, OpenSuseLeapOld, openSuseMicroOS, openSUSESlowroll, OpenSuseSmall, OpenSuseTumbleweed, OpenSuseTumbleweedOld, OpenSuseTumbleweedSmall, OpenWrt, OPNsense, Oracle, Orchid, OrchidSmall, Oreon, OS_Elbrus, OSMC, OSX, OSXSmall
 P: PacBSD, Panwah, Parabola, ParabolaSmall, Parch, Pardus, Parrot, Parsix, PCBSD, PCLinuxOS, PearOS, Pengwin, Pentoo, Peppermint, Peropesis, PhyOS, PikaOS, PisiLinux, PNMLinux, Pop, PopSmall, Porteus, PostMarketOS, PostMarketOSSmall, Proxmox, PuffOS, Puppy, PureOS, PureOSSmall
 Q: Q4OS, QTS, Qubes, Qubyt, Quibian, Quirinux
-R: Radix, Raspbian, RaspbianSmall, RavynOS, RebornOS, RebornSmall, RedCore, RedHatEnterpriseLinux, RedHatEnterpriseLinux_old, RedOS, RedOS small, RedstarOS, Refracted Devuan, Regata, Regolith, RhaymOS, RhinoLinux, RockyLinux, RockyLinuxSmall, RosaLinux
-S: Sabayon, Sabotage, Sailfish, SalentOS, SalientOS, Salix, SambaBOX, Sasanqua, Scientific, Semc, Septor, Serene, Serpent OS, SharkLinux, ShastraOS, Shebang, Siduction, SkiffOS, Slackel, Slackware, SlackwareSmall, SleeperOS, SleeperOS, Slitaz, SmartOS, SnigdhaOS, Soda, Solaris, SolarisSmall, Solus, Source Mage, Sparky, SpoinkOS, Star, Steam Deck, Steam Deck OLED, Steam Deck Small, SteamOS, StockLinux, Sulin, SummitOS, Suse, SuseSmall, Swagarch
-T: T2, Tails, Tatra, TeArch, TileOS, Torizon OS, Trisquel, TuxedoOS, Twister
-U: Ubuntu, UbuntuBudgie, UbuntuCinnamon, UbuntuGNOME, UbuntuKde, UbuntuKylin, UbuntuMate, UbuntuOld, UbuntuOld2, UbuntuOld2Small, UbuntuSmall, UbuntuStudio, UbuntuSway, UbuntuTouch, UbuntuUnity, Ultramarine, Ultramarine Small, Unifi, Univalent, Univention, UOS, UrukOS, Uwuntu
-V: Valhalla, Vanilla, Vanilla2, VanillaSmall, Venom, VenomSmall, Vnux, Void, Void2Small, VoidSmall, Vzlinux
+R: Radix, Raspbian, RaspbianSmall, RavynOS, RebornOS, RebornSmall, RedCore, RedHatEnterpriseLinux, RedHatEnterpriseLinux, RedHatEnterpriseLinux_old, RedOS, RedOS small, RedstarOS, Refracted Devuan, Regata, Regolith, RhaymOS, RhinoLinux, RockyLinux, RockyLinuxSmall, RosaLinux
+S: Sabayon, Sabotage, Sailfish, SalentOS, SalientOS, Salix, SambaBOX, Sasanqua, Scientific, Semc, Septor, Serene, Serpent OS, SharkLinux, ShastraOS, Shebang, Siduction, SkiffOS, Slackel, Slackware, SlackwareSmall, SleeperOS, SleeperOS, Slitaz, SmartOS, SnigdhaOS, Soda, Solaris, SolarisSmall, Solus, Source Mage, Sparky, SpoinkOS, Star, Starry, Steam Deck, Steam Deck OLED, Steam Deck Small, SteamOS, StockLinux, Sulin, SummitOS, Suse, SuseSmall, Swagarch
+T: T2, T2Small, Tails, Tatra, TeArch, TileOS, Torizon OS, Trisquel, TrueNAS Scale, TuxedoOS, Twister
+U: UBLinux, UBLinuxSmall, Ubuntu, UbuntuBudgie, UbuntuCinnamon, UbuntuGNOME, UbuntuKde, UbuntuKylin, UbuntuMate, UbuntuOld, UbuntuOld2, UbuntuOld2Small, UbuntuSmall, UbuntuStudio, UbuntuSway, UbuntuTouch, UbuntuUnity, Ultramarine, Ultramarine Small, Unifi, Univalent, Univention, UOS, UrukOS, Uwuntu
+V: Valhalla, Vanilla, Vanilla2, VanillaSmall, Venom, VenomSmall, Vnux, Void, Void2, Void2Small, VoidSmall, Vzlinux
 W: WiiLinux, Windows, Windows11, Windows11Small, Windows2025, Windows8, Windows95, WolfOS
-X: XCP-ng, Xenia, Xferience
+X: XCP-ng, Xenia, Xenia_old, Xferience
 Y: YiffOS
 Z: Z/OS, Zorin
 ```
@@ -130,5 +130,5 @@ Budgie, Cinnamon, Gnome, KDE Plasma, LXQt, Mate, Unity, XFCE4
 
 ### Terminal fonts
 ```
-Alacritty, Apple Terminal, ConEmu, Deepin Terminal, foot, Gnome Console, Gnome Terminal, iTerm2, Kitty, Konsole, LXTerminal, MATE Terminal, mintty, QTerminal, st, Tabby, Terminator, Termux, Tilix, TTY, Warp, WezTerm, Windows Terminal, XFCE4 Terminal, Yakuake
+Alacritty, Apple Terminal, ConEmu, Deepin Terminal, foot, Gnome Console, Gnome Terminal, iTerm2, Kitty, Konsole, LXTerminal, MATE Terminal, mintty, QTerminal, Rio, st, Tabby, Terminator, Termux, Tilix, TTY, Warp, WezTerm, Windows Terminal, XFCE4 Terminal, Yakuake
 ```
