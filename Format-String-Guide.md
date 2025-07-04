@@ -26,6 +26,8 @@ This is equivalent to using numerical indices. See module-specific help for supp
 fastfetch -h title-format
 ```
 
+Using named tags is **strongly** recommended because they are meaningful and don't affected by ordering.
+
 ## String Manipulation
 
 ### Truncation
