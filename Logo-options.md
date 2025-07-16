@@ -54,8 +54,8 @@ Tries to detect the logo type based on the value of `--logo`, in the following o
 * If the value is the name of a builtin logo, it is displayed.
 * If the value is the path to a text file (whose extension is `.txt`), the content is displayed with color tag replacement.
 * If the value is the path to a raw image file (whose extension is `.raw`), the content is displayed without post-processing.
-* Otherwise it's assumed as an image file. If the terminal emulator is known to support an image protocol, the image is displayed.
-* If all functions above don't work, no logo is printed. In this case, use `--show-errors` to find what's going wrong.
+* If the value is the path to a file which is neither txt nor raw, it's assumed as an image file. If the terminal emulator is known to support an image protocol, the image is displayed.
+* Otherwise, the auto-detected builtin logo is displayed. In this case, use `--show-errors` to find what's going wrong.
 
 ## builtin
 
