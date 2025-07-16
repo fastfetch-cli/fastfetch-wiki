@@ -52,9 +52,10 @@ Note when using environment variables in config files:
 Tries to detect the logo type based on the value of `--logo`, in the following order:
 * If the value is empty/not set, an auto-detected builtin logo is displayed.
 * If the value is the name of a builtin logo, it is displayed.
-* If the value is the path to an image file, and the terminal emulator is known to support an image protocol, the image is displayed.
-* If the value is the path to a text file, the content is displayed.
-* Otherwise, the auto-detected builtin logo is displayed.
+* If the value is the path to a text file (whose extension is `.txt`), the content is displayed with color tag replacement.
+* If the value is the path to a raw image file (whose extension is `.raw`), the content is displayed without post-processing.
+* Otherwise it's assumed as an image file. If the terminal emulator is known to support an image protocol, the image is displayed.
+* If all functions above don't work, no logo is printed. In this case, use `--show-errors` to find what's going wrong.
 
 ## builtin
 
