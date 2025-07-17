@@ -26,6 +26,10 @@ Welcome to the fastfetch wiki!
 
 <img width="1000" alt="image" src="https://github.com/user-attachments/assets/656a44e6-6c9c-46cf-9a4a-6a881cf953ac">
 
+## Windows 8.1
+
+<img width="857" height="611" alt="image" src="https://github.com/user-attachments/assets/881ae4d3-e7cd-4da1-99b8-e79472aa3f44" />
+
 ## Windows 7 (VM)
 
 ![image](https://github.com/fastfetch-cli/fastfetch/assets/6134068/9f20d7c3-8dae-4056-a879-ab58d78db9b1)
