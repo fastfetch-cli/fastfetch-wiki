@@ -1,11 +1,10 @@
-All color settings use the following format:
-
-The `<color>` parameter must be a color encoding in ANSI escape sequence format, which is inserted between "ESC[" and "m".
-For more information about ANSI escape codes, visit: <https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters>
-
-## Examples
+## Supported formats
 
 ### ANSI Escape Sequences
+
+A color encoding in ANSI escape sequence format. It will be inserted between "ESC[" and "m".
+For more information about ANSI escape codes, visit: <https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters>
+
 ```
 35              # Magenta
 38;5;38         # 38th color in the ANSI 256 color palette
@@ -16,6 +15,7 @@ For more information about ANSI escape codes, visit: <https://en.wikipedia.org/w
 ```
 
 ### Named Colors
+
 ANSI named colors are also supported:
 ```
 magenta                # Equivalent to `35`
@@ -28,6 +28,7 @@ bg_blue                # Equivalent to `44` (blue background)
 * Supported named prefixes: `reset_`, `bright_`, `dim_`, `italic_`, `underline_`, `blink_`, `inverse_`, `hidden_`, `strike_`, `light_`
 
 ### RGB Colors
+
 #RRGGBB or #RGB (v2.42.0)
 ```
 #FF0000                # Equivalent to `38:2;255;0;0` (red)
@@ -37,6 +38,7 @@ bg_blue                # Equivalent to `44` (blue background)
 ## Use in `--<module>-format` or JSONC config file
 
 ### Syntax
+
 Use `{#color_code}` (e.g. `{#bold_red}`) to set color and `{#}` to reset. Note when using RGB Colors, two `#`s are required (`{##FF0000}`)
 
 ### Special Keywords
