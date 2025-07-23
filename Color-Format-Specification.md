@@ -24,6 +24,9 @@ bold_red               # Equivalent to `1;31`
 bg_blue                # Equivalent to `44` (blue background)
 ```
 
+* Supported named colors: `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, `white`, `default`
+* Supported named prefixes: `reset_`, `bright_`, `dim_`, `italic_`, `underline_`, `blink_`, `inverse_`, `hidden_`, `strike_`, `light_`
+
 ### RGB Colors
 #RRGGBB or #RGB (v2.42.0)
 ```
