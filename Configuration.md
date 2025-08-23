@@ -4,12 +4,17 @@ This document provides comprehensive guidance on configuring Fastfetch to suit y
 
 Fastfetch uses JSONC (JSON with comments) for configuration. The default configuration file is located at `~/.config/fastfetch/config.jsonc`
 
-You can generate a default configuration file using:
-```bash
+You can generate a minimal configuration file using:
+```sh
 fastfetch --gen-config
 ```
 
-Using an editor with JSON schema support is highly suggested. If unsure, I suggest using [vscode](https://code.visualstudio.com/).
+If you prefer a full configuration file with all default options available:
+```sh
+fastfetch --gen-config-full
+```
+
+Using an editor with [JSON schema](https://json-schema.org/) support is highly suggested. If unsure, I suggest using [vscode](https://code.visualstudio.com/) or [helix](https://helix-editor.com/).
 
 ## Configuration Structure
 
@@ -128,16 +133,6 @@ Use `fastfetch -h <module>-format` to see available format options for each modu
 
 2. **Use JSON schema**: Adding the `$schema` line enables code completion and validation in editors like VSCode.
 
-3. **Test individual modules**: Use the command line to test specific configurations before adding them to your file.
-   ```
-   fastfetch --structure memory --memory-percent-type 3
-   ```
-
-4. **Common display improvements**:
-   - Set a consistent key width: `"key": { "width": 12 }`
-   - Use bright colors: `"brightColor": true`
-   - Adjust logo padding for better alignment: `"padding": { "left": 4 }`
-
 ### Documentation
 
 Refer to: <https://gitlab.com/CarterLi/fastfetch/-/wikis/Json-Schema> ([Gitlab link is used because of Github Wiki limitation](https://github.com/fastfetch-cli/fastfetch/issues/1587))
@@ -158,5 +153,4 @@ You may test it with `fastfetch --config examples/x.jsonc`
 
 ### Notes
 
-* Mixing command line flags with `config.jsonc` may / may not work. Generally, module command line option flags won't work when `config.jsonc` won't work. Other flags should work.
 * Special charactors should be encoded as `\uXXXX` in JSON. Notably, `\e` or `\033` should be `\u001b`.
