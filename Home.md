@@ -60,4 +60,4 @@ Welcome to the fastfetch wiki!
 
 ## GNU Hurd
 
-<img width="1723" height="1630" alt="image" src="https://github.com/user-attachments/assets/6c339ad5-ee14-4d9c-9f82-1a7ece00b6e1" />
+![img](https://github.com/user-attachments/assets/6c339ad5-ee14-4d9c-9f82-1a7ece00b6e1)
