@@ -57,3 +57,7 @@ Welcome to the fastfetch wiki!
 ## OpenBSD
 
 ![2024-12-22-210045_1366x768_scrot](https://github.com/user-attachments/assets/599c0985-711a-4afd-9954-defe4c5f73f7)
+
+## GNU Hurd
+
+<img width="1723" height="1630" alt="image" src="https://github.com/user-attachments/assets/6c339ad5-ee14-4d9c-9f82-1a7ece00b6e1" />
