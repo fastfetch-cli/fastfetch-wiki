@@ -37,8 +37,8 @@ Configure how the logo appears:
 "logo": {
     "type": "auto",        // Logo type: auto, builtin, small, file, etc.
     "source": "arch",      // Built-in logo name or file path
-    "width": 65,           // Width in characters (for image logos)
-    "height": 35,          // Height in characters (for image logos)
+    "width": 65,           // Width in characters
+    "height": 35,          // Height in characters
     "padding": {
         "top": 0,          // Top padding
         "left": 0,         // Left padding
