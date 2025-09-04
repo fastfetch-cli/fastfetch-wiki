@@ -6,9 +6,7 @@ The following libraries are used if present at runtime:
 
 * [`libvulkan`](https://www.vulkan.org/): Vulkan module & fallback for GPU output.
 * [`libxcb-randr`](https://xcb.freedesktop.org/),
-    [`libXrandr`](https://gitlab.freedesktop.org/xorg/lib/libxrandr),
-    [`libxcb`](https://xcb.freedesktop.org/),
-    [`libX11`](https://gitlab.freedesktop.org/xorg/lib/libx11): At least one of them sould be present in X11 sessions for better display detection and faster WM detection. The `*randr` ones provide multi monitor support The `libxcb*` ones usually have better performance.
+    [`libXrandr`](https://gitlab.freedesktop.org/xorg/lib/libxrandr): At least one of them sould be present in X11 sessions for better display detection and faster WM detection.
 * [`libwayland-client`](https://wayland.freedesktop.org/): Better display performance and output in wayland sessions. Supports different refresh rates per monitor.
 * [`libdrm`](https://gitlab.freedesktop.org/mesa/drm): fall back if both wayland and x11 are not available. AMD GPU properties detection
 * [`libGIO`](https://developer.gnome.org/gio/unstable/): Needed for values that are only stored GSettings.
