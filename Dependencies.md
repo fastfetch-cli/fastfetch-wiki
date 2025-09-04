@@ -15,14 +15,13 @@ The following libraries are used if present at runtime:
 * [`libDConf`](https://developer.gnome.org/dconf/unstable/): Needed for values that are only stored in DConf + Fallback for GSettings.
 * [`libmagickcore` (ImageMagick)](https://www.imagemagick.org/): Images in terminal using sixel or kitty graphics protocol.
 * [`libchafa`](https://github.com/hpjansson/chafa): Image output as ascii art.
-* [`libZ`](https://www.zlib.net/): Faster image output when using kitty graphics protocol.
-* [`libDBus`](https://www.freedesktop.org/wiki/Software/dbus): Bluetooth, Wifi (for connecting NetworkManager), Player & Media detection.
+* [`libZ`](https://www.zlib.net/): Zlib compression when sending HTTP requests. Faster image output when using kitty graphics protocol.
+* [`libDBus`](https://www.freedesktop.org/wiki/Software/dbus): Bluetooth, Wifi (for connecting NetworkManager), Player & Media, XFCE theme detection.
 * [`libEGL`](https://www.khronos.org/registry/EGL/),
-    [`libGLX`](https://dri.freedesktop.org/wiki/GLX/): At least one of them is needed by the OpenGL module for gl context creation.
+    [`libGLX`](https://dri.freedesktop.org/wiki/GLX/): At least one of them is needed by the OpenGL module for gl context creation (EGL preferred).
 * [`libOpenCL`](https://www.khronos.org/opencl/): OpenCL module
-* [`libXFConf`](https://gitlab.xfce.org/xfce/xfconf): Needed for XFWM theme and XFCE Terminal font.
 * [`libsqlite3`](https://www.sqlite.org/index.html): Needed for pkg & rpm package count.
-* [`libelf`](https://sourceware.org/elfutils/): Needed for st terminal font detection.
+* [`libelf`](https://sourceware.org/elfutils/): Much faster version detection for many things. Necessary for st terminal font detection.
 
 ### Linux only
 * [`librpm`](http://rpm.org/): Slower fallback for rpm package count. Needed on openSUSE.
@@ -63,5 +62,6 @@ For the image logo, WezTerm with iterm image protocol is known to work, surprisi
 * [`libEGL`](https://www.khronos.org/registry/EGL/): OpenGL module. Installing EGL headers is enough. [mesa-dev](https://github.com/termux/termux-packages/blob/master/packages/mesa/mesa-dev.subpackage.sh)
 * [`termux-api`](https://github.com/termux/termux-api-package): Used for Wifi / Battery detection. Both the package [termux-api](https://github.com/termux/termux-packages/tree/master/packages/termux-api) and the Android app [Termux API](https://github.com/termux/termux-api) must be installed and the app `Termux API` must be configured to be able to self-running. In order to make Wifi detection actuall work, location privilege must be granted to the app `Termux API`. Read [the official doc](https://wiki.termux.com/wiki/Termux:API) for detail.
 * [`libandroid-wordexp-static`](https://github.com/termux/termux-packages/tree/master/packages/libandroid-wordexp): `wordexp.h` support for Android. (Build only)
+* chafa dbus glib imagemagick libelf libxcb libxrandr pulseaudio zlib: See Linux section
 
 For the image logo, [Termux Monet](https://github.com/HardcodedCat/termux-monet) supports iterm image protocol.
