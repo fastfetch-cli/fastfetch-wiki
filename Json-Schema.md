@@ -177,6 +177,8 @@
     - [4.13.5. Property `JSON config > display > percent > width`](#display_percent_width)
   - [4.14. Property `JSON config > display > freq`](#display_freq)
     - [4.14.1. Property `JSON config > display > freq > ndigits`](#display_freq_ndigits)
+      - [4.14.1.1. Property `JSON config > display > freq > ndigits > oneOf > item 0`](#display_freq_ndigits_oneOf_i0)
+      - [4.14.1.2. Property `JSON config > display > freq > ndigits > oneOf > item 1`](#display_freq_ndigits_oneOf_i1)
     - [4.14.2. Property `JSON config > display > freq > spaceBeforeUnit`](#display_freq_spaceBeforeUnit)
   - [4.15. Property `JSON config > display > duration`](#display_duration)
     - [4.15.1. Property `JSON config > display > duration > abbreviation`](#display_duration_abbreviation)
@@ -185,6 +187,11 @@
     - [4.16.1. Property `JSON config > display > fraction > ndigits`](#display_fraction_ndigits)
       - [4.16.1.1. Property `JSON config > display > fraction > ndigits > oneOf > item 0`](#display_fraction_ndigits_oneOf_i0)
       - [4.16.1.2. Property `JSON config > display > fraction > ndigits > oneOf > item 1`](#display_fraction_ndigits_oneOf_i1)
+    - [4.16.2. Property `JSON config > display > fraction > trailingZeros`](#display_fraction_trailingZeros)
+      - [4.16.2.1. Property `JSON config > display > fraction > trailingZeros > oneOf > item 0`](#display_fraction_trailingZeros_oneOf_i0)
+      - [4.16.2.2. Property `JSON config > display > fraction > trailingZeros > oneOf > item 1`](#display_fraction_trailingZeros_oneOf_i1)
+      - [4.16.2.3. Property `JSON config > display > fraction > trailingZeros > oneOf > item 2`](#display_fraction_trailingZeros_oneOf_i2)
+      - [4.16.2.4. Property `JSON config > display > fraction > trailingZeros > oneOf > item 3`](#display_fraction_trailingZeros_oneOf_i3)
   - [4.17. Property `JSON config > display > noBuffer`](#display_noBuffer)
   - [4.18. Property `JSON config > display > constants`](#display_constants)
     - [4.18.1. JSON config > display > constants > constants items](#display_constants_items)
@@ -443,8 +450,17 @@
       - [5.1.2.21. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk`](#modules_items_anyOf_i1_oneOf_i20)
         - [5.1.2.21.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > type`](#modules_items_anyOf_i1_oneOf_i20_type)
         - [5.1.2.21.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > folders`](#modules_items_anyOf_i1_oneOf_i20_folders)
+          - [5.1.2.21.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > folders > oneOf > item 0`](#modules_items_anyOf_i1_oneOf_i20_folders_oneOf_i0)
+          - [5.1.2.21.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > folders > oneOf > item 1`](#modules_items_anyOf_i1_oneOf_i20_folders_oneOf_i1)
+            - [5.1.2.21.2.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > folders > oneOf > item 1 > item 1 items](#modules_items_anyOf_i1_oneOf_i20_folders_oneOf_i1_items)
         - [5.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders`](#modules_items_anyOf_i1_oneOf_i20_hideFolders)
+          - [5.1.2.21.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders > oneOf > item 0`](#modules_items_anyOf_i1_oneOf_i20_hideFolders_oneOf_i0)
+          - [5.1.2.21.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders > oneOf > item 1`](#modules_items_anyOf_i1_oneOf_i20_hideFolders_oneOf_i1)
+            - [5.1.2.21.3.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders > oneOf > item 1 > item 1 items](#modules_items_anyOf_i1_oneOf_i20_hideFolders_oneOf_i1_items)
         - [5.1.2.21.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFS`](#modules_items_anyOf_i1_oneOf_i20_hideFS)
+          - [5.1.2.21.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFS > oneOf > item 0`](#modules_items_anyOf_i1_oneOf_i20_hideFS_oneOf_i0)
+          - [5.1.2.21.4.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFS > oneOf > item 1`](#modules_items_anyOf_i1_oneOf_i20_hideFS_oneOf_i1)
+            - [5.1.2.21.4.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFS > oneOf > item 1 > item 1 items](#modules_items_anyOf_i1_oneOf_i20_hideFS_oneOf_i1_items)
         - [5.1.2.21.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showRegular`](#modules_items_anyOf_i1_oneOf_i20_showRegular)
         - [5.1.2.21.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showExternal`](#modules_items_anyOf_i1_oneOf_i20_showExternal)
         - [5.1.2.21.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showHidden`](#modules_items_anyOf_i1_oneOf_i20_showHidden)
@@ -517,14 +533,16 @@
         - [5.1.2.26.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Font > condition`](#modules_items_anyOf_i1_oneOf_i25_condition)
       - [5.1.2.27. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad`](#modules_items_anyOf_i1_oneOf_i26)
         - [5.1.2.27.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > type`](#modules_items_anyOf_i1_oneOf_i26_type)
-        - [5.1.2.27.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > percent`](#modules_items_anyOf_i1_oneOf_i26_percent)
-        - [5.1.2.27.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > key`](#modules_items_anyOf_i1_oneOf_i26_key)
-        - [5.1.2.27.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyColor`](#modules_items_anyOf_i1_oneOf_i26_keyColor)
-        - [5.1.2.27.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyIcon`](#modules_items_anyOf_i1_oneOf_i26_keyIcon)
-        - [5.1.2.27.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyWidth`](#modules_items_anyOf_i1_oneOf_i26_keyWidth)
-        - [5.1.2.27.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > outputColor`](#modules_items_anyOf_i1_oneOf_i26_outputColor)
-        - [5.1.2.27.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > format`](#modules_items_anyOf_i1_oneOf_i26_format)
-        - [5.1.2.27.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > condition`](#modules_items_anyOf_i1_oneOf_i26_condition)
+        - [5.1.2.27.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > ignores`](#modules_items_anyOf_i1_oneOf_i26_ignores)
+          - [5.1.2.27.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > ignores > ignores items](#modules_items_anyOf_i1_oneOf_i26_ignores_items)
+        - [5.1.2.27.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > percent`](#modules_items_anyOf_i1_oneOf_i26_percent)
+        - [5.1.2.27.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > key`](#modules_items_anyOf_i1_oneOf_i26_key)
+        - [5.1.2.27.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyColor`](#modules_items_anyOf_i1_oneOf_i26_keyColor)
+        - [5.1.2.27.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyIcon`](#modules_items_anyOf_i1_oneOf_i26_keyIcon)
+        - [5.1.2.27.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyWidth`](#modules_items_anyOf_i1_oneOf_i26_keyWidth)
+        - [5.1.2.27.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > outputColor`](#modules_items_anyOf_i1_oneOf_i26_outputColor)
+        - [5.1.2.27.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > format`](#modules_items_anyOf_i1_oneOf_i26_format)
+        - [5.1.2.27.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > condition`](#modules_items_anyOf_i1_oneOf_i26_condition)
       - [5.1.2.28. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU`](#modules_items_anyOf_i1_oneOf_i27)
         - [5.1.2.28.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > type`](#modules_items_anyOf_i1_oneOf_i27_type)
         - [5.1.2.28.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > GPU > temp`](#modules_items_anyOf_i1_oneOf_i27_temp)
@@ -587,12 +605,14 @@
         - [5.1.2.32.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Kernel > condition`](#modules_items_anyOf_i1_oneOf_i31_condition)
       - [5.1.2.33. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard`](#modules_items_anyOf_i1_oneOf_i32)
         - [5.1.2.33.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > type`](#modules_items_anyOf_i1_oneOf_i32_type)
-        - [5.1.2.33.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > key`](#modules_items_anyOf_i1_oneOf_i32_key)
-        - [5.1.2.33.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyColor`](#modules_items_anyOf_i1_oneOf_i32_keyColor)
-        - [5.1.2.33.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyIcon`](#modules_items_anyOf_i1_oneOf_i32_keyIcon)
-        - [5.1.2.33.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyWidth`](#modules_items_anyOf_i1_oneOf_i32_keyWidth)
-        - [5.1.2.33.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > format`](#modules_items_anyOf_i1_oneOf_i32_format)
-        - [5.1.2.33.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > condition`](#modules_items_anyOf_i1_oneOf_i32_condition)
+        - [5.1.2.33.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > ignores`](#modules_items_anyOf_i1_oneOf_i32_ignores)
+          - [5.1.2.33.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > ignores > ignores items](#modules_items_anyOf_i1_oneOf_i32_ignores_items)
+        - [5.1.2.33.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > key`](#modules_items_anyOf_i1_oneOf_i32_key)
+        - [5.1.2.33.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyColor`](#modules_items_anyOf_i1_oneOf_i32_keyColor)
+        - [5.1.2.33.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyIcon`](#modules_items_anyOf_i1_oneOf_i32_keyIcon)
+        - [5.1.2.33.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyWidth`](#modules_items_anyOf_i1_oneOf_i32_keyWidth)
+        - [5.1.2.33.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > format`](#modules_items_anyOf_i1_oneOf_i32_format)
+        - [5.1.2.33.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > condition`](#modules_items_anyOf_i1_oneOf_i32_condition)
       - [5.1.2.34. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Login Manager`](#modules_items_anyOf_i1_oneOf_i33)
         - [5.1.2.34.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Login Manager > type`](#modules_items_anyOf_i1_oneOf_i33_type)
         - [5.1.2.34.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Login Manager > key`](#modules_items_anyOf_i1_oneOf_i33_key)
@@ -606,6 +626,12 @@
         - [5.1.2.35.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > type`](#modules_items_anyOf_i1_oneOf_i34_type)
         - [5.1.2.35.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv4`](#modules_items_anyOf_i1_oneOf_i34_showIpv4)
         - [5.1.2.35.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6`](#modules_items_anyOf_i1_oneOf_i34_showIpv6)
+          - [5.1.2.35.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 0`](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i0)
+          - [5.1.2.35.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 1`](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i1)
+          - [5.1.2.35.3.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 2`](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i2)
+          - [5.1.2.35.3.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 3`](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i3)
+          - [5.1.2.35.3.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 4`](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i4)
+          - [5.1.2.35.3.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 5`](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i5)
         - [5.1.2.35.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showSpeed`](#modules_items_anyOf_i1_oneOf_i34_showSpeed)
         - [5.1.2.35.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showMtu`](#modules_items_anyOf_i1_oneOf_i34_showMtu)
         - [5.1.2.35.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showMac`](#modules_items_anyOf_i1_oneOf_i34_showMac)
@@ -665,12 +691,14 @@
         - [5.1.2.39.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Memory > condition`](#modules_items_anyOf_i1_oneOf_i38_condition)
       - [5.1.2.40. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse`](#modules_items_anyOf_i1_oneOf_i39)
         - [5.1.2.40.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > type`](#modules_items_anyOf_i1_oneOf_i39_type)
-        - [5.1.2.40.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > key`](#modules_items_anyOf_i1_oneOf_i39_key)
-        - [5.1.2.40.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyColor`](#modules_items_anyOf_i1_oneOf_i39_keyColor)
-        - [5.1.2.40.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyIcon`](#modules_items_anyOf_i1_oneOf_i39_keyIcon)
-        - [5.1.2.40.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyWidth`](#modules_items_anyOf_i1_oneOf_i39_keyWidth)
-        - [5.1.2.40.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > format`](#modules_items_anyOf_i1_oneOf_i39_format)
-        - [5.1.2.40.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > condition`](#modules_items_anyOf_i1_oneOf_i39_condition)
+        - [5.1.2.40.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > ignores`](#modules_items_anyOf_i1_oneOf_i39_ignores)
+          - [5.1.2.40.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > ignores > ignores items](#modules_items_anyOf_i1_oneOf_i39_ignores_items)
+        - [5.1.2.40.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > key`](#modules_items_anyOf_i1_oneOf_i39_key)
+        - [5.1.2.40.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyColor`](#modules_items_anyOf_i1_oneOf_i39_keyColor)
+        - [5.1.2.40.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyIcon`](#modules_items_anyOf_i1_oneOf_i39_keyIcon)
+        - [5.1.2.40.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyWidth`](#modules_items_anyOf_i1_oneOf_i39_keyWidth)
+        - [5.1.2.40.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > format`](#modules_items_anyOf_i1_oneOf_i39_format)
+        - [5.1.2.40.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > condition`](#modules_items_anyOf_i1_oneOf_i39_condition)
       - [5.1.2.41. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Monitor`](#modules_items_anyOf_i1_oneOf_i40)
         - [5.1.2.41.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Monitor > type`](#modules_items_anyOf_i1_oneOf_i40_type)
         - [5.1.2.41.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Monitor > key`](#modules_items_anyOf_i1_oneOf_i40_key)
@@ -801,7 +829,7 @@
         - [5.1.2.53.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > type`](#modules_items_anyOf_i1_oneOf_i52_type)
         - [5.1.2.53.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > string`](#modules_items_anyOf_i1_oneOf_i52_string)
         - [5.1.2.53.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > outputColor`](#modules_items_anyOf_i1_oneOf_i52_outputColor)
-        - [5.1.2.53.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > length`](#modules_items_anyOf_i1_oneOf_i52_length)
+        - [5.1.2.53.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > times`](#modules_items_anyOf_i1_oneOf_i52_times)
         - [5.1.2.53.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > condition`](#modules_items_anyOf_i1_oneOf_i52_condition)
       - [5.1.2.54. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Shell`](#modules_items_anyOf_i1_oneOf_i53)
         - [5.1.2.54.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Shell > type`](#modules_items_anyOf_i1_oneOf_i53_type)
@@ -3954,27 +3982,49 @@ Must be one of:
 
 **Description:** Set how frequency values should be displayed
 
-| Property                                            | Pattern | Type    | Deprecated | Definition                                                | Title/Description                                                                                                                                                                                  |
-| --------------------------------------------------- | ------- | ------- | ---------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [ndigits](#display_freq_ndigits )                 | No      | integer | No         | -                                                         | Set the number of digits to keep after the decimal point when formatting frequency values<br />A positive value will show the frequency in GHz with decimal<br />-1 will show the frequency in MHz |
-| - [spaceBeforeUnit](#display_freq_spaceBeforeUnit ) | No      | string  | No         | Same as [spaceBeforeUnit](#display_size_spaceBeforeUnit ) | Whether to put a space before the unit                                                                                                                                                             |
+| Property                                            | Pattern | Type        | Deprecated | Definition                                                | Title/Description                                                            |
+| --------------------------------------------------- | ------- | ----------- | ---------- | --------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| - [ndigits](#display_freq_ndigits )                 | No      | Combination | No         | -                                                         | Set the number of decimal places to display when formatting frequency values |
+| - [spaceBeforeUnit](#display_freq_spaceBeforeUnit ) | No      | string      | No         | Same as [spaceBeforeUnit](#display_size_spaceBeforeUnit ) | Whether to put a space before the unit                                       |
 
 #### <a name="display_freq_ndigits"></a>4.14.1. Property `JSON config > display > freq > ndigits`
+
+|                           |                  |
+| ------------------------- | ---------------- |
+| **Type**                  | `combining`      |
+| **Required**              | No               |
+| **Additional properties** | Any type allowed |
+| **Default**               | `2`              |
+
+**Description:** Set the number of decimal places to display when formatting frequency values
+
+| One of(Option)                           |
+| ---------------------------------------- |
+| [item 0](#display_freq_ndigits_oneOf_i0) |
+| [item 1](#display_freq_ndigits_oneOf_i1) |
+
+##### <a name="display_freq_ndigits_oneOf_i0"></a>4.14.1.1. Property `JSON config > display > freq > ndigits > oneOf > item 0`
 
 |              |           |
 | ------------ | --------- |
 | **Type**     | `integer` |
 | **Required** | No        |
-| **Default**  | `2`       |
 
-**Description:** Set the number of digits to keep after the decimal point when formatting frequency values
-A positive value will show the frequency in GHz with decimal
--1 will show the frequency in MHz
+**Description:** Integer value displays the frequency in GHz with specified decimal places
 
-| Restrictions |         |
-| ------------ | ------- |
-| **Minimum**  | &ge; -1 |
-| **Maximum**  | &le; 9  |
+| Restrictions |        |
+| ------------ | ------ |
+| **Minimum**  | &ge; 0 |
+| **Maximum**  | &le; 9 |
+
+##### <a name="display_freq_ndigits_oneOf_i1"></a>4.14.1.2. Property `JSON config > display > freq > ndigits > oneOf > item 1`
+
+|              |        |
+| ------------ | ------ |
+| **Type**     | `null` |
+| **Required** | No     |
+
+**Description:** Null value display the frequency as integer MHz
 
 #### <a name="display_freq_spaceBeforeUnit"></a>4.14.2. Property `JSON config > display > freq > spaceBeforeUnit`
 
@@ -4032,9 +4082,10 @@ If true, the output will be in the form of "1h 2m" instead of "1 hour, 2 mins"
 
 **Description:** Set how ordinary fraction numbers should be displayed
 
-| Property                                | Pattern | Type        | Deprecated | Definition | Title/Description |
-| --------------------------------------- | ------- | ----------- | ---------- | ---------- | ----------------- |
-| - [ndigits](#display_fraction_ndigits ) | No      | Combination | No         | -          | -                 |
+| Property                                            | Pattern | Type        | Deprecated | Definition | Title/Description               |
+| --------------------------------------------------- | ------- | ----------- | ---------- | ---------- | ------------------------------- |
+| - [ndigits](#display_fraction_ndigits )             | No      | Combination | No         | -          | -                               |
+| - [trailingZeros](#display_fraction_trailingZeros ) | No      | Combination | No         | -          | Set when to keep trailing zeros |
 
 #### <a name="display_fraction_ndigits"></a>4.16.1. Property `JSON config > display > fraction > ndigits`
 
@@ -4043,7 +4094,7 @@ If true, the output will be in the form of "1h 2m" instead of "1 hour, 2 mins"
 | **Type**                  | `combining`      |
 | **Required**              | No               |
 | **Additional properties** | Any type allowed |
-| **Default**               | `null`           |
+| **Default**               | `2`              |
 
 | One of(Option)                               |
 | -------------------------------------------- |
@@ -4072,6 +4123,66 @@ If true, the output will be in the form of "1h 2m" instead of "1 hour, 2 mins"
 | **Required** | No     |
 
 **Description:** The number of digits will be automatically determined based on the value
+
+#### <a name="display_fraction_trailingZeros"></a>4.16.2. Property `JSON config > display > fraction > trailingZeros`
+
+|                           |                  |
+| ------------------------- | ---------------- |
+| **Type**                  | `combining`      |
+| **Required**              | No               |
+| **Additional properties** | Any type allowed |
+| **Default**               | `null`           |
+
+**Description:** Set when to keep trailing zeros
+
+| One of(Option)                                     |
+| -------------------------------------------------- |
+| [item 0](#display_fraction_trailingZeros_oneOf_i0) |
+| [item 1](#display_fraction_trailingZeros_oneOf_i1) |
+| [item 2](#display_fraction_trailingZeros_oneOf_i2) |
+| [item 3](#display_fraction_trailingZeros_oneOf_i3) |
+
+##### <a name="display_fraction_trailingZeros_oneOf_i0"></a>4.16.2.1. Property `JSON config > display > fraction > trailingZeros > oneOf > item 0`
+
+|              |        |
+| ------------ | ------ |
+| **Type**     | `null` |
+| **Required** | No     |
+
+**Description:** Same as `default`
+
+##### <a name="display_fraction_trailingZeros_oneOf_i1"></a>4.16.2.2. Property `JSON config > display > fraction > trailingZeros > oneOf > item 1`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Use the behavior defined internally
+
+Specific value: `"default"`
+
+##### <a name="display_fraction_trailingZeros_oneOf_i2"></a>4.16.2.3. Property `JSON config > display > fraction > trailingZeros > oneOf > item 2`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Always keep trailing zeros
+
+Specific value: `"always"`
+
+##### <a name="display_fraction_trailingZeros_oneOf_i3"></a>4.16.2.4. Property `JSON config > display > fraction > trailingZeros > oneOf > item 3`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Never keep trailing zeros
+
+Specific value: `"never"`
 
 ### <a name="display_noBuffer"></a>4.17. Property `JSON config > display > noBuffer`
 
@@ -7501,27 +7612,27 @@ One whitespace character (` `) can be used to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                              | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| --------------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i20_type )                     | No      | const   | No         | -                                                                    | Print partitions, space usage, disk type, etc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| - [folders](#modules_items_anyOf_i1_oneOf_i20_folders )               | No      | string  | No         | -                                                                    | A colon (semicolon on Windows) separated list of folder paths for the disk output<br />Default: auto detection using mount-points<br />This option overrides other \`show*\` options                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| - [hideFolders](#modules_items_anyOf_i1_oneOf_i20_hideFolders )       | No      | string  | No         | -                                                                    | A colon (semicolon on Windows) separated list of folder paths to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| - [hideFS](#modules_items_anyOf_i1_oneOf_i20_hideFS )                 | No      | string  | No         | -                                                                    | A colon separated file systems to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| - [showRegular](#modules_items_anyOf_i1_oneOf_i20_showRegular )       | No      | boolean | No         | -                                                                    | Set if regular volume should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| - [showExternal](#modules_items_anyOf_i1_oneOf_i20_showExternal )     | No      | boolean | No         | -                                                                    | Set if external volume should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| - [showHidden](#modules_items_anyOf_i1_oneOf_i20_showHidden )         | No      | boolean | No         | -                                                                    | Set if hidden volumes should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| - [showSubvolumes](#modules_items_anyOf_i1_oneOf_i20_showSubvolumes ) | No      | boolean | No         | -                                                                    | Set if subvolumes should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| - [showReadOnly](#modules_items_anyOf_i1_oneOf_i20_showReadOnly )     | No      | boolean | No         | -                                                                    | Set if read only volumes should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| - [showUnknown](#modules_items_anyOf_i1_oneOf_i20_showUnknown )       | No      | boolean | No         | -                                                                    | Set if unknown (unable to detect sizes) volumes should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| - [useAvailable](#modules_items_anyOf_i1_oneOf_i20_useAvailable )     | No      | boolean | No         | -                                                                    | Use f_bavail (lpFreeBytesAvailableToCaller for Windows) instead of f_bfree to calculate used bytes<br />May be required for macOS to display correct results                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| - [percent](#modules_items_anyOf_i1_oneOf_i20_percent )               | No      | object  | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i1_percent )         | Thresholds for percentage colors                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| - [key](#modules_items_anyOf_i1_oneOf_i20_key )                       | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i20_keyColor )             | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key to override the global setting \`display.color.key\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i20_keyIcon )               | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i20_keyWidth )             | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key to override the global setting \`display.keyWidth\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i20_outputColor )       | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module to override the global setting \`display.color.output\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| - [format](#modules_items_anyOf_i1_oneOf_i20_format )                 | No      | string  | No         | In #/$defs/diskFormat                                                | Output format of the module \`Disk\`. See Wiki for formatting syntax<br />    1. {size-used}: Size used<br />    2. {size-total}: Size total<br />    3. {size-percentage}: Size percentage num<br />    4. {files-used}: Files used<br />    5. {files-total}: Files total<br />    6. {files-percentage}: Files percentage num<br />    7. {is-external}: True if external volume<br />    8. {is-hidden}: True if hidden volume<br />    9. {filesystem}: Filesystem<br />    10. {name}: Label / name<br />    11. {is-readonly}: True if read-only<br />    12. {create-time}: Create time in local timezone<br />    13. {size-percentage-bar}: Size percentage bar<br />    14. {files-percentage-bar}: Files percentage bar<br />    15. {days}: Days after creation<br />    16. {hours}: Hours after creation<br />    17. {minutes}: Minutes after creation<br />    18. {seconds}: Seconds after creation<br />    19. {milliseconds}: Milliseconds after creation<br />    20. {mountpoint}: Mount point / drive letter<br />    21. {mount-from}: Mount from (device path)<br />    22. {years}: Years integer after creation<br />    23. {days-of-year}: Days of year after creation<br />    24. {years-fraction}: Years fraction after creation<br />    25. {size-free}: Size free<br />    26. {size-available}: Size available |
-| - [condition](#modules_items_anyOf_i1_oneOf_i20_condition )           | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Only show the module if conditions are met                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Property                                                              | Pattern | Type        | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| --------------------------------------------------------------------- | ------- | ----------- | ---------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i20_type )                     | No      | const       | No         | -                                                                    | Print partitions, space usage, disk type, etc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| - [folders](#modules_items_anyOf_i1_oneOf_i20_folders )               | No      | Combination | No         | -                                                                    | A list of folder paths for the disk output<br />Default: auto detection using mount-points<br />This option overrides other \`show*\` options                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| - [hideFolders](#modules_items_anyOf_i1_oneOf_i20_hideFolders )       | No      | Combination | No         | -                                                                    | A list of folder paths to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| - [hideFS](#modules_items_anyOf_i1_oneOf_i20_hideFS )                 | No      | Combination | No         | -                                                                    | A list of file systems to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| - [showRegular](#modules_items_anyOf_i1_oneOf_i20_showRegular )       | No      | boolean     | No         | -                                                                    | Set if regular volume should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| - [showExternal](#modules_items_anyOf_i1_oneOf_i20_showExternal )     | No      | boolean     | No         | -                                                                    | Set if external volume should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| - [showHidden](#modules_items_anyOf_i1_oneOf_i20_showHidden )         | No      | boolean     | No         | -                                                                    | Set if hidden volumes should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| - [showSubvolumes](#modules_items_anyOf_i1_oneOf_i20_showSubvolumes ) | No      | boolean     | No         | -                                                                    | Set if subvolumes should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| - [showReadOnly](#modules_items_anyOf_i1_oneOf_i20_showReadOnly )     | No      | boolean     | No         | -                                                                    | Set if read only volumes should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| - [showUnknown](#modules_items_anyOf_i1_oneOf_i20_showUnknown )       | No      | boolean     | No         | -                                                                    | Set if unknown (unable to detect sizes) volumes should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| - [useAvailable](#modules_items_anyOf_i1_oneOf_i20_useAvailable )     | No      | boolean     | No         | -                                                                    | Use f_bavail (lpFreeBytesAvailableToCaller for Windows) instead of f_bfree to calculate used bytes<br />May be required for macOS to display correct results                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| - [percent](#modules_items_anyOf_i1_oneOf_i20_percent )               | No      | object      | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i1_percent )         | Thresholds for percentage colors                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i20_key )                       | No      | string      | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i20_keyColor )             | No      | object      | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key to override the global setting \`display.color.key\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i20_keyIcon )               | No      | string      | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i20_keyWidth )             | No      | integer     | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key to override the global setting \`display.keyWidth\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i20_outputColor )       | No      | object      | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module to override the global setting \`display.color.output\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| - [format](#modules_items_anyOf_i1_oneOf_i20_format )                 | No      | string      | No         | In #/$defs/diskFormat                                                | Output format of the module \`Disk\`. See Wiki for formatting syntax<br />    1. {size-used}: Size used<br />    2. {size-total}: Size total<br />    3. {size-percentage}: Size percentage num<br />    4. {files-used}: Files used<br />    5. {files-total}: Files total<br />    6. {files-percentage}: Files percentage num<br />    7. {is-external}: True if external volume<br />    8. {is-hidden}: True if hidden volume<br />    9. {filesystem}: Filesystem<br />    10. {name}: Label / name<br />    11. {is-readonly}: True if read-only<br />    12. {create-time}: Create time in local timezone<br />    13. {size-percentage-bar}: Size percentage bar<br />    14. {files-percentage-bar}: Files percentage bar<br />    15. {days}: Days after creation<br />    16. {hours}: Hours after creation<br />    17. {minutes}: Minutes after creation<br />    18. {seconds}: Seconds after creation<br />    19. {milliseconds}: Milliseconds after creation<br />    20. {mountpoint}: Mount point / drive letter<br />    21. {mount-from}: Mount from (device path)<br />    22. {years}: Years integer after creation<br />    23. {days-of-year}: Days of year after creation<br />    24. {years-fraction}: Years fraction after creation<br />    25. {size-free}: Size free<br />    26. {size-available}: Size available |
+| - [condition](#modules_items_anyOf_i1_oneOf_i20_condition )           | No      | object      | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Only show the module if conditions are met                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i20_type"></a>5.1.2.21.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > type`
 
@@ -7536,33 +7647,163 @@ Specific value: `"disk"`
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i20_folders"></a>5.1.2.21.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > folders`
 
-|              |          |
-| ------------ | -------- |
-| **Type**     | `string` |
-| **Required** | No       |
+|                           |                  |
+| ------------------------- | ---------------- |
+| **Type**                  | `combining`      |
+| **Required**              | No               |
+| **Additional properties** | Any type allowed |
 
-**Description:** A colon (semicolon on Windows) separated list of folder paths for the disk output
+**Description:** A list of folder paths for the disk output
 Default: auto detection using mount-points
 This option overrides other `show*` options
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFolders"></a>5.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders`
+| One of(Option)                                               |
+| ------------------------------------------------------------ |
+| [item 0](#modules_items_anyOf_i1_oneOf_i20_folders_oneOf_i0) |
+| [item 1](#modules_items_anyOf_i1_oneOf_i20_folders_oneOf_i1) |
 
-|              |                                         |
-| ------------ | --------------------------------------- |
-| **Type**     | `string`                                |
-| **Required** | No                                      |
-| **Default**  | `"/efi:/boot:/boot/efi:/boot/firmware"` |
+###### <a name="modules_items_anyOf_i1_oneOf_i20_folders_oneOf_i0"></a>5.1.2.21.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > folders > oneOf > item 0`
 
-**Description:** A colon (semicolon on Windows) separated list of folder paths to hide from the disk output
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+| **Default**  | `"/"`    |
 
-###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFS"></a>5.1.2.21.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFS`
+**Description:** A colon (semicolon on Windows) separated list of folder paths to get disk usage from
+
+###### <a name="modules_items_anyOf_i1_oneOf_i20_folders_oneOf_i1"></a>5.1.2.21.2.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > folders > oneOf > item 1`
+
+|              |                   |
+| ------------ | ----------------- |
+| **Type**     | `array of string` |
+| **Required** | No                |
+
+**Description:** An array of folder paths to get disk usage from
+
+|                      | Array restrictions |
+| -------------------- | ------------------ |
+| **Min items**        | 1                  |
+| **Max items**        | N/A                |
+| **Items unicity**    | True               |
+| **Additional items** | False              |
+| **Tuple validation** | See below          |
+
+| Each item of this array must be                                          | Description |
+| ------------------------------------------------------------------------ | ----------- |
+| [item 1 items](#modules_items_anyOf_i1_oneOf_i20_folders_oneOf_i1_items) | -           |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i20_folders_oneOf_i1_items"></a>5.1.2.21.2.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > folders > oneOf > item 1 > item 1 items
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
 | **Required** | No       |
 
-**Description:** A colon separated file systems to hide from the disk output
+###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFolders"></a>5.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders`
+
+|                           |                                         |
+| ------------------------- | --------------------------------------- |
+| **Type**                  | `combining`                             |
+| **Required**              | No                                      |
+| **Additional properties** | Any type allowed                        |
+| **Default**               | `"/efi:/boot:/boot/efi:/boot/firmware"` |
+
+**Description:** A list of folder paths to hide from the disk output
+
+| One of(Option)                                                   |
+| ---------------------------------------------------------------- |
+| [item 0](#modules_items_anyOf_i1_oneOf_i20_hideFolders_oneOf_i0) |
+| [item 1](#modules_items_anyOf_i1_oneOf_i20_hideFolders_oneOf_i1) |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFolders_oneOf_i0"></a>5.1.2.21.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders > oneOf > item 0`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** A colon (semicolon on Windows) separated list of folder paths to hide from the disk output
+
+###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFolders_oneOf_i1"></a>5.1.2.21.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders > oneOf > item 1`
+
+|              |                   |
+| ------------ | ----------------- |
+| **Type**     | `array of string` |
+| **Required** | No                |
+
+**Description:** An array of folder paths to hide from the disk output
+
+|                      | Array restrictions |
+| -------------------- | ------------------ |
+| **Min items**        | 1                  |
+| **Max items**        | N/A                |
+| **Items unicity**    | True               |
+| **Additional items** | False              |
+| **Tuple validation** | See below          |
+
+| Each item of this array must be                                              | Description |
+| ---------------------------------------------------------------------------- | ----------- |
+| [item 1 items](#modules_items_anyOf_i1_oneOf_i20_hideFolders_oneOf_i1_items) | -           |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFolders_oneOf_i1_items"></a>5.1.2.21.3.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders > oneOf > item 1 > item 1 items
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFS"></a>5.1.2.21.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFS`
+
+|                           |                  |
+| ------------------------- | ---------------- |
+| **Type**                  | `combining`      |
+| **Required**              | No               |
+| **Additional properties** | Any type allowed |
+
+**Description:** A list of file systems to hide from the disk output
+
+| One of(Option)                                              |
+| ----------------------------------------------------------- |
+| [item 0](#modules_items_anyOf_i1_oneOf_i20_hideFS_oneOf_i0) |
+| [item 1](#modules_items_anyOf_i1_oneOf_i20_hideFS_oneOf_i1) |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFS_oneOf_i0"></a>5.1.2.21.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFS > oneOf > item 0`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** A colon separated list of file systems to hide from the disk output
+
+###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFS_oneOf_i1"></a>5.1.2.21.4.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFS > oneOf > item 1`
+
+|              |                   |
+| ------------ | ----------------- |
+| **Type**     | `array of string` |
+| **Required** | No                |
+
+**Description:** An array of file systems to hide from the disk output
+
+|                      | Array restrictions |
+| -------------------- | ------------------ |
+| **Min items**        | 1                  |
+| **Max items**        | N/A                |
+| **Items unicity**    | True               |
+| **Additional items** | False              |
+| **Tuple validation** | See below          |
+
+| Each item of this array must be                                         | Description |
+| ----------------------------------------------------------------------- | ----------- |
+| [item 1 items](#modules_items_anyOf_i1_oneOf_i20_hideFS_oneOf_i1_items) | -           |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFS_oneOf_i1_items"></a>5.1.2.21.4.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFS > oneOf > item 1 > item 1 items
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i20_showRegular"></a>5.1.2.21.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > showRegular`
 
@@ -8432,17 +8673,18 @@ One whitespace character (` `) can be used to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                        | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                          |
-| --------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i26_type )               | No      | const   | No         | -                                                                    | List connected gamepads                                                                                                                                                                                                                                    |
-| - [percent](#modules_items_anyOf_i1_oneOf_i26_percent )         | No      | object  | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i1_percent )         | Thresholds for percentage colors                                                                                                                                                                                                                           |
-| - [key](#modules_items_anyOf_i1_oneOf_i26_key )                 | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                                                                                                        |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i26_keyColor )       | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key to override the global setting \`display.color.key\`                                                                                                                                                                               |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i26_keyIcon )         | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                                                                                                                |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i26_keyWidth )       | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key to override the global setting \`display.keyWidth\`                                                                                                                                                                                |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i26_outputColor ) | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module to override the global setting \`display.color.output\`                                                                                                                                                                         |
-| - [format](#modules_items_anyOf_i1_oneOf_i26_format )           | No      | string  | No         | In #/$defs/gamepadFormat                                             | Output format of the module \`Gamepad\`. See Wiki for formatting syntax<br />    1. {name}: Name<br />    2. {serial}: Serial number<br />    3. {battery-percentage}: Battery percentage num<br />    4. {battery-percentage-bar}: Battery percentage bar |
-| - [condition](#modules_items_anyOf_i1_oneOf_i26_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Only show the module if conditions are met                                                                                                                                                                                                                 |
+| Property                                                        | Pattern | Type            | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                          |
+| --------------------------------------------------------------- | ------- | --------------- | ---------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i26_type )               | No      | const           | No         | -                                                                    | List connected gamepads                                                                                                                                                                                                                                    |
+| - [ignores](#modules_items_anyOf_i1_oneOf_i26_ignores )         | No      | array of string | No         | -                                                                    | An array of case-insensitive device name prefixes to ignore                                                                                                                                                                                                |
+| - [percent](#modules_items_anyOf_i1_oneOf_i26_percent )         | No      | object          | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i1_percent )         | Thresholds for percentage colors                                                                                                                                                                                                                           |
+| - [key](#modules_items_anyOf_i1_oneOf_i26_key )                 | No      | string          | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                                                                                                        |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i26_keyColor )       | No      | object          | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key to override the global setting \`display.color.key\`                                                                                                                                                                               |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i26_keyIcon )         | No      | string          | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                                                                                                                |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i26_keyWidth )       | No      | integer         | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key to override the global setting \`display.keyWidth\`                                                                                                                                                                                |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i26_outputColor ) | No      | object          | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module to override the global setting \`display.color.output\`                                                                                                                                                                         |
+| - [format](#modules_items_anyOf_i1_oneOf_i26_format )           | No      | string          | No         | In #/$defs/gamepadFormat                                             | Output format of the module \`Gamepad\`. See Wiki for formatting syntax<br />    1. {name}: Name<br />    2. {serial}: Serial number<br />    3. {battery-percentage}: Battery percentage num<br />    4. {battery-percentage-bar}: Battery percentage bar |
+| - [condition](#modules_items_anyOf_i1_oneOf_i26_condition )     | No      | object          | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Only show the module if conditions are met                                                                                                                                                                                                                 |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i26_type"></a>5.1.2.27.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > type`
 
@@ -8455,7 +8697,35 @@ One whitespace character (` `) can be used to hide the key
 
 Specific value: `"gamepad"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i26_percent"></a>5.1.2.27.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > percent`
+###### <a name="modules_items_anyOf_i1_oneOf_i26_ignores"></a>5.1.2.27.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > ignores`
+
+|              |                   |
+| ------------ | ----------------- |
+| **Type**     | `array of string` |
+| **Required** | No                |
+
+**Description:** An array of case-insensitive device name prefixes to ignore
+
+|                      | Array restrictions |
+| -------------------- | ------------------ |
+| **Min items**        | 1                  |
+| **Max items**        | N/A                |
+| **Items unicity**    | True               |
+| **Additional items** | False              |
+| **Tuple validation** | See below          |
+
+| Each item of this array must be                                  | Description |
+| ---------------------------------------------------------------- | ----------- |
+| [ignores items](#modules_items_anyOf_i1_oneOf_i26_ignores_items) | -           |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i26_ignores_items"></a>5.1.2.27.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > ignores > ignores items
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i26_percent"></a>5.1.2.27.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > percent`
 
 |                           |                                                     |
 | ------------------------- | --------------------------------------------------- |
@@ -8466,7 +8736,7 @@ Specific value: `"gamepad"`
 
 **Description:** Thresholds for percentage colors
 
-###### <a name="modules_items_anyOf_i1_oneOf_i26_key"></a>5.1.2.27.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > key`
+###### <a name="modules_items_anyOf_i1_oneOf_i26_key"></a>5.1.2.27.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -8477,7 +8747,7 @@ Specific value: `"gamepad"`
 **Description:** Key of the module
 One whitespace character (` `) can be used to hide the key
 
-###### <a name="modules_items_anyOf_i1_oneOf_i26_keyColor"></a>5.1.2.27.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i26_keyColor"></a>5.1.2.27.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyColor`
 
 |                           |                                                       |
 | ------------------------- | ----------------------------------------------------- |
@@ -8488,7 +8758,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Color of the module key to override the global setting `display.color.key`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i26_keyIcon"></a>5.1.2.27.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyIcon`
+###### <a name="modules_items_anyOf_i1_oneOf_i26_keyIcon"></a>5.1.2.27.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyIcon`
 
 |                        |                                                     |
 | ---------------------- | --------------------------------------------------- |
@@ -8498,7 +8768,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Set the icon to be displayed by `display.keyType: "icon"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i26_keyWidth"></a>5.1.2.27.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyWidth`
+###### <a name="modules_items_anyOf_i1_oneOf_i26_keyWidth"></a>5.1.2.27.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -8508,7 +8778,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Width of the module key to override the global setting `display.keyWidth`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i26_outputColor"></a>5.1.2.27.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > outputColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i26_outputColor"></a>5.1.2.27.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > outputColor`
 
 |                           |                                                             |
 | ------------------------- | ----------------------------------------------------------- |
@@ -8519,7 +8789,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Output color of the module to override the global setting `display.color.output`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i26_format"></a>5.1.2.27.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > format`
+###### <a name="modules_items_anyOf_i1_oneOf_i26_format"></a>5.1.2.27.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > format`
 
 |                |                       |
 | -------------- | --------------------- |
@@ -8533,7 +8803,7 @@ One whitespace character (` `) can be used to hide the key
     3. {battery-percentage}: Battery percentage num
     4. {battery-percentage-bar}: Battery percentage bar
 
-###### <a name="modules_items_anyOf_i1_oneOf_i26_condition"></a>5.1.2.27.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > condition`
+###### <a name="modules_items_anyOf_i1_oneOf_i26_condition"></a>5.1.2.27.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Gamepad > condition`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -9316,15 +9586,16 @@ One whitespace character (` `) can be used to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                    | Pattern | Type    | Deprecated | Definition                                                       | Title/Description                                                                                                                                                                                                                        |
-| ----------------------------------------------------------- | ------- | ------- | ---------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i32_type )           | No      | const   | No         | -                                                                | List (connected) keyboards                                                                                                                                                                                                               |
-| - [key](#modules_items_anyOf_i1_oneOf_i32_key )             | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )             | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                                                                                      |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i32_keyColor )   | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )   | Color of the module key to override the global setting \`display.color.key\`                                                                                                                                                             |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i32_keyIcon )     | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )     | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                                                                                              |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i32_keyWidth )   | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )   | Width of the module key to override the global setting \`display.keyWidth\`                                                                                                                                                              |
-| - [format](#modules_items_anyOf_i1_oneOf_i32_format )       | No      | string  | No         | In #/$defs/memoryFormat                                          | Output format of the module \`Memory\`. See Wiki for formatting syntax<br />    1. {used}: Used size<br />    2. {total}: Total size<br />    3. {percentage}: Percentage used (num)<br />    4. {percentage-bar}: Percentage used (bar) |
-| - [condition](#modules_items_anyOf_i1_oneOf_i32_condition ) | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition ) | Only show the module if conditions are met                                                                                                                                                                                               |
+| Property                                                    | Pattern | Type            | Deprecated | Definition                                                       | Title/Description                                                                                                                                                                                                                        |
+| ----------------------------------------------------------- | ------- | --------------- | ---------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i32_type )           | No      | const           | No         | -                                                                | List (connected) keyboards                                                                                                                                                                                                               |
+| - [ignores](#modules_items_anyOf_i1_oneOf_i32_ignores )     | No      | array of string | No         | -                                                                | An array of case-insensitive device name prefixes to ignore                                                                                                                                                                              |
+| - [key](#modules_items_anyOf_i1_oneOf_i32_key )             | No      | string          | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )             | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                                                                                      |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i32_keyColor )   | No      | object          | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )   | Color of the module key to override the global setting \`display.color.key\`                                                                                                                                                             |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i32_keyIcon )     | No      | string          | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )     | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                                                                                              |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i32_keyWidth )   | No      | integer         | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )   | Width of the module key to override the global setting \`display.keyWidth\`                                                                                                                                                              |
+| - [format](#modules_items_anyOf_i1_oneOf_i32_format )       | No      | string          | No         | In #/$defs/memoryFormat                                          | Output format of the module \`Memory\`. See Wiki for formatting syntax<br />    1. {used}: Used size<br />    2. {total}: Total size<br />    3. {percentage}: Percentage used (num)<br />    4. {percentage-bar}: Percentage used (bar) |
+| - [condition](#modules_items_anyOf_i1_oneOf_i32_condition ) | No      | object          | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition ) | Only show the module if conditions are met                                                                                                                                                                                               |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i32_type"></a>5.1.2.33.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > type`
 
@@ -9337,7 +9608,35 @@ One whitespace character (` `) can be used to hide the key
 
 Specific value: `"keyboard"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i32_key"></a>5.1.2.33.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > key`
+###### <a name="modules_items_anyOf_i1_oneOf_i32_ignores"></a>5.1.2.33.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > ignores`
+
+|              |                   |
+| ------------ | ----------------- |
+| **Type**     | `array of string` |
+| **Required** | No                |
+
+**Description:** An array of case-insensitive device name prefixes to ignore
+
+|                      | Array restrictions |
+| -------------------- | ------------------ |
+| **Min items**        | 1                  |
+| **Max items**        | N/A                |
+| **Items unicity**    | True               |
+| **Additional items** | False              |
+| **Tuple validation** | See below          |
+
+| Each item of this array must be                                  | Description |
+| ---------------------------------------------------------------- | ----------- |
+| [ignores items](#modules_items_anyOf_i1_oneOf_i32_ignores_items) | -           |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i32_ignores_items"></a>5.1.2.33.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > ignores > ignores items
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i32_key"></a>5.1.2.33.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -9348,7 +9647,7 @@ Specific value: `"keyboard"`
 **Description:** Key of the module
 One whitespace character (` `) can be used to hide the key
 
-###### <a name="modules_items_anyOf_i1_oneOf_i32_keyColor"></a>5.1.2.33.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i32_keyColor"></a>5.1.2.33.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyColor`
 
 |                           |                                                       |
 | ------------------------- | ----------------------------------------------------- |
@@ -9359,7 +9658,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Color of the module key to override the global setting `display.color.key`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i32_keyIcon"></a>5.1.2.33.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyIcon`
+###### <a name="modules_items_anyOf_i1_oneOf_i32_keyIcon"></a>5.1.2.33.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyIcon`
 
 |                        |                                                     |
 | ---------------------- | --------------------------------------------------- |
@@ -9369,7 +9668,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Set the icon to be displayed by `display.keyType: "icon"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i32_keyWidth"></a>5.1.2.33.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyWidth`
+###### <a name="modules_items_anyOf_i1_oneOf_i32_keyWidth"></a>5.1.2.33.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -9379,7 +9678,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Width of the module key to override the global setting `display.keyWidth`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i32_format"></a>5.1.2.33.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > format`
+###### <a name="modules_items_anyOf_i1_oneOf_i32_format"></a>5.1.2.33.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > format`
 
 |                |                      |
 | -------------- | -------------------- |
@@ -9393,7 +9692,7 @@ One whitespace character (` `) can be used to hide the key
     3. {percentage}: Percentage used (num)
     4. {percentage-bar}: Percentage used (bar)
 
-###### <a name="modules_items_anyOf_i1_oneOf_i32_condition"></a>5.1.2.33.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > condition`
+###### <a name="modules_items_anyOf_i1_oneOf_i32_condition"></a>5.1.2.33.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Keyboard > condition`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -9523,28 +9822,28 @@ One whitespace character (` `) can be used to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                                  | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                                                                                    |
-| ------------------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i34_type )                         | No      | const   | No         | -                                                                    | List local IP addresses (v4 or v6), MAC addresses, etc                                                                                                                                                                                                                                                                                                                               |
-| - [showIpv4](#modules_items_anyOf_i1_oneOf_i34_showIpv4 )                 | No      | boolean | No         | -                                                                    | Show IPv4 addresses                                                                                                                                                                                                                                                                                                                                                                  |
-| - [showIpv6](#modules_items_anyOf_i1_oneOf_i34_showIpv6 )                 | No      | boolean | No         | -                                                                    | Show IPv6 addresses                                                                                                                                                                                                                                                                                                                                                                  |
-| - [showSpeed](#modules_items_anyOf_i1_oneOf_i34_showSpeed )               | No      | boolean | No         | -                                                                    | Show ethernet rx speed                                                                                                                                                                                                                                                                                                                                                               |
-| - [showMtu](#modules_items_anyOf_i1_oneOf_i34_showMtu )                   | No      | boolean | No         | -                                                                    | Show MTU                                                                                                                                                                                                                                                                                                                                                                             |
-| - [showMac](#modules_items_anyOf_i1_oneOf_i34_showMac )                   | No      | boolean | No         | -                                                                    | Show MAC addresses                                                                                                                                                                                                                                                                                                                                                                   |
-| - [showLoop](#modules_items_anyOf_i1_oneOf_i34_showLoop )                 | No      | boolean | No         | -                                                                    | Show loop back addresses (127.0.0.1)                                                                                                                                                                                                                                                                                                                                                 |
-| - [showPrefixLen](#modules_items_anyOf_i1_oneOf_i34_showPrefixLen )       | No      | boolean | No         | -                                                                    | Show network prefix length (/N)                                                                                                                                                                                                                                                                                                                                                      |
-| - [showAllIps](#modules_items_anyOf_i1_oneOf_i34_showAllIps )             | No      | boolean | No         | -                                                                    | Show all IPs bound to the same interface.<br />By default only the firstly detected IP is shown                                                                                                                                                                                                                                                                                      |
-| - [showFlags](#modules_items_anyOf_i1_oneOf_i34_showFlags )               | No      | boolean | No         | -                                                                    | Show the interface's flags                                                                                                                                                                                                                                                                                                                                                           |
-| - [compact](#modules_items_anyOf_i1_oneOf_i34_compact )                   | No      | boolean | No         | -                                                                    | Show all IPs in one line                                                                                                                                                                                                                                                                                                                                                             |
-| - [namePrefix](#modules_items_anyOf_i1_oneOf_i34_namePrefix )             | No      | string  | No         | -                                                                    | Show IPs with given name prefix only                                                                                                                                                                                                                                                                                                                                                 |
-| - [defaultRouteOnly](#modules_items_anyOf_i1_oneOf_i34_defaultRouteOnly ) | No      | boolean | No         | -                                                                    | Show ips that are used for default routing only<br />Doesn't work on Android                                                                                                                                                                                                                                                                                                         |
-| - [key](#modules_items_anyOf_i1_oneOf_i34_key )                           | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                                                                                                                                                                                                                                  |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i34_keyColor )                 | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key to override the global setting \`display.color.key\`                                                                                                                                                                                                                                                                                                         |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i34_keyIcon )                   | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                                                                                                                                                                                                                                          |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i34_keyWidth )                 | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key to override the global setting \`display.keyWidth\`                                                                                                                                                                                                                                                                                                          |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i34_outputColor )           | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module to override the global setting \`display.color.output\`                                                                                                                                                                                                                                                                                                   |
-| - [format](#modules_items_anyOf_i1_oneOf_i34_format )                     | No      | string  | No         | In #/$defs/localipFormat                                             | Output format of the module \`LocalIp\`. See Wiki for formatting syntax<br />    1. {ipv4}: IPv4 address<br />    2. {ipv6}: IPv6 address<br />    3. {mac}: MAC address<br />    4. {ifname}: Interface name<br />    5. {is-default-route}: Is default route<br />    6. {mtu}: MTU size in bytes<br />    7. {speed}: Link speed (formatted)<br />    8. {flags}: Interface flags |
-| - [condition](#modules_items_anyOf_i1_oneOf_i34_condition )               | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Only show the module if conditions are met                                                                                                                                                                                                                                                                                                                                           |
+| Property                                                                  | Pattern | Type        | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                                                                                    |
+| ------------------------------------------------------------------------- | ------- | ----------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - [type](#modules_items_anyOf_i1_oneOf_i34_type )                         | No      | const       | No         | -                                                                    | List local IP addresses (v4 or v6), MAC addresses, etc                                                                                                                                                                                                                                                                                                                               |
+| - [showIpv4](#modules_items_anyOf_i1_oneOf_i34_showIpv4 )                 | No      | boolean     | No         | -                                                                    | Show IPv4 addresses                                                                                                                                                                                                                                                                                                                                                                  |
+| - [showIpv6](#modules_items_anyOf_i1_oneOf_i34_showIpv6 )                 | No      | Combination | No         | -                                                                    | Show IPv6 addresses                                                                                                                                                                                                                                                                                                                                                                  |
+| - [showSpeed](#modules_items_anyOf_i1_oneOf_i34_showSpeed )               | No      | boolean     | No         | -                                                                    | Show ethernet rx speed                                                                                                                                                                                                                                                                                                                                                               |
+| - [showMtu](#modules_items_anyOf_i1_oneOf_i34_showMtu )                   | No      | boolean     | No         | -                                                                    | Show MTU                                                                                                                                                                                                                                                                                                                                                                             |
+| - [showMac](#modules_items_anyOf_i1_oneOf_i34_showMac )                   | No      | boolean     | No         | -                                                                    | Show MAC addresses                                                                                                                                                                                                                                                                                                                                                                   |
+| - [showLoop](#modules_items_anyOf_i1_oneOf_i34_showLoop )                 | No      | boolean     | No         | -                                                                    | Show loop back addresses (127.0.0.1)                                                                                                                                                                                                                                                                                                                                                 |
+| - [showPrefixLen](#modules_items_anyOf_i1_oneOf_i34_showPrefixLen )       | No      | boolean     | No         | -                                                                    | Show network prefix length (/N)                                                                                                                                                                                                                                                                                                                                                      |
+| - [showAllIps](#modules_items_anyOf_i1_oneOf_i34_showAllIps )             | No      | boolean     | No         | -                                                                    | Show all IPs bound to the same interface.<br />By default only the firstly detected IP is shown                                                                                                                                                                                                                                                                                      |
+| - [showFlags](#modules_items_anyOf_i1_oneOf_i34_showFlags )               | No      | boolean     | No         | -                                                                    | Show the interface's flags                                                                                                                                                                                                                                                                                                                                                           |
+| - [compact](#modules_items_anyOf_i1_oneOf_i34_compact )                   | No      | boolean     | No         | -                                                                    | Show all IPs in one line                                                                                                                                                                                                                                                                                                                                                             |
+| - [namePrefix](#modules_items_anyOf_i1_oneOf_i34_namePrefix )             | No      | string      | No         | -                                                                    | Show IPs with given name prefix only                                                                                                                                                                                                                                                                                                                                                 |
+| - [defaultRouteOnly](#modules_items_anyOf_i1_oneOf_i34_defaultRouteOnly ) | No      | boolean     | No         | -                                                                    | Show ips that are used for default routing only<br />Doesn't work on Android                                                                                                                                                                                                                                                                                                         |
+| - [key](#modules_items_anyOf_i1_oneOf_i34_key )                           | No      | string      | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                                                                                                                                                                                                                                  |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i34_keyColor )                 | No      | object      | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key to override the global setting \`display.color.key\`                                                                                                                                                                                                                                                                                                         |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i34_keyIcon )                   | No      | string      | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                                                                                                                                                                                                                                          |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i34_keyWidth )                 | No      | integer     | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key to override the global setting \`display.keyWidth\`                                                                                                                                                                                                                                                                                                          |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i34_outputColor )           | No      | object      | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module to override the global setting \`display.color.output\`                                                                                                                                                                                                                                                                                                   |
+| - [format](#modules_items_anyOf_i1_oneOf_i34_format )                     | No      | string      | No         | In #/$defs/localipFormat                                             | Output format of the module \`LocalIp\`. See Wiki for formatting syntax<br />    1. {ipv4}: IPv4 address<br />    2. {ipv6}: IPv6 address<br />    3. {mac}: MAC address<br />    4. {ifname}: Interface name<br />    5. {is-default-route}: Is default route<br />    6. {mtu}: MTU size in bytes<br />    7. {speed}: Link speed (formatted)<br />    8. {flags}: Interface flags |
+| - [condition](#modules_items_anyOf_i1_oneOf_i34_condition )               | No      | object      | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Only show the module if conditions are met                                                                                                                                                                                                                                                                                                                                           |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i34_type"></a>5.1.2.35.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > type`
 
@@ -9569,13 +9868,89 @@ Specific value: `"localip"`
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i34_showIpv6"></a>5.1.2.35.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6`
 
-|              |           |
-| ------------ | --------- |
-| **Type**     | `boolean` |
-| **Required** | No        |
-| **Default**  | `false`   |
+|                           |                  |
+| ------------------------- | ---------------- |
+| **Type**                  | `combining`      |
+| **Required**              | No               |
+| **Additional properties** | Any type allowed |
+| **Default**               | `false`          |
 
 **Description:** Show IPv6 addresses
+
+| One of(Option)                                                |
+| ------------------------------------------------------------- |
+| [item 0](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i0) |
+| [item 1](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i1) |
+| [item 2](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i2) |
+| [item 3](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i3) |
+| [item 4](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i4) |
+| [item 5](#modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i5) |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i0"></a>5.1.2.35.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 0`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Show the most useful IPv6 addresses
+
+Specific value: `true`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i1"></a>5.1.2.35.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 1`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Do not show IPv6 addresses
+
+Specific value: `false`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i2"></a>5.1.2.35.3.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 2`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Show only global unicast IPv6 addresses (2000::/3)
+
+Specific value: `"gua"`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i3"></a>5.1.2.35.3.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 3`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Show only unique local IPv6 addresses (fc00::/7)
+
+Specific value: `"ula"`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i4"></a>5.1.2.35.3.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 4`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Show only link-local IPv6 addresses (fe80::/10)
+
+Specific value: `"lla"`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i34_showIpv6_oneOf_i5"></a>5.1.2.35.3.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showIpv6 > oneOf > item 5`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Show only IPv6 addresses that are not gua, ula or lla
+
+Specific value: `"unknown"`
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i34_showSpeed"></a>5.1.2.35.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Local IP > showSpeed`
 
@@ -10258,15 +10633,16 @@ One whitespace character (` `) can be used to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                    | Pattern | Type    | Deprecated | Definition                                                       | Title/Description                                                                                                                                                                                                                        |
-| ----------------------------------------------------------- | ------- | ------- | ---------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i39_type )           | No      | const   | No         | -                                                                | List connected mouses                                                                                                                                                                                                                    |
-| - [key](#modules_items_anyOf_i1_oneOf_i39_key )             | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )             | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                                                                                      |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i39_keyColor )   | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )   | Color of the module key to override the global setting \`display.color.key\`                                                                                                                                                             |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i39_keyIcon )     | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )     | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                                                                                              |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i39_keyWidth )   | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )   | Width of the module key to override the global setting \`display.keyWidth\`                                                                                                                                                              |
-| - [format](#modules_items_anyOf_i1_oneOf_i39_format )       | No      | string  | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i32_format )      | Output format of the module \`Memory\`. See Wiki for formatting syntax<br />    1. {used}: Used size<br />    2. {total}: Total size<br />    3. {percentage}: Percentage used (num)<br />    4. {percentage-bar}: Percentage used (bar) |
-| - [condition](#modules_items_anyOf_i1_oneOf_i39_condition ) | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition ) | Only show the module if conditions are met                                                                                                                                                                                               |
+| Property                                                    | Pattern | Type            | Deprecated | Definition                                                       | Title/Description                                                                                                                                                                                                                        |
+| ----------------------------------------------------------- | ------- | --------------- | ---------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i39_type )           | No      | const           | No         | -                                                                | List connected mouses                                                                                                                                                                                                                    |
+| - [ignores](#modules_items_anyOf_i1_oneOf_i39_ignores )     | No      | array of string | No         | -                                                                | An array of case-insensitive device name prefixes to ignore                                                                                                                                                                              |
+| - [key](#modules_items_anyOf_i1_oneOf_i39_key )             | No      | string          | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )             | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                                                                                      |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i39_keyColor )   | No      | object          | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )   | Color of the module key to override the global setting \`display.color.key\`                                                                                                                                                             |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i39_keyIcon )     | No      | string          | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )     | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                                                                                              |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i39_keyWidth )   | No      | integer         | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )   | Width of the module key to override the global setting \`display.keyWidth\`                                                                                                                                                              |
+| - [format](#modules_items_anyOf_i1_oneOf_i39_format )       | No      | string          | No         | Same as [format](#modules_items_anyOf_i1_oneOf_i32_format )      | Output format of the module \`Memory\`. See Wiki for formatting syntax<br />    1. {used}: Used size<br />    2. {total}: Total size<br />    3. {percentage}: Percentage used (num)<br />    4. {percentage-bar}: Percentage used (bar) |
+| - [condition](#modules_items_anyOf_i1_oneOf_i39_condition ) | No      | object          | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition ) | Only show the module if conditions are met                                                                                                                                                                                               |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i39_type"></a>5.1.2.40.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > type`
 
@@ -10279,7 +10655,35 @@ One whitespace character (` `) can be used to hide the key
 
 Specific value: `"mouse"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i39_key"></a>5.1.2.40.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > key`
+###### <a name="modules_items_anyOf_i1_oneOf_i39_ignores"></a>5.1.2.40.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > ignores`
+
+|              |                   |
+| ------------ | ----------------- |
+| **Type**     | `array of string` |
+| **Required** | No                |
+
+**Description:** An array of case-insensitive device name prefixes to ignore
+
+|                      | Array restrictions |
+| -------------------- | ------------------ |
+| **Min items**        | 1                  |
+| **Max items**        | N/A                |
+| **Items unicity**    | True               |
+| **Additional items** | False              |
+| **Tuple validation** | See below          |
+
+| Each item of this array must be                                  | Description |
+| ---------------------------------------------------------------- | ----------- |
+| [ignores items](#modules_items_anyOf_i1_oneOf_i39_ignores_items) | -           |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i39_ignores_items"></a>5.1.2.40.2.1. JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > ignores > ignores items
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i39_key"></a>5.1.2.40.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -10290,7 +10694,7 @@ Specific value: `"mouse"`
 **Description:** Key of the module
 One whitespace character (` `) can be used to hide the key
 
-###### <a name="modules_items_anyOf_i1_oneOf_i39_keyColor"></a>5.1.2.40.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i39_keyColor"></a>5.1.2.40.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyColor`
 
 |                           |                                                       |
 | ------------------------- | ----------------------------------------------------- |
@@ -10301,7 +10705,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Color of the module key to override the global setting `display.color.key`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i39_keyIcon"></a>5.1.2.40.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyIcon`
+###### <a name="modules_items_anyOf_i1_oneOf_i39_keyIcon"></a>5.1.2.40.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyIcon`
 
 |                        |                                                     |
 | ---------------------- | --------------------------------------------------- |
@@ -10311,7 +10715,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Set the icon to be displayed by `display.keyType: "icon"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i39_keyWidth"></a>5.1.2.40.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyWidth`
+###### <a name="modules_items_anyOf_i1_oneOf_i39_keyWidth"></a>5.1.2.40.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -10321,7 +10725,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Width of the module key to override the global setting `display.keyWidth`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i39_format"></a>5.1.2.40.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > format`
+###### <a name="modules_items_anyOf_i1_oneOf_i39_format"></a>5.1.2.40.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > format`
 
 |                        |                                                    |
 | ---------------------- | -------------------------------------------------- |
@@ -10335,7 +10739,7 @@ One whitespace character (` `) can be used to hide the key
     3. {percentage}: Percentage used (num)
     4. {percentage-bar}: Percentage used (bar)
 
-###### <a name="modules_items_anyOf_i1_oneOf_i39_condition"></a>5.1.2.40.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > condition`
+###### <a name="modules_items_anyOf_i1_oneOf_i39_condition"></a>5.1.2.40.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Mouse > condition`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -12008,13 +12412,13 @@ One whitespace character (` `) can be used to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                        | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                         |
-| --------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | --------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i52_type )               | No      | const   | No         | -                                                                    | Print a separator line                                    |
-| - [string](#modules_items_anyOf_i1_oneOf_i52_string )           | No      | string  | No         | -                                                                    | Set the string to be printed by the separator line        |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i52_outputColor ) | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Set the color of the separator line                       |
-| - [length](#modules_items_anyOf_i1_oneOf_i52_length )           | No      | integer | No         | -                                                                    | Set the length of the separator line, or 0 to auto-detect |
-| - [condition](#modules_items_anyOf_i1_oneOf_i52_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Only show the module if conditions are met                |
+| Property                                                        | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                |
+| --------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i52_type )               | No      | const   | No         | -                                                                    | Print a separator line                                           |
+| - [string](#modules_items_anyOf_i1_oneOf_i52_string )           | No      | string  | No         | -                                                                    | Set the string to be printed by the separator line               |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i52_outputColor ) | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Set the color of the separator line                              |
+| - [times](#modules_items_anyOf_i1_oneOf_i52_times )             | No      | integer | No         | -                                                                    | Set the times of separator string to repeat, or 0 to auto-detect |
+| - [condition](#modules_items_anyOf_i1_oneOf_i52_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Only show the module if conditions are met                       |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i52_type"></a>5.1.2.53.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > type`
 
@@ -12048,7 +12452,7 @@ Specific value: `"separator"`
 
 **Description:** Set the color of the separator line
 
-###### <a name="modules_items_anyOf_i1_oneOf_i52_length"></a>5.1.2.53.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > length`
+###### <a name="modules_items_anyOf_i1_oneOf_i52_times"></a>5.1.2.53.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > times`
 
 |              |           |
 | ------------ | --------- |
@@ -12056,7 +12460,7 @@ Specific value: `"separator"`
 | **Required** | No        |
 | **Default**  | `0`       |
 
-**Description:** Set the length of the separator line, or 0 to auto-detect
+**Description:** Set the times of separator string to repeat, or 0 to auto-detect
 
 | Restrictions |        |
 | ------------ | ------ |
@@ -14549,4 +14953,4 @@ One whitespace character (` `) can be used to hide the key
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-08-28 at 16:36:53 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-09-23 at 09:24:32 +0800
