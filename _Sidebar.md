@@ -1,7 +1,12 @@
 # Docs
 
 1. [Configuration](Configuration)
-1. [Json Schema](Json-Schema)
+1. [Json Schema](Json-Schema-root)
+    1. [$schema](Json-Schema-%24schema)
+    1. [logo](Json-Schema-logo)
+    1. [general](Json-Schema-general)
+    1. [display](Json-Schema-display)
+    1. [modules](Json-Schema-modules)
 1. [Logo Options](Logo-options)
 1. [Format String Guide](Format-String-Guide)
 1. [Color Format Specification](Color-Format-Specification)
