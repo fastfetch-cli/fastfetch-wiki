@@ -103,6 +103,11 @@
       - [4.9.2.2. Property `JSON config > display > key > type > oneOf > item 1`](#display_key_type_oneOf_i1)
       - [4.9.2.3. Property `JSON config > display > key > type > oneOf > item 2`](#display_key_type_oneOf_i2)
       - [4.9.2.4. Property `JSON config > display > key > type > oneOf > item 3`](#display_key_type_oneOf_i3)
+      - [4.9.2.5. Property `JSON config > display > key > type > oneOf > item 4`](#display_key_type_oneOf_i4)
+      - [4.9.2.6. Property `JSON config > display > key > type > oneOf > item 5`](#display_key_type_oneOf_i5)
+      - [4.9.2.7. Property `JSON config > display > key > type > oneOf > item 6`](#display_key_type_oneOf_i6)
+      - [4.9.2.8. Property `JSON config > display > key > type > oneOf > item 7`](#display_key_type_oneOf_i7)
+      - [4.9.2.9. Property `JSON config > display > key > type > oneOf > item 8`](#display_key_type_oneOf_i8)
     - [4.9.3. Property `JSON config > display > key > paddingLeft`](#display_key_paddingLeft)
   - [4.10. Property `JSON config > display > size`](#display_size)
     - [4.10.1. Property `JSON config > display > size > binaryPrefix`](#display_size_binaryPrefix)
@@ -389,13 +394,15 @@
         - [5.1.2.16.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > shell`](#modules_items_anyOf_i1_oneOf_i15_shell)
         - [5.1.2.16.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > param`](#modules_items_anyOf_i1_oneOf_i15_param)
         - [5.1.2.16.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > text`](#modules_items_anyOf_i1_oneOf_i15_text)
-        - [5.1.2.16.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > key`](#modules_items_anyOf_i1_oneOf_i15_key)
-        - [5.1.2.16.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyColor`](#modules_items_anyOf_i1_oneOf_i15_keyColor)
-        - [5.1.2.16.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyIcon`](#modules_items_anyOf_i1_oneOf_i15_keyIcon)
-        - [5.1.2.16.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyWidth`](#modules_items_anyOf_i1_oneOf_i15_keyWidth)
-        - [5.1.2.16.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > outputColor`](#modules_items_anyOf_i1_oneOf_i15_outputColor)
-        - [5.1.2.16.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > format`](#modules_items_anyOf_i1_oneOf_i15_format)
-        - [5.1.2.16.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > condition`](#modules_items_anyOf_i1_oneOf_i15_condition)
+        - [5.1.2.16.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useStdErr`](#modules_items_anyOf_i1_oneOf_i15_useStdErr)
+        - [5.1.2.16.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > parallel`](#modules_items_anyOf_i1_oneOf_i15_parallel)
+        - [5.1.2.16.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > key`](#modules_items_anyOf_i1_oneOf_i15_key)
+        - [5.1.2.16.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyColor`](#modules_items_anyOf_i1_oneOf_i15_keyColor)
+        - [5.1.2.16.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyIcon`](#modules_items_anyOf_i1_oneOf_i15_keyIcon)
+        - [5.1.2.16.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyWidth`](#modules_items_anyOf_i1_oneOf_i15_keyWidth)
+        - [5.1.2.16.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > outputColor`](#modules_items_anyOf_i1_oneOf_i15_outputColor)
+        - [5.1.2.16.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > format`](#modules_items_anyOf_i1_oneOf_i15_format)
+        - [5.1.2.16.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > condition`](#modules_items_anyOf_i1_oneOf_i15_condition)
       - [5.1.2.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Cursor`](#modules_items_anyOf_i1_oneOf_i16)
         - [5.1.2.17.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Cursor > type`](#modules_items_anyOf_i1_oneOf_i16_type)
         - [5.1.2.17.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Cursor > percent`](#modules_items_anyOf_i1_oneOf_i16_percent)
@@ -2305,7 +2312,7 @@ Specific value: `true`
 | Property                                   | Pattern | Type        | Deprecated | Definition | Title/Description                                             |
 | ------------------------------------------ | ------- | ----------- | ---------- | ---------- | ------------------------------------------------------------- |
 | - [width](#display_key_width )             | No      | integer     | No         | -          | Align the width of keys to number of characters, 0 to disable |
-| - [type](#display_key_type )               | No      | Combination | No         | -          | Set whether to show icon before string keys                   |
+| - [type](#display_key_type )               | No      | Combination | No         | -          | Set whether to show builtin icon before string keys           |
 | - [paddingLeft](#display_key_paddingLeft ) | No      | integer     | No         | -          | Set the left padding of keys                                  |
 
 #### <a name="display_key_width"></a>4.9.1. Property `JSON config > display > key > width`
@@ -2330,7 +2337,7 @@ Specific value: `true`
 | **Required** | No          |
 | **Default**  | `"string"`  |
 
-**Description:** Set whether to show icon before string keys
+**Description:** Set whether to show builtin icon before string keys
 
 | One of(Option)                       |
 | ------------------------------------ |
@@ -2338,6 +2345,11 @@ Specific value: `true`
 | [item 1](#display_key_type_oneOf_i1) |
 | [item 2](#display_key_type_oneOf_i2) |
 | [item 3](#display_key_type_oneOf_i3) |
+| [item 4](#display_key_type_oneOf_i4) |
+| [item 5](#display_key_type_oneOf_i5) |
+| [item 6](#display_key_type_oneOf_i6) |
+| [item 7](#display_key_type_oneOf_i7) |
+| [item 8](#display_key_type_oneOf_i8) |
 
 ##### <a name="display_key_type_oneOf_i0"></a>4.9.2.1. Property `JSON config > display > key > type > oneOf > item 0`
 
@@ -2368,7 +2380,7 @@ Specific value: `"string"`
 | **Type**     | `const` |
 | **Required** | No      |
 
-**Description:** Show icon keys (requires newest nerd font)
+**Description:** Show builtin icon (requires newest nerd font)
 
 Specific value: `"icon"`
 
@@ -2379,9 +2391,64 @@ Specific value: `"icon"`
 | **Type**     | `const` |
 | **Required** | No      |
 
-**Description:** Show both icon and string keys
+**Description:** Show both icon and string keys (alias of `both-1`)
 
 Specific value: `"both"`
+
+##### <a name="display_key_type_oneOf_i4"></a>4.9.2.5. Property `JSON config > display > key > type > oneOf > item 4`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Show both icon and string with no spaces between them
+
+Specific value: `"both-0"`
+
+##### <a name="display_key_type_oneOf_i5"></a>4.9.2.6. Property `JSON config > display > key > type > oneOf > item 5`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Show both icon and string with a space between them
+
+Specific value: `"both-1"`
+
+##### <a name="display_key_type_oneOf_i6"></a>4.9.2.7. Property `JSON config > display > key > type > oneOf > item 6`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Show both icon and string with 2 spaces between them
+
+Specific value: `"both-2"`
+
+##### <a name="display_key_type_oneOf_i7"></a>4.9.2.8. Property `JSON config > display > key > type > oneOf > item 7`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Show both icon and string with 3 spaces between them
+
+Specific value: `"both-3"`
+
+##### <a name="display_key_type_oneOf_i8"></a>4.9.2.9. Property `JSON config > display > key > type > oneOf > item 8`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Show both icon and string with 4 spaces between them
+
+Specific value: `"both-4"`
 
 #### <a name="display_key_paddingLeft"></a>4.9.3. Property `JSON config > display > key > paddingLeft`
 
@@ -6817,19 +6884,21 @@ One whitespace character (` `) can be used to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                        | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                           |
-| --------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i15_type )               | No      | const   | No         | -                                                                    | Running custom shell scripts                                                                                                                |
-| - [shell](#modules_items_anyOf_i1_oneOf_i15_shell )             | No      | string  | No         | -                                                                    | Set the shell program to execute the command text<br />Default: cmd for Windows, /bin/sh for *nix                                           |
-| - [param](#modules_items_anyOf_i1_oneOf_i15_param )             | No      | string  | No         | -                                                                    | Set the parameter used when starting the shell<br />If set to an empty string, it will be ignored<br />Default: /c for Windows, -c for *nix |
-| - [text](#modules_items_anyOf_i1_oneOf_i15_text )               | No      | string  | No         | -                                                                    | Set the command text to be executed                                                                                                         |
-| - [key](#modules_items_anyOf_i1_oneOf_i15_key )                 | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                         |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i15_keyColor )       | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key to override the global setting \`display.color.key\`                                                                |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i15_keyIcon )         | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                 |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i15_keyWidth )       | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key to override the global setting \`display.keyWidth\`                                                                 |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i15_outputColor ) | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module to override the global setting \`display.color.output\`                                                          |
-| - [format](#modules_items_anyOf_i1_oneOf_i15_format )           | No      | string  | No         | In #/$defs/commandFormat                                             | Output format of the module \`Command\`. See Wiki for formatting syntax<br />    1. {result}: Command result                                |
-| - [condition](#modules_items_anyOf_i1_oneOf_i15_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Only show the module if conditions are met                                                                                                  |
+| Property                                                        | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                                                    |
+| --------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i15_type )               | No      | const   | No         | -                                                                    | Running custom shell scripts                                                                                                                                         |
+| - [shell](#modules_items_anyOf_i1_oneOf_i15_shell )             | No      | string  | No         | -                                                                    | Set the shell program to execute the command text<br />Default: cmd for Windows, /bin/sh for *nix                                                                    |
+| - [param](#modules_items_anyOf_i1_oneOf_i15_param )             | No      | string  | No         | -                                                                    | Set the parameter used when starting the shell<br />If set to an empty string, it will be ignored<br />Default: /c for Windows, -c for *nix                          |
+| - [text](#modules_items_anyOf_i1_oneOf_i15_text )               | No      | string  | No         | -                                                                    | Set the command text to be executed                                                                                                                                  |
+| - [useStdErr](#modules_items_anyOf_i1_oneOf_i15_useStdErr )     | No      | boolean | No         | -                                                                    | Set if stderr should be used instead of stdout for command output                                                                                                    |
+| - [parallel](#modules_items_anyOf_i1_oneOf_i15_parallel )       | No      | boolean | No         | -                                                                    | Set if the command should be executed in parallel with other commands<br />Improve performance when using multiple commands, but may cause issues with some commands |
+| - [key](#modules_items_anyOf_i1_oneOf_i15_key )                 | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                  |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i15_keyColor )       | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key to override the global setting \`display.color.key\`                                                                                         |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i15_keyIcon )         | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                          |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i15_keyWidth )       | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key to override the global setting \`display.keyWidth\`                                                                                          |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i15_outputColor ) | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Output color of the module to override the global setting \`display.color.output\`                                                                                   |
+| - [format](#modules_items_anyOf_i1_oneOf_i15_format )           | No      | string  | No         | In #/$defs/commandFormat                                             | Output format of the module \`Command\`. See Wiki for formatting syntax<br />    1. {result}: Command result                                                         |
+| - [condition](#modules_items_anyOf_i1_oneOf_i15_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Only show the module if conditions are met                                                                                                                           |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i15_type"></a>5.1.2.16.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > type`
 
@@ -6872,7 +6941,28 @@ Default: /c for Windows, -c for *nix
 
 **Description:** Set the command text to be executed
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_key"></a>5.1.2.16.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > key`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_useStdErr"></a>5.1.2.16.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useStdErr`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `boolean` |
+| **Required** | No        |
+| **Default**  | `false`   |
+
+**Description:** Set if stderr should be used instead of stdout for command output
+
+###### <a name="modules_items_anyOf_i1_oneOf_i15_parallel"></a>5.1.2.16.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > parallel`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `boolean` |
+| **Required** | No        |
+| **Default**  | `true`    |
+
+**Description:** Set if the command should be executed in parallel with other commands
+Improve performance when using multiple commands, but may cause issues with some commands
+
+###### <a name="modules_items_anyOf_i1_oneOf_i15_key"></a>5.1.2.16.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -6883,7 +6973,7 @@ Default: /c for Windows, -c for *nix
 **Description:** Key of the module
 One whitespace character (` `) can be used to hide the key
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_keyColor"></a>5.1.2.16.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_keyColor"></a>5.1.2.16.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyColor`
 
 |                           |                                                       |
 | ------------------------- | ----------------------------------------------------- |
@@ -6894,7 +6984,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Color of the module key to override the global setting `display.color.key`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_keyIcon"></a>5.1.2.16.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyIcon`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_keyIcon"></a>5.1.2.16.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyIcon`
 
 |                        |                                                     |
 | ---------------------- | --------------------------------------------------- |
@@ -6904,7 +6994,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Set the icon to be displayed by `display.keyType: "icon"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_keyWidth"></a>5.1.2.16.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyWidth`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_keyWidth"></a>5.1.2.16.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -6914,7 +7004,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Width of the module key to override the global setting `display.keyWidth`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_outputColor"></a>5.1.2.16.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > outputColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_outputColor"></a>5.1.2.16.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > outputColor`
 
 |                           |                                                             |
 | ------------------------- | ----------------------------------------------------------- |
@@ -6925,7 +7015,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Output color of the module to override the global setting `display.color.output`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_format"></a>5.1.2.16.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > format`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_format"></a>5.1.2.16.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > format`
 
 |                |                       |
 | -------------- | --------------------- |
@@ -6936,7 +7026,7 @@ One whitespace character (` `) can be used to hide the key
 **Description:** Output format of the module `Command`. See Wiki for formatting syntax
     1. {result}: Command result
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_condition"></a>5.1.2.16.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > condition`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_condition"></a>5.1.2.16.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > condition`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -7616,7 +7706,7 @@ One whitespace character (` `) can be used to hide the key
 | --------------------------------------------------------------------- | ------- | ----------- | ---------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | - [type](#modules_items_anyOf_i1_oneOf_i20_type )                     | No      | const       | No         | -                                                                    | Print partitions, space usage, disk type, etc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | - [folders](#modules_items_anyOf_i1_oneOf_i20_folders )               | No      | Combination | No         | -                                                                    | A list of folder paths for the disk output<br />Default: auto detection using mount-points<br />This option overrides other \`show*\` options                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| - [hideFolders](#modules_items_anyOf_i1_oneOf_i20_hideFolders )       | No      | Combination | No         | -                                                                    | A list of folder paths to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| - [hideFolders](#modules_items_anyOf_i1_oneOf_i20_hideFolders )       | No      | Combination | No         | -                                                                    | A list of folder paths (or glob patterns) to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | - [hideFS](#modules_items_anyOf_i1_oneOf_i20_hideFS )                 | No      | Combination | No         | -                                                                    | A list of file systems to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | - [showRegular](#modules_items_anyOf_i1_oneOf_i20_showRegular )       | No      | boolean     | No         | -                                                                    | Set if regular volume should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | - [showExternal](#modules_items_anyOf_i1_oneOf_i20_showExternal )     | No      | boolean     | No         | -                                                                    | Set if external volume should be printed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
@@ -7702,14 +7792,14 @@ This option overrides other `show*` options
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i20_hideFolders"></a>5.1.2.21.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > hideFolders`
 
-|                           |                                         |
-| ------------------------- | --------------------------------------- |
-| **Type**                  | `combining`                             |
-| **Required**              | No                                      |
-| **Additional properties** | Any type allowed                        |
-| **Default**               | `"/efi:/boot:/boot/efi:/boot/firmware"` |
+|                           |                        |
+| ------------------------- | ---------------------- |
+| **Type**                  | `combining`            |
+| **Required**              | No                     |
+| **Additional properties** | Any type allowed       |
+| **Default**               | `"/efi:/boot:/boot/*"` |
 
-**Description:** A list of folder paths to hide from the disk output
+**Description:** A list of folder paths (or glob patterns) to hide from the disk output
 
 | One of(Option)                                                   |
 | ---------------------------------------------------------------- |
@@ -14953,4 +15043,4 @@ One whitespace character (` `) can be used to hide the key
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-09-23 at 09:24:32 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-11-11 at 14:32:34 +0800
