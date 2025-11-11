@@ -185,6 +185,11 @@ $ fastfetch --raw image.bin
 
 Disables logo printing.
 
+## Media cover
+
+In v2.55.0 and newer, fastfetch accepts a special logo source keyword `media-cover`, which displays the cover art of the currently playing media. If used, `--logo-type` should be also be set to the desired image protocol supported by your terminal.
+
+Shortcut options, such as `--iterm media-cover`, are also supported and recommended.
 
 ## Troubleshooting
 
