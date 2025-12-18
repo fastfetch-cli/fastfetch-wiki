@@ -339,14 +339,15 @@
       - [5.1.2.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU`](#modules_items_anyOf_i1_oneOf_i11)
         - [5.1.2.12.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > type`](#modules_items_anyOf_i1_oneOf_i11_type)
         - [5.1.2.12.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > temp`](#modules_items_anyOf_i1_oneOf_i11_temp)
-        - [5.1.2.12.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > showPeCoreCount`](#modules_items_anyOf_i1_oneOf_i11_showPeCoreCount)
-        - [5.1.2.12.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > key`](#modules_items_anyOf_i1_oneOf_i11_key)
-        - [5.1.2.12.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyColor`](#modules_items_anyOf_i1_oneOf_i11_keyColor)
-        - [5.1.2.12.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyIcon`](#modules_items_anyOf_i1_oneOf_i11_keyIcon)
-        - [5.1.2.12.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyWidth`](#modules_items_anyOf_i1_oneOf_i11_keyWidth)
-        - [5.1.2.12.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > outputColor`](#modules_items_anyOf_i1_oneOf_i11_outputColor)
-        - [5.1.2.12.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > format`](#modules_items_anyOf_i1_oneOf_i11_format)
-        - [5.1.2.12.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > condition`](#modules_items_anyOf_i1_oneOf_i11_condition)
+        - [5.1.2.12.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > tempSensor`](#modules_items_anyOf_i1_oneOf_i11_tempSensor)
+        - [5.1.2.12.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > showPeCoreCount`](#modules_items_anyOf_i1_oneOf_i11_showPeCoreCount)
+        - [5.1.2.12.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > key`](#modules_items_anyOf_i1_oneOf_i11_key)
+        - [5.1.2.12.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyColor`](#modules_items_anyOf_i1_oneOf_i11_keyColor)
+        - [5.1.2.12.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyIcon`](#modules_items_anyOf_i1_oneOf_i11_keyIcon)
+        - [5.1.2.12.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyWidth`](#modules_items_anyOf_i1_oneOf_i11_keyWidth)
+        - [5.1.2.12.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > outputColor`](#modules_items_anyOf_i1_oneOf_i11_outputColor)
+        - [5.1.2.12.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > format`](#modules_items_anyOf_i1_oneOf_i11_format)
+        - [5.1.2.12.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > condition`](#modules_items_anyOf_i1_oneOf_i11_condition)
       - [5.1.2.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Cache`](#modules_items_anyOf_i1_oneOf_i12)
         - [5.1.2.13.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Cache > type`](#modules_items_anyOf_i1_oneOf_i12_type)
         - [5.1.2.13.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU Cache > percent`](#modules_items_anyOf_i1_oneOf_i12_percent)
@@ -396,13 +397,14 @@
         - [5.1.2.16.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > text`](#modules_items_anyOf_i1_oneOf_i15_text)
         - [5.1.2.16.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useStdErr`](#modules_items_anyOf_i1_oneOf_i15_useStdErr)
         - [5.1.2.16.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > parallel`](#modules_items_anyOf_i1_oneOf_i15_parallel)
-        - [5.1.2.16.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > key`](#modules_items_anyOf_i1_oneOf_i15_key)
-        - [5.1.2.16.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyColor`](#modules_items_anyOf_i1_oneOf_i15_keyColor)
-        - [5.1.2.16.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyIcon`](#modules_items_anyOf_i1_oneOf_i15_keyIcon)
-        - [5.1.2.16.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyWidth`](#modules_items_anyOf_i1_oneOf_i15_keyWidth)
-        - [5.1.2.16.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > outputColor`](#modules_items_anyOf_i1_oneOf_i15_outputColor)
-        - [5.1.2.16.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > format`](#modules_items_anyOf_i1_oneOf_i15_format)
-        - [5.1.2.16.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > condition`](#modules_items_anyOf_i1_oneOf_i15_condition)
+        - [5.1.2.16.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > splitLines`](#modules_items_anyOf_i1_oneOf_i15_splitLines)
+        - [5.1.2.16.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > key`](#modules_items_anyOf_i1_oneOf_i15_key)
+        - [5.1.2.16.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyColor`](#modules_items_anyOf_i1_oneOf_i15_keyColor)
+        - [5.1.2.16.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyIcon`](#modules_items_anyOf_i1_oneOf_i15_keyIcon)
+        - [5.1.2.16.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyWidth`](#modules_items_anyOf_i1_oneOf_i15_keyWidth)
+        - [5.1.2.16.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > outputColor`](#modules_items_anyOf_i1_oneOf_i15_outputColor)
+        - [5.1.2.16.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > format`](#modules_items_anyOf_i1_oneOf_i15_format)
+        - [5.1.2.16.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > condition`](#modules_items_anyOf_i1_oneOf_i15_condition)
       - [5.1.2.17. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Cursor`](#modules_items_anyOf_i1_oneOf_i16)
         - [5.1.2.17.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Cursor > type`](#modules_items_anyOf_i1_oneOf_i16_type)
         - [5.1.2.17.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Cursor > percent`](#modules_items_anyOf_i1_oneOf_i16_percent)
@@ -6217,6 +6219,7 @@ One whitespace character (` `) can be used to hide the key
 | ----------------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | - [type](#modules_items_anyOf_i1_oneOf_i11_type )                       | No      | const   | No         | -                                                                    | Print CPU name, frequency, etc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | - [temp](#modules_items_anyOf_i1_oneOf_i11_temp )                       | No      | object  | No         | Same as [temp](#modules_items_anyOf_i1_oneOf_i1_temp )               | Detect and display temperature if supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| - [tempSensor](#modules_items_anyOf_i1_oneOf_i11_tempSensor )           | No      | string  | No         | -                                                                    | Set the temperature sensor to use for CPU temperature detection<br />* Linux: \`hwmon\` or \`thermal\` path name (eg. \`hwmon0\`, \`thermal_zone0)\`<br />* macOS: SMC sensor key (eg. \`Tp01\`)<br />* Windows: thermal zone key (eg. \`\_TZ.CPUZ\`)<br />* FreeBSD: sysctl key (eg. \`dev.cpu.0.temperature\`)<br />* NetBSD: sysmon sensor key (eg. \`coretemp0\`)                                                                                                                                                                                                                                    |
 | - [showPeCoreCount](#modules_items_anyOf_i1_oneOf_i11_showPeCoreCount ) | No      | boolean | No         | -                                                                    | Detect and display CPU frequency of different core types (eg. Pcore and Ecore) if supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | - [key](#modules_items_anyOf_i1_oneOf_i11_key )                         | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i11_keyColor )               | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key to override the global setting \`display.color.key\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -6248,7 +6251,21 @@ Specific value: `"cpu"`
 
 **Description:** Detect and display temperature if supported
 
-###### <a name="modules_items_anyOf_i1_oneOf_i11_showPeCoreCount"></a>5.1.2.12.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > showPeCoreCount`
+###### <a name="modules_items_anyOf_i1_oneOf_i11_tempSensor"></a>5.1.2.12.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > tempSensor`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** Set the temperature sensor to use for CPU temperature detection
+* Linux: `hwmon` or `thermal` path name (eg. `hwmon0`, `thermal_zone0)`
+* macOS: SMC sensor key (eg. `Tp01`)
+* Windows: thermal zone key (eg. `\_TZ.CPUZ`)
+* FreeBSD: sysctl key (eg. `dev.cpu.0.temperature`)
+* NetBSD: sysmon sensor key (eg. `coretemp0`)
+
+###### <a name="modules_items_anyOf_i1_oneOf_i11_showPeCoreCount"></a>5.1.2.12.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > showPeCoreCount`
 
 |              |           |
 | ------------ | --------- |
@@ -6258,7 +6275,7 @@ Specific value: `"cpu"`
 
 **Description:** Detect and display CPU frequency of different core types (eg. Pcore and Ecore) if supported
 
-###### <a name="modules_items_anyOf_i1_oneOf_i11_key"></a>5.1.2.12.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > key`
+###### <a name="modules_items_anyOf_i1_oneOf_i11_key"></a>5.1.2.12.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -6269,7 +6286,7 @@ Specific value: `"cpu"`
 **Description:** Key of the module
 One whitespace character (` `) can be used to hide the key
 
-###### <a name="modules_items_anyOf_i1_oneOf_i11_keyColor"></a>5.1.2.12.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i11_keyColor"></a>5.1.2.12.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyColor`
 
 |                           |                                                       |
 | ------------------------- | ----------------------------------------------------- |
@@ -6280,7 +6297,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Color of the module key to override the global setting `display.color.key`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i11_keyIcon"></a>5.1.2.12.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyIcon`
+###### <a name="modules_items_anyOf_i1_oneOf_i11_keyIcon"></a>5.1.2.12.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyIcon`
 
 |                        |                                                     |
 | ---------------------- | --------------------------------------------------- |
@@ -6290,7 +6307,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Set the icon to be displayed by `display.keyType: "icon"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i11_keyWidth"></a>5.1.2.12.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyWidth`
+###### <a name="modules_items_anyOf_i1_oneOf_i11_keyWidth"></a>5.1.2.12.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -6300,7 +6317,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Width of the module key to override the global setting `display.keyWidth`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i11_outputColor"></a>5.1.2.12.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > outputColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i11_outputColor"></a>5.1.2.12.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > outputColor`
 
 |                           |                                                             |
 | ------------------------- | ----------------------------------------------------------- |
@@ -6311,7 +6328,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Output color of the module to override the global setting `display.color.output`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i11_format"></a>5.1.2.12.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > format`
+###### <a name="modules_items_anyOf_i1_oneOf_i11_format"></a>5.1.2.12.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > format`
 
 |                |                   |
 | -------------- | ----------------- |
@@ -6332,7 +6349,7 @@ One whitespace character (` `) can be used to hide the key
     10. {packages}: Processor package count
     11. {march}: X86-64 CPU microarchitecture
 
-###### <a name="modules_items_anyOf_i1_oneOf_i11_condition"></a>5.1.2.12.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > condition`
+###### <a name="modules_items_anyOf_i1_oneOf_i11_condition"></a>5.1.2.12.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > condition`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -6892,6 +6909,7 @@ One whitespace character (` `) can be used to hide the key
 | - [text](#modules_items_anyOf_i1_oneOf_i15_text )               | No      | string  | No         | -                                                                    | Set the command text to be executed                                                                                                                                  |
 | - [useStdErr](#modules_items_anyOf_i1_oneOf_i15_useStdErr )     | No      | boolean | No         | -                                                                    | Set if stderr should be used instead of stdout for command output                                                                                                    |
 | - [parallel](#modules_items_anyOf_i1_oneOf_i15_parallel )       | No      | boolean | No         | -                                                                    | Set if the command should be executed in parallel with other commands<br />Improve performance when using multiple commands, but may cause issues with some commands |
+| - [splitLines](#modules_items_anyOf_i1_oneOf_i15_splitLines )   | No      | boolean | No         | -                                                                    | Set if the command output should be split into multiple lines                                                                                                        |
 | - [key](#modules_items_anyOf_i1_oneOf_i15_key )                 | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Key of the module<br />One whitespace character (\` \`) can be used to hide the key                                                                                  |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i15_keyColor )       | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key to override the global setting \`display.color.key\`                                                                                         |
 | - [keyIcon](#modules_items_anyOf_i1_oneOf_i15_keyIcon )         | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Set the icon to be displayed by \`display.keyType: "icon"\`                                                                                                          |
@@ -6962,7 +6980,17 @@ Default: /c for Windows, -c for *nix
 **Description:** Set if the command should be executed in parallel with other commands
 Improve performance when using multiple commands, but may cause issues with some commands
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_key"></a>5.1.2.16.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > key`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_splitLines"></a>5.1.2.16.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > splitLines`
+
+|              |           |
+| ------------ | --------- |
+| **Type**     | `boolean` |
+| **Required** | No        |
+| **Default**  | `false`   |
+
+**Description:** Set if the command output should be split into multiple lines
+
+###### <a name="modules_items_anyOf_i1_oneOf_i15_key"></a>5.1.2.16.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -6973,7 +7001,7 @@ Improve performance when using multiple commands, but may cause issues with some
 **Description:** Key of the module
 One whitespace character (` `) can be used to hide the key
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_keyColor"></a>5.1.2.16.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_keyColor"></a>5.1.2.16.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyColor`
 
 |                           |                                                       |
 | ------------------------- | ----------------------------------------------------- |
@@ -6984,7 +7012,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Color of the module key to override the global setting `display.color.key`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_keyIcon"></a>5.1.2.16.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyIcon`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_keyIcon"></a>5.1.2.16.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyIcon`
 
 |                        |                                                     |
 | ---------------------- | --------------------------------------------------- |
@@ -6994,7 +7022,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Set the icon to be displayed by `display.keyType: "icon"`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_keyWidth"></a>5.1.2.16.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyWidth`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_keyWidth"></a>5.1.2.16.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -7004,7 +7032,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Width of the module key to override the global setting `display.keyWidth`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_outputColor"></a>5.1.2.16.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > outputColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_outputColor"></a>5.1.2.16.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > outputColor`
 
 |                           |                                                             |
 | ------------------------- | ----------------------------------------------------------- |
@@ -7015,7 +7043,7 @@ One whitespace character (` `) can be used to hide the key
 
 **Description:** Output color of the module to override the global setting `display.color.output`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_format"></a>5.1.2.16.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > format`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_format"></a>5.1.2.16.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > format`
 
 |                |                       |
 | -------------- | --------------------- |
@@ -7026,7 +7054,7 @@ One whitespace character (` `) can be used to hide the key
 **Description:** Output format of the module `Command`. See Wiki for formatting syntax
     1. {result}: Command result
 
-###### <a name="modules_items_anyOf_i1_oneOf_i15_condition"></a>5.1.2.16.13. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > condition`
+###### <a name="modules_items_anyOf_i1_oneOf_i15_condition"></a>5.1.2.16.14. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > condition`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -15043,4 +15071,4 @@ One whitespace character (` `) can be used to hide the key
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-11-11 at 14:32:34 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-12-18 at 15:13:05 +0800
