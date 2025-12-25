@@ -152,7 +152,7 @@ The value of `--logo` is interpreted as the path to an image file. It is convert
 ## raw
 
 The value of `--logo` is interpreted as the path to a binary file. It is printed as-is.
-* Both `--logo-width` and `--logo-height` must be specified.
+* Both `--logo-width` and `--logo-height` must be specified. Their value must be the actual size used by the logo.
 * Use this to display a pre-converted image file.
 * If the file can't be read, the auto-detected builtin logo is displayed.
 
