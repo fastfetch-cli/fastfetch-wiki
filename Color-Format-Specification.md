@@ -29,10 +29,18 @@ bg_blue                # Equivalent to `44` (blue background)
 
 ### RGB Colors
 
-#RRGGBB or #RGB (v2.42.0)
+`#RRGGBB` or `#RGB` (v2.42.0)
 ```
-#FF0000                # Equivalent to `38:2;255;0;0` (red)
-#F00                   # Same as #FF0000
+#FF0000              # Equivalent to `38:2;255;0;0` (red)
+#F00                 # Same as #FF0000
+```
+
+### XTerm 256 Colors
+
+`@<number>` (v2.57.0)
+```
+@196                   # Equivalent to `38;5;196` (bright red)
+@34                    # Equivalent to `38;5;34` (dark cyan)
 ```
 
 ## Use in `--<module>-format` or JSONC config file
