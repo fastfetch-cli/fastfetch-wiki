@@ -25,7 +25,6 @@ The following libraries are used if present at runtime:
 * [`librpm`](http://rpm.org/): Slower fallback for rpm package count. Needed on openSUSE.
 * [`libpulse`](https://freedesktop.org/software/pulseaudio/doxygen/): Used for Sound device detection.
 * [`libddcutil`](https://github.com/rockowitz/ddcutil): Used for brightness detection of external displays
-* [`DirectX-Headers`](https://github.com/microsoft/DirectX-Headers): Used for GPU detection in WSL (Bulid only)
 
 ### FreeBSD only
 * [`v4l_compat`](https://github.com/freebsd/freebsd-ports/tree/main/multimedia/libv4l): Used for camera devices detection. See the [official document](https://docs.freebsd.org/en/books/handbook/multimedia/#webcam-setup) for detail
