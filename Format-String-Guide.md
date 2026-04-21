@@ -1,32 +1,32 @@
 ## Basic Syntax
 
-A format string is a text string that contains placeholders for values. These placeholders begin with a '{', contain the name or index of the value, and end with a '}'.
+A format string is a text string that contains placeholders for values. Each placeholder begins with `{`, contains either the name or numeric index of a value, and ends with `}`.
 
 For example:
 ```
 "Values: {1} ({2})" with values "First" and "My second val" produces "Values: First (My second val)"
 ```
 
-Format strings can contain placeholders in any order and multiple occurrences of the same placeholder.
+Format strings can contain placeholders in any order, and the same placeholder may appear multiple times.
 
 When setting a format string from the command line that contains spaces, surround it with double quotes:
 ```
 fastfetch --title-format "Hello, {user-name}"
 ```
 
-## Named Tags
+## Named Arguments
 
-Value indices can be meaningful named tags instead of numbers:
+Instead of numeric placeholders like `{1}`, you can use named arguments that identify values by name:
 ```
 "--title-format '{user-name-colored}{at-symbol-colored}{host-name-colored}'"
 ```
 
-This is equivalent to using numerical indices. See module-specific help for supported tags:
+This is equivalent to using numeric placeholders, but far more readable and resilient. See module-specific help for available named arguments:
 ```
 fastfetch -h title-format
 ```
 
-Using named tags is **strongly** recommended because they are meaningful and don't affected by ordering.
+> **Always prefer named arguments over numeric placeholders.** Numeric placeholder positions can change between releases (e.g., when arguments are reordered), which is a breaking change for any config that relies on them. Named arguments like `{user-name}` remain stable regardless of ordering.
 
 ## String Manipulation
 
@@ -72,7 +72,7 @@ You can reference constants and environment variables:
 
 ### Automatic Indexing
 
-If a value index is missing (empty placeholder: "{}"), an internal counter automatically assigns the next sequential value:
+If a placeholder has no index or name (i.e., `{}`), an internal counter automatically assigns the next sequential numeric index:
 ```
 "Values: {} ({})" → equivalent to "Values: {1} ({2})"
 ```
@@ -81,6 +81,8 @@ Note that this counter only increments for empty placeholders:
 ```
 "{2} {} {}" → second value, then first value, then second value again
 ```
+
+For the same reasons as above, prefer named arguments over relying on automatic indexing.
 
 ## Special Formatting
 
