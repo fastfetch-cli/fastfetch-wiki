@@ -11,10 +11,11 @@ The following libraries are used if present at runtime:
 * [`libdrm`](https://gitlab.freedesktop.org/mesa/drm): fall back if both wayland and x11 are not available. AMD GPU properties detection
 * [`libGIO`](https://developer.gnome.org/gio/unstable/): Needed for values that are only stored GSettings.
 * [`libDConf`](https://developer.gnome.org/dconf/unstable/): Needed for values that are only stored in DConf + Fallback for GSettings.
+* [`libefl`](https://www.enlightenment.org/): Enlightenment window manager configuration detection
 * [`libmagickcore` (ImageMagick)](https://www.imagemagick.org/): Images in terminal using sixel or kitty graphics protocol.
 * [`libchafa`](https://github.com/hpjansson/chafa): Image output as ascii art.
 * [`libZ`](https://www.zlib.net/): Zlib compression when sending HTTP requests. Faster image output when using kitty graphics protocol.
-* [`libDBus`](https://www.freedesktop.org/wiki/Software/dbus): Bluetooth, Wifi (for connecting NetworkManager), Player & Media, XFCE theme detection.
+* [`libDBus`](https://www.freedesktop.org/wiki/Software/dbus): Bluetooth, Player & Media, XFCE theme detection.
 * [`libEGL`](https://www.khronos.org/registry/EGL/),
     [`libGLX`](https://dri.freedesktop.org/wiki/GLX/): At least one of them is needed by the OpenGL module for gl context creation (EGL preferred).
 * [`libOpenCL`](https://www.khronos.org/opencl/): OpenCL module
@@ -22,6 +23,7 @@ The following libraries are used if present at runtime:
 * [`libelf`](https://sourceware.org/elfutils/): Much faster version detection for many things. Necessary for st terminal font detection.
 
 ### Linux only
+* linux-headers (required)
 * [`librpm`](http://rpm.org/): Slower fallback for rpm package count. Needed on openSUSE.
 * [`libpulse`](https://freedesktop.org/software/pulseaudio/doxygen/): Used for Sound device detection.
 * [`libddcutil`](https://github.com/rockowitz/ddcutil): Used for brightness detection of external displays
