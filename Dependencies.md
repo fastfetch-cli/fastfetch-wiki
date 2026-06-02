@@ -21,6 +21,8 @@ The following libraries are used if present at runtime:
 * [`libOpenCL`](https://www.khronos.org/opencl/): OpenCL module
 * [`libsqlite3`](https://www.sqlite.org/index.html): Needed for pkg & rpm package count.
 * [`libelf`](https://sourceware.org/elfutils/): Much faster version detection for many things. Necessary for st terminal font detection.
+* [`libva`](https://github.com/intel/libva): Hardware video acceleration codec detection via VA-API
+* [`libvdpau`](https://http.download.nvidia.com/XFree86/vdpau/doxygen/html/index.html): Hardware video acceleration codec detection via VDPAU-API
 
 ### Linux only
 * linux-headers (required)
