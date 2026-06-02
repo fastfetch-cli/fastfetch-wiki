@@ -45,8 +45,8 @@ Note: String length is counted in raw bytes; multi-byte Unicode characters and A
 
 Use '<', '>' or '|' instead of ':' to set left, right or center padding:
 ```
-"{user-name<20}" → left-aligned with spaces: "<user-name>         "
-"{user-name>20}" → right-aligned with spaces: "         <user-name>"
+"{user-name<20}" →   left-aligned with spaces: "<user-name>         "
+"{user-name>20}" →  right-aligned with spaces: "         <user-name>"
 "{user-name|20}" → center-aligned with spaces: "    <user-name>     " # Added in v2.64.0
 ```
 
