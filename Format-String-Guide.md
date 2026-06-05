@@ -206,3 +206,4 @@ As an alternative to Lua, you can execute JavaScript by prefixing your format st
     "format": "qjs:`Hello ${this.userName}@${this.hostName}`"
 }
 ```
+Access global object via `globalThis`; debug available variables via `JSON.stringify(this)`
