@@ -146,3 +146,63 @@ Note that using an empty string (e.g., "--host-format ''") would be treated as n
 Format strings can also be used to set fixed values—simply use a string without any placeholders:
 ```
 "--custom-format Preferred"
+```
+
+---
+
+## Scripting Support (Experimental)
+
+For advanced custom formatting and cross-module data manipulation, Fastfetch supports embedding **Lua** or **QuickJS (JavaScript)** scripts directly within format strings. Supported in 2.64 or later.
+
+### Lua Scripts
+Prefix your format string with `lua:` to execute Lua code.
+
+* **Return Values:** A `return` statement is required to pass the final string result back to the Fastfetch module. If `nil` is returned (or omitted implicitly), the entire module output is skipped.
+* **Parameters:** Module-specific variables are passed via variable arguments `(...)`. You can assign them to local variables for better readability.
+* **State Sharing:** The Lua interpreter instance is **shared across all modules**. This allows you to store data in one module and access it in another.
+* **Debugging:** A `json_encode(table, is_pretty)` helper function is injected into the Lua API to easily dump and inspect available variables.
+* **Requirements:** Supports Lua 5.3 to 5.5 (Lua 5.1 and LuaJIT are **not** supported). The Lua version is auto-detected at build time and can be verified using `fastfetch --list-features`.
+
+**Basic Usage:**
+```jsonc
+{
+    "type": "title",
+    "format": "lua:local args = ...; return string.format('Hello %s@%s', args.userName, args.hostName)" // prints `Hello {user-name}@{host-name}`
+}
+```
+
+**Cross-Module Data Sharing:**
+```jsonc
+[
+    // 1. Store the shell object globally (no "return", so this module's output is skipped)
+    { "type": "shell", "format": "lua:shell = ..." },
+
+    // 2. Access the stored object in a subsequent module
+    { "type": "terminal", "format": "lua:return shell.prettyName .. ' in ' .. (...).prettyName" } // prints `{shell-name} in {terminal-name}`
+]
+```
+
+**Debugging Available Variables:**
+```jsonc
+{
+    "type": "cpu",
+    "format": "lua:return json_encode(..., true)"
+}
+```
+
+Users can use the line-break syntax of JSON5 to break long lines. [Example](https://github.com/fastfetch-cli/fastfetch/discussions/2379#discussioncomment-17194638)
+
+### QuickJS (JavaScript) Scripts
+As an alternative to Lua, you can execute JavaScript by prefixing your format string with `qjs:`. 
+
+* **Return Values:** No explicit `return` statement is needed; the final result is simply the evaluated value of the script expression.
+* **Parameters:** Module-specific variables are passed via the `this` context object. Usage is mostly the same as Lua, but utilizing JavaScript syntax.
+* **Requirements:** Requires the Fastfetch binary to be built with [quickjs-ng v0.15.0](https://github.com/quickjs-ng/quickjs/releases/tag/v0.15.0) or newer.
+
+**Basic Usage:**
+```json5
+{
+    "type": "title",
+    "format": "qjs:`Hello ${this.userName}@${this.hostName}`"
+}
+```
