@@ -115,23 +115,3 @@ Z: Z/OS, Zorin, Zraxyl
 ```
 
 Run `fastfetch --print-logos` to print them
-
-### Package managers
-```
-am, apk, brew, Chocolatey, dpkg, emerge, eopkg, Flatpak, Guix, hpkg, linglong, lpkg, lpkgbuild, MacPorts, mport, nix, opkg, Pacman, pacstall, paludis, pisi, pkg, pkgtool, pkgsrc, qi, rpm, scoop, Snap, soar, sorcery, winget (disabled by default), xbps
-```
-
-### WM themes
-```
-DWM (Windows), KWin, Marco, Muffin, Mutter, Openbox (LXDE, LXQT & without DE), Quartz Compositor (macOS), XFWM
-```
-
-### DE versions
-```
-Budgie, Cinnamon, COSMIC, Gnome, KDE Plasma, LXQt, Mate, Unity, XFCE4
-```
-
-### Terminal fonts
-```
-Alacritty, Apple Terminal, ConEmu, cosmic-term, Deepin Terminal, foot, Gnome Console, Gnome Terminal, iTerm2, Kitty, Konsole, LXTerminal, MATE Terminal, mintty, QTerminal, Rio, st, Tabby, Terminator, Termux, Tilix, TTY, urxvt, Warp, WezTerm, Windows Terminal, XFCE4 Terminal, xterm, Yakuake
-```
