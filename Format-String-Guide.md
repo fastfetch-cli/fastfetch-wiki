@@ -15,11 +15,14 @@ See the module-specific help for available named arguments:
 $ fastfetch -h title-format
 ```
 
-## Numeric (Index-Based) Arguments
+## Numeric/Index-Based (starts from `1`) Arguments
 
 **DEPRECATED: Always prefer named arguments over numeric placeholders.**
 
-Numeric placeholder positions can change between releases (e.g., if arguments are reordered), which introduces breaking changes for any configuration relying on them. Named arguments like `{user-name}` remain stable regardless of argument ordering.
+`{1}@{2}` or `{}@{}` (indices are implicitly increased, starts from 1)
+> Because of historical reasons, `{0}` is the same as `{}`
+
+**DEPRECATED**: Numeric placeholder positions can change between releases (e.g., if arguments are reordered), which introduces breaking changes for any configuration relying on them. Named arguments like `{user-name}` remain stable regardless of argument ordering.
 
 ## String Manipulation
 
