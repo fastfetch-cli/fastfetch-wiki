@@ -9,10 +9,7 @@ You can generate a minimal configuration file using:
 fastfetch --gen-config
 ```
 
-If you prefer a full configuration file with all default options available:
-```sh
-fastfetch --gen-config-full
-```
+There is also an online configuration generator: https://fastfetch-cli.github.io/fastfetch-config/
 
 Using an editor with [JSON schema](https://json-schema.org/) support is highly suggested. If unsure, I suggest using [vscode](https://code.visualstudio.com/) or [helix](https://helix-editor.com/).
 
