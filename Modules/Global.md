@@ -23,6 +23,126 @@ way, with the user-facing parts first.
 | Options for a module | JSON config only; the per-module command line flags were removed in 2.52.0 |
 | Format help | `fastfetch -h <type>-format`, e.g. `fastfetch -h disk-format` |
 
+## Running fastfetch
+
+With no arguments fastfetch prints the default structure (29 modules) next to a logo. `--help`
+renders the whole command line from `doc/help.json` and groups it exactly the way the config does:
+
+| Group | Options | Example |
+|---|---|---|
+| Informative | `-h`, `-v`, `--list-*`, `--print-*`, `--format`, `--dynamic-interval` | `--list-modules` |
+| Config | `-c` / `--config`, `--gen-config` | `-c examples/18.jsonc` |
+| General | `--thread`, `--wmi-timeout`, `--processing-timeout`, `--ds-force-drm`, `--detect-version` | `--detect-version false` |
+| Logo | `-l` / `--logo` plus the 30 other options in its group (`--logo-*`, `--file`, `--data`, `--raw`, `--sixel`, `--kitty*`, `--iterm`, `--chafa-*`) | `-l none` |
+| Display | `-s` / `--structure`, `--pipe`, `--stat`, colours, percentages, bars, units | `-s os:kernel` |
+
+The one that matters most for modules is `-s`, a colon-separated list of module names:
+
+```bash
+fastfetch -s os:kernel:uptime                        # exactly these three
+fastfetch --print-structure                          # the built-in default, and -s's default
+fastfetch -s os:kernel:uptime --structure-disabled kernel   # drop one from the list
+```
+
+Three things surprise people here:
+
+- **A name that is not a module is dropped silently.** `-s os:nosuchmodule` prints the `OS` line and
+  exits 0 — no warning, no error. A typo is invisible; check against `--list-modules`.
+- **`-` is not a "disable" marker.** `-s os-kernel` looks for a module called `os-kernel`, finds
+  none, and prints nothing at all. `--structure-disabled` is the only way to remove a module.
+- **`--structure` bypasses the config entirely**, so per-module options cannot be used with it. The
+  `command` module refuses outright rather than printing something wrong, and the process exits with
+  status 481 — which a shell reports as 225:
+
+  ```
+  Error: module `command` is not supported with `--structure`
+         Its options can only be read from the JSON config, which `--structure` bypasses.
+         Add it to the config instead, e.g. `{ "modules": [ { "type": "command", "text": "uname -r" } ] }`
+  ```
+
+Two switches change what the output *is* rather than what it contains:
+
+```bash
+fastfetch --format json -s os:kernel     # one JSON document; -j is the short form
+fastfetch --stat -s cpu:cpuusage:diskio  # append each module's own timing to its line
+```
+
+`--format json` and `--dynamic-interval` are mutually exclusive:
+`Error: --dynamic-interval cannot be used with --json`, exit 400 (144 as seen by a shell).
+
+Two environment variables are read before any module runs:
+
+- **`NO_CONFIG`** skips the automatic config lookup. An explicit `-c` still loads, because that has
+  already marked the config as loaded.
+- **`NO_COLOR`** sets `display.pipe` to `true` — the same switch as `--pipe`, so it *does* turn colour
+  off in normal output; an explicit `--pipe false` is what overrides it. It also forces `--gen-config`
+  down the non-interactive path (below).
+
+## Generating and customising a configuration
+
+The config is JSONC and is read from the first `fastfetch/config.jsonc` found in the search paths
+(`--list-config-paths`; `(*)` marks the directories that actually hold one), usually
+`~/.config/fastfetch/config.jsonc`. `--list-data-paths` shows where presets and logos are looked up.
+
+```bash
+fastfetch --gen-config                 # interactive UI in a terminal; writes the default path
+fastfetch --gen-config /tmp/x.jsonc    # explicit path; non-interactive when not a TTY
+fastfetch --gen-config - -s os         # print to stdout instead of writing a file
+```
+
+The interactive UI is only entered when **both** stdin and stdout are attached to a real console, so
+redirecting either one — or setting `NO_COLOR` — makes the file be written straight away, which is
+what a script wants. Redirecting to `NUL` or `/dev/null` counts as a redirect, not as a terminal.
+
+`--gen-config` **refuses to overwrite an existing file**:
+
+```
+Error: file `/tmp/x.jsonc` exists. Please remove it before generating a new one
+```
+
+That is deliberate, and it is also a trap: the default path is the real config, so running
+`--gen-config` without a path on a machine that already has one writes nothing at all. Pass an
+explicit path while experimenting.
+
+What it writes is minimal — one entry per selected module, which is exactly the shape the JSON schema
+documents:
+
+```jsonc
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "modules": [ "os" ]
+}
+```
+
+The `$schema` line is what gives an editor completion and validation; keeping it pointed at the
+`dev`/`master` schema is what makes the editor catch an option the running binary would reject.
+
+Three ways to get started:
+
+| Route | How |
+|---|---|
+| A preset | `fastfetch -c neofetch` — a **name lookup** in the data paths, not a relative path |
+| A shipped example | `fastfetch -c examples/18.jsonc` — same lookup; `--list-presets` prints the tree |
+| From scratch | `fastfetch --gen-config /tmp/x.jsonc`, then edit |
+
+Customisation happens at four levels, and mixing them up is the usual source of confusion:
+
+| Level | Where | Affects |
+|---|---|---|
+| Global | the top-level `general` / `logo` / `display` objects | every module |
+| Module | one object inside `modules[]` | that module only |
+| Format | `format` on a module | the value text only, not the key |
+| Key | `key`, `keyColor`, `keyIcon`, `keyWidth`, `outputColor` | the key block only |
+
+An unknown key is an error and fastfetch names it — but that message is itself suppressed by default,
+so a config that appears to run fine can still have been misread. See `display.showErrors` under
+*Global settings that change module output*. `fastfetch -h <option>` explains a single option,
+`Configuration` is the narrative reference, and `Json-Schema` is the machine-readable one.
+
+Since 2.52.0 there are **no per-module command line options at all**: `--cpu-format`, `--disk-*` and
+the rest are gone, and a JSON config is the only way to configure a module. `--gen-config` is
+therefore not a convenience but the supported way to discover the keys a module accepts.
+
 ## Anatomy: two layers
 
 Every module is split into two layers, and keeping them apart explains most of the behaviour you
@@ -54,6 +174,60 @@ const char* ffDetectBattery(FFBatteryOptions* options, FFlist* results) {
 
 That is why "unsupported" is a *runtime* message rather than a build error: the module is still
 there, it just refuses to produce data.
+
+## How a run is assembled
+
+`main()` in `src/fastfetch.c` is short, and the order in it explains a lot of observable behaviour:
+
+1. `ffInitInstance()` — one global `instance` holding the parsed options, the platform state and the
+   caches; `atexit(ffDestroyInstance)` tears it down.
+2. **First pass** over `argv` (`parseCommand`) — only the options that decide what is read at all:
+   `-c`, `-s`, `--gen-config`, and the `--list-*` queries.
+3. `parseConfigFiles()` — unless `NO_CONFIG` is set or `-c` already loaded one.
+4. **Second pass** over `argv` (`parseOption`) — the real options, which now override the config.
+5. `run()` — the fetch, or `--gen-config`'s `writeConfigFile()`.
+
+`run()` then has two mutually exclusive output paths:
+
+| Condition | Prepare pass | Print pass |
+|---|---|---|
+| A JSON config was loaded and `--structure` was not given | `ffPrintJsonConfig(data, prepare = true)` | `ffPrintJsonConfig(data, prepare = false)` |
+| Otherwise (structure-based) | `ffPrepareCommandOption()` | `ffPrintCommandOption()` |
+
+**The two passes are the single most important structural fact about this project.** The prepare pass
+walks the module list, reads the options and starts the work that has to begin early — spawning the
+`command` module's shells, taking the first of the two samples the rate modules need — and it
+evaluates `condition` there too, so a module skipped in prepare is skipped in print as well.
+
+Two consequences worth remembering when something looks wrong:
+
+- Work done in the wrong pass shows up as *duplication*: a validation message printed twice, an HTTP
+  request issued twice, a `--gen-config` field written twice.
+- A module that returns `false` from `printModule` while still having printed successfully will
+  suppress every later module gated on `condition.succeeded`, because that return value is what the
+  next module's `condition` reads.
+
+`ffStart()` sits *between* the two passes, and when the output is not JSON `ffLogoPrint()` writes the
+logo there. With `--dynamic-interval` the prepare/print pair becomes a loop: after each print pass
+fastfetch sleeps, moves the cursor back to the top of the block it just wrote, calls
+`ffCacheInvalidateAll()` so that the detection results cached for the round are rebuilt instead of
+replayed, and runs the prepare pass again.
+
+### Threads, caches and the environment
+
+- `general.thread` moves the blocking HTTP requests onto worker threads, so a slow endpoint does not
+  stall the whole run.
+- There are two unrelated caching mechanisms, and they answer different questions:
+  - `FFcache` (`src/common/FFcache.h`) holds a value that is **built at most once per generation**.
+    `--dynamic-interval` starts a new generation per round and drops everything built so far, which
+    is why `Display`, `Monitor`, `WM`, `DE`, `Media`, `Player`, `Shell` and `Terminal` re-detect
+    instead of replaying the first round. It is explicitly *not* for the baselines the rate modules
+    derive their numbers from (`cpuusage`, `diskio`, `netio`, `top`): dropping a baseline makes the
+    first sample of the round read as zero.
+  - Two caches are keyed on the source file's **mtime** and therefore survive across runs: the image
+    logo cache (`src/logo/image/`) and the package-count cache (`src/detection/packages/`).
+- `NO_CONFIG` skips config loading, `NO_COLOR` only affects `--gen-config`, and `--pipe` disables
+  colour in the output.
 
 ## Module catalogue
 
@@ -391,8 +565,9 @@ repository root.
 | Schema enum ordering | `anyOf[0].enum` and `oneOf` are not in `src/modules/modules.c` order | Cosmetic — validation is unaffected |
 | `cpucache` level gaps | A cache level with no entries ends the walk, so a later level is silently dropped from both the text and the JSON output | Not a fastfetch defect: a contiguous level list is a hardware invariant, so a gap means the kernel's sysfs is wrong. See B34 in `bug.md` for the reproduction |
 | `gpu` format string | `{index}` is the printed position rather than the JSON `index` field, and `{core-count}` prints `-1` when the count is unknown | Deliberate: the format variable is defined as the position in the printed list, and `-1` is the raw unset sentinel rather than a formatted “unknown” |
+| `bluetoothradio` format string | `{lmp-version}` and `{lmp-subversion}` print `-2147483648` when the platform reports nothing | Deliberate: the format engine counts every value `<= 0` as unset, so `{?lmp-version}…{?}` hides the block, while the JSON has `null` |
 | `de` | `CDE`, `UKUI`, `LXDE` and `NebiDE` never get a version | No entry in the version probe; the display-server layer can still name them |
-| `colors` | A `block.range` element that is not an integer is read as `0`, so `[1.5, 3]` silently prints the same colours as `[0, 3]` | Same class as the other unvalidated `colors` numbers, but this one needs a per-element parse; the schema already declares `integer` / `0`–`15`, so a validating editor catches it |
+| `gamepad` on Windows | A DualShock 4 or Switch Pro shows no battery until another program has opened the controller once (starting Steam or DS4Windows and re-running works) | Open, root cause not settled — the module issues one bounded HID read and performs no handshake of its own; see B53 in `bug.md` |
 
 Defects that were found while writing these pages and have since been fixed — the `command` /
 `--structure` marker, the `condition.succeeded` desynchronisation, negative numeric options, the
@@ -404,7 +579,10 @@ reporting, the `media` cover-file leak, five spurious `percent` declarations, th
 non-discrete device as `Integrated`, the `memory.*.used` mapping in the `opencl` and `vulkan` JSON,
 `gpu`'s `hideType` filter in the JSON path, the `gpu` OpenGL memory sentinel, the `de` version
 dispatch for GNOME Classic and Trinity, `datetime`'s `{day-in-year}` and `{hour-12}`, `colors`'
-unvalidated `paddingLeft` and `block.width`, and seven schema mismatches — the wrong
+unvalidated `paddingLeft`, `block.width` and `block.range` elements, `bluetooth`'s single-device
+numbering, the uninitialised `colorspace` in the macOS `camera` backend, the `dns` element that stayed uninitialised
+on an unknown address family, `gamepad`'s missing `battery` JSON field and its leaked device strings,
+and seven schema mismatches — the wrong
 `display.color.key` / `display.keyWidth` paths in `$defs/keyColor` and `$defs/keyWidth`, the
 `minLength: 1` on `$defs/key`, the missing `maximum` on `separator.times`, the `cpu`
 `showPeCoreCount` default, the missing `cpucache.compact`, the missing `colors` bounds, and the two
@@ -416,6 +594,8 @@ x86-only `cpu` format variables — are recorded in `bug.md` and are not repeate
 
 ```
 src/
+├── fastfetch.c               main(): two argv passes, config, run loop
+├── flashfetch.c              a hard-coded neofetch-alike; demonstration only
 ├── modules/<name>/           one directory per module
 │   ├── <name>.c              options, format args, print + JSON result
 │   ├── <name>.h
@@ -425,9 +605,25 @@ src/
 │   ├── <name>.c              shared helpers, if any
 │   └── <name>_<platform>.c   exactly one per platform, *_nosupport.c included
 ├── common/                   printing, format strings, JSON helpers, options
+│   ├── FFstrbuf.* FFlist.*   the two container types everything uses
+│   ├── FFcache.*             the once-per-generation cache
+│   ├── impl/                 the platform-independent implementations
+│   └── windows/ android/ …   platform helpers (registry, binder, unicode, …)
 ├── options/                  global option groups (display, logo, general)
-└── logo/                     built-in and image logos
+├── logo/                     built-in logos, plus image/ for the image backends
+└── 3rdparty/                 vendored yyjson and sixel
+presets/                      all.jsonc, neofetch.jsonc, … plus examples/ (one feature each)
+tests/                        unit tests, one .c per subject, wired into CTest
+doc/                          help.json and json_schema.json (both hand-written),
+                              fastfetch.1.in (man page) and the design notes
+completions/                  fastfetch.{bash,fish,zsh}
+scripts/                      gen-man.py, gen-pciids.py, gen-amdgpuids.py
+debian/                       packaging
+CMakeLists.txt                the only build description; discovers src/modules/*/*.c
 ```
+
+The four directories a change usually touches are `src/modules/`, `src/detection/`, `presets/` and
+`doc/` — and a module page in this folder, which is derived from the first two.
 
 ### The module contract
 
@@ -520,15 +716,65 @@ otherwise you will find a fresh config shadowing your real one.
 
 ### Documentation sources of truth
 
-| Artefact | Generated from | Regenerate with |
+| Artefact | Where it comes from | How to change it |
 |---|---|---|
-| `doc/help.json` | maintained by hand; read at **configure** time and rendered as `--help` | edit the JSON, then re-run CMake (a plain rebuild will not pick it up) |
-| `Json-Schema` (wiki) / `doc/json_schema.json` | the `generateJsonConfig` implementations | maintainer tooling, not in this repository |
-| `-h <type>-format` help | each module's `formatArgs` | nothing to do — it is the code |
-| `Modules/*` (this folder) | `src/modules/*`, `src/detection/*` | by hand |
+| `-h <type>-format` help | each module's `formatArgs` | nothing to do — it *is* the code |
+| `doc/help.json` → `--help` | maintained by hand, read at **configure** time | edit the JSON, then re-run CMake: a plain rebuild will not pick it up |
+| `$defs/<module>Format` in `doc/json_schema.json` | `fastfetch -h format-json`, which prints the block per module | re-run it and paste the blocks in |
+| the rest of `doc/json_schema.json` | maintained by hand | edit it — and keep `doc/help.json` in step by hand, because nothing checks that the two agree |
+| `Json-Schema` (wiki) | generated from `doc/json_schema.json` | `generate-schema-doc doc/json_schema.json --config template_name=md Json-Schema.md` |
+| `Modules/*` (this folder) | `src/modules/*` and `src/detection/*` | by hand |
 
-Because `Json-Schema.md` is generated and is 1.4 MB, never edit it by hand; fix the module code and
-regenerate.
+Two practical consequences. The schema is only as good as the hand-written half, so a schema that
+disagrees with the binary is a schema bug — the runtime is the reference. And because `Json-Schema.md`
+is generated and 1.4 MB, never edit it by hand: fix the source JSON and regenerate.
+
+`--gen-config` is the third view of the same contract, and it is the one users actually see. It
+serialises what the module *did* parse, so a key that appears there and is rejected by the runtime —
+or the reverse — is a real inconsistency, not a documentation slip.
+
+## Strengths and weaknesses
+
+An honest reading of the design, so you can tell whether a limitation is a bug or a trade-off. Every
+row below is visible from the pages in this folder.
+
+### Strengths
+
+| | |
+|---|---|
+| **Breadth** | 76 modules over ten platform families, each with a real backend or an explicit `*_nosupport.c` stub — "unsupported" is a runtime message, never a build failure |
+| **Cost** | Written in C with no runtime dependency for the core; `--list-features` reports the optional accelerators (`threads`, `vulkan`, `chafa`, `libzfs`, Lua/QuickJS) that a build happens to have |
+| **Machine-readable by default** | `--format json` emits one document covering every selected module, with the same field names the text path uses, so scripting needs no screen-scraping |
+| **One contract, three views** | A module's `formatArgs` drives `-h <type>-format` *and* the schema's format block; `generateJsonConfig` drives `--gen-config`. Adding a module is mechanical because the registry, the help and the config generator all read the same declaration |
+| **Config as first-class** | JSONC with a published JSON schema, `$schema`-driven editor completion, `--gen-config` to discover keys, and presets shipped in-tree (`neofetch`, `screenfetch`, `archey`, …) that make behaviour reproducible across machines |
+| **Per-module formatting** | Any module's value can be re-rendered from named variables, with conditionals and colour syntax — the reason `Modules/*` documents format variables per module rather than as an afterthought |
+| **Documented platform reality** | Where a backend cannot fill a field, the pages say so per platform instead of implying a uniform answer |
+
+### Weaknesses
+
+| | |
+|---|---|
+| **The CLI was deliberately trimmed** | Since 2.52.0 there are no per-module command line options, so a module can only be configured through a config file. Scripts written against older releases break, and there is no way to tweak one module for a single invocation |
+| **Failures are silent by default** | `display.showErrors` defaults to `false`, so a module that fails simply does not appear. "Why is my module missing?" is invisible unless `--stat` is used or the option is turned on |
+| **"Unknown" is spelled many ways** | Depending on the field it is `0`, `-1`, `-DBL_MAX` or an empty string, and the sentinel can reach a custom format — `{rx-rate}` prints `-1.7976931348623157e308`. The conditional syntax then behaves inconsistently, because a value counts as set only when it is `> 0` |
+| **Format strings are rarely portable** | Status, security and protocol strings differ per platform (`up` vs `Connected` vs `Power On`), and the signal-quality numbers are percentages of different things. A format tuned on one OS is a guess on another |
+| **Some modules are single-use per run** | A second `weather` module, or two `publicip` modules for the same address family, aborts the whole process with an exit status before anything is printed |
+| **The built-in HTTP client has no TLS** | `publicip` and `weather` are limited to a hard-coded host over plain HTTP; anything else means falling back to the `command` module with `curl` |
+| **Documentation is maintained in parallel** | `doc/help.json`, `doc/json_schema.json` and this wiki are three hand-written views of the same options, and only the schema's format blocks are generated. Nothing checks that they agree, so drift is possible — the binary is the reference |
+| **The two-pass design is a contributor trap** | Work done in the print pass that belongs in the prepare pass is duplicated rather than reported, and a module that returns `false` after printing successfully suppresses every later `condition.succeeded` module |
+| **Text and JSON can disagree** | An empty interface list is an error in the text path and `"result": []` in JSON, and `datetime`'s JSON value is written from a second clock reading taken while the document is serialised, so it need not equal the text output |
+| **One config format** | JSONC only. Comments and trailing commas are supported, TOML and YAML are not |
+
+### What that means in practice
+
+- For **scripting**, prefer `--format json` and treat the text output as human-facing only.
+- For **a one-off**, expect to write a small config file rather than a long command line.
+- For **a portable config**, test the format strings on each target platform; the per-module pages
+  list exactly which variables are safe.
+- For **diagnosing a missing line**, turn on `display.showErrors` first — the default hides the
+  answer.
+- For **extending**, read `### The module contract` above and keep new work in the prepare pass if it
+  must happen before the modules run.
 
 ## Conventions used by the pages in this folder
 

@@ -169,30 +169,19 @@ Indented to line up with an image logo:
   The schema declares the same bounds (`minimum: 1` / `maximum: 9` on `block.width`, and a
   `maximum` on `paddingLeft`), and each message is printed once per run. Type a value outside the
   range and the swatch still prints — with the default width, not the one you asked for.
-- **An out-of-range `block.range` prints an error and silently falls back to the default.** A
-  reversed range is rejected the same way:
+- **An out-of-range or non-integer `block.range` prints an error and silently falls back to the
+  default.** A reversed range gets its own message:
 
   ```
-  Colors: Invalid block.range value: range[1] > 15
+  Colors: Property 'block.range' must be an array of two integers between 0 and 15
   Colors: Invalid block.range value: range[0] > range[1]
   ```
 
-  Both were tested with `[3, 16]` and `[5, 3]`. The module then prints the full `[0, 15]` palette, so
-  a typo looks like "the option was ignored" rather than "the value was rejected".
-- **A `block.range` element that is not an integer is read as `0` — silently.** The two elements are
-  read with `yyjson_get_uint()`, which returns `0` for any other JSON type, and the range checks only
-  compare the resulting numbers. Verified with `symbol: "block"`, `width: 1`, `brightness: "normal"`
-  and one colour per unit of range:
-
-  | `block.range` | Colours printed | Message |
-  |---|---|---|
-  | `[1, 3]` | 3 | – |
-  | `[1.5, 3]` | **4** — the same as `[0, 3]` | – |
-  | `["x", 3]` | **4** — the same as `[0, 3]` | – |
-  | `[3, -1]` | 8 (full palette) | `range[1] > 15` |
-
-  Only a negative number stands out, and only because it is reinterpreted as `255` first, which then
-  trips one of the two range checks — the message then blames the magnitude rather than the type.
+  The first message covers both a non-integer element — `[1.5, 3]`, `["x", 3]`, `[true, 3]`,
+  `[null, 3]` — and an element outside `0`–`15`, such as `[3, 16]`, `[-1, 3]` or `[3, -1]`. The
+  second is what a reversed but otherwise valid range like `[5, 3]` produces. The module then prints
+  the full `[0, 15]` palette, so a typo looks like "the option was ignored" rather than "the value was
+  rejected".
 - **An invalid `symbol` also falls back, with a less informative message:**
   `Colors: Invalid symbol value: Invalid enum string`. The fallback is the default `background`.
 - **`format` and `outputColor` are accepted but do nothing.** `{ "type": "colors", "format": "XXX" }`

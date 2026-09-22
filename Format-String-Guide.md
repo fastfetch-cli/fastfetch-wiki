@@ -103,6 +103,26 @@ Example combining both:
 "{?user-name}{user-name}{?}{/user-name}Username fallback{/}"
 ```
 
+Whether a variable counts as "set" depends on its type, and for every numeric type the test is
+**strictly greater than zero**:
+
+| Variable type | Counted as set when |
+|---|---|
+| Number (integer, unsigned or floating point) | the value is greater than `0` |
+| String | it is neither empty nor `NULL` |
+| Boolean | it is `true` |
+| List | it holds at least one entry |
+
+A numeric `0` is therefore "not set", and so is every negative number. That is what makes the
+conditional form the right way to print a value that the platform may not report: modules whose
+detection layer marks "no data" with a negative sentinel hand that sentinel to the format engine, so
+a bare `{lmp-version}` in [Modules/BluetoothRadio](Modules/BluetoothRadio) prints `-2147483648`
+when the field is absent, while `{?lmp-version}…{?}` correctly treats it as unset and prints nothing.
+The raw variable and the condition disagree on purpose; use the conditional form for anything that
+can be absent. The test is `formatArgSet()` in `src/common/impl/format.c`.
+
+*Note: `{/x}` is the exact negation of `{?x}`, so it fires for `0` and for negative numbers too.*
+
 ### Terminating Formatting
 
 To terminate formatting at any point, use `{-}`. Everything after it in the format string is discarded.
