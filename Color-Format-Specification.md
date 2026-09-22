@@ -1,3 +1,5 @@
+This document describes the color formats accepted by fastfetch wherever a color is expected: the `--color-*` options, the `color` properties of the JSONC config, and the `{#...}` placeholders in format strings.
+
 ## Supported formats
 
 ### ANSI Escape Sequences
@@ -14,42 +16,50 @@ For more information about ANSI escape codes, visit: <https://en.wikipedia.org/w
 1;38;5;220      # Bold orange (ANSI 256 color)
 ```
 
+A value that is already a complete escape sequence is used as is: `\e[1;35m` and `1;35` are equivalent, and the trailing `m` is optional.
+
 ### Named Colors
 
 ANSI named colors are also supported:
+
 ```
 magenta                # Equivalent to `35`
-underline_bright_green # Equivalent to `4;92`
 bold_red               # Equivalent to `1;31`
-bg_blue                # Equivalent to `44` (blue background)
+underline_bright_green # Equivalent to `4;1;32`
 ```
 
-* Supported named colors: `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, `white`, `default`
-* Supported named prefixes: `reset_`, `bright_`, `dim_`, `italic_`, `underline_`, `blink_`, `inverse_`, `hidden_`, `strike_`, `light_`
+* Supported named colors: `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, `white`, `default`, and `light_black`, `light_red`, `light_green`, `light_yellow`, `light_blue`, `light_magenta`, `light_cyan`, `light_white`
+* Supported named prefixes: `reset_`, `bold_`, `bright_`, `dim_`, `italic_`, `underline_`, `blink_`, `inverse_`, `hidden_`, `strike_`
+    * `bright_` is an alias for `bold_`; both expand to `1;`.
+* Names are matched case-insensitively, and a prefix can be combined with a color name, or with each other: `bold_underline_red` is equivalent to `1;4;31`.
+* There is no prefix for background colors, and `bg_blue` is rejected as an invalid color code. Write the escape sequence directly instead, for example `44` for a blue background.
+* The keywords `keys`, `title`, `output` and `separator` are accepted as well. See [Special Keywords](#special-keywords).
+* Run `fastfetch -h color` to print the list of named colors together with the ANSI code each one expands to.
 
 ### RGB Colors
 
 `#RRGGBB` or `#RGB` (v2.42.0)
 ```
-#FF0000              # Equivalent to `38:2;255;0;0` (red)
+#FF0000              # Equivalent to `38;2;255;0;0` (red)
 #F00                 # Same as #FF0000
 ```
 
 ### XTerm 256 Colors
 
-`@<number>` (v2.57.0)
+`@<number>` (v2.57.0), where `<number>` is between 0 and 255
 ```
-@196                   # Equivalent to `38;5;196` (bright red)
-@34                    # Equivalent to `38;5;34` (dark cyan)
+@196                   # Equivalent to `38;5;196` (red)
+@34                    # Equivalent to `38;5;34` (green)
 ```
 
-## Use in `--<module>-format` or JSONC config file
+## Use in format strings or the JSONC config file
 
 ### Syntax
 
 Use `{#color_code}` (e.g. `{#bold_red}`) to set color and `{#}` to reset. Note when using RGB Colors, two `#`s are required (`{##FF0000}`)
 
 ### Special Keywords
+
 The following special keywords can be used to reference colors set by other options:
 ```
 {#keys}                  # Uses the color set by `--color-keys`

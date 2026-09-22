@@ -55,7 +55,7 @@ All categories not listed here should work without needing a specific implementa
 50) PhysicalMemory: Print system physical memory devices
 51) Player        : Print the music player name that is currently active
 52) PowerAdapter  : Print power adapter name and charging watts
-53) Processes     : Print number of running processes
+53) Processes     : Print number of running processes and threads
 54) PublicIp      : Print your public IP address and related information
 55) Separator     : Print a separator line
 56) Shell         : Print the current shell name and version
@@ -66,18 +66,19 @@ All categories not listed here should work without needing a specific implementa
 61) TerminalSize  : Print the current terminal size
 62) TerminalTheme : Print the current terminal theme (foreground and background colors)
 63) Title         : Print the title, including your username and hostname
-64) Theme         : Print the current desktop environment theme
-65) TPM           : Print information about the Trusted Platform Module (TPM) security device
-66) Uptime        : Print how long the system has been running
-67) Users         : Print users who are currently logged in
-68) Version       : Print the Fastfetch version and build information
-69) Vulkan        : Print the highest Vulkan version supported by the GPU
-70) Wallpaper     : Print the file path of the current wallpaper
-71) Weather       : Print weather information
-72) WM            : Print the window manager name and version
-73) Wifi          : Print connected Wi-Fi info (SSID, connection and security protocol)
-74) WMTheme       : Print the current window manager theme
-75) Zpool         : Print ZFS storage pools
+64) Top           : Print processes with the highest CPU, memory or disk I/O usage
+65) Theme         : Print the current desktop environment theme
+66) TPM           : Print information about the Trusted Platform Module (TPM) security device
+67) Uptime        : Print how long the system has been running
+68) Users         : Print users who are currently logged in
+69) Version       : Print the Fastfetch version and build information
+70) Vulkan        : Print the highest Vulkan version supported by the GPU
+71) Wallpaper     : Print the file path of the current wallpaper
+72) Weather       : Print weather information
+73) WM            : Print the window manager name and version
+74) Wifi          : Print connected Wi-Fi info (SSID, connection and security protocol)
+75) WMTheme       : Print the current window manager theme
+76) Zpool         : Print ZFS storage pools
 ```
 
 Worth noting that not all modules are supported on all platforms.
@@ -86,26 +87,26 @@ Worth noting that not all modules are supported on all platforms.
 <!-- a = `grep -h '^\s*// .*' src/logo/ascii/*.inc | pbcopy`; Object.entries(Object.groupBy(a.split('\n').map(x => x.trim().slice(3)).filter(x => x && x != 'LAST').sort((a, b) => a.toUpperCase().localeCompare(b.toUpperCase())), x => x[0].toUpperCase())).map(([key, arr]) => `${key}: ${arr.join(', ')}`).join('\n') -->
 
 ```
-A: Adélie, Aeon, AerOS, AerynOS, AerynOS_old, Afterglow, AIX, AlmaLinux, Alpine, Alpine2, Alpine2Small, Alpine3Small, AlpineSmall, Alter, ALTLinux, Amazon, AmazonLinux, Amiga, AmogOS, Anarchy, Android, AndroidSmall, AnduinOS, Antergos, Antix, AnushOS, AoscOS, AoscOS_old, AoscOsRetro, AoscOsRetro_small, Aperture, Apple, AppleSmall, Apricity, Arch, Arch2, Arch3, ArchBox, Archcraft, Archcraft2, Archlabs, ArchOld, ArchSmall, ArchStrike, ArcoLinux (Discontinued), ArcoLinuxSmall, Arkane, Armbian, Armbian2, ArseLinux, Artix, Artix2Small, ArtixSmall, Arya, Asahi, Asahi2, Aster, AsteroidOS, AstOS, Astra, Ataraxia, AthenaOS, AthenaOS_old, Aurora, AxOS, Azos
+A: Adélie, Aeon, AerOS, AerynOS, AerynOS_old, Afterglow, AIX, AlmaLinux, Alpine, Alpine2, Alpine2Small, Alpine3Small, AlpineSmall, ALT Atomic, Alter, ALTLinux, Amazon, AmazonLinux, Amiga, AmogOS, Anarchy, Android, AndroidSmall, AnduinOS, Antergos, Antix, AnushOS, AoscOS, AoscOS_old, AoscOsRetro, AoscOsRetro_small, Aperture, Apple, AppleSmall, Apricity, Arch, Arch2, Arch3, ArchBox, Archcraft, Archcraft2, Archlabs, ArchOld, ArchSmall, ArchStrike, ArcoLinux (Discontinued), ArcoLinuxSmall, Arkane, Armbian, Armbian2, ArseLinux, Artix, Artix2, Artix2Small, ArtixSmall, Arya, Asahi, Asahi2, Aster, AsteroidOS, AstOS, Astra, Ataraxia, AthenaOS, AthenaOS_old, Aurora, AxOS, Azos, AzureLinux, AzureLinux2
 B: Bedrock, BedrockSmall, BerserkArch, BigLinux, Bitrig, BlackArch, BlackMesa, BlackPanther, BLAG, BlankOn, BlueLight, Bodhi, Bonsai, BredOS, BSD, BunsenLabs
-C: CachyOS, CachyOSSmall, Calculate, CalinixOS, CalinixOSSmall, Carbs, CBL-Mariner, CelOS, Center, CentOS, CentOSSmall, Cereus, Chakra, ChaletOS, Chapeau, Chimera, ChonkySealOS, Chrom, Cleanjaro, CleanjaroSmall, ClearLinux, ClearOS, Clover, Cobalt, Codex Linux (reMarkable OS), Common Torizon, Condres, ContainerLinux, Cosmic DE, CRUX, CRUXSmall, CrystalLinux, Cucumber, CuerdOS, CutefishOS, CuteOS, CyberOS, cycledream
+C: CachyOS, CachyOSOldSmall, CachyOSSmall, Calculate, CalinixOS, CalinixOSSmall, Carbs, CBL-Mariner, CelOS, Center, CentOS, CentOSSmall, Cereus, Chakra, ChaletOS, Chapeau, Chimera, Chimera_small, Chimera2, ChonkySealOS, Chrom, Cleanjaro, CleanjaroSmall, ClearLinux, ClearOS, Clover, Cobalt, Codex Linux (reMarkable OS), Common Torizon, Condres, ContainerLinux, Cosmic DE, CRUX, CRUXSmall, CrystalLinux, Cucumber, CuerdOS, CutefishOS, CuteOS, CyberOS, cycledream
 D: DahliaOS, DarkOS, Debian, DebianSmall, Deepin, DesaOS, Devuan, DevuanSmall, DietPi, DracOS, DragonFly, DragonFlyOld, DragonFlySmall, DraugerOS, Droidian
-E: Elbrus, Elementary, ElementarySmall, Elive, Emmabuntüs, EmperorOS, EN-OS, EncryptOS, EndeavourOS, EndeavourOSSmall, Endless, Enso, EshanizedOS, EuroLinux, EvolutionOS, EvolutionOS_old, EvolutionOSSmall, eweOS, Exherbo, ExodiaOS
-F: Fastfetch, Fedora, FedoraAsahiRemix, FedoraCoreOS, FedoraKinoite, FedoraOld, FedoraSericea, FedoraSilverblue, FedoraSmall, FemboyOS, Feren, Filotimo, Finnix, Floflis, FreeBSD, FreeBSDSmall, FreeMiNT, Frugalware, Funtoo, Furreto
+E: Elbrus, Elementary, ElementarySmall, Elive, Emmabuntüs, EN-OS, EncryptOS, EndeavourOS, EndeavourOSSmall, Endless, Enso, EshanizedOS, EuroLinux, EvolutionOS, EvolutionOS_old, EvolutionOSSmall, eweOS, Exherbo, ExodiaOS
+F: Fastfetch, Fedora, FedoraAsahiRemix, FedoraCoreOS, FedoraKinoite, FedoraOld, FedoraSericea, FedoraSilverblue, FedoraSmall, FemboyOS, Feren, Filotimo, Finnix, Flatcar, Floflis, FreeBSD, FreeBSDSmall, FreeMiNT, Frugalware, Funtoo
 G: GalliumOS, Garuda, GarudaDragon, GarudaSmall, Gentoo, GentooSmall, GhostBSD, GhostFreak, Glaucus, GNewSense, GNOME OS, GNU, GoboLinux, GoldenDogLinux, GrapheneOS, Grombyang, Guix, GuixSmall, GXDE
-H: Haiku, Haiku2, HaikuSmall, HamoniKR, HarDClanZ, HardenedBSD, HarmonyOS, Hash, HeliumOS, Huawei Cloud EulerOS, Huayra, Hybrid, HydroOS, Hyperbola, HyperbolaSmall, HyprOS
+H: Haiku, Haiku2, HaikuSmall, HamoniKR, HarDClanZ, HardenedBSD, HarmonyOS, Hash, HeliumOS, Huawei Cloud EulerOS, Huayra, Hybrid, HydroOS, Hyperbola, HyperbolaSmall
 I: Iglunix, InstantOS, Interix, IRIX, Ironclad, Itc
 J: Januslinux
 K: Kaisen, Kali, KaliSmall, Kalpa Desktop, KaOS, KDE Neon, KDELinux, KernelOS, KibaOS, Kibojoe, KISSLinux, KISSLinux2, Kogaion, Korora, KrassOS, KSLinux, Kubuntu, Kylin
-L: LainOS, LangitKetujuh, Laxeros, LEDE, LibreELEC, Lilidog, LimeOS, Lingmo OS, Linspire, Linux, LinuxFromScratch, LinuxLite, LinuxLiteSmall, LinuxMint, LinuxMint2, LinuxMintOld, LinuxMintSmall, LinuxSmall, Live_Raizo, LliureX, LMDE, Loc-OS, Lubuntu, Lunar
-M: Macaroni, MacOS, MacOS2, MacOS2Small, MacOS3, MacOSSmall, Mageia, MageiaSmall, Magix, MagpieOS, MainsailOS, MainsailOSSmall, Mandriva, Manjaro, ManjaroSmall, MassOS, MatuusOS, MaUI, Mauna, Meowix, Mer, MidnightBSD, MidOS, MidOSOld, Minimal System, Minix, MiracleLinux, MOS, Msys2, MX, MX2, MXSmall
+L: LainOS, LangitKetujuh, Laxeros, LEDE, LibreELEC, Lilidog, LimeOS, Lingmo OS, Linspire, Linux, LinuxFromScratch, LinuxLite, LinuxLiteSmall, LinuxMint, LinuxMint2, LinuxMint2Small, LinuxMintOld, LinuxMintSmall, LinuxSmall, Live_Raizo, LliureX, LMDE, Loc-OS, Lubuntu, Lunar
+M: Macaroni, MacOS, MacOS_old, MacOS2, MacOS2Small, MacOS3, MacOSSmall, Mageia, MageiaSmall, MainsailOS, MainsailOSSmall, Mandriva, Manjaro, ManjaroSmall, MassOS, MatuusOS, MaUI, Mauna, Meowix, Mer, MidnightBSD, MidOS, MidOSOld, Minimal System, Minix, MiracleLinux, MOS, Msys2, MX, MX2, MXSmall
 N: Namib, NebiOS, Nekos, Neptune, NetBSD, NetBSD Small, NetBSD2, NetHydra, NetRunner, NexaLinux, Nitrux, NixOS, NixOS2, NixOSOld, NixOsOldSmall, NixOSSmall, Nobara, NomadBSD, NurOS, Nurunner, NuTyX
-O: Obarun, OBRevenge, ObsidianOS, OmniOS, OpenBSD, OpenBSDSmall, OpenEuler, OpenIndiana, OpenKylin, OpenMamba, OpenMandriva, openRuyi, OpenStage, OpenSuse, OpenSuseLeap, OpenSuseLeapOld, openSuseMicroOS, openSUSESlowroll, OpenSuseSmall, OpenSuseTumbleweed, OpenSuseTumbleweed2, OpenSuseTumbleweedOld, OpenSuseTumbleweedSmall, OpenWrt, OpenWrtOld, OpenWrtSmall, OPNsense, Oracle, Orchid, OrchidSmall, Oreon, Origami, OrigamiSmall, OS_Elbrus, OS/2 Warp, OSMC, OSX, OSXSmall
-P: PacBSD, Panwah, Parabola, ParabolaSmall, Parch, Pardus, Parrot, Parsix, PCBSD, PCLinuxOS, PearOS, Pengwin, Pentoo, Peppermint, Peropesis, PhyOS, PikaOS, PisiLinux, PNMLinux, Pop, PopSmall, Porteus, PostMarketOS, PostMarketOSSmall, PrismLinux, PrismLinuxSmall, Proxmox, PuffOS, Puppy, PureOS, PureOSSmall
-Q: Q4OS, QTS, Quasar, Qubes, Qubyt, Quibian, Quirinux
-R: Radix, Raspbian, RaspbianSmall, RavynOS, RebornOS, RebornSmall, RedCore, RedHatEnterpriseLinux, RedHatEnterpriseLinux, RedHatEnterpriseLinux_old, RedOS, RedOS small, Redrose, RedstarOS, Refracta, Regata, Regolith, RhaymOS, RhinoLinux, RockyLinux, RockyLinuxSmall, RosaLinux
+O: Obarun, OBRevenge, ObsidianOS, Omarchy, Omarchy2, OmniOS, OpenBSD, OpenBSDSmall, OpenEuler, OpenIndiana, OpenKylin, OpenMamba, OpenMandriva, openRuyi, OpenStage, OpenSuse, OpenSuseLeap, OpenSuseLeapOld, openSuseMicroOS, openSUSESlowroll, OpenSuseSmall, OpenSuseTumbleweed, OpenSuseTumbleweed2, OpenSuseTumbleweedOld, OpenSuseTumbleweedSmall, OpenWrt, OpenWrtOld, OpenWrtSmall, OPNsense, Oracle, Orchid, OrchidSmall, Oreon, Origami, OrigamiSmall, OS_Elbrus, OS/2 Warp, OSMC, OSX, OSXSmall
+P: PacBSD, Panwah, Parabola, Parabola2Small, ParabolaSmall, Parch, Pardus, Parrot, Parsix, PCBSD, PCLinuxOS, PearOS, Pengwin, Pentoo, Peppermint, Peropesis, PhyOS, PikaOS, PisiLinux, PNMLinux, Pop, PopSmall, Porteus, PostMarketOS, PostMarketOS2, PostMarketOSSmall, PrismLinux, PrismLinuxSmall, Proxmox, PuffOS, Puppy, PureOS, PureOSSmall
+Q: Q4OS, QTS, Quasar, Qubes, Qubes, Qubyt, Quibian, Quirinux
+R: Radix, Raspbian, RaspbianSmall, RavynOS, RebornOS, RebornSmall, RedCore, RedHatEnterpriseLinux, RedHatEnterpriseLinux_old, RedHatEnterpriseLinux_small, RedOS, RedOS small, Redrose, RedstarOS, Refracta, Regata, Regolith, RhaymOS, RhinoLinux, RockyLinux, RockyLinuxSmall, RosaLinux
 S: Sabayon, Sabotage, Sailfish, SalentOS, SalientOS, Salix, SambaBOX, Sasanqua, Scientific, Secureblue, Semc, Septor, Serene, Serpent OS, SharkLinux, ShastraOS, Shebang, Siduction, SkiffOS, Slackel, Slackware, SlackwareSmall, SleeperOS, SleeperOSSmall, Slitaz, SmartOS, SnigdhaOS, Soda, Solaris, SolarisSmall, Solus, Source Mage, Sparky, SpoinkOS, Star, Steam Deck, Steam Deck OLED, Steam Deck Small, SteamOS, StockLinux, Sulin, SummitOS, Suse, SuseSmall, Swagarch
-T: T2, T2Small, Tails, Tatra, TeArch, TempleOS, TileOS, Torizon OS, Trisquel, TrueNAS Scale, TuxedoOS, Twister
+T: T2, T2Small, Tails, Tatra, TeArch, TempleOS, TileOS, Torizon OS, Trisquel, TrueNAS Scale, Turkish, TuxedoOS, Twister
 U: UBLinux, UBLinuxSmall, Ubuntu, UbuntuBudgie, UbuntuCinnamon, UbuntuGNOME, UbuntuKylin, UbuntuMate, UbuntuOld, UbuntuOld2, UbuntuOld2Small, UbuntuSmall, UbuntuStudio, UbuntuSway, UbuntuTouch, UbuntuUnity, Ultramarine, Ultramarine Small, Unifi, Univalent, Univention, UOS, UrukOS, Uwuntu, Uzbek
 V: Valhalla, Vanilla, Vanilla2, VanillaSmall, Venom, VenomSmall, VincentOS, Vnux, Void, Void2, Void2Small, VoidSmall, Vzlinux
 W: WiiLinux, Windows, Windows11, Windows11Small, Windows2025, Windows8, Windows95, WolfOS

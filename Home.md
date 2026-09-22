@@ -1,4 +1,6 @@
-Welcome to the fastfetch wiki!
+Fastfetch is a [neofetch](https://github.com/dylanaraps/neofetch)-like tool for fetching system information and displaying it in a visually appealing way. It is written mainly in C, with a focus on performance and customizability, and currently supports Linux, macOS, Windows 8.1+, Android, FreeBSD, OpenBSD, NetBSD, DragonFly, Haiku and SunOS (illumos, Solaris).
+
+New to fastfetch? Start with [Configuration](Configuration) to set up a config file, or [Building](Building) if you want to compile it yourself. The sidebar links to the rest of the documentation.
 
 # Screenshots on different systems
 

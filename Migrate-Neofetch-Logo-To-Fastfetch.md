@@ -1,4 +1,4 @@
-Take this as an example:
+A neofetch logo uses `${cN}` placeholders plus hard-coded ANSI escape sequences, while fastfetch uses `$1`…`$9` placeholders that are resolved against a color table (`$$` prints a literal `$`). Converting a logo is therefore mostly a find-and-replace job. Take this neofetch logo as an example:
 
 ```
     \033[38;2;23;147;209m                   ▄
@@ -31,7 +31,7 @@ Take this as an example:
   ▀▀   ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀    🬁▀🬀▀▀ 🬁▀🬀▀▀
 ```
 
-1. Replace `${cN}` to `$N`
+1. Replace every `${cN}` with `$N`
 
 ```
     \033[38;2;23;147;209m                   ▄
@@ -64,7 +64,7 @@ Take this as an example:
   ▀▀   ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀    🬁▀🬀▀▀ 🬁▀🬀▀▀
 ```
 
-2. Replace all other hard coded ANSI escape codes to `$N`
+2. Replace all other hard-coded ANSI escape sequences with `$N`
 
 ```
     $3                   ▄
@@ -97,7 +97,7 @@ Take this as an example:
   ▀▀   ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀ ▀▀    🬁▀🬀▀▀ 🬁▀🬀▀▀
 ```
 
-3. Test it with command line flags
+3. Test it with command-line flags
 
 ```shell
 $ # --logo-color-1 maps to $1; --logo-color-2 maps to $2; etc.
@@ -107,7 +107,7 @@ $ fastfetch -l /path/to/logo.txt --logo-color-1 white --logo-color-2 red --logo-
 
 <img width="372" alt="image" src="https://github.com/fastfetch-cli/fastfetch/assets/6134068/dfca3cac-a572-4849-be80-062dcf249cc5">
 
-4. If everything is okay, save it into `config.jsonc`
+4. If everything looks right, save it into your `config.jsonc`
 
 ```jsonc
 {

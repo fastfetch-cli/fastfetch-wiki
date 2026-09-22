@@ -4,10 +4,11 @@ This document provides comprehensive guidance on configuring Fastfetch to suit y
 
 Fastfetch uses JSONC (JSON with comments) for configuration. The default configuration file is located at `~/.config/fastfetch/config.jsonc`
 
-You can generate a minimal configuration file using:
+You can generate a configuration file using:
 ```sh
 fastfetch --gen-config
 ```
+Run in a terminal, this opens an interactive configuration UI. When stdin or stdout is not a TTY, or `$NO_COLOR` is set, it falls back to writing a minimal configuration non-interactively.
 
 There is also an online configuration generator: https://fastfetch-cli.github.io/fastfetch-config/
 
@@ -20,11 +21,30 @@ The configuration file has the following main sections:
 ```jsonc
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json", // Optional: Provides IDE intelligence
+    "general": { /* General settings */ },
     "logo": { /* Logo configuration */ },
     "display": { /* Display settings */ },
     "modules": [ /* Modules to display */ ]
 }
 ```
+
+An unknown key in any section is an error, and fastfetch reports which one it was.
+
+## General Configuration
+
+Settings that are not about the logo, the display or a single module:
+
+```jsonc
+"general": {
+    "thread": true,            // Use separate threads for HTTP requests
+    "processingTimeout": 5000, // Timeout in ms when waiting for child processes; -1 disables it
+    "detectVersion": true,     // Whether to detect component versions. Mainly for benchmarking
+    "playerName": "",          // Player to use for the Media and Player modules. Linux only
+    "dsForceDrm": false        // Force DRM for display detection. Linux only
+}
+```
+
+`dsForceDrm` also accepts the string `"sysfs-only"`. See [Display Detection Methods](Display-Detection-Methods) for the detection order it controls.
 
 ## Logo Configuration
 
@@ -48,6 +68,8 @@ Configure how the logo appears:
 }
 ```
 
+`"logo": null` disables the logo entirely, and `"logo": "arch"` is a shorthand for setting only `source`. See [Logo Options](Logo-options) for the full list of properties, including the image logo cache and animation settings.
+
 ## Display Configuration
 
 Control how information is displayed:
@@ -61,7 +83,7 @@ Control how information is displayed:
     },
     "key": {
         "width": 12,       // Aligns keys to this width
-        "type": "string"   // string, icon, both, or none
+        "type": "string"   // See below
     },
     "bar": {
         "width": 10,       // Width of percentage bars
@@ -71,7 +93,7 @@ Control how information is displayed:
         },
     },
     "percent": {
-        "type": 9,         // 1=number, 2=bar, 3=both, 9=colored number
+        "type": 9,         // See below
         "color": {
             "green": "green",
             "yellow": "light_yellow",
@@ -80,6 +102,43 @@ Control how information is displayed:
     }
 }
 ```
+
+### `display.key.type`
+
+| Value | Description |
+|-------|-------------|
+| `string` | The default. Show the module name |
+| `icon` | Show a built-in icon instead of the module name |
+| `both` | Show the icon and the name, with a space between them. Alias of `both-1` |
+| `both-0` | Show the icon and the name with no space between them |
+| `both-1` … `both-4` | Show the icon and the name with that many spaces between them |
+| `none` | Show neither |
+
+### `display.percent.type`
+
+A bitmask, written either as a number or as an array of style flags:
+
+| Flag | Bit | Description |
+|------|-----|-------------|
+| `num` | 1 | Show the percentage number |
+| `bar` | 2 | Show a bar |
+| `hide-others` | 4 | Hide the values that the other bits did not select |
+| `num-color` | 8 | Color the percentage number by the thresholds below, instead of drawing a colored bar |
+| `bar-monochrome` | 16 | Draw the bar in a single color instead of coloring it by the thresholds |
+
+Common numbers, which are just combinations of the bits above:
+
+| Number | Flags | Description |
+|--------|-------|-------------|
+| `0` | — | Use the global setting |
+| `1` | `num` | Show the percentage number |
+| `2` | `bar` | Show a bar colored by the thresholds |
+| `3` | `num` `bar` | Show both |
+| `6` | `bar` `hide-others` | Show only the bar |
+| `9` | `num` `num-color` | Show a colored number. The default |
+| `10` | `bar` `num-color` | Show a monochrome bar |
+
+The other `display` sections — `size`, `temp`, `freq`, `duration`, `fraction`, `common`, `constants`, `stat`, `pipe`, `showErrors`, `brightColor`, `disableLinewrap`, `hideCursor` and `noBuffer` — are documented in the [JSON schema](https://github.com/fastfetch-cli/fastfetch-wiki/blob/master/Json-Schema.md#schema) and in `fastfetch --help`.
 
 ## Module Configuration
 
@@ -111,6 +170,10 @@ Specify which modules to display and their configuration:
 ]
 ```
 
+A module can be given as a plain string, which uses its default configuration, or as an object with a `type`. A module-level `percent.type` of `0` — which is the default — uses the global `display.percent.type` instead.
+
+Modules can only be configured in the JSON config. The `--<module>-<option>` command line options were removed in v2.52.0.
+
 ## Format Strings
 
 Many modules support custom format strings. For example:
@@ -122,7 +185,7 @@ Many modules support custom format strings. For example:
 }
 ```
 
-Use `fastfetch -h <module>-format` to see available format options for each module.
+Use `fastfetch -h <module>-format` to see available format options for each module. See [Format String Guide](Format-String-Guide) for the syntax.
 
 ## Tips for Better Configuration
 
@@ -130,7 +193,7 @@ Use `fastfetch -h <module>-format` to see available format options for each modu
 
 2. **Use JSON schema**: Adding the `$schema` line enables code completion and validation in editors like VSCode.
 
-### Documentation
+## Documentation
 
 Refer to: <https://github.com/fastfetch-cli/fastfetch-wiki/blob/master/Json-Schema.md#schema> ([Different repo is used because of Github Wiki limitation](https://github.com/fastfetch-cli/fastfetch/issues/1587))
 
@@ -142,12 +205,27 @@ generate-schema-doc ~/fastfetch/doc/json_schema.json --config template_name=md J
 
 Also refer to `fastfetch --help` for more detailed explanation.
 
-### Examples
+## Examples
 
-`*.jsonc` in <https://github.com/fastfetch-cli/fastfetch/tree/dev/presets/examples>
+The `presets/` directory in the repository contains ready-made config files you can copy and adapt:
 
-You may test it with `fastfetch --config examples/x.jsonc`
+* `presets/examples/` — small examples, each demonstrating one feature. Browse them at <https://github.com/fastfetch-cli/fastfetch/tree/dev/presets/examples>.
+* `presets/` — full-featured presets such as `all`, `neofetch`, `screenfetch`, `archey` and `paleofetch`.
 
-### Notes
+Run `fastfetch --list-presets` to see the presets that fastfetch can actually find on your system:
 
-* Special charactors should be encoded as `\uXXXX` in JSON. Notably, `\e` or `\033` should be `\u001b`.
+```bash
+$ fastfetch --list-presets
+```
+
+A preset is looked up by name in the preset search paths, so it works from any directory:
+
+```bash
+$ fastfetch --config examples/18.jsonc
+```
+
+Note that this is a preset lookup, not a path relative to the current directory — `--config presets/examples/18.jsonc` is not guaranteed to work.
+
+## Notes
+
+* Special characters should be encoded as `\uXXXX` in JSON. Notably, `\e` or `\033` should be `\u001b`.

@@ -1,3 +1,5 @@
+This document describes the format string syntax used by the `format` property of a module, and by the `key` property when it is used as a format string.
+
 ## Basic Syntax
 
 A format string contains placeholders for dynamic values. Each placeholder starts with `{`, contains a value name or index, and ends with `}`.
@@ -15,14 +17,14 @@ See the module-specific help for available named arguments:
 $ fastfetch -h title-format
 ```
 
+A placeholder that cannot be resolved, such as a misspelled argument name or an out-of-range index, is printed verbatim rather than being dropped, which makes it easy to spot. `fastfetch --show-errors` does not report them.
+
 ## Numeric/Index-Based (starts from `1`) Arguments
 
-**DEPRECATED: Always prefer named arguments over numeric placeholders.**
+**DEPRECATED**: Always prefer named arguments over numeric placeholders. Numeric placeholder positions can change between releases (for example if arguments are reordered), which introduces breaking changes for any configuration relying on them. Named arguments such as `{user-name}` remain stable regardless of argument ordering.
 
 `{1}@{2}` or `{}@{}` (indices are implicitly increased, starts from 1)
 > Because of historical reasons, `{0}` is the same as `{}`
-
-**DEPRECATED**: Numeric placeholder positions can change between releases (e.g., if arguments are reordered), which introduces breaking changes for any configuration relying on them. Named arguments like `{user-name}` remain stable regardless of argument ordering.
 
 ## String Manipulation
 
@@ -35,7 +37,7 @@ You can specify a truncation length using the `{arg:length}` syntax:
 
 If the length is negative, an ellipsis (`…`) is appended to the truncated string.
 
-*Note: String length is measured in raw bytes. Multi-byte Unicode characters and ANSI escape codes may not be counted as expected.*
+*Note: the length is measured in raw bytes, not in characters or display columns, so a multi-byte character counts as several and can be cut in half. A color escape sequence at the start of the value, and the reset at the end of it, are not counted; one in the middle of the value is.*
 
 ### Padding
 
@@ -46,20 +48,23 @@ Use `<`, `>`, or `|` instead of `:` to apply left, right, or center padding:
 "{user-name|20}" → center-aligned with spaces: "      username      " // Added in v2.64.0
 ```
 
-*Note: String length is measured in raw bytes.*
+*Note: String length is measured in raw bytes, as above.*
 
 ### Slicing
 
-Use `` `{variable~startIndex,endIndex}` `` to slice a string:
+Use `{variable~startIndex,endIndex}` to slice a string:
 ```text
-"{user-name~0,5}"  → first five characters
-"{user-name~-5,}"  → last five characters
-"{user-name~2,-2}" → from the third character to the second-to-last character
+"{user-name~0,3}"   → characters 0 to 2: "car"
+"{user-name~1}"     → from character 1 to the end: "arter"
+"{user-name~2,4}"   → characters 2 to 3: "rt"
+"{user-name~-3,-1}" → characters 3 to 4: "te"
 ```
 
-Negative indices count backward from the end of the string. Omitted indices default to `0`.
+Negative indices count backward from the end of the string. The start index is inclusive and the end index is exclusive, an omitted start index defaults to `0`, and an end index past the end of the string is clamped to it.
 
-*Note: String length is measured in raw bytes.*
+*Note: String length is measured in raw bytes, as above.*
+
+**Note:** an omitted *end* index does not mean "up to the end of the string". `"{user-name~2,}"` and `"{user-name~-5,}"` both evaluate to an empty string, because the missing end index is read as `0` and `0` is never greater than the start index. Give the end index explicitly, or drop the comma to slice to the end of the string (`"{user-name~2}"`).
 
 ## Variable References
 
@@ -67,15 +72,19 @@ Negative indices count backward from the end of the string. Omitted indices defa
 
 You can reference constants and environment variables using the `$` prefix:
 ```text
-"{$NUM}"     → references a constant defined in `display.constants`
-"{$ENV_VAR}" → references an environment variable
+"{$1}"       → the first entry of `display.constants`
+"{$-1}"      → the last entry of `display.constants`
+"{$ENV_VAR}" → an environment variable
 ```
+
+* Constants are numbered from `1`, and a negative index counts backward from the end.
+* `{$0}` and any index outside the list are printed verbatim.
 
 ## Special Formatting
 
 ### Escaping Curly Braces
 
-A double open curly brace (`{{`) is printed as a single open curly brace (`{`) and is not treated as a placeholder.
+A double open curly brace (`{{`) is printed as a single open curly brace (`{`) and is not treated as a placeholder. There is no escape for a closing brace; a `}` that does not close a placeholder is printed as is.
 
 ### Conditional Content
 
@@ -96,7 +105,7 @@ Example combining both:
 
 ### Terminating Formatting
 
-To terminate formatting at any point, use `{-}`.
+To terminate formatting at any point, use `{-}`. Everything after it in the format string is discarded.
 
 ## Color Formatting
 
@@ -107,28 +116,30 @@ To apply color to text, start a placeholder with `#` followed by terminal color 
 
 The ANSI escape sequence `\e[` at the start and `m` at the end are automatically appended.
 
-`{#}` is equivalent to `{#0}` and resets all formatting to default.
+`{#}` resets all formatting to default, as does `{#0}`.
 
 Named color formats are also supported:
 ```text
 "{#underline_magenta}Colored Text{#}"
 ```
 
-See `fastfetch -h color` for details on supported color codes.
+See [Color Format Specification](https://github.com/fastfetch-cli/fastfetch/wiki/Color-Format-Specification) for the supported color codes.
 
-## Empty Values
+## Hiding a Key
 
-If a format string evaluates to whitespace, the entire line is omitted from the output.
+Setting `key` to exactly one space hides the key of a module, so that only its value is printed:
 
-This can be used to disable specific outputs:
 ```jsonc
 {
   "type": "host",
-  "key": " " // Disables the key for the host module
+  "key": " " // Hides the key for the host module
 }
 ```
 
-*Note: Using an empty string (`""`) is treated as "unset", causing the built-in default format to be used instead.*
+* The value must be exactly one space. Any other value is printed as the key, including two spaces (`"  "`).
+* An empty key (`""`) is treated as "unset", so the module's built-in key is used instead.
+* The same applies to `format`: an empty format string (`""`) is treated as "unset", so the module's built-in format is used instead.
+* A format string that evaluates to nothing still prints the key and the separator, followed by an empty value. It does not remove the line.
 
 ---
 
@@ -175,7 +186,7 @@ Prefix your format string with `lua:` to execute Lua code.
 You can use JSON5's line-continuation syntax (backslashes) to break up long script lines. [Example](https://github.com/fastfetch-cli/fastfetch/discussions/2379#discussioncomment-17194638)
 
 ### QuickJS (JavaScript) Scripts
-As an alternative to Lua, you can execute JavaScript by prefixing your format string with `qjs:`. 
+As an alternative to Lua, you can execute JavaScript by prefixing your format string with `qjs:`.
 
 * **Return Values:** No explicit `return` statement is needed; the final result is simply the evaluated value of the script's last expression.
 * **Parameters:** Module-specific variables are passed via the `this` context object. Usage is conceptually similar to Lua but utilizes JavaScript syntax.
