@@ -41,20 +41,27 @@ custom format and in the JSON output rather than in the default line.
 | OpenBSD | `bluetooth_nosupport.c` | Not supported |
 | Solaris / illumos | `bluetooth_nosupport.c` | Not supported |
 | Haiku | `bluetooth_haiku.cpp` | Reports the local adapter itself, not remote devices |
-| macOS | `bluetooth_apple.m` | `IOBluetoothDevice.pairedDevices` — classic devices only |
+| macOS | `bluetooth_apple.m` | `IOBluetoothDevice.pairedDevices` for classic plus a Core Bluetooth pass for Low Energy; the two are joined per device |
 | Windows | `bluetooth_windows.c`, `bluetooth_windows.cpp` | `bluetoothapis` for BR/EDR plus a WinRT query for Low Energy; the two lists are joined per device |
 
-**Both stacks are enumerated on Linux and on Windows.** Windows keeps them behind two unrelated
-APIs — `bluetoothapis` sees BR/EDR devices only and says so in its own documentation, while the Low
-Energy half needs a WinRT `DeviceInformation` query — so the two results are joined afterwards. On
-macOS and on the BSDs the backend only ever walks a classic stack, and Haiku reports the local
-adapter, so on those platforms `deviceType` can only ever be `Classic`.
+**Both stacks are enumerated on Linux, on Windows and on macOS.** Windows keeps them behind two
+unrelated APIs — `bluetoothapis` sees BR/EDR devices only and says so in its own documentation, while
+the Low Energy half needs a WinRT `DeviceInformation` query — so the two results are joined
+afterwards. macOS splits them across two frameworks the same way and joins them on the private
+`CBPeripheral` identifier. Linux is the one platform where a single query returns both, because
+BlueZ publishes classic and Low Energy devices in one `org.bluez.Device1` list. On the BSDs the
+backend only ever walks a classic stack, and Haiku reports the local adapter, so on those platforms
+`deviceType` can only ever be `Classic`.
+
+Which of the stacks a backend *can* walk is not the same as which ones it is asked for: `showType`
+below decides that, and it is applied by the detector rather than by the printer.
 
 ## Configuration
 
 | Key | Type | Default | Description |
 |---|---|---|---|
 | `showDisconnected` | boolean | `false` | Also list devices that are remembered or paired but not connected |
+| `showType` | string | `both` | `both`, `classic` or `le` — which stacks to look for at all |
 | `percent` | object | `{ "green": 50, "yellow": 20, "type": 0 }` | Colour thresholds and style, shared by the battery and the signal quality. `type: 0` inherits `display.percentType`. |
 | `key` | string | `Bluetooth <n>` | Module key. A single space hides the key and the separator. |
 | `keyColor` | color | – | Overrides `display.color.keys` |
@@ -63,6 +70,18 @@ adapter, so on those platforms `deviceType` can only ever be `Classic`.
 | `outputColor` | color | – | Overrides `display.color.output` |
 | `format` | string | – | Custom output format (see below) |
 | `condition` | object | – | Show the module only if the conditions match |
+
+`showType` is real work saved, not just output filtering: it is applied by the detector, not by the
+printer, so a stack that is not asked for is not queried at all. On Windows and on macOS the two
+stacks are two separate queries, so leaving one out removes its cost as well as its results — on macOS
+the Low Energy pass is the one that waits on the run loop for a `CBCentralManager` to come up and for
+the signal-strength reads. On Linux both stacks arrive on the one BlueZ query, so a device that
+answers *only* on a stack that was not asked for is dropped from the result instead, and a device
+whose stack could not be determined is kept. A value outside the three is reported as
+`Invalid showType value: Invalid enum string` — the message repeats the option name in place of
+listing the alternatives — and the module then runs with the default `both`. The bitfield the option
+is stored as (`1`, `2`, `3`) is accepted as well, for compatibility, but it is not the documented
+form.
 
 The default `percent` uses `green: 50 > yellow: 20`, the *inverted* interpretation: 50–100 % is
 green, 20–50 % is yellow and 0–20 % is red. The two thresholds are explained in
@@ -115,10 +134,14 @@ the same 1-based device number the default key prints.
 
 `battery` is `0` when the platform has no level for the device, and `connected` is always `true` on
 the BSDs and Haiku, which have no way to tell. `signalQuality` is `null` when the platform has no
-figure for it — which is every device on the BSDs, Haiku and macOS, and every classic-only device on
-Windows. `deviceType` is an array holding `"Classic"`, `"Low Energy"` or both, in that order, and is
-empty when the platform could not tell which stack the device came over. An empty `result` array is
-a normal outcome, not an error. On failure the object is `{ "type": "Bluetooth", "error": "…" }`.
+figure for it — which is every device on the BSDs and Haiku, every classic-only device on Windows,
+and on macOS every device whose Low Energy link the system does not report as connected.
+`deviceType` is an array holding `"Classic"`, `"Low Energy"` or both, in that order, and is empty
+when the platform could not tell which stack the device came over. With `showType` set to one stack
+the array only names the stacks that were asked for, so a dual-mode device reports that one stack on
+Windows and macOS, where the other pass never ran, while on Linux it still reports both, because the
+one BlueZ query hands both over and only the filter drops devices. An empty `result` array is a
+normal outcome, not an error. On failure the object is `{ "type": "Bluetooth", "error": "…" }`.
 
 ## Examples
 
@@ -142,6 +165,16 @@ a normal outcome, not an error. On failure the object is `{ "type": "Bluetooth",
 { "type": "bluetooth", "key": "BT {index}" }
 ```
 
+```jsonc
+// Classic (BR/EDR) devices only — skip the Low Energy query, and its run-loop waits
+{ "type": "bluetooth", "showType": "classic" }
+```
+
+```jsonc
+// Only what the Low Energy stack knows, disconnected devices included
+{ "type": "bluetooth", "showType": "le", "showDisconnected": true }
+```
+
 ## Pitfalls
 
 - **Nothing is printed when no device is found — not even a message.** The "No bluetooth devices
@@ -154,13 +187,34 @@ a normal outcome, not an error. On failure the object is `{ "type": "Bluetooth",
   format path calls the percentage helpers unconditionally; only the default output skips them when
   the level is unknown or out of range. The signal-quality pair behaves the other way round: both
   variables are empty for a device whose signal strength is unknown.
-- **Bluetooth Low Energy devices are enumerated on Linux and on Windows, and nowhere else.**
-  `bluetooth_apple.m` uses `IOBluetoothDevice.pairedDevices`, a BR/EDR API. On Linux the BlueZ object
-  manager returns LE devices in the same `org.bluez.Device1` list as classic devices. On Windows the
-  LE half is a separate WinRT query, which the build only enables when the WinRT headers are
-  available: a Windows build with g++ compiles it out (CMake prints `WinRT support is disabled due
-  to known issues with g++`), and that build then reports `Classic` for everything and `null` for
-  every signal quality.
+- **Bluetooth Low Energy devices are enumerated on Linux, Windows and macOS, and nowhere else.**
+  On Linux the BlueZ object manager returns LE devices in the same `org.bluez.Device1` list as
+  classic devices. On Windows the LE half is a separate WinRT query, which the build only enables
+  when the WinRT headers are available: a Windows build with g++ compiles it out (CMake prints
+  `WinRT support is disabled due to known issues with g++`), and that build then reports `Classic`
+  for everything and `null` for every signal quality. On macOS it is a `CBCentralManager`, and the
+  three bullets below cover what that does and does not reach. The BSDs and Haiku have no Low Energy
+  path at all, so `showType: "le"` leaves the list empty there.
+- **On macOS, the module asks for Bluetooth permission the first time it runs.** Every Bluetooth API
+  is behind the `kTCCServiceBluetoothAlways` service, and macOS attributes the request to the
+  *responsible* process — the terminal, not fastfetch. Terminal.app is an Apple platform binary, and
+  iTerm2, Ghostty and kitty all declare the usage description, so a run from one of those prompts
+  once and remembers the answer. A host application that declares no
+  `NSBluetoothAlwaysUsageDescription` of its own gets no prompt at all: macOS kills the process with
+  `SIGABRT` instead. fastfetch deliberately does not embed a usage description of its own — that
+  would give it a second TCC identity, which for an unsigned binary changes on every rebuild and
+  would re-prompt each time.
+- **On macOS, a disconnected Low Energy device cannot be listed.** `showDisconnected` is honoured for
+  classic devices, but Core Bluetooth's public API has no "paired peripherals" query —
+  `CBCentralManager` enumerates *connected* peripherals only — and the module does not scan, because
+  a scan reports every phone, watch and beacon in radio range rather than the devices the machine
+  knows. The Low Energy half therefore only ever adds devices the system is currently connected to.
+- **On macOS, a Low Energy device the classic half does not know is listed under its Core Bluetooth
+  identifier.** Core Bluetooth never hands out the device address, so `{address}` is the 36-character
+  `NSUUID` string rather than a MAC address, `{type}` is empty because neither the class of device
+  nor the GAP appearance is reachable without scanning or connecting, and `battery` is `0` because
+  the level comes from the classic `IOBluetoothDevice` properties. A dual-mode device keeps all three,
+  because the classic entry wins every field it has.
 - **On Windows, an LE device is only found once it has been paired.** The LE half asks for
   `BluetoothLEDevice::GetDeviceSelectorFromPairingState(true)`, so an LE peripheral that is in range
   but has never been paired is not in the result — not even with `showDisconnected`, which only lifts
@@ -184,10 +238,11 @@ a normal outcome, not an error. On failure the object is `{ "type": "Bluetooth",
   device at all, so Windows falls back to the LE appearance category, which is much coarser — a pair
   of earbuds reports `Audio Sink`, not `Rendering, Audio`.
 - **`signalQuality` is the LE endpoint's last known figure, not a live link measurement.** It is
-  converted from `System.Devices.Aep.SignalStrength` (Windows) or the `RSSI` property (Linux) with
-  the same `-50 dBm = 100 %` … `-100 dBm = 0 %` scale the `Wifi` module uses. It stays readable
-  while the link is down, so it can be present on a device whose `connected` is `false`, and it says
-  nothing about the classic link of a dual-mode device.
+  converted from `System.Devices.Aep.SignalStrength` (Windows), the `RSSI` property (Linux) or a
+  `readRSSI` round trip (macOS) with the same `-50 dBm = 100 %` … `-100 dBm = 0 %` scale the `Wifi`
+  module uses. On Windows and Linux it stays readable while the link is down, so it can be present on
+  a device whose `connected` is `false`; on macOS it is only read for a link the system reports as
+  connected. It says nothing about the classic link of a dual-mode device.
 - **`showDisconnected` has no effect on the BSDs or on Haiku.** Those backends hard-code
   `connected = true` for every device they report, so the filter can never match.
 - **On Linux a device BlueZ reports as unpaired loses its name.** The `Paired` property is used as
@@ -199,7 +254,9 @@ a normal outcome, not an error. On failure the object is `{ "type": "Bluetooth",
 - **The module never scans.** Discovery is whatever the platform already knows: connected devices,
   plus remembered/pairing state when `showDisconnected` is on. On Windows the underlying
   `BLUETOOTH_DEVICE_SEARCH_PARAMS` sets neither `fIssueInquiry` nor `fReturnUnknown`, so there is no
-  discovery at all there, and the LE query is restricted to already-paired devices.
+  discovery at all there, and the LE query is restricted to already-paired devices. macOS is the one
+  platform where a scan is available and deliberately unused: an in-range scan returns every phone,
+  watch and beacon around, not the devices the machine knows.
 
 ## Implementation
 
@@ -212,6 +269,14 @@ structure. Nothing is cached, so a `--dynamic-interval` run re-probes on every r
 The battery figure is a `uint8_t`, `0` meaning "unknown", and the default printer only shows it when
 `0 < battery <= 100`. The signal quality is a `double` whose "unknown" is `-DBL_MAX`, which is the
 same sentinel the `Wifi` module uses; `deviceType` is a bitfield with one bit per stack.
+
+`options->showType` is read by the detector rather than by the printer, and it is a value from the
+`FFBluetoothDeviceType` enum (`none`, `classic`, `le`, `both`) that the backends test bit by bit.
+Every backend that can reach more than one stack puts each stack in a function of its own and calls
+only the ones the option enables — on Windows `detectClassic()` and `ffBluetoothDetectLe()`, on macOS
+`detectClassic()` and `detectLe()`. Linux has nothing to skip, because both stacks come from the one
+BlueZ query, so its filter is applied to that query's result; the BSD and Haiku backends have a
+single stack and only test the bit.
 
 ### Linux
 
@@ -231,18 +296,73 @@ When `showDisconnected` is off the module first counts connected devices by list
 immediately when that count is zero; it then drops the entries that are not connected while walking
 the D-Bus reply and stops early once it has seen as many connected devices as the kernel reported.
 
+`showType` is applied to that same walk rather than to a call that could be skipped: a device whose
+`deviceType` has no bit the option enables is dropped, and a device whose `deviceType` came out empty
+is kept, because BlueZ does not promise that a `Device1` object carries either `Class` or
+`Appearance`.
+
 ### macOS
 
-`IOBluetoothDevice.pairedDevices` is the source. The address is converted from the framework's
+The classic half is `IOBluetoothDevice.pairedDevices`. The address is converted from the framework's
 `AA-BB-CC-DD-EE-FF` form to upper-case colon form, and the battery is taken from one of the private
 `batteryPercent*` properties (`Single` first, then `Combined`, then `Case`). The type string is the
 `serviceClassMajor` bits in the same order and wording as the Windows backend, falling back to
-`deviceClassMajor` when no service bit is set. This is a classic-only API, so every device is
-`Classic` and no signal quality is available.
+`deviceClassMajor` when no service bit is set.
+
+The Low Energy half is a `CBCentralManager`. The entry point is
+`retrieveConnectedPeripheralsWithServices:`, called with the assigned 16-bit service UUIDs
+(`0x1800`–`0x18FF`, plus the `0xFEE0`–`0xFEFF` vendor block) spelled out: an empty list is not
+"everything", and with the list given the call answers in 0.5 ms. That filter is what keeps this a
+"devices this machine knows" query rather than a scan —
+`scanForPeripheralsWithServices:` turned up 57 peripherals in five seconds on the machine this was
+measured on, 54 of them with no name at all. Every Core Bluetooth entry point answers on a delegate
+callback, so the run loop is pumped with a bounded deadline until the manager reports its state
+(18.7 ms when powered on) and again for the signal-strength reads; a manager that is not powered on,
+or a user who denied the permission, makes the pass return so that the classic list stands on its
+own.
+
+The two halves are joined on `CBPeripheral.identifier`. `IOBluetoothDevice` is a wrapper around the
+private Core Bluetooth peer objects, and its private `peripheral` property is the one carrying the
+same `NSUUID` the Low Energy side hands out — a `CBPeer` has one `identifier` and a separate
+`connectedTransport` byte, so a dual-mode device is one identity rather than two. It is not the
+device address: none of the twelve classic addresses appeared in any Low Energy identifier. Only
+`peripheral.identifier` is read, and only where it is non-nil; `IOBluetoothDevice`'s own `identifier`
+answers `nil`, and the wrapper's `peer.identifier` disagrees with `peripheral.identifier` on some
+devices, because `peer` is the classic peer and `peripheral` the Low Energy one. The name is the
+fallback, trusted only when exactly one classic entry carries it.
+
+`pairedDevices` hands a dual-mode device out **twice**, once per stack, under one name and one
+address; the second copy is the one carrying the `CBPeripheral`. The duplicate is folded into the
+first entry while the list is walked rather than afterwards — both because printing one headset twice
+is wrong and because the duplicate makes the name ambiguous, which would leave the fallback above
+unusable.
+
+The classic half cannot be replaced by Core Bluetooth, and that was measured rather than assumed.
+Core Bluetooth's public surface has no paired-device query at all: `CBCentralManager` enumerates
+*connected* peripherals only, which on the reference machine is 2 of the 12. The paired query does
+exist, as the private `CBClassicManager.retrievePairedPeersWithOptions:`, but it is what
+`IOBluetoothDevice.pairedDevices` already calls — `IOBluetoothCoreBluetoothCoordinator`, which lives
+in IOBluetooth.framework, holds the manager and is the caller. Both Core-Bluetooth-only routes were
+measured and neither replaces it: a `CBClassicManager` the process creates itself never fills its
+peer map (0 entries after two seconds, and `retrievePairedPeersWithOptions:` answers `nil`), and
+`CBCentralManager.sharedPairingAgent.retrievePairedPeers` answers with 7 of the 11 devices as bare
+`CBPeripheral` objects carrying no address, no battery and no class of device.
+
+`CBPeripheral.state` is not the connection state the caller means. It answers `Disconnected` for
+every peripheral that retrieval returns, and so does `isConnected`; only the private
+`isConnectedToSystem` reflects that the system has the device. On the reference machine `state` and
+`isConnected` were 0 on all seven peripherals, and `isConnectedToSystem` was 1 on exactly the two
+that were connected. Reading `state` reported every Low Energy peripheral as disconnected, which
+both suppressed the signal strength and dropped a connected LE-only peripheral whenever
+`showDisconnected` was off.
+
+The signal quality is a `readRSSI` round trip, asked for only where the system reports a live link
+and waited for as a group, so a machine with no Low Energy link pays nothing for it. It is the one
+figure the Low Energy half contributes that the classic half cannot.
 
 ### Windows
 
-The classic half lives in `bluetooth_windows.c`.
+The classic half lives in `bluetooth_windows.c`, as `detectClassic()`.
 `BluetoothFindFirstDevice()` / `BluetoothFindNextDevice()` from `bluetoothapis.dll` are loaded
 dynamically, with `fReturnConnected` always on and `fReturnRemembered` / `fReturnAuthenticated`
 following `showDisconnected`. The name and the address come from the returned
@@ -257,8 +377,9 @@ The three flags in that structure are not 0/1 booleans: Windows stores a distinc
 correct.
 
 That search reports nothing at all on a machine whose only peripheral is an LE one, which is not
-treated as an error: the LE half still runs, and a genuinely failing `BluetoothFindFirstDevice()` is
-told apart from an empty result by `GetLastError() == ERROR_NO_MORE_ITEMS`.
+treated as an error: the LE half still runs when `showType` leaves its bit on, and a genuinely
+failing `BluetoothFindFirstDevice()` is told apart from an empty result by
+`GetLastError() == ERROR_NO_MORE_ITEMS`.
 
 The Low Energy half lives in `bluetooth_windows.cpp` and exists because reaching LE means WinRT,
 which is C++ only. It asks `Windows.Devices.Enumeration.DeviceInformation` for
@@ -300,6 +421,9 @@ half misses is the connected gamepad. The classic half is also the side the merg
 its addresses are the ones looked up in the device tree — so without it a dual-mode device would be
 printed under its LE address rather than the one the operating system shows.
 
+`ffDetectBluetooth()` calls the two halves independently, each behind its own bit of `showType`, and
+then runs the battery pass over whatever the two produced.
+
 The signal quality is `ffRssiToSignalQuality()` of `System.Devices.Aep.SignalStrength`, and it is
 reported whenever the endpoint has that property — including for a disconnected device, because
 `IsPresent` is still true and the figure is the last one the radio saw. The type of an LE-only device
@@ -326,8 +450,10 @@ skipping the colons and folding the case, and a device no property matches simpl
 The BSDs walk the Netgraph Bluetooth device list with `bt_devenum()`; FreeBSD adds
 `bt_devremote_name_gen()` for the remote name, NetBSD uses `dev->devname` directly. Battery, type
 and connection state are all left at their defaults, the device type is hard-coded to the classic
-bit and the signal quality to "unknown", and `showDisconnected` is ignored.
+bit and the signal quality to "unknown", and `showDisconnected` is ignored. Netgraph carries BR/EDR
+only, so `showType` is a plain gate: with the classic bit off, `bt_devenum()` is not called at all.
 
 Haiku asks `Bluetooth::LocalDevice::GetLocalDevice()` — the *local* adapter — and reports it as the
 single device in the list, with the device class dumped by `GetDeviceClass()`. Remote devices are
-not enumerated at all.
+not enumerated at all, and the device class is a BR/EDR concept, so `showType` gates the whole
+backend in the same way: with the classic bit off, the list stays empty.
