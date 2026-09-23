@@ -32,7 +32,7 @@ custom format and in the JSON output rather than in the default line.
 
 | Platform | Implementation | Notes |
 |---|---|---|
-| Linux | `bluetooth_linux.c` | BlueZ over the system D-Bus (`GetManagedObjects`); covers classic **and** single-mode LE devices |
+| Linux | `bluetooth_linux.c` | BlueZ over the system D-Bus (`GetManagedObjects`); both stacks come out of that one query, but they are *inferred* from `Class` / `Appearance`, so a dual-mode device ever seen over BR/EDR reports `Classic` only |
 | Android | `bluetooth_nosupport.c` | Reports "Not supported on this platform" |
 | GNU/Hurd | `bluetooth_linux.c` | Same file as Linux |
 | FreeBSD / MidnightBSD | `bluetooth_bsd.c` | Netgraph `bt_devenum()`; names come from `bt_devremote_name_gen()` |
@@ -44,12 +44,17 @@ custom format and in the JSON output rather than in the default line.
 | macOS | `bluetooth_apple.m` | `IOBluetoothDevice.pairedDevices` for classic plus a Core Bluetooth pass for Low Energy; the two are joined per device |
 | Windows | `bluetooth_windows.c`, `bluetooth_windows.cpp` | `bluetoothapis` for BR/EDR plus a WinRT query for Low Energy; the two lists are joined per device |
 
-**Both stacks are enumerated on Linux, on Windows and on macOS.** Windows keeps them behind two
+**Both stacks are enumerated on Windows and on macOS. On Linux both lists come out of one query, but
+the stack is inferred rather than enumerated.** Windows keeps them behind two
 unrelated APIs — `bluetoothapis` sees BR/EDR devices only and says so in its own documentation, while
 the Low Energy half needs a WinRT `DeviceInformation` query — so the two results are joined
 afterwards. macOS splits them across two frameworks the same way and joins them on the private
-`CBPeripheral` identifier. Linux is the one platform where a single query returns both, because
-BlueZ publishes classic and Low Energy devices in one `org.bluez.Device1` list. On the BSDs the
+`CBPeripheral` identifier. Linux returns both lists from the single `org.bluez.Device1` walk, because
+BlueZ publishes classic and Low Energy devices in one list — but it has no per-stack enumeration and
+no "supports LE" property at all, so fastfetch reads the Low Energy bit off `Appearance`, which BlueZ
+withholds from every device that has a `Class` (see *Pitfalls* below). A dual-mode device that was
+ever seen over BR/EDR — every paired phone, since they all have a class of device — therefore reports
+`Classic` only on Linux while reporting both on Windows and macOS. On the BSDs the
 backend only ever walks a classic stack, and Haiku reports the local adapter, so on those platforms
 `deviceType` can only ever be `Classic`.
 
@@ -75,9 +80,12 @@ below decides that, and it is applied by the detector rather than by the printer
 printer, so a stack that is not asked for is not queried at all. On Windows and on macOS the two
 stacks are two separate queries, so leaving one out removes its cost as well as its results — on macOS
 the Low Energy pass is the one that waits on the run loop for a `CBCentralManager` to come up and for
-the signal-strength reads. On Linux both stacks arrive on the one BlueZ query, so a device that
-answers *only* on a stack that was not asked for is dropped from the result instead, and a device
-whose stack could not be determined is kept. A value outside the three is reported as
+the signal-strength reads. On Linux both stacks arrive on the one BlueZ query, so nothing is saved
+and the filter lands on the result instead: a device whose `deviceType` has no bit the option
+enables is dropped, and a device whose stack could not be determined is kept. That filter is one
+sided there — because BlueZ never publishes `Appearance` for a device that has a `Class`,
+`showType: "le"` drops every device ever seen over BR/EDR, dual-mode phones included, rather than
+narrowing the list to their Low Energy half. A value outside the three is reported as
 `Invalid showType value: Invalid enum string` — the message repeats the option name in place of
 listing the alternatives — and the module then runs with the default `both`. The bitfield the option
 is stored as (`1`, `2`, `3`) is accepted as well, for compatibility, but it is not the documented
@@ -135,12 +143,16 @@ the same 1-based device number the default key prints.
 `battery` is `0` when the platform has no level for the device, and `connected` is always `true` on
 the BSDs and Haiku, which have no way to tell. `signalQuality` is `null` when the platform has no
 figure for it — which is every device on the BSDs and Haiku, every classic-only device on Windows,
-and on macOS every device whose Low Energy link the system does not report as connected.
+on macOS every device whose Low Energy link the system does not report as connected, and on Linux
+every device BlueZ has not seen in a scan since it started (the module never scans, so that is the
+ordinary case there).
 `deviceType` is an array holding `"Classic"`, `"Low Energy"` or both, in that order, and is empty
 when the platform could not tell which stack the device came over. With `showType` set to one stack
 the array only names the stacks that were asked for, so a dual-mode device reports that one stack on
-Windows and macOS, where the other pass never ran, while on Linux it still reports both, because the
-one BlueZ query hands both over and only the filter drops devices. An empty `result` array is a
+Windows and macOS, where the other pass never ran. On Linux the array is the *inference* drawn from
+the one BlueZ query, and `Class` and `Appearance` are mutually exclusive in its reply: a phone paired
+over BR/EDR reports `["Classic"]` there even though it speaks LE, and with `showType: "le"` it leaves
+the result entirely instead of reporting `["Low Energy"]`. An empty `result` array is a
 normal outcome, not an error. On failure the object is `{ "type": "Bluetooth", "error": "…" }`.
 
 ## Examples
@@ -187,13 +199,40 @@ normal outcome, not an error. On failure the object is `{ "type": "Bluetooth", "
   format path calls the percentage helpers unconditionally; only the default output skips them when
   the level is unknown or out of range. The signal-quality pair behaves the other way round: both
   variables are empty for a device whose signal strength is unknown.
-- **Bluetooth Low Energy devices are enumerated on Linux, Windows and macOS, and nowhere else.**
-  On Linux the BlueZ object manager returns LE devices in the same `org.bluez.Device1` list as
-  classic devices. On Windows the LE half is a separate WinRT query, which the build only enables
+- **On Linux a dual-mode device reports `Classic` only, whatever it supports.** BlueZ has no
+  per-stack enumeration and no "supports LE" property: `org.bluez.Device1` carries `Class` and
+  `Appearance`, and its `get_appearance()` returns FALSE as soon as the device has a class — with
+  that getter registered as the property's `exists` callback, so for a device with a `Class` the
+  `Appearance` key is absent from the `GetManagedObjects` reply altogether rather than present with a
+  default (verified against BlueZ 5.87, `src/device.c`). `btd_device_get_icon()` prefers `Class` the
+  same way, which is why `{type}` carries the class-of-device category (`phone`, `audio-headset`).
+  BlueZ treats the two as mutually exclusive descriptions of the device's *category*, not as a record
+  of which radios it speaks. Independently of that suppression the value is usually unknown anyway:
+  BlueZ only learns it from an LE advertising report carrying AD type `0x19` (phones rarely advertise
+  one), never persists a zero, `/var/lib/bluetooth` is mode `0700` even if it did, and the storage's
+  own `SupportedTechnologies` key only becomes `BR/EDR;LE` after a real LE connection or LE sighting —
+  a key no D-Bus property exposes. A phone that is dual-mode in every respect therefore reports
+  `deviceType: ["Classic"]` on Linux where Windows and macOS report `["Classic", "Low Energy"]`, and
+  `showType: "le"` drops it from the result entirely instead of reporting its Low Energy half.
+  Nothing collected on this path can change that; it would take a different signal.
+- **On Linux nothing else is evidence of Low Energy either, and BlueZ publishes exactly one
+  LE-only signal.** GAP / GATT (`0x1800`, `0x1801`) in `UUIDs` is not evidence: BlueZ mirrors BR/EDR
+  SDP records that advertise the ATT bearer (L2CAP PSM `0x001F`) into the same `attributes` cache it
+  loads GATT primaries from, so those UUIDs can come from a purely classic SDP browse. `AddressType`
+  is not either — a BR/EDR-only record reports `public` too. `ManufacturerData` and `ServiceData` are
+  not: BlueZ parses them out of BR/EDR EIR as well. The one durable LE-only property is
+  `AdvertisingFlags`, written only from the `bdaddr_type != BDADDR_BREDR` branch of BlueZ's
+  device-found handler — so it exists once the device has been seen in an LE advertising report —
+  which starts out invalid, is never cleared, and is not persisted, so a `bluetoothd` restart loses it
+  again. `PreferredBearer` would answer the question directly, since it exists exactly when both
+  bearers are known, but it is flagged experimental and needs `Experimental=true` in
+  `/etc/bluetooth/main.conf` to be exported at all.
+- **On Windows the Low Energy half exists only in a WinRT build, and the BSDs and Haiku have none at
+  all.** On Windows it is a separate WinRT query, which the build only enables
   when the WinRT headers are available: a Windows build with g++ compiles it out (CMake prints
   `WinRT support is disabled due to known issues with g++`), and that build then reports `Classic`
   for everything and `null` for every signal quality. On macOS it is a `CBCentralManager`, and the
-  three bullets below cover what that does and does not reach. The BSDs and Haiku have no Low Energy
+  macOS bullets below cover what that does and does not reach. The BSDs and Haiku have no Low Energy
   path at all, so `showType: "le"` leaves the list empty there.
 - **On macOS, the module asks for Bluetooth permission the first time it runs.** Every Bluetooth API
   is behind the `kTCCServiceBluetoothAlways` service, and macOS attributes the request to the
@@ -234,15 +273,21 @@ normal outcome, not an error. On failure the object is `{ "type": "Bluetooth", "
 - **`{type}` means different things on different platforms.** Windows and macOS decode the
   Bluetooth service/device class bits into a list such as `Audio, Rendering` or a single major class
   such as `Audio/Video`; Linux uses BlueZ's freedesktop `Icon` property verbatim, so it prints
-  values like `audio-headset`; the BSDs leave it empty. A device that only speaks LE has no class of
+  values like `audio-headset` — and BlueZ derives that icon from the class of device whenever there
+  is one, falling back to the LE appearance only for a device with no class, so on Linux `{type}` is
+  the class-of-device category (`phone`, `audio-headset`) for anything ever seen over BR/EDR; the
+  BSDs leave it empty. A device that only speaks LE has no class of
   device at all, so Windows falls back to the LE appearance category, which is much coarser — a pair
   of earbuds reports `Audio Sink`, not `Rendering, Audio`.
 - **`signalQuality` is the LE endpoint's last known figure, not a live link measurement.** It is
   converted from `System.Devices.Aep.SignalStrength` (Windows), the `RSSI` property (Linux) or a
   `readRSSI` round trip (macOS) with the same `-50 dBm = 100 %` … `-100 dBm = 0 %` scale the `Wifi`
-  module uses. On Windows and Linux it stays readable while the link is down, so it can be present on
-  a device whose `connected` is `false`; on macOS it is only read for a link the system reports as
-  connected. It says nothing about the classic link of a dual-mode device.
+  module uses. On Windows it stays readable while the link is down, so it can be present on a device
+  whose `connected` is `false`. On Linux it has nothing to do with the link: BlueZ writes `RSSI` only
+  from discovery reports and invalidates it when the discovery session ends, and it is not persisted,
+  so a connected device that has not been scanned since `bluetoothd` started reports no signal
+  quality at all — the ordinary case, since the module never scans. On macOS it is only read for a
+  link the system reports as connected. It says nothing about the classic link of a dual-mode device.
 - **`showDisconnected` has no effect on the BSDs or on Haiku.** Those backends hard-code
   `connected = true` for every device they report, so the filter can never match.
 - **On Linux a device BlueZ reports as unpaired loses its name.** The `Paired` property is used as
@@ -286,10 +331,30 @@ every object path containing `/dev_` is taken as a device and its `org.bluez.Dev
 `Paired` and `Percentage`. Adapter objects (`/org/bluez/hci0`) are skipped because their path has no
 `/dev_`. A device with an empty name becomes `Unknown Device`.
 
-Three more properties feed the two newer fields: `Class` sets the classic bit and `Appearance` the
-LE bit, because the class of device is a BR/EDR concept that BlueZ only publishes for devices seen
-over classic, while the appearance is a GATT characteristic that only LE devices have. `RSSI` (an
-`int16` in dBm, present while the device is connected) is converted into the signal quality.
+Three more properties feed the two newer fields, and on Linux they are an *inference* rather than an
+enumeration: `org.bluez.Device1` has no per-stack split and no "supports LE" property, so `Class`
+sets the classic bit and `Appearance` the LE bit. `Class` is the BR/EDR class of device, learned from
+BR/EDR EIR / inquiry data, and it is published whenever BlueZ knows one — so it means "seen over
+BR/EDR", not "classic only". `Appearance` is the LE-only GATT appearance, learned from LE
+advertising data (AD type `0x19`).
+
+BlueZ never publishes the two together. Its `get_appearance()` returns FALSE as soon as
+`dev_property_exists_class()` reports a class, and the property table registers that getter as the
+`exists` callback, so `Appearance` is missing from the `GetManagedObjects` reply for every device that
+has a `Class` rather than present with a default value; `btd_device_get_icon()` prefers `Class` the
+same way. BlueZ treats the two as mutually exclusive descriptions of the device's *category*, not as
+a record of which radios it speaks (checked against BlueZ 5.87, `src/device.c`). On top of that the
+appearance value is usually unknown: BlueZ learns it only from an LE advertising report carrying AD
+type `0x19`, never persists a zero, and `/var/lib/bluetooth` is mode `0700`, so a device that has only
+ever been connected over BR/EDR has no `Appearance=` line in its storage either — where the
+`SupportedTechnologies` key would say `BR/EDR;` rather than `BR/EDR;LE`, which is what it turns into
+after a real LE connection or LE sighting, and no D-Bus property exposes that key. The result is that
+a dual-mode phone paired over BR/EDR reports `["Classic"]` here while reporting both stacks on
+Windows and macOS.
+
+`RSSI` (an `int16` in dBm) is converted into the signal quality, but it is written only from discovery
+reports and invalidated when the discovery session ends, so it reflects the last scan rather than the
+link — see the *Pitfalls* section.
 
 When `showDisconnected` is off the module first counts connected devices by listing
 `/sys/class/bluetooth` and counting the entries whose name contains `:`, returning an empty list
@@ -299,7 +364,9 @@ the D-Bus reply and stops early once it has seen as many connected devices as th
 `showType` is applied to that same walk rather than to a call that could be skipped: a device whose
 `deviceType` has no bit the option enables is dropped, and a device whose `deviceType` came out empty
 is kept, because BlueZ does not promise that a `Device1` object carries either `Class` or
-`Appearance`.
+`Appearance`. Since the two are mutually exclusive in BlueZ's reply, that filter is one sided:
+`showType: "le"` drops every device ever seen over BR/EDR — dual-mode phones included — instead of
+narrowing the list to their Low Energy half, and it keeps the devices whose stack is unknown.
 
 ### macOS
 
