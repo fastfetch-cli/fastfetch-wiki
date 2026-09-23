@@ -39,7 +39,7 @@ the rule.
 | `string` | string | `"-"` | The text to repeat. Any length; multi-byte UTF-8 is handled. |
 | `times` | integer | `0` | How many times to repeat `string`. `0` means “auto”, i.e. match the title width. |
 | `outputColor` | color | – | Overrides `display.color.output`. |
-| `condition` | object | – | See [Configuration](Modules/Global#condition-in-practice). |
+| `condition` | object | – | See [Configuration](Modules-Global#condition-in-practice). |
 
 That is the complete list. `key`, `keyColor`, `keyIcon`, `keyWidth` and `format` are **not** accepted
 by this module; writing them is an unknown key (see [Pitfalls](#pitfalls)).
@@ -99,7 +99,7 @@ A colored rule:
   back to the automatic width, so a bad value no longer floods the terminal. Use `0` for “auto” — a
   negative number is not a shorthand for it.
 - **The automatic width follows the *unformatted* title.** It is computed from the user name and
-  host name, not from the title's actual output. If you give [Title](Modules/Title) a `format`, the
+  host name, not from the title's actual output. If you give [Title](Modules-Title) a `format`, the
   separator no longer matches:
 
   ```
@@ -116,7 +116,7 @@ A colored rule:
   here.
 - **Unknown keys are silent.** `{"type": "separator", "key": "-"}` is accepted, ignored and produces
   no message unless `display.showErrors` is enabled — see
-  [Global](Modules/Global#pitfalls-that-bite-across-modules).
+  [Global](Modules-Global#pitfalls-that-bite-across-modules).
 - **`length` is a renamed option and only prints a deprecation notice.** It is still accepted so that
   old configs are not silently meaningless:
 

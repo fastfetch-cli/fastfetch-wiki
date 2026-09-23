@@ -32,7 +32,7 @@ No detection layer. Which logo is exported depends only on the `logo.source` / `
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `condition` | object | – | See [Configuration](Modules/Global#condition-in-practice). |
+| `condition` | object | – | See [Configuration](Modules-Global#condition-in-practice). |
 
 That is the *only* option the module's JSON parser accepts. `type` is silently ignored (the module
 has no per-module type setting of its own). The logo to export is chosen by the **global** `logo`

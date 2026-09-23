@@ -48,7 +48,7 @@ The module itself is platform independent — it only reads the already-populate
 | `color.user` | color | – | Color of the user name. Falls back to `display.color.title`. |
 | `color.at` | color | – | Color of the `@`. |
 | `color.host` | color | – | Color of the host name. |
-| `condition` | object | – | See [Configuration](Modules/Global#condition-in-practice). |
+| `condition` | object | – | See [Configuration](Modules-Global#condition-in-practice). |
 
 Notes:
 
@@ -60,7 +60,7 @@ Notes:
 - The icon is purely cosmetic and exists only to look good in a Nerd Font; replace it or set
   `"keyIcon": ""` to drop it.
 - Module options are **JSON-config only**. Since 2.52.0 there are no `--title-*` command line
-  flags (see [Global](Modules/Global#pitfalls-that-bite-across-modules)).
+  flags (see [Global](Modules-Global#pitfalls-that-bite-across-modules)).
 
 ```jsonc
 {
@@ -148,7 +148,7 @@ user in /home/user/projects on my-pc
 - **The default key is a single space, not empty.** `key: " "` hides the key *and* the separator.
   Setting `key: ""` does the opposite of hiding: it falls back to the localized module name
   (`Title: …`). This is the same convention as every other module — see
-  [Global](Modules/Global#options-every-module-accepts).
+  [Global](Modules-Global#options-every-module-accepts).
 - **`{user-id}` changes type across platforms.** On Unix it is a UID (number); on Windows it is a
   SID string. Anything that parses the JSON output must accept both.
 - **A missing `fqdn` does not affect `{host-name}`'s JSON counterpart.** `result.hostName` is always
@@ -160,7 +160,7 @@ user in /home/user/projects on my-pc
 - **`{cwd}` is trimmed of trailing slashes** (except for the root `/`), so it does not always read
   back as `result.cwd` from the JSON output.
 - **The Title module has a side effect.** It stores `fqdn` into `instance.state.titleFqdn`, which
-  the [Separator](Modules/Separator) module reads to size its automatic rule. If you print a separator
+  the [Separator](Modules-Separator) module reads to size its automatic rule. If you print a separator
   without a title, the separator sizes itself from a non-FQDN host name.
 - **`fqdn: true` on Windows** prints the full computer name (e.g. `PC.domain.local`), which is
   usually not what users expect from a "hostname".

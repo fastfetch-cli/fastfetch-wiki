@@ -116,7 +116,7 @@ Whether a variable counts as "set" depends on its type, and for every numeric ty
 A numeric `0` is therefore "not set", and so is every negative number. That is what makes the
 conditional form the right way to print a value that the platform may not report: modules whose
 detection layer marks "no data" with a negative sentinel hand that sentinel to the format engine, so
-a bare `{lmp-version}` in [Modules/BluetoothRadio](Modules/BluetoothRadio) prints `-2147483648`
+a bare `{lmp-version}` in [Modules-BluetoothRadio](Modules-BluetoothRadio) prints `-2147483648`
 when the field is absent, while `{?lmp-version}…{?}` correctly treats it as unset and prints nothing.
 The raw variable and the condition disagree on purpose; use the conditional form for anything that
 can be absent. The test is `formatArgSet()` in `src/common/impl/format.c`.

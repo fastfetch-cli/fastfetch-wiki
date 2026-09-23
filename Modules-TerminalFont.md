@@ -142,7 +142,7 @@ Windows Terminal size of `12` prints as `{size}` = `12` and inside `{combined}` 
   `/etc/vconsole.conf` and falls back to running `showconsolefont --info`.
 - **Font detection needs terminal detection.** The first thing the module does is call
   `ffDetectTerminal()`; when that produced no process name the error is
-  `Terminal font needs successful terminal detection`, and every `Modules/Terminal` pitfall
+  `Terminal font needs successful terminal detection`, and every `Modules-Terminal` pitfall
   applies unchanged.
 - **Several backends execute other programs.** `wezterm-gui ls-fonts --text a`,
   `contour font-locator`, `kitty +kitten query-terminal`, `showconsolefont --info`, and on macOS

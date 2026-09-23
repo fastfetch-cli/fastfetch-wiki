@@ -11,4 +11,4 @@
 1. [Display Detection Methods](Display-Detection-Methods)
 1. [Building](Building)
 1. [Support Status](Support+Status)
-1. [Modules Reference](Modules/Global)
+1. [Modules Reference](Modules)

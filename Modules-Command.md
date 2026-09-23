@@ -55,7 +55,7 @@ compiled everywhere. Process handling itself lives in
 | `keyWidth` | integer | – | Overrides `display.key.width`. |
 | `outputColor` | color | – | Overrides `display.color.output`. |
 | `format` | string | – | Output format string; only `{result}`. |
-| `condition` | object | – | See [Configuration](Modules/Global#condition-in-practice). |
+| `condition` | object | – | See [Configuration](Modules-Global#condition-in-practice). |
 
 About `parallel`:
 

@@ -22,7 +22,7 @@ Network I/O (lo0): 361 B/s (IN) - 361 B/s (OUT)
 interface that carries the default route is marked with a trailing ` *`. With `detectTotal: true` the
 module prints the cumulative counters since boot and the `/s` suffix disappears.
 
-Like `Modules/DiskIO`, this module needs two readings to compute a rate and therefore **waits**
+Like `Modules-DiskIO`, this module needs two readings to compute a rate and therefore **waits**
 `waitTime` milliseconds (250 by default) before it can print anything. `detectTotal: true` does not
 wait.
 

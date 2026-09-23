@@ -216,8 +216,8 @@ from `result`.
   extra fields empty; no error is printed.
 - **The `GPU` module consumes the Vulkan and OpenCL device lists.** When it falls back to either
   of those APIs it takes ownership of the cached list, so a later `vulkan` or `opencl` entry in the
-  same run reports `"gpus": []`. See [Modules/Vulkan](Modules/Vulkan) and
-  [Modules/OpenCL](Modules/OpenCL).
+  same run reports `"gpus": []`. See [Modules-Vulkan](Modules-Vulkan) and
+  [Modules-OpenCL](Modules-OpenCL).
 - **`{temperature}` needs `temp: true`, and on Linux and FreeBSD the NVIDIA path also needs the
   vendor library.** The sysfs `hwmon` readers cover AMD and Intel, but an NVIDIA card on the
   proprietary driver is only read through NVML.

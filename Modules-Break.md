@@ -35,7 +35,7 @@ platform.
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `condition` | object | – | Prints the empty line only when the condition matches. See [Global](Modules/Global#condition-in-practice). |
+| `condition` | object | – | Prints the empty line only when the condition matches. See [Global](Modules-Global#condition-in-practice). |
 
 That is the complete list. `key`, `keyColor`, `keyIcon`, `keyWidth`, `outputColor` and `format` are
 **not** accepted; writing any of them is an unknown key (see [Pitfalls](#pitfalls)).
@@ -94,7 +94,7 @@ A blank line that only appears on Linux:
 
 ## Pitfalls
 
-- **A `break` is a blank line, not a rule.** Use [Separator](Modules/Separator) when you want a
+- **A `break` is a blank line, not a rule.** Use [Separator](Modules-Separator) when you want a
   visible horizontal line; `break` prints nothing but the newline.
 - **One line, and only one.** `break` has no count option, so two blank lines need two entries.
 - **The line is printed even when the module reports an unknown key.** The parse pass runs first, so
@@ -105,7 +105,7 @@ A blank line that only appears on Linux:
   ```
 
   and then still prints its empty line. The message only appears when `display.showErrors` is true
-  (see [Global](Modules/Global#globals-that-change-module-output)).
+  (see [Global](Modules-Global#globals-that-change-module-output)).
 - **A `condition` that does not match prints nothing at all** — not even the empty line. Like every
   other module, the entry is skipped before it is dispatched, and the skip is silent even with
   `display.showErrors` enabled.

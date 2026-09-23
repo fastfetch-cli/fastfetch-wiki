@@ -114,7 +114,7 @@ failure the object is `{ "type": "Weather", "error": "…" }`, with errors such 
 
 ## Compared with PublicIp
 
-`Modules/PublicIp` is the other module that asks a remote service during the prepare step and prints
+`Modules-PublicIp` is the other module that asks a remote service during the prepare step and prints
 the answer later. The two share the shape but not the flexibility:
 
 | | Weather | PublicIp |
@@ -124,12 +124,12 @@ the answer later. The two share the shape but not the flexibility:
 | Response handling | opaque text, printed verbatim | JSON parsed for the default service; the whole body is the address for a custom `url` |
 | HTTP compression, TCP Fast Open | off | on for the default service |
 | TLS | none | none |
-| Replacement when the endpoint is unsuitable | `Modules/Command` with `curl` | same |
+| Replacement when the endpoint is unsuitable | `Modules-Command` with `curl` | same |
 
 Because there is no `url` key here, a different weather service or an HTTPS endpoint means leaving
 this module behind. The recipe — and the points that matter when writing it, such as always passing
 `--max-time` — is written up in
-[Using HTTPS and other unsupported URLs](Modules/PublicIp#using-https-and-other-unsupported-urls).
+[Using HTTPS and other unsupported URLs](Modules-PublicIp#using-https-and-other-unsupported-urls).
 
 ## Pitfalls
 
@@ -137,7 +137,7 @@ this module behind. The recipe — and the points that matter when writing it, s
   with `Error: Weather module can only be used once due to internal limitations` and exit status 1,
   before anything is printed. The check lives in the prepare step, so it fires even when the module
   would not have been reached. Two different locations therefore cannot be shown in one run — unlike
-  `Modules/PublicIp`, which has one slot per address family and so tolerates an `ipv4` plus an `ipv6`
+  `Modules-PublicIp`, which has one slot per address family and so tolerates an `ipv4` plus an `ipv6`
   instance. Use a `command` module for anything more involved.
 - **The request is sent while the configuration is parsed, not while printing.** The prepare step
   opens the connection and writes the request; the print step reads the answer. Two consequences: the

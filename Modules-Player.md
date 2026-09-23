@@ -7,9 +7,9 @@
 | Module type | `player` |
 | Default order | 47 (only used by `--gen-config`) |
 | Module source | `src/modules/player/player.c` |
-| Detection source | `src/detection/media/` (shared with [Media](Modules/Media)) |
+| Detection source | `src/detection/media/` (shared with [Media](Modules-Media)) |
 
-An alias of the [Media](Modules/Media) module that prints only the player instead of the song. It
+An alias of the [Media](Modules-Media) module that prints only the player instead of the song. It
 reads the same shared `FFMediaResult` and prints a single line:
 
 ```
@@ -22,7 +22,7 @@ name, e.g. `Spotify`.
 
 ## Platform support
 
-Identical to [Media](Modules/Media): `player` has no detection source of its own and calls
+Identical to [Media](Modules-Media): `player` has no detection source of its own and calls
 `ffDetectMedia()`.
 
 | Platform | Implementation | Notes |
@@ -89,7 +89,7 @@ is no URL — or the URL does not start with `http://` / `https://` — the two 
 layer at all. There is no `result` object, and `--show-errors` changes nothing because the error is
 not routed through `ffPrintError()`.
 
-To get the player in machine-readable form, read the `player` object of the [Media](Modules/Media)
+To get the player in machine-readable form, read the `player` object of the [Media](Modules-Media)
 module instead — `player.name`, `player.id` and `player.url` correspond to `{name}`, `{id}` and
 `{url}`.
 

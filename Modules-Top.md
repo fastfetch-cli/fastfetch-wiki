@@ -24,9 +24,9 @@ single result loses the index, and `compact: true` collapses everything into one
 Top Processes: firefox code gtkd gdbus
 ```
 
-Unlike `Modules/Processes`, this module needs **two** readings of the process table to turn CPU time
+Unlike `Modules-Processes`, this module needs **two** readings of the process table to turn CPU time
 and I/O counters into rates, so it waits before printing. See `waitTime` below and the note in
-`Modules/DiskIO`, which uses the same sampling scheme.
+`Modules-DiskIO`, which uses the same sampling scheme.
 
 ## Platform support
 
@@ -217,7 +217,7 @@ configuration return the same per-process data.
   and a Hurd process with no arguments is printed as `(unknown)`.
 - **Both parse passes report the same warning.** The module object is parsed once while options are
   built and once while printing, so one unknown key produces two identical lines. This is the same
-  doubling described in `Modules/NetIO`.
+  doubling described in `Modules-NetIO`.
 
 ## Implementation
 

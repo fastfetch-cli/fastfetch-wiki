@@ -111,7 +111,7 @@ resolve there.
 
 - **The JSON ignores `ignores`.** It carries an `ignored` flag per device instead of dropping them, so
   a JSON consumer that wants the text output's device list has to filter on that flag itself. This is
-  the same contract as [Keyboard](Modules/Keyboard).
+  the same contract as [Keyboard](Modules-Keyboard).
 - **Windows lists a mouse once per HID interface.** `GetRawInputDeviceList()` returns one entry per
   top-level collection and every `RIM_TYPEMOUSE` entry becomes a device, so a single mouse with
   several collections appears two or more times with the same name and serial. Nothing de-duplicates

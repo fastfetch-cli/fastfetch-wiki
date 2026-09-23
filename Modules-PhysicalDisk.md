@@ -9,7 +9,7 @@
 | Module source | `src/modules/physicaldisk/physicaldisk.c` |
 | Detection source | `src/detection/physicaldisk/` |
 
-Prints one line per physical device — a disk, not a mounted volume. Where `Modules/Disk` reports
+Prints one line per physical device — a disk, not a mounted volume. Where `Modules-Disk` reports
 file-system usage per mount point, this module reports the hardware behind it: model name, capacity,
 whether it is an SSD or a rotating disk, whether it is removable, whether the medium is read-only
 and, when asked, its temperature. The key is `Physical Disk (<device name>)`, falling back to the
@@ -175,7 +175,7 @@ and otherwise a 1-based counter.
   `kind` is `null` there. It also skips `/dev/disk/virtual`, so virtual devices are missing rather
   than hidden — `hideVirtual` has no effect on this platform.
 - **`{size}` is the device size, not the partition size.** The module never looks at partitions or
-  file systems; use `Modules/Disk` for how much of a disk is in use.
+  file systems; use `Modules-Disk` for how much of a disk is in use.
 
 ## Implementation
 

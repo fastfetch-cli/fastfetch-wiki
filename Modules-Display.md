@@ -23,7 +23,7 @@ refresh rate only when one was reported. `[Built-in]`/`[External]` is omitted wh
 unknown, and the trailing `*` marks the primary display — but only when more than one display is
 connected.
 
-`Display` and [Monitor](Modules/Monitor) are the same detection behind two different default
+`Display` and [Monitor](Modules-Monitor) are the same detection behind two different default
 layouts. `Brightness`, `DE`, `WM`, `WMTheme`, `Theme`, `Icons`, `Font`, `Cursor`, `Wallpaper` and
 `TerminalFont` read the same detection result — see [Implementation](#implementation).
 

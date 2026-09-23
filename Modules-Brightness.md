@@ -22,7 +22,7 @@ The percentage is normalised from the device's native scale — `(current - min)
 all end up on the same 0–100 scale. The raw values are still what `{current}`, `{min}` and `{max}`
 expose, and they are **not** comparable between displays.
 
-Unlike [Display](Modules/Display), this module reports a hardware state that has to be *queried*,
+Unlike [Display](Modules-Display), this module reports a hardware state that has to be *queried*,
 and there are only two ways to do it: the platform's own backlight API for built-in panels, and
 DDC/CI over I2C for external ones. Which of the two answered is what the `[Built-in]`/`[External]`
 marker reflects — it is a property of the code path, not a fact about the hardware.

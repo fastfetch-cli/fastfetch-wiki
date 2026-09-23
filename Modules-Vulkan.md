@@ -134,7 +134,7 @@ failure the object is `{ "type": "Vulkan", "error": "…" }`.
   a newer Vulkan header adds — as `Unknown`. A virtual GPU therefore looks exactly like a real
   integrated one, and an `OTHER` device is only distinguishable by the string itself. The `GPU`
   module spells the same device differently: its JSON writes `type: null` where this module writes
-  `"Unknown"` (see [Modules/GPU](Modules/GPU)).
+  `"Unknown"` (see [Modules-GPU](Modules-GPU)).
 - **`memory.*` is the whole memory report — everything else is left out.** A GPU object carries only
   `type`, `vendor`, `name`, `driver`, `platformApi`, `deviceId` and `memory`, because Vulkan cannot
   answer any other question: index, core count, core usage, temperature, clock and PCIe speed are

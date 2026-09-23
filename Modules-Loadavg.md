@@ -154,7 +154,7 @@ the two-digit text output.
   `loadavg_sunos.c` and never builds `loadavg_linux.c`, so the Hurd reports whatever
   `getloadavg()` returns — the same source Solaris uses. A Hurd system whose libc cannot provide
   three samples reports `getloadavg() failed` instead. The `read(/proc/loadavg) failed` wording
-  [Uptime](Modules/Uptime) uses for its own dead end therefore never appears on the Hurd any more.
+  [Uptime](Modules-Uptime) uses for its own dead end therefore never appears on the Hurd any more.
 - **Load average is a host-wide value.** Inside a container it reports the host's load, and in a
   container with a private, restricted `/proc` it may be missing entirely — the module then
   silently falls back to `sysinfo()`, which is not namespaced either.

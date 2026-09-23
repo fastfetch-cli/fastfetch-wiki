@@ -246,7 +246,7 @@ machine without a Wi-Fi interface answers with `"result": []` while the text pat
   are worth showing. The same placeholder is used for a connection that genuinely has no address.
 - **The text path fails on an empty interface list but the JSON path does not.** With no Wi-Fi
   interface at all the text output is an error (`No Wifi interfaces found`) and the JSON result is an
-  empty array. This is the same split described in `Modules/Keyboard`.
+  empty array. This is the same split described in `Modules-Keyboard`.
 
 ## Implementation
 

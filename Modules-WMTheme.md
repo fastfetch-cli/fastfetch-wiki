@@ -10,7 +10,7 @@
 | Detection source | `src/detection/wmtheme/` |
 
 Prints the theme of the window manager that is currently running. The result is one string, not two
-parts like `Modules/Theme`.
+parts like `Modules-Theme`.
 
 ```
 WM Theme: Breeze

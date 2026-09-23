@@ -160,7 +160,7 @@ Terminal: [dumb][dumb][][0][dumb][][][]
   being the whole value when that value contains no `/`, and the part after the last `/`
   otherwise. A format that prints both unconditionally has to tolerate empty output.
 - **Terminal detection depends on shell detection.** `ffDetectTerminal()` starts from
-  `ffDetectShell()->ppid`. A wrapper mistaken for the shell (see `Modules/Shell`) therefore also
+  `ffDetectShell()->ppid`. A wrapper mistaken for the shell (see `Modules-Shell`) therefore also
   produces a wrong — or missing — terminal, and `FFTS_IGNORE_PARENT=1` is the shared workaround.
 - **Inside an MSYS shell on Windows the process walk is skipped.** `getTerminalInfo()` returns
   immediately when `MSYSTEM` is set, because MSYS does not follow the process tree of native

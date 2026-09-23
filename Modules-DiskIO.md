@@ -181,7 +181,7 @@ path is treated as an error rather than being skipped.
 ### Linux and Android
 
 `/sys/block/` is walked, and a device is skipped as `virtual device` when it has no `device`
-subdirectory — loop and RAM disks never appear here, unlike in `Modules/PhysicalDisk`. The name is
+subdirectory — loop and RAM disks never appear here, unlike in `Modules-PhysicalDisk`. The name is
 `vendor` + `model` with the kernel name as the fallback and the NVMe namespace suffix for
 multi-namespace drives. Counters come from `/sys/block/<dev>/stat`: the field order is reads,
 read-sectors-merges, write-sectors, write-merges, so the parse reads past the merged-count fields.

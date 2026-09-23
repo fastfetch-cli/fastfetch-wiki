@@ -30,7 +30,7 @@ The first row is colours 0–7 (`\e[40m`–`\e[47m`), the second is 8–15 (`\e[
 \e[90m███\e[91m███\e[92m███\e[93m███\e[94m███\e[95m███\e[96m███\e[97m███\e[m
 ```
 
-Unlike [Break](Modules/Break) and [Separator](Modules/Separator), this module *does* have a key
+Unlike [Break](Modules-Break) and [Separator](Modules-Separator), this module *does* have a key
 block — but the default key is a **single space**, which is the magic value that hides both the key
 and the `: ` separator. That is why the default output starts straight with the swatch.
 
@@ -60,7 +60,7 @@ bright half, because the Linux console needs blink enabled for a light backgroun
 | `keyColor` | color | – | Overrides `display.color.keys` |
 | `keyIcon` | string | – | Used when `display.key.type` includes the icon bit |
 | `keyWidth` | integer | – | Overrides `display.key.width` |
-| `condition` | object | – | See [Global](Modules/Global#condition-in-practice) |
+| `condition` | object | – | See [Global](Modules-Global#condition-in-practice) |
 
 `symbol` decides which of two code paths runs, and the two paths do not share options:
 

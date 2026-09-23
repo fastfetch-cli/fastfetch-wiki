@@ -17,7 +17,7 @@ density.
 Monitor (HDMI-1): 1920x1080 px @ 60 Hz - 521x293 mm (23.99 inches, 91.79 ppi)
 ```
 
-`Monitor` is the **same detection** as [Display](Modules/Display) — it calls the same
+`Monitor` is the **same detection** as [Display](Modules-Display) — it calls the same
 `ffConnectDisplayServer()` and walks the same display list — with a different default line and a
 different set of format variables. Everything after the resolution is conditional:
 
@@ -34,7 +34,7 @@ there is no `(<n>)` fallback and no per-display numbering: two nameless displays
 
 The module layer is platform independent — `monitor.c` only formats what the shared
 `displayserver` subsystem returns. Detection is therefore identical to
-[Display](Modules/Display#platform-support): the `displayserver` subsystem has a real implementation
+[Display](Modules-Display#platform-support): the `displayserver` subsystem has a real implementation
 on all ten platforms (Wayland / XCB / Xlib / DRM / sysfs on Linux and the BSDs, CoreGraphics on
 macOS, GDI plus `DisplayConfigGetDeviceInfo` on Windows, `BScreen` on Haiku, and the `cmd` /
 `dumpsys` / `getprop` chain on Android).
@@ -173,6 +173,6 @@ singleton shared with every other display module, the strings are deliberately n
 
 There is no detection code in the module directory: everything comes from
 `src/detection/displayserver/`, whose per-platform behaviour is described in
-[Display](Modules/Display#implementation). One consequence worth repeating here is that
+[Display](Modules-Display#implementation). One consequence worth repeating here is that
 `ffdsAppendDisplay()` drops any display with a zero width or height and forces a DPI of 96 when the
 backend cannot report one, so a `Monitor` line always has a usable resolution.

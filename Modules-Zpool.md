@@ -161,7 +161,7 @@ On failure the object is `{ "type": "Zpool", "error": "…" }`; a machine with n
 - **`No zpool found` is an error, not an empty line.** A machine with a working libzfs and no pool
   prints nothing at all unless `display.showErrors` is `true`, and the JSON path answers with an
   empty array rather than the error. This is the same text/JSON split described in
-  `Modules/Keyboard`.
+  `Modules-Keyboard`.
 - **The pool state is the library's own string.** `ONLINE`, `DEGRADED`, `FAULTED`, `OFFLINE`,
   `UNAVAIL` and `REMOVED` are passed through verbatim, and a property that cannot be read becomes
   `unknown` — so `{state}` is not a fixed enumeration that a format can match on exhaustively.

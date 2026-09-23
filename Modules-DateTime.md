@@ -54,7 +54,7 @@ so the output is identical on every platform.
 | `keyIcon` | string | – | Used when `display.key.type` includes the icon bit |
 | `keyWidth` | integer | – | Overrides `display.key.width` |
 | `outputColor` | color | – | Overrides `display.color.output` |
-| `condition` | object | – | See [Global](Modules/Global#condition-in-practice) |
+| `condition` | object | – | See [Global](Modules-Global#condition-in-practice) |
 
 There is no timezone, no locale and no clock-source option: the module uses the process's local time
 and the process's `LC_TIME`. An empty `format` string (`""` or `null`) falls back to the default

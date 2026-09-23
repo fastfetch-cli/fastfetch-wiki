@@ -45,10 +45,10 @@ No detection layer, no OS calls — the text is taken verbatim from the config.
 | `keyIcon` | string | built-in glyph | The icon printed when `display.key.type` includes the icon bit. Set it to any glyph you like, or to `""` to print none. |
 | `keyWidth` | integer | – | Overrides `display.key.width`. |
 | `outputColor` | color | – | Overrides `display.color.output`. |
-| `condition` | object | – | See [Configuration](Modules/Global#condition-in-practice). |
+| `condition` | object | – | See [Configuration](Modules-Global#condition-in-practice). |
 
 The keys above are the entire accepted set. `text` is **not** a valid key here — that is the
-[Command](Modules/Command) module's option.
+[Command](Modules-Command) module's option.
 
 Beware of the `key` default: because the initial key is a single space, a `custom` module without an
 explicit key prints only its text. Writing `"key": ""` does *not* hide it either — see
@@ -152,7 +152,7 @@ Constants are handy for repeated values:
 - **`\e` only works in a `.json5` config.** `.json` and `.jsonc` are read with the strict reader,
   which rejects the escape with `invalid escaped sequence in string`. `{#name}` / `{#RRGGBB}` (as used
   above) works in every dialect, as does `\u001b`. See
-  [Global](Modules/Global#pitfalls-that-bite-across-modules).
+  [Global](Modules-Global#pitfalls-that-bite-across-modules).
 - **`custom` has no detection layer**, so it never fails and never reports an error — a mistake in
   `format` is invisible. Test with `--pipe` to see the raw output.
 - **Module options are JSON-only.** There is no `--custom-format` flag any more.

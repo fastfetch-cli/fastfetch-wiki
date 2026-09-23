@@ -10,7 +10,7 @@
 | Detection source | `src/detection/bluetoothradio/` |
 
 Prints one line per **local** Bluetooth radio — the adapter built into the machine, not the
-peripherals it talks to; those belong to `Modules/Bluetooth`. The key is
+peripherals it talks to; those belong to `Modules-Bluetooth`. The key is
 `Bluetooth Radio (<radio name>)` and the value is the adapter's Bluetooth version and chip vendor:
 
 ```
@@ -41,7 +41,7 @@ prints nothing but the error `Bluetooth radios found but none enabled`.
 | NetBSD | `bluetoothradio_nosupport.c` | Not supported |
 | OpenBSD | `bluetoothradio_nosupport.c` | Not supported |
 | Solaris / illumos | `bluetoothradio_nosupport.c` | Not supported |
-| Haiku | `bluetoothradio_nosupport.c` | Not supported, even though `Modules/Bluetooth` has a Haiku backend |
+| Haiku | `bluetoothradio_nosupport.c` | Not supported, even though `Modules-Bluetooth` has a Haiku backend |
 | macOS | `bluetoothradio_apple.m` | `IOBluetoothHostController.controllers` plus `system_profiler SPBluetoothDataType` |
 | Windows | `bluetoothradio_windows.c` | `bluetoothapis` radio enumeration plus `IOCTL_BTH_GET_LOCAL_INFO` |
 
@@ -176,7 +176,7 @@ for the LMP markers.
   a hardware revision. A controller that advertises neither LE Audio nor GATT keeps the `INT_MIN`
   marker, which `{?lmp-version}…{?}` reports as unset (see above).
 - **Battery level is not part of this module.** A radio is the adapter; peripheral battery lives in
-  `Modules/Bluetooth`.
+  `Modules-Bluetooth`.
 
 ## Implementation
 

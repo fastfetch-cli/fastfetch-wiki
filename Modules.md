@@ -1,10 +1,10 @@
 # Global
 
-> The shared model behind every module page in `Modules/`
+> The shared model behind every module page.
 
 fastfetch is a list of **modules**: each one collects a piece of system information and prints one
 or more lines (`OS: Linux 6.8.0`, `CPU: AMD Ryzen 7 5800X (16) @ 3.80 GHz`). This page explains how the
-modules fit together, what they have in common, and what conventions the pages in this folder
+modules fit together, what they have in common, and what conventions the individual module pages
 follow. Read it once and the individual pages become much easier to navigate.
 
 Aimed at three audiences, in this order: people who *use* fastfetch, people who want to *extend*
@@ -237,82 +237,82 @@ without a number are never part of a generated config.
 
 | Module | `type` | Order | Description |
 |---|---|---|---|
-| [Title](Modules/Title) | `title` | 1 | Print the title, including your username and hostname |
-| [Separator](Modules/Separator) | `separator` | 2 | Print a separator line |
-| [OS](Modules/OS) | `os` | 3 | Print the OS or Linux distribution name and version |
-| [Host](Modules/Host) | `host` | 4 | Print your computer's product name |
-| [BIOS](Modules/BIOS) | `bios` | 5 | Print first-stage bootloader information (name, version, release date, etc.) |
-| [Bootmgr](Modules/Bootmgr) | `bootmgr` | 6 | Print second-stage bootloader information (name, firmware, etc.) |
-| [Board](Modules/Board) | `board` | 7 | Print motherboard name and other information |
-| [Chassis](Modules/Chassis) | `chassis` | 8 | Print chassis type information (desktop, laptop, etc.) |
-| [Kernel](Modules/Kernel) | `kernel` | 9 | Print system kernel version |
-| [InitSystem](Modules/InitSystem) | `initsystem` | 10 | Print init system (pid 1) name and version |
-| [Uptime](Modules/Uptime) | `uptime` | 11 | Print how long the system has been running |
-| [Loadavg](Modules/Loadavg) | `loadavg` | 12 | Print system load averages |
-| [Processes](Modules/Processes) | `processes` | 13 | Print number of running processes and threads |
-| [Packages](Modules/Packages) | `packages` | 14 | List installed package managers and count of installed packages |
-| [Shell](Modules/Shell) | `shell` | 15 | Print the current shell name and version |
-| [Editor](Modules/Editor) | `editor` | 16 | Print information about the default editor ($VISUAL or $EDITOR) |
-| [Display](Modules/Display) | `display` | 17 | Print resolutions, refresh rates, etc |
-| [Brightness](Modules/Brightness) | `brightness` | 18 | Print the current brightness level of your monitors |
-| [Monitor](Modules/Monitor) | `monitor` | 19 | Same as Display module, but with a different default output format |
-| [LM](Modules/LM) | `lm` | 20 | Print login manager (desktop manager) name and version |
-| [DE](Modules/DE) | `de` | 21 | Print desktop environment name |
-| [WM](Modules/WM) | `wm` | 22 | Print the window manager name and version |
-| [WMTheme](Modules/WMTheme) | `wmtheme` | 23 | Print the current window manager theme |
-| [Theme](Modules/Theme) | `theme` | 24 | Print the current desktop environment theme |
-| [Icons](Modules/Icons) | `icons` | 25 | Print icon style name |
-| [Font](Modules/Font) | `font` | 26 | Print system font names |
-| [Cursor](Modules/Cursor) | `cursor` | 27 | Print cursor style name |
-| [Wallpaper](Modules/Wallpaper) | `wallpaper` | 28 | Print the file path of the current wallpaper |
-| [Terminal](Modules/Terminal) | `terminal` | 29 | Print the current terminal name and version |
-| [TerminalFont](Modules/TerminalFont) | `terminalfont` | 30 | Print the font name and size used by the current terminal |
-| [TerminalSize](Modules/TerminalSize) | `terminalsize` | 31 | Print the current terminal size |
-| [TerminalTheme](Modules/TerminalTheme) | `terminaltheme` | 32 | Print the current terminal theme (foreground and background colors) |
-| [CPU](Modules/CPU) | `cpu` | 33 | Print CPU name, frequency, etc. |
-| [CPUCache](Modules/CPUCache) | `cpucache` | 34 | Print CPU cache sizes |
-| [CPUUsage](Modules/CPUUsage) | `cpuusage` | 35 | Print CPU usage. Collecting data takes some time |
-| [GPU](Modules/GPU) | `gpu` | 36 | Print GPU names, memory sizes, types, etc |
-| [Top](Modules/Top) | `top` | 37 | Print processes with the highest CPU, memory or disk I/O usage |
-| [Codec](Modules/Codec) | `codec` | 38 | Print hardware video acceleration codec types (decode / encode) |
-| [Memory](Modules/Memory) | `memory` | 39 | Print system memory usage information |
-| [PhysicalMemory](Modules/PhysicalMemory) | `physicalmemory` | 40 | Print system physical memory devices |
-| [Swap](Modules/Swap) | `swap` | 41 | Print swap (paging file) space usage |
-| [Disk](Modules/Disk) | `disk` | 42 | Print partitions, space usage, file system, etc |
-| [Btrfs](Modules/Btrfs) | `btrfs` | 43 | Print Linux BTRFS volumes |
-| [Zpool](Modules/Zpool) | `zpool` | 44 | Print ZFS storage pools |
-| [Battery](Modules/Battery) | `battery` | 45 | Print battery information |
-| [PowerAdapter](Modules/PowerAdapter) | `poweradapter` | 46 | Print power adapter name and charging watts |
-| [Player](Modules/Player) | `player` | 47 | Print the music player name that is currently active |
-| [Media](Modules/Media) | `media` | 48 | Print the name of the currently playing song |
-| [PublicIp](Modules/PublicIp) | `publicip` | 49 | Print your public IP address and related information |
-| [LocalIp](Modules/LocalIp) | `localip` | 50 | List local IP addresses (IPv4 or IPv6), MAC addresses, etc |
-| [DNS](Modules/DNS) | `dns` | 51 | Print configured DNS servers |
-| [Wifi](Modules/Wifi) | `wifi` | 52 | Print connected Wi-Fi info (SSID, connection and security protocol) |
-| [DateTime](Modules/DateTime) | `datetime` | 53 | Print the current date and time |
-| [Locale](Modules/Locale) | `locale` | 54 | Print system locale name |
-| [Vulkan](Modules/Vulkan) | `vulkan` | 55 | Print the highest Vulkan version supported by the GPU |
-| [OpenGL](Modules/OpenGL) | `opengl` | 56 | Print the highest OpenGL version supported by the GPU |
-| [OpenCL](Modules/OpenCL) | `opencl` | 57 | Print the highest OpenCL version supported by the GPU |
-| [Users](Modules/Users) | `users` | 58 | Print users who are currently logged in |
-| [Bluetooth](Modules/Bluetooth) | `bluetooth` | 59 | List connected Bluetooth devices |
-| [BluetoothRadio](Modules/BluetoothRadio) | `bluetoothradio` | 60 | List Bluetooth radios (supported versions, vendors, etc.) |
-| [Sound](Modules/Sound) | `sound` | 61 | Print sound devices, volume levels, etc |
-| [Camera](Modules/Camera) | `camera` | 62 | Print available cameras |
-| [Gamepad](Modules/Gamepad) | `gamepad` | 63 | List connected gamepads |
-| [Mouse](Modules/Mouse) | `mouse` | 64 | List connected mice |
-| [Keyboard](Modules/Keyboard) | `keyboard` | 65 | List connected keyboards |
-| [Weather](Modules/Weather) | `weather` | 66 | Print weather information |
-| [NetIO](Modules/NetIO) | `netio` | 67 | Print network I/O throughput |
-| [DiskIO](Modules/DiskIO) | `diskio` | 68 | Print physical disk I/O throughput |
-| [PhysicalDisk](Modules/PhysicalDisk) | `physicaldisk` | 69 | Print physical disk information |
-| [TPM](Modules/TPM) | `tpm` | 70 | Print information about the Trusted Platform Module (TPM) security device |
-| [Version](Modules/Version) | `version` | 71 | Print the Fastfetch version and build information |
-| [Break](Modules/Break) | `break` | 72 | Print an empty line |
-| [Colors](Modules/Colors) | `colors` | 73 | Display the terminal's 16-color palette |
-| [Command](Modules/Command) | `command` | — | Run custom shell scripts |
-| [Custom](Modules/Custom) | `custom` | — | Print a custom string, with or without key |
-| [Logo](Modules/Logo) | `logo` | — | Query built-in logo for JSON output |
+| [Title](Modules-Title) | `title` | 1 | Print the title, including your username and hostname |
+| [Separator](Modules-Separator) | `separator` | 2 | Print a separator line |
+| [OS](Modules-OS) | `os` | 3 | Print the OS or Linux distribution name and version |
+| [Host](Modules-Host) | `host` | 4 | Print your computer's product name |
+| [BIOS](Modules-BIOS) | `bios` | 5 | Print first-stage bootloader information (name, version, release date, etc.) |
+| [Bootmgr](Modules-Bootmgr) | `bootmgr` | 6 | Print second-stage bootloader information (name, firmware, etc.) |
+| [Board](Modules-Board) | `board` | 7 | Print motherboard name and other information |
+| [Chassis](Modules-Chassis) | `chassis` | 8 | Print chassis type information (desktop, laptop, etc.) |
+| [Kernel](Modules-Kernel) | `kernel` | 9 | Print system kernel version |
+| [InitSystem](Modules-InitSystem) | `initsystem` | 10 | Print init system (pid 1) name and version |
+| [Uptime](Modules-Uptime) | `uptime` | 11 | Print how long the system has been running |
+| [Loadavg](Modules-Loadavg) | `loadavg` | 12 | Print system load averages |
+| [Processes](Modules-Processes) | `processes` | 13 | Print number of running processes and threads |
+| [Packages](Modules-Packages) | `packages` | 14 | List installed package managers and count of installed packages |
+| [Shell](Modules-Shell) | `shell` | 15 | Print the current shell name and version |
+| [Editor](Modules-Editor) | `editor` | 16 | Print information about the default editor ($VISUAL or $EDITOR) |
+| [Display](Modules-Display) | `display` | 17 | Print resolutions, refresh rates, etc |
+| [Brightness](Modules-Brightness) | `brightness` | 18 | Print the current brightness level of your monitors |
+| [Monitor](Modules-Monitor) | `monitor` | 19 | Same as Display module, but with a different default output format |
+| [LM](Modules-LM) | `lm` | 20 | Print login manager (desktop manager) name and version |
+| [DE](Modules-DE) | `de` | 21 | Print desktop environment name |
+| [WM](Modules-WM) | `wm` | 22 | Print the window manager name and version |
+| [WMTheme](Modules-WMTheme) | `wmtheme` | 23 | Print the current window manager theme |
+| [Theme](Modules-Theme) | `theme` | 24 | Print the current desktop environment theme |
+| [Icons](Modules-Icons) | `icons` | 25 | Print icon style name |
+| [Font](Modules-Font) | `font` | 26 | Print system font names |
+| [Cursor](Modules-Cursor) | `cursor` | 27 | Print cursor style name |
+| [Wallpaper](Modules-Wallpaper) | `wallpaper` | 28 | Print the file path of the current wallpaper |
+| [Terminal](Modules-Terminal) | `terminal` | 29 | Print the current terminal name and version |
+| [TerminalFont](Modules-TerminalFont) | `terminalfont` | 30 | Print the font name and size used by the current terminal |
+| [TerminalSize](Modules-TerminalSize) | `terminalsize` | 31 | Print the current terminal size |
+| [TerminalTheme](Modules-TerminalTheme) | `terminaltheme` | 32 | Print the current terminal theme (foreground and background colors) |
+| [CPU](Modules-CPU) | `cpu` | 33 | Print CPU name, frequency, etc. |
+| [CPUCache](Modules-CPUCache) | `cpucache` | 34 | Print CPU cache sizes |
+| [CPUUsage](Modules-CPUUsage) | `cpuusage` | 35 | Print CPU usage. Collecting data takes some time |
+| [GPU](Modules-GPU) | `gpu` | 36 | Print GPU names, memory sizes, types, etc |
+| [Top](Modules-Top) | `top` | 37 | Print processes with the highest CPU, memory or disk I/O usage |
+| [Codec](Modules-Codec) | `codec` | 38 | Print hardware video acceleration codec types (decode / encode) |
+| [Memory](Modules-Memory) | `memory` | 39 | Print system memory usage information |
+| [PhysicalMemory](Modules-PhysicalMemory) | `physicalmemory` | 40 | Print system physical memory devices |
+| [Swap](Modules-Swap) | `swap` | 41 | Print swap (paging file) space usage |
+| [Disk](Modules-Disk) | `disk` | 42 | Print partitions, space usage, file system, etc |
+| [Btrfs](Modules-Btrfs) | `btrfs` | 43 | Print Linux BTRFS volumes |
+| [Zpool](Modules-Zpool) | `zpool` | 44 | Print ZFS storage pools |
+| [Battery](Modules-Battery) | `battery` | 45 | Print battery information |
+| [PowerAdapter](Modules-PowerAdapter) | `poweradapter` | 46 | Print power adapter name and charging watts |
+| [Player](Modules-Player) | `player` | 47 | Print the music player name that is currently active |
+| [Media](Modules-Media) | `media` | 48 | Print the name of the currently playing song |
+| [PublicIp](Modules-PublicIp) | `publicip` | 49 | Print your public IP address and related information |
+| [LocalIp](Modules-LocalIp) | `localip` | 50 | List local IP addresses (IPv4 or IPv6), MAC addresses, etc |
+| [DNS](Modules-DNS) | `dns` | 51 | Print configured DNS servers |
+| [Wifi](Modules-Wifi) | `wifi` | 52 | Print connected Wi-Fi info (SSID, connection and security protocol) |
+| [DateTime](Modules-DateTime) | `datetime` | 53 | Print the current date and time |
+| [Locale](Modules-Locale) | `locale` | 54 | Print system locale name |
+| [Vulkan](Modules-Vulkan) | `vulkan` | 55 | Print the highest Vulkan version supported by the GPU |
+| [OpenGL](Modules-OpenGL) | `opengl` | 56 | Print the highest OpenGL version supported by the GPU |
+| [OpenCL](Modules-OpenCL) | `opencl` | 57 | Print the highest OpenCL version supported by the GPU |
+| [Users](Modules-Users) | `users` | 58 | Print users who are currently logged in |
+| [Bluetooth](Modules-Bluetooth) | `bluetooth` | 59 | List connected Bluetooth devices |
+| [BluetoothRadio](Modules-BluetoothRadio) | `bluetoothradio` | 60 | List Bluetooth radios (supported versions, vendors, etc.) |
+| [Sound](Modules-Sound) | `sound` | 61 | Print sound devices, volume levels, etc |
+| [Camera](Modules-Camera) | `camera` | 62 | Print available cameras |
+| [Gamepad](Modules-Gamepad) | `gamepad` | 63 | List connected gamepads |
+| [Mouse](Modules-Mouse) | `mouse` | 64 | List connected mice |
+| [Keyboard](Modules-Keyboard) | `keyboard` | 65 | List connected keyboards |
+| [Weather](Modules-Weather) | `weather` | 66 | Print weather information |
+| [NetIO](Modules-NetIO) | `netio` | 67 | Print network I/O throughput |
+| [DiskIO](Modules-DiskIO) | `diskio` | 68 | Print physical disk I/O throughput |
+| [PhysicalDisk](Modules-PhysicalDisk) | `physicaldisk` | 69 | Print physical disk information |
+| [TPM](Modules-TPM) | `tpm` | 70 | Print information about the Trusted Platform Module (TPM) security device |
+| [Version](Modules-Version) | `version` | 71 | Print the Fastfetch version and build information |
+| [Break](Modules-Break) | `break` | 72 | Print an empty line |
+| [Colors](Modules-Colors) | `colors` | 73 | Display the terminal's 16-color palette |
+| [Command](Modules-Command) | `command` | — | Run custom shell scripts |
+| [Custom](Modules-Custom) | `custom` | — | Print a custom string, with or without key |
+| [Logo](Modules-Logo) | `logo` | — | Query built-in logo for JSON output |
 
 ## Selecting and ordering modules
 
@@ -697,7 +697,7 @@ Both output paths go through the same helpers (`src/common/impl/printing.c`):
    `ffParse<Name>JsonObject`, `ffPrint<Name>`, `ffGenerate<Name>JsonResult` and
    `ffGenerate<Name>JsonConfig`, then fill the `FFModuleBaseInfo` — including `formatArgs` and
    `defaultOrder`.
-4. Add the new keys to the JSON schema documentation and the module's `Modules/` page.
+4. Add the new keys to the JSON schema documentation and the module's `Modules-<name>.md` page.
 
 ### Verifying behaviour
 
@@ -723,7 +723,7 @@ otherwise you will find a fresh config shadowing your real one.
 | `$defs/<module>Format` in `doc/json_schema.json` | `fastfetch -h format-json`, which prints the block per module | re-run it and paste the blocks in |
 | the rest of `doc/json_schema.json` | maintained by hand | edit it — and keep `doc/help.json` in step by hand, because nothing checks that the two agree |
 | `Json-Schema` (wiki) | generated from `doc/json_schema.json` | `generate-schema-doc doc/json_schema.json --config template_name=md Json-Schema.md` |
-| `Modules/*` (this folder) | `src/modules/*` and `src/detection/*` | by hand |
+| `Modules-*.md` (wiki root) | `src/modules/*` and `src/detection/*` | by hand |
 
 Two practical consequences. The schema is only as good as the hand-written half, so a schema that
 disagrees with the binary is a schema bug — the runtime is the reference. And because `Json-Schema.md`
@@ -747,7 +747,7 @@ row below is visible from the pages in this folder.
 | **Machine-readable by default** | `--format json` emits one document covering every selected module, with the same field names the text path uses, so scripting needs no screen-scraping |
 | **One contract, three views** | A module's `formatArgs` drives `-h <type>-format` *and* the schema's format block; `generateJsonConfig` drives `--gen-config`. Adding a module is mechanical because the registry, the help and the config generator all read the same declaration |
 | **Config as first-class** | JSONC with a published JSON schema, `$schema`-driven editor completion, `--gen-config` to discover keys, and presets shipped in-tree (`neofetch`, `screenfetch`, `archey`, …) that make behaviour reproducible across machines |
-| **Per-module formatting** | Any module's value can be re-rendered from named variables, with conditionals and colour syntax — the reason `Modules/*` documents format variables per module rather than as an afterthought |
+| **Per-module formatting** | Any module's value can be re-rendered from named variables, with conditionals and colour syntax — the reason `Modules-*.md` documents format variables per module rather than as an afterthought |
 | **Documented platform reality** | Where a backend cannot fill a field, the pages say so per platform instead of implying a uniform answer |
 
 ### Weaknesses

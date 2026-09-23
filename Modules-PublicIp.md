@@ -110,7 +110,7 @@ fields are missing.
 The module has **no TLS support at all**, and its URL parser is deliberately tiny. Whenever the
 endpoint is `https`, or its URL is anything the parser does not accept (a redirect target, a
 non-default port on an IPv6 literal, a URL that needs authentication), the answer is to stop using
-this module and use [Command](Modules/Command) with `curl` instead. `Modules/Weather` sits on the same
+this module and use [Command](Modules-Command) with `curl` instead. `Modules-Weather` sits on the same
 networking layer with the same lack of TLS, but it has no `url` key at all — its host is fixed — so
 the workaround below is the only way to reach any other endpoint from it:
 
@@ -151,7 +151,7 @@ Points that matter when writing such a module:
   `ipv6` value make fastfetch print
   `Error: PublicIp module can only be used once due to internal limitations` to stderr and **exit with
   status 1 before printing anything** — including when the two modules are otherwise identical. One
-  `ipv4` plus one `ipv6` instance is fine, because they occupy separate slots. `Modules/Weather` is
+  `ipv4` plus one `ipv6` instance is fine, because they occupy separate slots. `Modules-Weather` is
   the stricter version of the same restriction: it has a single slot and no address-family split, so
   its second instance always aborts the run.
 - **A `url` with an unsupported scheme kills the whole run.** `https://…` prints
@@ -166,7 +166,7 @@ Points that matter when writing such a module:
 - **The request is sent while the configuration is parsed, not when the module runs.**
   `ffPreparePublicIp()` issues the HTTP request as soon as the module is seen in the config (or in
   `--gen-config`-style preparsing), and the response is only read later, when the module is actually
-  printed. A run that aborts before reaching the module still performed the request. `Modules/Weather`
+  printed. A run that aborts before reaching the module still performed the request. `Modules-Weather`
   is built the same way, so the two modules share this timing.
 - **The default service only speaks plain HTTP on port 80.** There is no fallback and no retry; if the
   network blocks it, the module reports the connection error. A custom `url` also has to be plain
