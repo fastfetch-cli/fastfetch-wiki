@@ -173,6 +173,8 @@ Prefix your format string with `lua:` to execute Lua code.
 * **Return Values:** A `return` statement is required to pass the final string result back to the Fastfetch module. If `nil` is returned (or implicitly omitted), the entire module's output is skipped.
 * **Parameters:** Module-specific variables are passed via variable arguments (`...`). You can assign them to local variables for better readability.
 * **State Sharing:** The Lua interpreter instance is **shared across all modules**, allowing you to store data in one module and access it in another.
+* **Preloading:** `general.preload.lua` runs a script as soon as the config is read, before any module runs. It is where you load a file of your own helpers, so that their functions are available to every module. See *Preloading Shared Code* below.
+* **No `require`:** fastfetch does not open Lua's `package` library, so a script cannot pull in a module by name. It also means nothing in a config file can load a `.so` / `.dll`. Use `dofile` or `loadfile` with a path to load your own code.
 * **Debugging:** A `json_encode(table, is_pretty)` helper function is injected into the Lua environment to easily dump and inspect available variables.
 * **Requirements:** Supports Lua 5.3 through 5.5 (Lua 5.1 and LuaJIT are **not** supported). The Lua version is auto-detected at build time and can be verified using `fastfetch --list-features`.
 
@@ -205,18 +207,35 @@ Prefix your format string with `lua:` to execute Lua code.
 
 You can use JSON5's line-continuation syntax (backslashes) to break up long script lines. [Example](https://github.com/fastfetch-cli/fastfetch/discussions/2379#discussioncomment-17194638)
 
-### QuickJS (JavaScript) Scripts
-As an alternative to Lua, you can execute JavaScript by prefixing your format string with `qjs:`.
+**Preloading Shared Code:**
+Write your helpers in a Lua file of your own, and load that file from `general.preload.lua`. The preload script runs once, in the shared Lua state, as soon as the config is read and before any module is, so everything it defines is available to every module:
 
-* **Return Values:** No explicit `return` statement is needed; the final result is simply the evaluated value of the script's last expression.
-* **Parameters:** Module-specific variables are passed via the `this` context object. Usage is conceptually similar to Lua but utilizes JavaScript syntax.
-* **Requirements:** Requires the Fastfetch binary to be built with [quickjs-ng v0.15.0](https://github.com/quickjs-ng/quickjs/releases/tag/v0.15.0) or newer.
-
-**Basic Usage:**
-```json5
+```jsonc
+// ~/.config/fastfetch/config.jsonc
 {
-    "type": "title",
-    "format": "qjs:`Hello ${this.userName}@${this.hostName}`"
+    "general": {
+        "preload": {
+            // Runs once, while the config is read. Note: full path is required
+            "lua": "dofile('/home/me/.config/fastfetch/helpers.lua')"
+        }
+    },
+    "modules": [
+        { "type": "title", "format": "lua:return formatTitle(...)" }
+    ]
 }
 ```
-You can access the global object via `globalThis` and debug available variables using `JSON.stringify(this)`.
+
+```lua
+-- ~/.config/fastfetch/helpers.lua
+
+-- Declare it globally to reach it from a format string
+function formatTitle(args)
+    return '[' .. args.userName .. '@' .. args.hostName .. ']'
+end
+```
+
+* The format string still needs its own `return`: `lua:formatTitle(...)` prints nothing, `lua:return formatTitle(...)` prints the result.
+* `dofile(path)` loads and runs the file in one step. `loadfile(path)` returns the compiled chunk instead, so `loadfile(path)()` is the same thing written out; use that form if you want to check `loadfile`'s `nil, err` result before running anything.
+* The preload runs as soon as the config is read, so a config that sets it starts the Lua interpreter even if no `lua:` format string is used.
+* A preload script that fails is a **config error**: `JsonConfig Error (general.preload): <message>`, and fastfetch stops. It is not attributed to a module, and `--show-errors` does not affect whether it is printed. Since the message is not prefixed with the module it came from, a script error keeps Lua's own position, as in `general.preload.lua:1: ...`.
+* Those three functions are also the only file access a script has: `os`, `io` and `debug` are not available. `load` takes the source as a string rather than a path.
