@@ -42,7 +42,7 @@ without a number. With no controller attached there is no line at all unless
 | Solaris / illumos | `gamepad_nosupport.c` | Not supported |
 | Haiku | `gamepad_haiku.cpp` | `BJoystick` |
 | GNU/Hurd | `gamepad_nosupport.c` | Not supported |
-| macOS | `gamepad_apple.c` | IOHIDManager |
+| macOS | `gamepad_apple.m` | IOHIDManager + GameController |
 | Windows | `gamepad_windows.c` | Raw Input plus `hidsdi.h` |
 
 The five stub platforms keep the module registered and report the standard
@@ -174,12 +174,36 @@ attached, and on the model, because only some models report a battery (see the P
   yields nothing. (Tracked as an open item in the project's `bug.md`.)
 - **On Windows a fully drained Switch Pro reports 1%.** The Switch path maps a battery level of `0`
   to `1` on purpose, because `0` would otherwise mean "unknown" and the number would disappear.
-- **On macOS the battery is always unknown.** `gamepad_apple.c` never touches the field, so macOS
-  lines are always name-only.
-- **On macOS the device order is not stable.** The devices come from a `CFSet`
-  (`IOHIDManagerCopyDevices()` and `CFSetApplyFunction()`), which has no defined order, so with two
-  controllers attached the lines — and the `Gamepad 1` / `Gamepad 2` numbers — can swap between
-  runs. Linux and Windows enumerate in a stable OS order.
+- **On macOS the battery comes from GameController, not from the HID report.** The two views of a
+  controller cannot be joined — see the macOS implementation section — so the framework's own devices
+  are appended as *whole* entries and the HID pass skips them. A controller the framework does not
+  claim therefore reports no battery, even though its HID report may well carry one: only Apple's
+  allow list, the 37 vendor/product pairs in `AppleGameControllerPersonality.kext`, and HID devices
+  that "look like an MFi gamepad" are claimed. A controller that is claimed but whose driver
+  implements no battery service still reports nothing.
+- **On macOS the battery may be missing entirely for a command line run.** `[GCController controllers]`
+  is filled by the private `_GCControllerManager` when it is told the application became active,
+  which a CLI process never tells it. Measured on this machine: the array is empty at process start,
+  stays empty through 20 ms of unrelated work *without pumping the run loop*, and only fills once the
+  run loop is pumped (~10.7 ms). The module pumps for it explicitly, in a loop bounded by 50 ms, but
+  only once `+[GCController supportsHIDDevice:]` has confirmed the framework claims a connected
+  device — so the wait is never entered on a machine with no pad, or with one Apple does not claim.
+  If the array is still empty after that, the HID pass is not skipped and every pad is listed by its
+  IOHID name with no battery; the fallback is deliberate, but it means no percentage appears.
+- **On macOS the framework's start-up cost is paid only when it can pay off.** Measured with `--stat`
+  on `-s Gamepad`, no controller attached: 0.3 ms with nothing hoisted, 8.3 ms for a bare
+  `GCController.controllers` read, 14.3 ms once a single `CFRunLoopRunInMode()` turn follows it. The
+  read is what connects to `gamecontrollerd` and the turn is what carries the request, so both are
+  needed before the list is usable. The gate costs 0.3 ms warm and does *not* start the framework,
+  which is what makes it safe to ask first.
+- **On macOS the battery is rounded, and `batteryLevel` cannot distinguish "unknown" from "drained".**
+  The value is `lroundf(batteryLevel * 100)` clamped to `0..100`. A wired pad has no `GCDeviceBattery`
+  object at all and a pad that reports `0.0` looks the same, so both end up as the module's `0` —
+  "unknown" — and the number is hidden rather than printed as `0%`.
+- **On macOS the device order is not stable.** The GameController entries come first, in the
+  framework's own order, but the HID entries come from a set (`IOHIDManagerCopyDevices()`), which has
+  no defined order, so with two controllers attached the lines — and the `Gamepad 1` / `Gamepad 2`
+  numbers — can swap between runs. Linux and Windows enumerate in a stable OS order.
 - **On FreeBSD the same controller can be listed twice.** The report descriptor is walked and an
   entry is appended for *every* matching top-level usage (page 1, usage 1, 4 or 5) without a
   duplicate check or a `break`, so a device that advertises two of those usages produces two
@@ -191,6 +215,10 @@ attached, and on the model, because only some models report a battery (see the P
 - **On Linux the Switch Pro level is a five-step ladder, not a percentage.** `_level` is a word —
   `Critical` → 1, `Low` → 25, `Normal` → 50, `High` → 75, `Full` → 100 — so the bar can only ever
   show five values on that controller.
+- **macOS and Linux disagree about the Switch Pro percentage.** Linux maps the kernel's five-step
+  `_level` ladder (1 / 25 / 50 / 75 / 100), whereas macOS asks Apple's framework, which reported
+  `30%` for a controller Linux showed as `Normal`. The raw field is a coarse band, not a percentage,
+  so no two of the three platforms agree on a Switch Pro.
 - **Nothing at all is printed when `ignores` matches every device**, unless
   `display.showErrors` is on, where the message is `All devices are ignored`. The JSON path still
   lists the devices.
@@ -239,10 +267,60 @@ Controller that way), and `USB_GET_DEVICEINFO` supplies `udi_vendor` + `udi_prod
 
 ### macOS
 
-`IOHIDManager` is created and matched against `GenericDesktop` / `Joystick` and `GenericDesktop` /
-`GamePad`, then open for the lifetime of the call. The name is
-`kIOHIDManufacturerKey` + ` ` + `kIOHIDProductKey` when a manufacturer is present, otherwise the
-product alone; the serial is `kIOHIDSerialNumberKey`. No battery is read.
+macOS offers two overlapping views of the same controller, and the backend uses both, because
+neither replaces the other:
+
+- `IOHIDManager` sees every HID device whose primary usage is a joystick or a gamepad, third-party
+  pads included, and is the only source of the manufacturer, the product and the serial number — the
+  framework's own entries borrow the serial from here (see below).
+- `GCController` is the GameController framework's view of the pads Apple has whitelisted, and is
+  the only source of a battery level (`GCDeviceBattery`, macOS 11.0+). It is what the system's own
+  games read.
+
+`ffDetectGamepad()` enumerates the HID devices first, then asks `+[GCController supportsHIDDevice:]`
+whether the framework claims any of them. Only if it does are the framework's controllers appended as
+*whole* entries — name from `productCategory`, falling back to `vendorName` and then to the literal
+`MFi Gamepad`, with `battery` taken from `GCDeviceBattery.batteryLevel` — and the HID pass then
+*skips* any device the framework claimed, so the same pad is not listed twice. `IOHIDManager` is
+matched against `GenericDesktop` / `Joystick` and `GenericDesktop` / `GamePad` and stays open for the
+lifetime of the call; those entries are named `kIOHIDManufacturerKey` + ` ` + `kIOHIDProductKey` when
+a manufacturer is present, otherwise the product alone, with `kIOHIDSerialNumberKey` as the serial.
+
+The two views stay separate entries — there is no public way to get the `IOHIDDeviceRef` behind a
+`GCController` (`+[GCController supportsHIDDevice:]` answers in the other direction only), and SDL,
+the reference implementation for all of this, does not pair them either (`SDL_mfijoystick.m`: "we
+don't have an easy way to know if those devices correspond to a specific GCController"). The serial is
+the one exception, because it is the only field both views carry and therefore the only one that would
+otherwise be spelled two different ways for the same pad depending on which pass contributed the
+entry. The framework entry *borrows* it, through the private `GCController.identifier`, which *is* the
+transport address in the very form IOKit reports it:
+
+    GCController.identifier   LOGICAL_DEVICE(5c-52-1e-88-7e-70)
+    IOHIDDevice serial        5C:52:1E:88:7E:70
+
+`identifier` is not declared in the SDK header, and its declared type in the framework's own metadata
+is opaque, but the value is a plain string, so it is read as one. Both sides are reduced to their hex
+digits before being compared. A pad whose identity is not shaped like that — a wired pad with a real
+serial number, say — simply does not match and keeps an empty serial rather than getting a guessed
+one. The skip is also conditional on the framework having contributed *something*: with an empty
+`controllers` array there is no duplicate to avoid, and skipping unconditionally would drop the device
+from the output altogether.
+
+That conditionality matters because the array is often empty here. It is filled by the private
+`_GCControllerManager` once it is told the application became active, which a command line tool never
+tells it, and the fill only happens while the run loop is pumped. The module pumps for it, in a loop
+bounded by 50 ms, but only on the branch `anyDeviceIsClaimedByGameController()` opens — reading the
+list and taking the run loop turn together cost ~14 ms, and neither is refunded when the array turns
+out to be empty after all. Each turn is given whatever is left of the 50 ms rather than a zero
+timeout, because a zero timeout returns as soon as nothing is pending and the loop then spins at 100%
+CPU for the length of the wait.
+
+A controller the framework does claim is not guaranteed a battery either: the level is fetched from
+the device's own driver over XPC (`physicalDevice:%@ getBattery`, with
+`Unable to receive response from driver battery service!` as the failure path), so a pad whose driver
+implements no battery service reports nothing. Coverage is therefore Apple's allow list, the 37
+vendor/product pairs in `AppleGameControllerPersonality.kext`, and HID devices that "look like an MFi
+gamepad" — not every HID pad.
 
 ### Haiku
 
