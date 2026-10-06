@@ -33,7 +33,6 @@ The following libraries are used if present at runtime. Which of them were found
 ### Linux only
 * linux-headers (required)
 * [`librpm`](http://rpm.org/): Slower fallback for rpm package count. Needed on openSUSE.
-* [`libpulse`](https://freedesktop.org/software/pulseaudio/doxygen/): Used for Sound device detection.
 * [`libddcutil`](https://github.com/rockowitz/ddcutil): Used for brightness detection of external displays.
 
 ### FreeBSD only
@@ -69,6 +68,6 @@ Image logos are decoded by `WIC`, which is part of Windows, so ImageMagick is no
 * [`libEGL`](https://www.khronos.org/registry/EGL/): OpenGL module. Installing EGL headers is enough. [mesa-dev](https://github.com/termux/termux-packages/blob/master/packages/mesa/mesa-dev.subpackage.sh)
 * [Termux:API](https://github.com/termux/termux-api): The Android app is needed for Wifi detection, because it is what carries the Wi-Fi permission that Termux itself does not request. Uninstalling it takes the permission off the shared UID and the module stops reporting the connection. The `termux-api` command package is **not** needed: Wifi, Battery, Camera and Display detection all read from the Android services directly now.
 * [`libandroid-wordexp-static`](https://github.com/termux/termux-packages/tree/master/packages/libandroid-wordexp): `wordexp.h` support for Android. (Build only)
-* chafa, dbus, glib/gio, libelf, libxcb, libxrandr, pulseaudio, zlib: See the sections above.
+* chafa, dbus, glib/gio, libelf, libxcb, libxrandr, zlib
 
 Image logos are decoded by `AImageDecoder`, which needs Android 11 (API 30), so a build running on Android 10 or older reports an error instead. Animated logos additionally need Android 12 (API 31), and the repeat count is not available there, so an animation is reported as looping forever. [Termux Monet](https://github.com/HardcodedCat/termux-monet) supports the iterm image protocol.
