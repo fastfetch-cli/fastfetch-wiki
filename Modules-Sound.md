@@ -22,7 +22,8 @@ one device the key is numbered, and the main device is additionally marked with 
 
 | Platform | Implementation | Notes |
 |---|---|---|
-| Linux / Android | `sound_linux.c` | PulseAudio via `libpulse`; **no other backend and no fallback** |
+| Linux | `sound_linux.c` | PulseAudio's own native protocol over the daemon socket; **no other backend and no fallback** |
+| Android | `sound_android.c` + `sound_linux.c` | The `audio` (IAudioService) system service over raw binder while SurfaceFlinger is the display server, otherwise PulseAudio |
 | FreeBSD / MidnightBSD / DragonFly | `sound_bsd.c` | `ioctl(SNDCTL_MIXER_*)` on `/dev/mixer*` |
 | NetBSD | `sound_nbsd.c` | `ioctl(AUDIO_GETDEV)` … on `/dev/audio*` |
 | OpenBSD | `sound_obsd.c` | `ioctl(AUDIO_GETDEV)` … on `/dev/audio*` |
@@ -30,10 +31,17 @@ one device the key is numbered, and the main device is additionally marked with 
 | macOS | `sound_apple.c` | CoreAudio |
 | Windows | `sound_windows.cpp` | Core Audio APIs (`IMMDeviceEnumerator`) |
 | Haiku | `sound_haiku.cpp` | `BMediaRoster` / the media kit |
-| GNU/Hurd | `sound_linux.c` | Same code; needs `libpulse` |
+| GNU/Hurd | `sound_linux.c` | Same code |
 
 Every platform has an implementation. Which device ends up in the list is decided by `soundType`,
 and each backend applies that filter in its own way — see the pitfalls.
+
+Android compiles both files and the display server decides between them, the same arrangement as
+`wallpaper` and `media`. SurfaceFlinger means the sound that is audible is Android's own, so
+`sound_android.c` asks `IAudioService` over `/dev/binder`; a Termux:X11 or Wayland session runs a real
+desktop on top of the device, and what plays there belongs to that desktop, so `sound_linux.c` —
+compiled alongside for exactly that reason — answers over PulseAudio. Only one of the two is ever
+consulted, never merged.
 
 ## Configuration
 
@@ -135,12 +143,29 @@ has to set `percent.type` explicitly. `{platform-api}` is a free-form string cho
   when `GetMute()` fails or reports *not* muted, so a muted output reports **no volume at all**
   (`null` in the JSON, and no `(…%)` suffix). On Linux a muted sink reports **`0%`**. Neither is
   "unknown" — they are genuinely different values for the same user action.
-- **Linux needs PulseAudio and has no fallback.** There is no ALSA path: without `libpulse` (or
-  without a reachable PulseAudio server) the module reports
-  `Fastfetch was built without libpulse support` / a connection error, and prints nothing.
+- **Linux needs a reachable PulseAudio server, and has no fallback.** There is no ALSA path, and no
+  library either — the backend speaks PulseAudio's native protocol itself over the daemon socket — so
+  a machine running plain ALSA, or one where PulseAudio was replaced by PipeWire with no socket at the
+  usual path, reports a connection error and prints nothing.
+- **On Android exactly one device is ever reported.** It is the sink the audio policy has selected for
+  `USAGE_MEDIA`, taken from the first entry of `getDevicesForAttributesUnprotected`, and not a list of
+  connected outputs — so `soundType: "all"` does not widen it.
+- **On Android the volume is a stream index, not a percentage.** `getStreamVolume` answers with the
+  index the service keeps for `STREAM_MUSIC` (0–150 on one measured device, against 15 for the system
+  stream), so the percentage is derived from the minimum and maximum the same service reports. A muted
+  stream is reported as `0`, like the PulseAudio backend and unlike Windows.
+- **On Android a Bluetooth sink is named by a second call.** The policy reply carries an empty `name`
+  and an address the service has partly blanked (`XX:XX:XX:XX:D8:61`), so the readable name comes from
+  `getBtActiveDeviceName()`; a build that does not declare it, or a service with no name to give, falls
+  back to the type name. That call is not a routing decision — it answers even while the speaker is
+  what is in use — so it is only ever consulted after the device list has already picked a Bluetooth
+  sink.
+- **On Android `active` means "something is playing"**, from `isMusicActive()`. A build that does not
+  declare the method, or a service that refuses it, leaves the bit clear rather than failing the
+  module.
 - **`platformApi` is not a constant across platforms.** Windows always reports `Core Audio APIs`,
-  while Linux reports the PulseAudio server name and version, so a script cannot treat the field as
-  an enum.
+  Android always reports `AudioService`, while Linux reports the PulseAudio server name and version,
+  so a script cannot treat the field as an enum.
 - **`soundType: "active"` does not mean "currently playing".** It maps to the platform's notion of a
   present / enabled device. `all` in turn disables the filter entirely, which is why it also lists
   devices that are not plugged in.
@@ -184,19 +209,52 @@ the collection is then visited. For each one, `type` is built from "id equals th
 from `IAudioEndpointVolume::GetMasterVolumeLevelScalar()` unless the endpoint is muted.
 `platformApi` is the constant `Core Audio APIs`.
 
-### Linux / Android / GNU/Hurd
+### Linux / GNU/Hurd
 
-There is exactly one backend: `libpulse` is loaded at runtime and, when the build does not have
-`FF_HAVE_PULSE` at all, `ffDetectSound()` returns
-`Fastfetch was built without libpulse support`. A PulseAudio server therefore has to be reachable —
-a machine running plain ALSA, or PulseAudio replaced by PipeWire's own replacement without the
-`libpulse` shim, reports that error rather than falling back.
+There is exactly one backend, and it is not a library client: `sound_linux.c` speaks PulseAudio's
+native protocol itself over the daemon socket, so no `libpulse` is linked or loaded at runtime and
+there is no build option for one. A PulseAudio server still has to be reachable — a machine running
+plain ALSA, or PulseAudio replaced by PipeWire with no socket at the usual path, reports a
+connection error rather than falling back.
 
-`pa_context_get_server_info()` first yields the server name (with a `(on …)` wrapper stripped) and
-the `default_sink_name`, then `pa_context_get_sink_info_list()` walks the sinks. A sink is `main`
-when its name equals the default sink name and `active` when it has an active port whose availability
-is not `PA_PORT_AVAILABLE_NO`. In `main` mode the sink enumeration is cancelled as soon as one device
+The server is reached at `$PULSE_SERVER`, or at the socket under `$PULSE_RUNTIME_PATH`, and the two
+queries a library client would make are sent as native protocol commands: the server information first
+(the server name, with a `(on …)` wrapper stripped, and the default sink name), then the sink list. A
+sink is `main` when its name equals the default sink name and `active` when it has an active port whose
+availability is not `PA_PORT_AVAILABLE_NO`. In `main` mode the enumeration stops as soon as one device
 has been collected, so only the default sink is reported. `platformApi` is the PulseAudio server
 string, not a constant, and `identifier` is the sink name. The volume is
 `volume.values[0] * 100 / PA_VOLUME_NORM` rounded — and it is forced to **0** when the sink is muted,
 which is the opposite of what the Windows backend does.
+
+### Android
+
+`sound_android.c` answers only while SurfaceFlinger is the display server; anything else is forwarded
+to the Linux implementation above. It opens `/dev/binder` through `common/android/binder.h` — no child
+process, no JNI, no permission — and resolves the `audio` service, i.e. `android.media.IAudioService`,
+through the service manager.
+
+Every transaction code is read out of the device's own `framework.jar` at run time, by the name of the
+constant the dex carries for it (`TRANSACTION_getStreamVolume` and six others), rather than written
+down: the interface declares 283 methods in AOSP and 324 on one measured device, so a vendor that
+inserts a method ahead of the one being called shifts it. The seven are asked for in one walk, because
+they all sit in the same class of the same dex entry. Five of them — the three volume getters,
+`isStreamMute` and `getDevicesForAttributesUnprotected` — are required, and a build that does not
+declare one is a message rather than a wrong number; the other two only refine the answer and are
+allowed to be missing, because which methods exist differs per device.
+
+The device comes from `getDevicesForAttributesUnprotected`, which is the unprotected twin of
+`getDevicesForAttributes` — the protected one, and `getLastAudibleStreamVolume`, are refused for
+wanting `MODIFY_AUDIO_ROUTING` or `QUERY_AUDIO_STATE`. Its `AudioAttributes` argument is written by
+hand, and two of its fields are not cosmetic: `mSource` has to be `-1` (`AUDIO_SOURCE_INVALID`),
+because anything else takes the *capture* branch of the policy and answers with microphones, and the
+argument is preceded by a `1`, the non-null marker `Parcel.writeTypedObject` writes — without it the
+service reads a null object and answers with an exception. The reply is a list of
+`AudioDeviceAttributes`, walked only as far as the first sink; a device carrying audio profiles ends
+the walk, since reaching the next entry would mean decoding one.
+
+The volume is the three getters on `STREAM_MUSIC` plus `isStreamMute`, turned into a percentage against
+the reported minimum and maximum; `isMusicActive()` adds the `active` bit, and a Bluetooth sink is
+additionally named by `getBtActiveDeviceName()`. `platformApi` is the constant `AudioService`, and
+`identifier` is the AOSP constant name of the device type without its prefix (`BUILTIN_SPEAKER`),
+because the reply's own address is blanked by the service for an unprivileged caller.

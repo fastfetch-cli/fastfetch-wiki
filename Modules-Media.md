@@ -29,11 +29,11 @@ because `display.showErrors` defaults to `false`, the line simply disappears.
 | FreeBSD / OpenBSD / NetBSD / GNU/Hurd | `media_linux.c` | Same code; needs DBus |
 | Windows | `media_windows.cpp` | WinRT `GlobalSystemMediaTransportControlsSessionManager` |
 | macOS | `media_apple.m` | MediaRemote, or a Perl helper process on macOS 15.4+ |
-| Android | none | No detection source is referenced |
+| Android | `media_android.c` | `media_session` over `/dev/binder` while SurfaceFlinger is the display server, otherwise MPRIS over the session DBus |
 | Solaris / illumos | none | No detection source is referenced |
 | Haiku | none | No detection source is referenced |
 
-Only the three backends above exist. On a platform without one the module reports
+Only the four backends above exist. On a platform without one the module reports
 `No media found` rather than "not supported".
 
 ## Configuration
@@ -124,9 +124,11 @@ When nothing is playing the module carries an error object instead:
   `{title}` / `{artist}` / `{album}`, **not** the cleaned default-line text.
 - `cover` is the path of the artwork file, or `null`. See the pitfalls below for when each backend has
   one.
-- `player.url` is only filled by the MPRIS backend (the `xesam:url` key); Windows and macOS leave it
-  empty. `player.id` is the bus name on Linux, the bundle id on macOS and the `AppUserModelId` on
-  Windows.
+- `player.url` is only filled by the MPRIS backend (the `xesam:url` key) and by the Android backend
+  (the `MEDIA_URI` metadata key, which most players do not set); Windows and macOS leave it empty.
+  `player.id` is the bus name on Linux, the bundle id on macOS, the `AppUserModelId` on Windows and the
+  package name on Android — which is also what `player.name` gets there, since the name an app displays
+  is a resource of that app and cannot be read from outside it.
 - The JSON output never applies the percentage configuration or the output format — it is always this
   fixed object.
 
@@ -173,11 +175,22 @@ When nothing is playing the module carries an error object instead:
   Apple-signed one, not the Homebrew build — and the dynamic library calls back into fastfetch through
   `DynaLoader`. If Perl is missing or replaced, playback information is unavailable.
 - **`cover` is usually `null` in the JSON.** The module asks for the cover with `saveCover = false`, so
-  the Windows and macOS backends never write the artwork to a file and the field stays `null`. Only
-  the MPRIS backend fills it unconditionally (from `mpris:artUrl`, as a local path), and the Windows /
-  macOS paths get a value only when the same run already asked for the cover for a logo.
-- **`{url}` is Linux-only.** It comes from the MPRIS `xesam:url` key, so on Windows and macOS the
-  variable and the `player.url` field are always empty.
+  the Windows, macOS and Android backends never write the artwork to a file and the field stays `null`.
+  Only the MPRIS backend fills it unconditionally (from `mpris:artUrl`, as a local path), and the three
+  backends that write a file get a value only when the same run already asked for the cover for a logo
+  (`--logo media-cover`). The Android one writes a lossless WebP into `$TMPDIR`, or into
+  `/data/local/tmp` when that variable is unset or not writable, and the file is removed again at exit.
+- **On Android the display server picks the backend.** While SurfaceFlinger is the display server the
+  `media_session` service is asked over `/dev/binder`; a Termux:X11 or Wayland session runs a real
+  compositor on top of the device, and what plays there belongs to that desktop and is not an Android
+  media session at all, so MPRIS answers instead. Only one of the two is consulted, never both. The
+  binder route does still fall back to MPRIS when it comes back empty, which is what an app UID always
+  gets: `getSessions` is the one call in the path that checks a permission — the system UI, a holder of
+  `android.permission.MEDIA_CONTENT_CONTROL` and an enabled notification listener are let through, and
+  no ordinary app is — so an app UID is refused with a `SecurityException` and, with nothing on the
+  session bus either, the module answers `Reading the media session needs the shell UID or root`. That
+  wording is deliberate: an empty result would read as "nothing is playing". The
+  `dumpsys media_session` route has exactly the same restriction.
 - **A song with no title falls back to the file name.** On Linux, when `xesam:title` is empty but
   `xesam:url` is not, the title is derived from the last path segment of the URL, with percent escapes
   decoded. A session that has neither is treated as "no media" and cleared.
@@ -234,3 +247,58 @@ position. On macOS 15.4 and newer the public API no longer answers for third-par
 module instead runs `/usr/bin/perl` with a small script that loads fastfetch's own shared object and
 installs `ffPrintMediaByMediaRemote` as an XSUB; the helper prints one field per line. The cover is
 written to `NSTemporaryDirectory()` as `ff_<uuid>.<ext>` and removed again at exit.
+
+### Android
+
+Which of the two routes answers is decided by the display server, and only one of them is ever
+consulted. SurfaceFlinger means the session the phone is playing is Android's own, so the binder route
+described below runs; a Termux:X11 or Wayland session puts a compositor on top of the device, and what
+plays there is not an Android media session, so `media_linux.c` — compiled alongside this file for
+exactly that reason — answers over the session DBus. Under SurfaceFlinger the binder route still falls
+back to it whenever it comes back empty, which is the only route an app UID has.
+
+The `media_session` service is asked for its sessions with `ISessionManager.getSessions()`, sent over
+`/dev/binder` through `common/android/binder.h` — no child process, no JNI. Each session token that
+comes back *is* an `ISessionController` binder, so the getters are called on it directly:
+`getPackageName`, `getMetadata` and `getPlaybackState`.
+
+None of the four transaction codes is written down. They are resolved at run time out of the device's
+own `framework.jar`, by the names of the constants the dex carries for them
+(`TRANSACTION_getSessions` and three more), because a vendor ROM renumbers them as it likes — and
+`getSessions` already differs between releases: it is 2 from Android 12 on but 3 on Android 11, where
+`notifySession2Created` holds the second slot. All four are asked for in one walk, since they sit in
+the same class of the same dex entry, and a jar that does not declare one of them is reported rather
+than guessed at.
+
+At most four tokens are taken from a reply, so a phone with more sessions than that has the surplus
+dropped. The ones that are taken are held only for the duration of the detection:
+`ffBinderTransact()` acquires a strong reference to every handle a reply carries — a handle whose only
+reference belonged to the reply buffer degrades to a weak one and fails on first use — and a cleanup
+attribute gives them back, together with every descriptor the reply delivered, on every path out.
+
+A phone can have several sessions at once, so every one of them is asked for its playback state first
+and the best is kept — playing beats buffering beats paused, and a stopped session is only reported
+when nothing else is there. The metadata and the artwork are then read for that session alone.
+
+`getMetadata` answers with a `Bundle` written by `Parcel.writeValue`, which puts an int32 byte length in
+front of every `Parcelable` value; a walk that does not account for it desynchronises every following
+field, and that same length is what makes an unknown `Parcelable` skippable. Title, artist and album
+come from the `android.media.metadata.*` keys (`TITLE`, `ARTIST`, `ALBUM`, with `DISPLAY_TITLE` and
+`DISPLAY_SUBTITLE` as the fallbacks meant for streams), and the length from `DURATION`, which is
+already in milliseconds. `PlaybackState` carries the state, the position, the speed and the update
+time; while the session is playing, the position is advanced to now against `CLOCK_BOOTTIME` — the
+clock `updateTime` is stamped with — so a player that only refreshes its timeline on a seek still
+reports a position that moves.
+
+The artwork is a `Bitmap` and not a path, and its pixels cross the transaction as an ashmem descriptor.
+That is why the request is sent with `TF_ACCEPT_FDS`: without the flag a reply that carries a
+descriptor is refused outright, which looks like a service that is not running rather than like a
+missing flag, and it only affects players that publish artwork. The pixel count is written in front of
+the descriptor, so the region's size and that count have to agree, and the pair of int32s in front of
+the count that multiplies out to `width * height * 4` are the dimensions. Writing the cover out means
+building an image file around those pixels, which is done with `AndroidBitmap_compress()` — the NDK's
+only image encoder, and an API 30 one, so its symbol is weak and the call sits behind a runtime check.
+It is asked for lossless WebP: measured on a 363x363 cover that is 146884 bytes in 41 ms, against
+203675 bytes in 370 ms for the same encoder's PNG, whose quality argument is ignored outright, and
+lossless is what keeps the alpha a Bitmap arrives with. The pixels are mapped read-only instead of
+being copied out, and the file goes into `$TMPDIR` (or `/data/local/tmp`) and is removed again at exit.

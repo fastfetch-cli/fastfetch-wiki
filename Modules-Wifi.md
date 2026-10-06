@@ -34,7 +34,7 @@ number is suppressed.
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `wifi_linux.c` | nl80211 over generic netlink, falling back to the wireless-extension ioctls |
-| Android | `wifi_android.c` | Talks to the `wifi` system service over raw binder and parses the returned parcel |
+| Android | `wifi_android.c` | Talks to the `wifi` service over raw binder and parses the returned parcel; needs `ACCESS_WIFI_STATE` on the calling UID |
 | FreeBSD | `wifi_bsd.c` | `SIOCG80211` ioctls on interfaces named `wlan*` |
 | NetBSD | `wifi_nbsd.c` | Same ioctls, on interfaces named `iwm*` |
 | OpenBSD | `wifi_obsd.c` | `SIOCG80211NODE` on every interface, filtering out the ones that reject it |
@@ -244,6 +244,12 @@ machine without a Wi-Fi interface answers with `"result": []` while the text pat
   withheld with `<redacted>` rather than leaving it empty — an empty SSID is what the module prints
   the interface state in place of, and the reply still carries a signal, a channel and a rate that
   are worth showing. The same placeholder is used for a connection that genuinely has no address.
+- **On Android the permission belongs to the UID, not to fastfetch.** `getConnectionInfo` is refused
+  with a `SecurityException` when the calling UID does not hold `ACCESS_WIFI_STATE`, and a UID holds
+  that permission as soon as any package sharing it requests it. Under Termux the package that
+  requests it is Termux:API, so removing that app is enough to make the module answer
+  `The Wifi service raised an exception` where it used to report the connection. The shell and root
+  UIDs are not affected, and nothing in the module itself changes.
 - **The text path fails on an empty interface list but the JSON path does not.** With no Wi-Fi
   interface at all the text output is an error (`No Wifi interfaces found`) and the JSON result is an
   empty array. This is the same split described in `Modules-Keyboard`.
@@ -272,14 +278,27 @@ comes from the `IFF_UP` bit of `/sys/class/net/<ifname>/flags`.
 
 ### Android
 
-`detectWithBinder()` resolves the `wifi` service through the service manager, looks the transaction
-code for `getConnectionInfo` up in the framework jar with the DEX parser, and calls it with the
-process's own package name. The reply is a Java parcel, which is not self-describing, so the fields
-are recognised by shape: a length-prefixed UTF-16 MAC address for the BSSID, one of the supplicant
-state names for the state, an integer naming a Wi-Fi standard followed by two plausible link speeds
-for the protocol, and an enum for the security type. The interface flags come from `getifaddrs()`,
-falling back to `getWifiEnabledState` when the interface has no address — which is exactly the state
-in which `getifaddrs()` omits it.
+`detectWithBinder()` resolves the `wifi` service through the service manager and calls
+`IWifiManager.getConnectionInfo` with the process's own package name, followed by a `-1` standing for
+a null `callingFeatureId`. Both transaction codes — `getConnectionInfo` and `getWifiEnabledState` —
+are resolved at run time out of the device's own jar, by the names of the constants the dex carries
+for them, and the jar is `/apex/com.android.wifi/javalib/framework-wifi.jar` rather than
+`framework.jar`: Wi-Fi is one of the frameworks that moved into an APEX. Only `getConnectionInfo` is
+required, and a build that does not declare it is reported as such; the radio state is a refinement
+and is allowed to come back unresolved, which costs only the interface flags.
+
+The reply is a Java parcel, which is not self-describing, so the fields are recognised by shape: a
+length-prefixed UTF-16 MAC address for the BSSID, one of the supplicant state names for the state, an
+integer naming a Wi-Fi standard followed by two plausible link speeds for the protocol, and an enum
+for the security type. The interface flags come from `getifaddrs()`, falling back to
+`getWifiEnabledState` when the interface has no address — which is exactly the state in which
+`getifaddrs()` omits it.
+
+The call is gated by `ACCESS_WIFI_STATE`, and that is checked against the calling UID rather than
+against a package: a UID holds it as soon as any one package sharing it requests it. Under Termux it
+is `com.termux.api` — Termux:API — that requests it and shares `sharedUserId com.termux`, so
+uninstalling that app takes the permission off the UID and the module answers
+`The Wifi service raised an exception` where it had reported the connection.
 
 ### FreeBSD, NetBSD and OpenBSD
 

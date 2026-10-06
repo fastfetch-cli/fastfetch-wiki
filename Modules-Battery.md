@@ -28,7 +28,7 @@ Battery (LION-4C20): 100% [AC Connected] - 31.2°C
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `battery_linux.c` | `/sys/class/power_supply/*` (sysfs) |
-| Android | `battery_android.c` | `/sys/class/power_supply/*` plus Android-specific sysfs nodes |
+| Android | `battery_android.c` | `batteryproperties` (IBatteryPropertiesRegistrar) and `batterystats` (IBatteryStats) over `/dev/binder`, the `debug.tracing.*` system properties for the charger bits and the charging state, plus `/sys/class/thermal` for the temperature; `dumpsys battery` instead for the shell UID and root |
 | macOS | `battery_apple.c` | IOKit `AppleSmartBattery` registry entry (+ SMC for temperature) |
 | Windows | `battery_windows.c` | WMI battery classes (`batclass.h`) |
 | FreeBSD / MidnightBSD / DragonFly | `battery_bsd.c` | `hw.acpi.battery.units` sysctl + `ACPI_IOCTL_BATTERY` ioctl on `/dev/acpi` |
@@ -128,7 +128,26 @@ Run `fastfetch -h battery-format` for the authoritative list.
 ## Pitfalls
 
 - **`{temperature}` is empty unless `temp` is `true`.** Temperature detection is opt-in on
-  every platform, because it either costs an extra SMC/kstat round-trip or needs privileges.
+  every platform, because it either costs an extra SMC/kstat round-trip or a walk over the thermal
+  zones.
+- **On Android the route depends on the UID, and the answer with it.** An app UID goes over
+  `/dev/binder`: `IBatteryPropertiesRegistrar` for the capacity, `IBatteryStats` for the remaining time,
+  and the kernel's thermal zones for the temperature. The charger bits and the charging state come from
+  a pair of system properties `BatteryService` publishes and any UID may read — `debug.tracing.plug_type`
+  and `debug.tracing.battery_status` — so an app UID gets the `AC / USB / wireless` bits too. The shell
+  UID and root get `dumpsys battery` first, because the fork/exec is worth paying there for the
+  technology and the critical capacity level, which are the two things left that nothing else answers.
+  The manufacturer, the model name, the serial number, the manufacture date and the cycle count stay
+  empty on both routes.
+- **On Android the remaining time is only reported for an app UID.** The shell UID and root take the
+  `dumpsys battery` route, which answers and returns before the `IBatteryStats` call that computes the
+  estimate — and the dump has no such line.
+- **The technology and the cycle count live in the battery broadcast, and only one of the two is
+  reachable.** `ACTION_BATTERY_CHANGED` is sticky and needs no permission: it carries the technology,
+  and a cycle count since Android 14 as `EXTRA_CYCLE_COUNT`. Reading it means calling
+  `registerReceiver`, which only a Java side can do, so every route to that broadcast is a Java
+  process — `dumpsys battery` is one and is used for the shell UID and root, `termux-api` is another
+  and is not used because it hangs. The cycle count is not in the dump, so it stays empty everywhere.
 - **`{time-formatted}` / `{time-*}` are only filled while discharging.** While charging or on
   AC the remaining time is unknown (`-1`) and the variables expand to `0`.
 - **Reading `capacity` can be slow on some Linux laptops** — the source carries an explicit
@@ -149,7 +168,105 @@ Run `fastfetch -h battery-format` for the authoritative list.
 
 ## Implementation
 
-### Linux and Android
+### Android
+
+The route depends on the UID, and that is deliberate. `dumpsys battery` needs
+`android.permission.DUMP`, which only the shell UID and root hold: an app UID is answered with
+`Can't find service: battery` on stdout and a zero exit status, so forking it there costs a child
+process and cannot succeed. Where it is allowed to run it goes first, because it is the richer of the
+two — a flat `key: value` list read by name, so it carries what neither the registrar nor a property has
+(the technology and the critical capacity level) and neither a vendor that prints extra keys in the
+middle nor a release that appends a field can break it. The reply of the other route is positional and
+breaks silently instead.
+
+That other route opens `/dev/binder` through `common/android/binder.h`, resolves the
+`batteryproperties` service in system_server, and calls `IBatteryPropertiesRegistrar.getProperty` for
+`BATTERY_PROPERTY_CAPACITY` (4) — that one is the route. The status costs no transaction at all, because
+`BatteryService` mirrors it into a world-readable system property as it processes each update:
+`debug.tracing.battery_status` carries the same `mHealthInfo.batteryStatus` a `getProperty` call would
+answer with, so `BATTERY_PROPERTY_STATUS` (6) is only reached when that property is missing or holds
+something other than a `BATTERY_STATUS_*` value.
+
+The other property in that pair is where the charger bits come from, and it is the reading the registrar
+does not have at all: `debug.tracing.plug_type`, also written by `BatteryService.processValuesLocked`,
+holds the `BATTERY_PLUGGED_*` bits — 1 AC, 2 USB, 4 wireless, and 0 when nothing is attached; the dock
+bit (8) has no `FF_BATTERY_STATUS_*` counterpart and is dropped. Neither property is a `BatteryProperty`,
+so nothing about the registrar's positional reply applies to them, and both are read pessimistically: a
+device that does not publish them loses the charger bits and falls back to the service for the status,
+which is what a `dumpsys`-only release looks like.
+
+The transaction code is read out of the device's own `framework.jar` at run time, by the name of the
+constant the dex carries (`TRANSACTION_getProperty`), because the number has moved already: Android 10
+dropped the two listener methods ahead of it, which moved `getProperty` from the third position to the
+first. The reply is positional (`[exception][return value][value present][int64 mValueLong]`) and is
+not negotiated with the service, so a wrong code or a reply whose fields have drifted shows up as a
+wrong capacity rather than as a failure — `ffBinderReadU64` returns 0 for a read past the end.
+
+The remaining time is not a property of the pack: it is a forecast `BatteryStatsService` makes from the
+discharge history, so it comes from a second service, `batterystats`, whose interface is
+`com.android.internal.app.IBatteryStats`. Its `computeBatteryTimeRemaining` takes no argument and
+answers with one `long`, so its code is read out of the same jar by the name of its own constant, and
+its reply has no out-parameter marker in front of the value. That number is not stable either, and less
+so: the same method is transaction 19 on an Android 16 device, 22 on an Android 14 one and 20 on an
+Android 10 one, which is what a hard-coded code would have to survive. The answer is in milliseconds
+and is divided down to the seconds `FFBatteryResult` carries; anything at or below zero is how the
+interface says it has no estimate, and leaves the field unknown. This is the one part of the route
+allowed to be missing — a jar without the method, a service that is not running or an answer of `-1`
+all cost the estimate and nothing else, because it is asked for last. It is also part of the binder
+route alone: the `dumpsys` route has no such line and returns before this one runs, so the shell UID
+and root get no estimate.
+
+Neither interface declares which of its methods an app UID may call, and the wall is inside
+`BatteryStatsService`, which lives in `services.jar` and is not there to read. It was therefore
+measured, as an app UID: `computeBatteryTimeRemaining`, `computeChargeTimeRemaining`, `isCharging` and
+the two `getAllWakeLocks` calls answer with no permission at all, while the read-only statistic getters
+(`getAwakeTimeBattery`, `getAwakeTimePlugged` and the cellular / wifi / gps / bluetooth ones) come back
+with `Access denied, requires: android.permission.BATTERY_STATS`.
+
+The registrar is not a source of the other fields at all, rather than a source behind a permission:
+`BatteryProperty` has no temperature, no technology and no cycle count, and manufacturer and model name
+are not battery data. Of the properties it does have, the ones Android 15 added (ids 7 to 12) are
+behind `BATTERY_STATS` and ids 1 to 6 are not — which is why the capacity and the status are readable
+without a permission and the rest is not read. The module therefore fills the capacity, the status bits
+and the time estimate, and leaves everything else unset.
+
+Two of those fields are not unobtainable, and the difference is worth keeping straight. The technology
+and a cycle count ride `ACTION_BATTERY_CHANGED`, a sticky broadcast that is read without a permission
+— the cycle count since Android 14, as `EXTRA_CYCLE_COUNT`. What is out of reach is the call that
+fetches it: a sticky broadcast is read by `registerReceiver`, the NDK does not wrap it, and a native
+binary has no Java side to call it from, so every route to that broadcast is a Java process. That is
+the fork/exec the shell UID and root pay for the dump, which is where the technology comes from on that
+route; the cycle count is in neither. `termux-api` is a third route to the same broadcast and a worked
+example of why it is not used: it answers, and on the device this was measured on it hung on six of six
+runs, each killed at 30 seconds having written nothing, after exec'ing `am broadcast` and waiting on a
+socket with no timeout of its own. The manufacturer and the model name are not battery data at all —
+they are `Build.MANUFACTURER` and `Build.MODEL`.
+
+The whole route costs about 4.6 ms on the device this was measured on, most of it the walk over the jar
+for the two transaction codes rather than the two transactions themselves. The two classes are not in
+the same dex entry — `IBatteryPropertiesRegistrar$Stub` is in `classes3.dex` and `IBatteryStats$Stub`
+in `classes5.dex` — so the walk to the second one is where about 1.3 ms of that goes.
+
+The temperature comes from neither service. The kernel publishes it as a thermal zone, and the module
+reads the zone Android's thermal HAL names `battery` out of `/sys/class/thermal` — only when `temp` is
+true, because that directory holds a hundred-odd entries on the device this was measured on and the
+walk costs about 1.3 ms. The `dumpsys` route has a `temperature:` line of its own, in tenths of a
+degree, and that one wins where the dump runs, so the walk is only paid on the app route.
+
+The zone is looked up, never addressed. Its number is a property of the probe order rather than of the
+hardware — the battery is `thermal_zone67` on one device and need not be on the next — so the directory
+is walked and each entry is matched on the `type` it reports. That match is an exact string and has to
+stay one. A prefix would be cheaper and wrong: the same directory holds hardware trip points
+(`cpu-hw-trip-0` reports 95000, a perfectly believable 95 degrees), current and battery levels
+(`pmih010x-ibat-lvl0`, 0 or a small integer) and raw registers (`vbat`, in millivolts). None of those
+are a temperature and every one of them would be printed as one, so a device that names its battery
+zone something else reports no temperature rather than a wrong one.
+
+`/sys/class/hwmon` and `/sys/class/power_supply` are not alternatives to it: both are closed to an app
+UID outright, directory and all. An `O_PATH` open of the class directory succeeding says nothing
+either, because `O_PATH` does not check read permission — it is the `openat` that follows which fails.
+
+### Linux
 
 Enumerates `/sys/class/power_supply/` with `readdir` + `openat(O_PATH | O_DIRECTORY)` so the
 directory handle stays valid while reading. For each entry the following files are read

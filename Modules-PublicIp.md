@@ -190,7 +190,7 @@ Points that matter when writing such a module:
 the module cannot be instantiated twice for the same family.
 
 `ffPreparePublicIp()` fills in `state->timeout` and `state->ipv6` and calls
-`ffNetworkingSendHttpRequest()`. With no `url` it enables HTTP compression and TCP Fast Open and asks
+`ffNetworkingSendHttpRequest()`. With no `url` it enables TCP Fast Open and asks
 `ipinfo.io:80` for `/json`. With a `url` it strips an optional `http://` prefix (any other scheme
 aborts the process), splits the path off at the first `/`, splits an optional port off the host —
 from inside `[...]` for a bracketed literal, or after the single colon of an unbracketed host — and

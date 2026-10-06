@@ -122,7 +122,7 @@ the answer later. The two share the shape but not the flexibility:
 | Service | fixed: `wttr.in:80` | `ipinfo.io:80/json`, or any `http://` URL from `url` |
 | Single use | once per process, always | once per address family (`ipv4` + `ipv6` both work) |
 | Response handling | opaque text, printed verbatim | JSON parsed for the default service; the whole body is the address for a custom `url` |
-| HTTP compression, TCP Fast Open | off | on for the default service |
+| TCP Fast Open | off | on for the default service |
 | TLS | none | none |
 | Replacement when the endpoint is unsuitable | `Modules-Command` with `curl` | same |
 

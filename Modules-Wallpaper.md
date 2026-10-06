@@ -22,13 +22,19 @@ Wallpaper: macOS Default Wallpaper
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `wallpaper_linux.c` | COSMIC config, otherwise the GTK4 / Qt wallpaper |
-| Android | `wallpaper_linux.c` | Same file |
+| Android | `wallpaper_android.c` + `wallpaper_linux.c` | The `wallpaper` system service over raw binder, or the Linux backends when the display server is not `SurfaceFlinger` |
 | FreeBSD / NetBSD / OpenBSD / DragonFly | `wallpaper_linux.c` | Same file |
 | Solaris / illumos | `wallpaper_linux.c` | Same file |
 | GNU/Hurd | `wallpaper_linux.c` | Same file |
 | macOS | `wallpaper_apple.m` | `com.apple.wallpaper` plist on 14+, SQLite / NSWorkspace before that |
 | Windows | `wallpaper_windows.c` | `HKCU\Control Panel\Desktop` → `WallPaper` |
 | Haiku | `wallpaper_haiku.cpp` | `B_BACKGROUND_INFO` attribute of the Desktop folder |
+
+Android compiles both files and the platform one decides. The binder route reads Android's own
+wallpaper and answers while `SurfaceFlinger` is the display server; a Termux X server or a Wayland
+session puts a real compositor on top, where the wallpaper belongs to that desktop instead, and the
+call is forwarded to the Linux implementation — the same split as `terminalfont_android.c` and
+`terminalfont_linux.c`.
 
 ## Configuration
 
@@ -126,6 +132,26 @@ Wallpaper: [image.jpg][C:\Users\user\Pictures\image.jpg]
   can therefore report a different image than the one on screen.
 - **On Haiku the wallpaper is per workspace.** The `B_BACKGROUND_INFO` attribute holds a list of
   images with a workspace mask, and the first entry matching the current workspace is used.
+- **On Android the reported path can be named but not read.** `/data/system/users/<userId>` is mode
+  `0700` and owned by `system`, so an app UID gets `EACCES` from `open`, `stat` and `ls` alike. What
+  the module reports is the target of a descriptor the system service opened and handed back,
+  resolved with `readlink()` on `/proc/self/fd/` — the directory is never entered. A consumer that
+  tries to open the value itself will usually fail, and nothing here verifies that the file still
+  exists.
+- **On Android the caller has to name itself.** `getWallpaper` takes the caller's package name and
+  refuses a name that is not its own with a `SecurityException` — the shorter overload, which passes
+  the null name, fails the same way. The name is derived from `/proc/self/exe`; a binary living
+  outside an app data directory has none, and only the shell UID can fall back to
+  `com.android.shell`. Every other caller gets `Cannot determine the package name of this process`.
+- **On Android the value is the platform's own file name, not the image's.** The system wallpaper is
+  stored as `wallpaper`, with no extension, so `{file-name}` prints `wallpaper` and the default line
+  reads `Wallpaper: wallpaper`. The pre-crop upload sits next to it as `wallpaper_orig` and is never
+  reported. The user id is fixed at `0`, so on a device with secondary users the owner's wallpaper
+  is what comes back.
+- **On Android a live wallpaper has no file at all.** The system wallpaper is asked for first and
+  the lock screen only when that first call reports no file — which is exactly how a live wallpaper
+  answers. When the lock screen is a live one as well, the module fails with
+  `The wallpaper is not a file`, and that failure is silent unless `display.showErrors` is `true`.
 
 ## Implementation
 
@@ -134,11 +160,36 @@ Wallpaper: [image.jpg][C:\Users\user\Pictures\image.jpg]
 or the whole string when there is none) and prints that by default;
 `ffGenerateWallpaperJsonResult()` writes the untouched full path to `result`.
 
+### Android
+
+The caller's package name comes from `ffAndroidGetOwnPackage()`, which resolves `/proc/self/exe` and
+falls back to `com.android.shell` for the shell UID — nothing else can reach the service. A raw
+binder client is opened, the `wallpaper` service is resolved through the service manager, and
+`getWallpaper(String callingPackage, int which, int userId)` of `android.app.IWallpaperManager` is
+called with the request flag `TF_ACCEPT_FDS`. The transaction code is not written down either: it is
+resolved at run time out of the device's own `framework.jar`, by the name of the constant the dex
+carries for the method (`TRANSACTION_getWallpaper`), because the numbering is a property of the
+`.aidl` the ROM was built from and a vendor that inserts a method ahead of this one shifts it — after
+which a transcribed number reaches a different method, or none. A build that does not declare the
+method is reported as such instead. The flag is not optional either: a reply carrying
+a descriptor is only delivered when the request asked for one, and a request that did not is
+answered with `BR_FAILED_REPLY`, which reads like a service that is not running. The descriptor
+arrives as a flat binder object and its target is read back with `readlink()` on `/proc/self/fd/`;
+the image is never opened, decoded or measured.
+
+`which` 1 is the system wallpaper and is asked for first. `which` 2, the lock screen, is asked only
+when the first call reports no file — which is how a live wallpaper answers. `userId` is `0`, the
+one user a phone has. An app UID needs no permission of its own to answer here: what the service
+checks is that the name being passed belongs to the caller.
+
 ### Linux
 
 `ffConnectDisplayServer()` is consulted first for the COSMIC branch. Otherwise
 `ffDetectGTK4()->wallpaper` wins over `ffDetectQt()->wallpaper`, and a leading `file://` is
 stripped before the value is returned.
+
+Built for Android, this file's entry point is named `ffDetectWallpaperLinux`, and it is
+`wallpaper_android.c` that calls it.
 
 ### macOS
 
