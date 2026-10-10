@@ -82,6 +82,8 @@
     - [3.4.3. Property `JSON config > general > dsForceDrm > oneOf > item 2`](#general_dsForceDrm_oneOf_i2)
   - [3.5. Property `JSON config > general > processingTimeout`](#general_processingTimeout)
   - [3.6. Property `JSON config > general > detectVersion`](#general_detectVersion)
+  - [3.7. Property `JSON config > general > preload`](#general_preload)
+    - [3.7.1. Property `JSON config > general > preload > lua`](#general_preload_lua)
 - [4. Property `JSON config > display`](#display)
   - [4.1. Property `JSON config > display > stat`](#display_stat)
     - [4.1.1. Property `JSON config > display > stat > oneOf > item 0`](#display_stat_oneOf_i0)
@@ -134,6 +136,7 @@
       - [4.9.4.19. Property `JSON config > display > key > language > oneOf > item 18`](#display_key_language_oneOf_i18)
       - [4.9.4.20. Property `JSON config > display > key > language > oneOf > item 19`](#display_key_language_oneOf_i19)
       - [4.9.4.21. Property `JSON config > display > key > language > oneOf > item 20`](#display_key_language_oneOf_i20)
+      - [4.9.4.22. Property `JSON config > display > key > language > oneOf > item 21`](#display_key_language_oneOf_i21)
   - [4.10. Property `JSON config > display > size`](#display_size)
     - [4.10.1. Property `JSON config > display > size > binaryPrefix`](#display_size_binaryPrefix)
       - [4.10.1.1. Property `JSON config > display > size > binaryPrefix > oneOf > item 0`](#display_size_binaryPrefix_oneOf_i0)
@@ -288,14 +291,18 @@
       - [5.1.2.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth`](#modules_items_anyOf_i1_oneOf_i3)
         - [5.1.2.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > type`](#modules_items_anyOf_i1_oneOf_i3_type)
         - [5.1.2.4.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > showDisconnected`](#modules_items_anyOf_i1_oneOf_i3_showDisconnected)
-        - [5.1.2.4.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > percent`](#modules_items_anyOf_i1_oneOf_i3_percent)
-        - [5.1.2.4.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > key`](#modules_items_anyOf_i1_oneOf_i3_key)
-        - [5.1.2.4.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyColor`](#modules_items_anyOf_i1_oneOf_i3_keyColor)
-        - [5.1.2.4.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyIcon`](#modules_items_anyOf_i1_oneOf_i3_keyIcon)
-        - [5.1.2.4.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyWidth`](#modules_items_anyOf_i1_oneOf_i3_keyWidth)
-        - [5.1.2.4.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > outputColor`](#modules_items_anyOf_i1_oneOf_i3_outputColor)
-        - [5.1.2.4.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > format`](#modules_items_anyOf_i1_oneOf_i3_format)
-        - [5.1.2.4.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > condition`](#modules_items_anyOf_i1_oneOf_i3_condition)
+        - [5.1.2.4.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > showType`](#modules_items_anyOf_i1_oneOf_i3_showType)
+          - [5.1.2.4.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > showType > oneOf > item 0`](#modules_items_anyOf_i1_oneOf_i3_showType_oneOf_i0)
+          - [5.1.2.4.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > showType > oneOf > item 1`](#modules_items_anyOf_i1_oneOf_i3_showType_oneOf_i1)
+          - [5.1.2.4.3.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > showType > oneOf > item 2`](#modules_items_anyOf_i1_oneOf_i3_showType_oneOf_i2)
+        - [5.1.2.4.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > percent`](#modules_items_anyOf_i1_oneOf_i3_percent)
+        - [5.1.2.4.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > key`](#modules_items_anyOf_i1_oneOf_i3_key)
+        - [5.1.2.4.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyColor`](#modules_items_anyOf_i1_oneOf_i3_keyColor)
+        - [5.1.2.4.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyIcon`](#modules_items_anyOf_i1_oneOf_i3_keyIcon)
+        - [5.1.2.4.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyWidth`](#modules_items_anyOf_i1_oneOf_i3_keyWidth)
+        - [5.1.2.4.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > outputColor`](#modules_items_anyOf_i1_oneOf_i3_outputColor)
+        - [5.1.2.4.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > format`](#modules_items_anyOf_i1_oneOf_i3_format)
+        - [5.1.2.4.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > condition`](#modules_items_anyOf_i1_oneOf_i3_condition)
       - [5.1.2.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth Radio`](#modules_items_anyOf_i1_oneOf_i4)
         - [5.1.2.5.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth Radio > type`](#modules_items_anyOf_i1_oneOf_i4_type)
         - [5.1.2.5.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth Radio > key`](#modules_items_anyOf_i1_oneOf_i4_key)
@@ -443,7 +450,10 @@
         - [5.1.2.17.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > shell`](#modules_items_anyOf_i1_oneOf_i16_shell)
         - [5.1.2.17.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > param`](#modules_items_anyOf_i1_oneOf_i16_param)
         - [5.1.2.17.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > text`](#modules_items_anyOf_i1_oneOf_i16_text)
-        - [5.1.2.17.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useStdErr`](#modules_items_anyOf_i1_oneOf_i16_useStdErr)
+        - [5.1.2.17.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useOutput`](#modules_items_anyOf_i1_oneOf_i16_useOutput)
+          - [5.1.2.17.5.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useOutput > oneOf > item 0`](#modules_items_anyOf_i1_oneOf_i16_useOutput_oneOf_i0)
+          - [5.1.2.17.5.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useOutput > oneOf > item 1`](#modules_items_anyOf_i1_oneOf_i16_useOutput_oneOf_i1)
+          - [5.1.2.17.5.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useOutput > oneOf > item 2`](#modules_items_anyOf_i1_oneOf_i16_useOutput_oneOf_i2)
         - [5.1.2.17.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > parallel`](#modules_items_anyOf_i1_oneOf_i16_parallel)
         - [5.1.2.17.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > splitLines`](#modules_items_anyOf_i1_oneOf_i16_splitLines)
         - [5.1.2.17.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > key`](#modules_items_anyOf_i1_oneOf_i16_key)
@@ -1201,7 +1211,7 @@ Specific value: `null`
 | - [printRemaining](#logo_oneOf_i2_printRemaining )           | No      | boolean          | No         | -          | Whether to print any remaining logo lines when the logo is taller than the module list                                                                                                                                                                                                                                                         |
 | - [preserveAspectRatio](#logo_oneOf_i2_preserveAspectRatio ) | No      | boolean          | No         | -          | Whether to preserve the aspect ratio of the logo. Supported by iTerm image protocol only                                                                                                                                                                                                                                                       |
 | - [cache](#logo_oneOf_i2_cache )                             | No      | Combination      | No         | -          | How the image logo cache is used. true reuses a cached rendering when it is valid and writes it back on a cache miss; false ignores the cache completely, neither reading nor writing it; "regen" ignores any existing cached rendering and regenerates it                                                                                     |
-| - [position](#logo_oneOf_i2_position )                       | No      | enum (of string) | No         | -          | Position of the logo                                                                                                                                                                                                                                                                                                                           |
+| - [position](#logo_oneOf_i2_position )                       | No      | enum (of string) | No         | -          | Position of the logo. Auto places a left-side logo above the output when the terminal is too narrow to reserve 32 columns for module output.                                                                                                                                                                                                   |
 | - [animationFrame](#logo_oneOf_i2_animationFrame )           | No      | integer          | No         | -          | Frame of an animated image to render:<br />0 plays the animation (kitty image protocol only), a positive value is the 1-based frame number, and a negative value counts back from the end, so -1 is the last frame.<br />Only the JSON config can express a negative value, as the command line parser reads a leading \`-\` as another option |
 | - [chafa](#logo_oneOf_i2_chafa )                             | No      | object           | No         | -          | Chafa configuration. See chafa documentation for details                                                                                                                                                                                                                                                                                       |
 
@@ -1841,9 +1851,10 @@ Specific value: `"regen"`
 | **Required** | No                 |
 | **Default**  | `"left"`           |
 
-**Description:** Position of the logo
+**Description:** Position of the logo. Auto places a left-side logo above the output when the terminal is too narrow to reserve 32 columns for module output.
 
 Must be one of:
+* "auto"
 * "left"
 * "top"
 * "right"
@@ -2107,6 +2118,7 @@ Specific value: `"DIFFUSION"`
 | - [dsForceDrm](#general_dsForceDrm )               | No      | Combination | No         | -          | Force display detection to use DRM (Linux only)                              |
 | - [processingTimeout](#general_processingTimeout ) | No      | integer     | No         | -          | Set the timeout (ms) when waiting for child processes, \`-1\` for no timeout |
 | - [detectVersion](#general_detectVersion )         | No      | boolean     | No         | -          | Whether to detect and display component versions. Mainly for benchmarking    |
+| - [preload](#general_preload )                     | No      | object      | No         | -          | Scripts to run while the config is read, before any module runs              |
 
 ### <a name="general_thread"></a>3.1. Property `JSON config > general > thread`
 
@@ -2206,6 +2218,29 @@ Specific value: `true`
 | **Default**  | `true`    |
 
 **Description:** Whether to detect and display component versions. Mainly for benchmarking
+
+### <a name="general_preload"></a>3.7. Property `JSON config > general > preload`
+
+|                           |             |
+| ------------------------- | ----------- |
+| **Type**                  | `object`    |
+| **Required**              | No          |
+| **Additional properties** | Not allowed |
+
+**Description:** Scripts to run while the config is read, before any module runs
+
+| Property                       | Pattern | Type   | Deprecated | Definition | Title/Description                                                                                     |
+| ------------------------------ | ------- | ------ | ---------- | ---------- | ----------------------------------------------------------------------------------------------------- |
+| - [lua](#general_preload_lua ) | No      | string | No         | -          | Lua script to run once, as soon as the config is read, for example \`dofile('/path/to/helpers.lua')\` |
+
+#### <a name="general_preload_lua"></a>3.7.1. Property `JSON config > general > preload > lua`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+
+**Description:** Lua script to run once, as soon as the config is read, for example `dofile('/path/to/helpers.lua')`
 
 ## <a name="display"></a>4. Property `JSON config > display`
 
@@ -2618,6 +2653,7 @@ Specific value: `"both-4"`
 | [item 18](#display_key_language_oneOf_i18) |
 | [item 19](#display_key_language_oneOf_i19) |
 | [item 20](#display_key_language_oneOf_i20) |
+| [item 21](#display_key_language_oneOf_i21) |
 
 ##### <a name="display_key_language_oneOf_i0"></a>4.9.4.1. Property `JSON config > display > key > language > oneOf > item 0`
 
@@ -2690,11 +2726,22 @@ Specific value: `"es"`
 | **Type**     | `const` |
 | **Required** | No      |
 
+**Description:** Finnish
+
+Specific value: `"fi"`
+
+##### <a name="display_key_language_oneOf_i7"></a>4.9.4.8. Property `JSON config > display > key > language > oneOf > item 7`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
 **Description:** French
 
 Specific value: `"fr"`
 
-##### <a name="display_key_language_oneOf_i7"></a>4.9.4.8. Property `JSON config > display > key > language > oneOf > item 7`
+##### <a name="display_key_language_oneOf_i8"></a>4.9.4.9. Property `JSON config > display > key > language > oneOf > item 8`
 
 |              |         |
 | ------------ | ------- |
@@ -2705,7 +2752,7 @@ Specific value: `"fr"`
 
 Specific value: `"gl"`
 
-##### <a name="display_key_language_oneOf_i8"></a>4.9.4.9. Property `JSON config > display > key > language > oneOf > item 8`
+##### <a name="display_key_language_oneOf_i9"></a>4.9.4.10. Property `JSON config > display > key > language > oneOf > item 9`
 
 |              |         |
 | ------------ | ------- |
@@ -2716,7 +2763,7 @@ Specific value: `"gl"`
 
 Specific value: `"he"`
 
-##### <a name="display_key_language_oneOf_i9"></a>4.9.4.10. Property `JSON config > display > key > language > oneOf > item 9`
+##### <a name="display_key_language_oneOf_i10"></a>4.9.4.11. Property `JSON config > display > key > language > oneOf > item 10`
 
 |              |         |
 | ------------ | ------- |
@@ -2727,7 +2774,7 @@ Specific value: `"he"`
 
 Specific value: `"id"`
 
-##### <a name="display_key_language_oneOf_i10"></a>4.9.4.11. Property `JSON config > display > key > language > oneOf > item 10`
+##### <a name="display_key_language_oneOf_i11"></a>4.9.4.12. Property `JSON config > display > key > language > oneOf > item 11`
 
 |              |         |
 | ------------ | ------- |
@@ -2738,7 +2785,7 @@ Specific value: `"id"`
 
 Specific value: `"it"`
 
-##### <a name="display_key_language_oneOf_i11"></a>4.9.4.12. Property `JSON config > display > key > language > oneOf > item 11`
+##### <a name="display_key_language_oneOf_i12"></a>4.9.4.13. Property `JSON config > display > key > language > oneOf > item 12`
 
 |              |         |
 | ------------ | ------- |
@@ -2749,7 +2796,7 @@ Specific value: `"it"`
 
 Specific value: `"ja"`
 
-##### <a name="display_key_language_oneOf_i12"></a>4.9.4.13. Property `JSON config > display > key > language > oneOf > item 12`
+##### <a name="display_key_language_oneOf_i13"></a>4.9.4.14. Property `JSON config > display > key > language > oneOf > item 13`
 
 |              |         |
 | ------------ | ------- |
@@ -2760,7 +2807,7 @@ Specific value: `"ja"`
 
 Specific value: `"ko"`
 
-##### <a name="display_key_language_oneOf_i13"></a>4.9.4.14. Property `JSON config > display > key > language > oneOf > item 13`
+##### <a name="display_key_language_oneOf_i14"></a>4.9.4.15. Property `JSON config > display > key > language > oneOf > item 14`
 
 |              |         |
 | ------------ | ------- |
@@ -2771,7 +2818,7 @@ Specific value: `"ko"`
 
 Specific value: `"pl"`
 
-##### <a name="display_key_language_oneOf_i14"></a>4.9.4.15. Property `JSON config > display > key > language > oneOf > item 14`
+##### <a name="display_key_language_oneOf_i15"></a>4.9.4.16. Property `JSON config > display > key > language > oneOf > item 15`
 
 |              |         |
 | ------------ | ------- |
@@ -2782,7 +2829,7 @@ Specific value: `"pl"`
 
 Specific value: `"pt"`
 
-##### <a name="display_key_language_oneOf_i15"></a>4.9.4.16. Property `JSON config > display > key > language > oneOf > item 15`
+##### <a name="display_key_language_oneOf_i16"></a>4.9.4.17. Property `JSON config > display > key > language > oneOf > item 16`
 
 |              |         |
 | ------------ | ------- |
@@ -2793,7 +2840,7 @@ Specific value: `"pt"`
 
 Specific value: `"ru"`
 
-##### <a name="display_key_language_oneOf_i16"></a>4.9.4.17. Property `JSON config > display > key > language > oneOf > item 16`
+##### <a name="display_key_language_oneOf_i17"></a>4.9.4.18. Property `JSON config > display > key > language > oneOf > item 17`
 
 |              |         |
 | ------------ | ------- |
@@ -2804,7 +2851,7 @@ Specific value: `"ru"`
 
 Specific value: `"tr"`
 
-##### <a name="display_key_language_oneOf_i17"></a>4.9.4.18. Property `JSON config > display > key > language > oneOf > item 17`
+##### <a name="display_key_language_oneOf_i18"></a>4.9.4.19. Property `JSON config > display > key > language > oneOf > item 18`
 
 |              |         |
 | ------------ | ------- |
@@ -2815,7 +2862,7 @@ Specific value: `"tr"`
 
 Specific value: `"uk"`
 
-##### <a name="display_key_language_oneOf_i18"></a>4.9.4.19. Property `JSON config > display > key > language > oneOf > item 18`
+##### <a name="display_key_language_oneOf_i19"></a>4.9.4.20. Property `JSON config > display > key > language > oneOf > item 19`
 
 |              |         |
 | ------------ | ------- |
@@ -2826,7 +2873,7 @@ Specific value: `"uk"`
 
 Specific value: `"vi"`
 
-##### <a name="display_key_language_oneOf_i19"></a>4.9.4.20. Property `JSON config > display > key > language > oneOf > item 19`
+##### <a name="display_key_language_oneOf_i20"></a>4.9.4.21. Property `JSON config > display > key > language > oneOf > item 20`
 
 |              |         |
 | ------------ | ------- |
@@ -2837,7 +2884,7 @@ Specific value: `"vi"`
 
 Specific value: `"zh_CN"`
 
-##### <a name="display_key_language_oneOf_i20"></a>4.9.4.21. Property `JSON config > display > key > language > oneOf > item 20`
+##### <a name="display_key_language_oneOf_i21"></a>4.9.4.22. Property `JSON config > display > key > language > oneOf > item 21`
 
 |              |         |
 | ------------ | ------- |
@@ -5657,18 +5704,19 @@ Use a single space (` `) to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                                 | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                          |
-| ------------------------------------------------------------------------ | ------- | ------- | ---------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i3_type )                         | No      | const   | No         | -                                                                    | List connected Bluetooth devices                                                                                                                                                                                                                                                                                           |
-| - [showDisconnected](#modules_items_anyOf_i1_oneOf_i3_showDisconnected ) | No      | boolean | No         | -                                                                    | Whether to show disconnected Bluetooth devices                                                                                                                                                                                                                                                                             |
-| - [percent](#modules_items_anyOf_i1_oneOf_i3_percent )                   | No      | object  | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i1_percent )         | Color thresholds for percentage output                                                                                                                                                                                                                                                                                     |
-| - [key](#modules_items_anyOf_i1_oneOf_i3_key )                           | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                                                                 |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i3_keyColor )                 | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                                                                  |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i3_keyIcon )                   | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                                                                                                                                                                               |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i3_keyWidth )                 | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                                                                                                                                                                                                   |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i3_outputColor )           | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                                                                                                                                                                                             |
-| - [format](#modules_items_anyOf_i1_oneOf_i3_format )                     | No      | string  | No         | In #/$defs/bluetoothFormat                                           | Output format for the \`Bluetooth\` module. See Wiki for formatting syntax<br />    1. {name}: Name<br />    2. {address}: Address<br />    3. {type}: Type<br />    4. {battery-percentage}: Battery percentage number<br />    5. {connected}: Is connected<br />    6. {battery-percentage-bar}: Battery percentage bar |
-| - [condition](#modules_items_anyOf_i1_oneOf_i3_condition )               | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                                                                                                                                                                                                           |
+| Property                                                                 | Pattern | Type        | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------------------------ | ------- | ----------- | ---------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i3_type )                         | No      | const       | No         | -                                                                    | List connected Bluetooth devices                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| - [showDisconnected](#modules_items_anyOf_i1_oneOf_i3_showDisconnected ) | No      | boolean     | No         | -                                                                    | Whether to show disconnected Bluetooth devices                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| - [showType](#modules_items_anyOf_i1_oneOf_i3_showType )                 | No      | Combination | No         | -                                                                    | Which Bluetooth stacks to look for                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| - [percent](#modules_items_anyOf_i1_oneOf_i3_percent )                   | No      | object      | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i1_percent )         | Color thresholds for percentage output                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| - [key](#modules_items_anyOf_i1_oneOf_i3_key )                           | No      | string      | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i3_keyColor )                 | No      | object      | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i3_keyIcon )                   | No      | string      | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i3_keyWidth )                 | No      | integer     | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i3_outputColor )           | No      | object      | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| - [format](#modules_items_anyOf_i1_oneOf_i3_format )                     | No      | string      | No         | In #/$defs/bluetoothFormat                                           | Output format for the \`Bluetooth\` module. See Wiki for formatting syntax<br />    1. {name}: Name<br />    2. {address}: Address<br />    3. {type}: Type<br />    4. {device-type}: Bluetooth stacks the device answers on<br />    5. {battery-percentage}: Battery percentage number<br />    6. {battery-percentage-bar}: Battery percentage bar<br />    7. {signal-quality}: Signal quality number<br />    8. {signal-quality-bar}: Signal quality bar<br />    9. {connected}: Is connected |
+| - [condition](#modules_items_anyOf_i1_oneOf_i3_condition )               | No      | object      | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i3_type"></a>5.1.2.4.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > type`
 
@@ -5691,7 +5739,57 @@ Specific value: `"bluetooth"`
 
 **Description:** Whether to show disconnected Bluetooth devices
 
-###### <a name="modules_items_anyOf_i1_oneOf_i3_percent"></a>5.1.2.4.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > percent`
+###### <a name="modules_items_anyOf_i1_oneOf_i3_showType"></a>5.1.2.4.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > showType`
+
+|                           |                  |
+| ------------------------- | ---------------- |
+| **Type**                  | `combining`      |
+| **Required**              | No               |
+| **Additional properties** | Any type allowed |
+| **Default**               | `"both"`         |
+
+**Description:** Which Bluetooth stacks to look for
+
+| One of(Option)                                               |
+| ------------------------------------------------------------ |
+| [item 0](#modules_items_anyOf_i1_oneOf_i3_showType_oneOf_i0) |
+| [item 1](#modules_items_anyOf_i1_oneOf_i3_showType_oneOf_i1) |
+| [item 2](#modules_items_anyOf_i1_oneOf_i3_showType_oneOf_i2) |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i3_showType_oneOf_i0"></a>5.1.2.4.3.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > showType > oneOf > item 0`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Look for BR/EDR devices only
+
+Specific value: `"classic"`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i3_showType_oneOf_i1"></a>5.1.2.4.3.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > showType > oneOf > item 1`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Look for Bluetooth Low Energy devices only
+
+Specific value: `"le"`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i3_showType_oneOf_i2"></a>5.1.2.4.3.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > showType > oneOf > item 2`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Look for devices on either stack
+
+Specific value: `"both"`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i3_percent"></a>5.1.2.4.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > percent`
 
 |                           |                                                     |
 | ------------------------- | --------------------------------------------------- |
@@ -5702,7 +5800,7 @@ Specific value: `"bluetooth"`
 
 **Description:** Color thresholds for percentage output
 
-###### <a name="modules_items_anyOf_i1_oneOf_i3_key"></a>5.1.2.4.4. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > key`
+###### <a name="modules_items_anyOf_i1_oneOf_i3_key"></a>5.1.2.4.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > key`
 
 |                        |                                             |
 | ---------------------- | ------------------------------------------- |
@@ -5713,7 +5811,7 @@ Specific value: `"bluetooth"`
 **Description:** Module key
 Use a single space (` `) to hide the key
 
-###### <a name="modules_items_anyOf_i1_oneOf_i3_keyColor"></a>5.1.2.4.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i3_keyColor"></a>5.1.2.4.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyColor`
 
 |                           |                                                       |
 | ------------------------- | ----------------------------------------------------- |
@@ -5724,7 +5822,7 @@ Use a single space (` `) to hide the key
 
 **Description:** Color of the module key. Overrides `display.color.keys`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i3_keyIcon"></a>5.1.2.4.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyIcon`
+###### <a name="modules_items_anyOf_i1_oneOf_i3_keyIcon"></a>5.1.2.4.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyIcon`
 
 |                        |                                                     |
 | ---------------------- | --------------------------------------------------- |
@@ -5734,7 +5832,7 @@ Use a single space (` `) to hide the key
 
 **Description:** Icon to display when `display.key.type` is set to `icon`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i3_keyWidth"></a>5.1.2.4.7. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyWidth`
+###### <a name="modules_items_anyOf_i1_oneOf_i3_keyWidth"></a>5.1.2.4.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > keyWidth`
 
 |                        |                                                       |
 | ---------------------- | ----------------------------------------------------- |
@@ -5744,7 +5842,7 @@ Use a single space (` `) to hide the key
 
 **Description:** Width of the module key. Overrides `display.key.width`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i3_outputColor"></a>5.1.2.4.8. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > outputColor`
+###### <a name="modules_items_anyOf_i1_oneOf_i3_outputColor"></a>5.1.2.4.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > outputColor`
 
 |                           |                                                             |
 | ------------------------- | ----------------------------------------------------------- |
@@ -5755,7 +5853,7 @@ Use a single space (` `) to hide the key
 
 **Description:** Color of the module output. Overrides `display.color.output`
 
-###### <a name="modules_items_anyOf_i1_oneOf_i3_format"></a>5.1.2.4.9. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > format`
+###### <a name="modules_items_anyOf_i1_oneOf_i3_format"></a>5.1.2.4.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > format`
 
 |                |                         |
 | -------------- | ----------------------- |
@@ -5767,11 +5865,14 @@ Use a single space (` `) to hide the key
     1. {name}: Name
     2. {address}: Address
     3. {type}: Type
-    4. {battery-percentage}: Battery percentage number
-    5. {connected}: Is connected
+    4. {device-type}: Bluetooth stacks the device answers on
+    5. {battery-percentage}: Battery percentage number
     6. {battery-percentage-bar}: Battery percentage bar
+    7. {signal-quality}: Signal quality number
+    8. {signal-quality-bar}: Signal quality bar
+    9. {connected}: Is connected
 
-###### <a name="modules_items_anyOf_i1_oneOf_i3_condition"></a>5.1.2.4.10. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > condition`
+###### <a name="modules_items_anyOf_i1_oneOf_i3_condition"></a>5.1.2.4.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Bluetooth > condition`
 
 |                           |                                                         |
 | ------------------------- | ------------------------------------------------------- |
@@ -6131,7 +6232,7 @@ Use a single space (` `) to hide the key
 | -------------------------------------------------------------- | ------- | ----------- | ---------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | - [type](#modules_items_anyOf_i1_oneOf_i7_type )               | No      | const       | No         | -                                                                    | Print the current brightness level of your monitors                                                                                                                                                                                                                                                                                                                                                                              |
 | - [percent](#modules_items_anyOf_i1_oneOf_i7_percent )         | No      | object      | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i1_percent )         | Color thresholds for percentage output                                                                                                                                                                                                                                                                                                                                                                                           |
-| - [ddcciSleep](#modules_items_anyOf_i1_oneOf_i7_ddcciSleep )   | No      | Combination | No         | -                                                                    | Sleep time in milliseconds between DDC/CI requests<br />Set to null to skip DDC/CI detection<br />See <https://www.ddcutil.com/performance_options/#option-sleep-multiplier> for details                                                                                                                                                                                                                                         |
+| - [ddcciSleep](#modules_items_anyOf_i1_oneOf_i7_ddcciSleep )   | No      | Combination | No         | -                                                                    | Sleep time in milliseconds between DDC/CI requests<br />Set to null to skip DDC/CI detection                                                                                                                                                                                                                                                                                                                                     |
 | - [compact](#modules_items_anyOf_i1_oneOf_i7_compact )         | No      | boolean     | No         | -                                                                    | Whether to print multiple results on a single line                                                                                                                                                                                                                                                                                                                                                                               |
 | - [key](#modules_items_anyOf_i1_oneOf_i7_key )                 | No      | string      | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                                                                                                                                                                       |
 | - [keyColor](#modules_items_anyOf_i1_oneOf_i7_keyColor )       | No      | object      | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                                                                                                                                                                        |
@@ -6174,7 +6275,6 @@ Specific value: `"brightness"`
 
 **Description:** Sleep time in milliseconds between DDC/CI requests
 Set to null to skip DDC/CI detection
-See <https://www.ddcutil.com/performance_options/#option-sleep-multiplier> for details
 
 | One of(Option)                                                 |
 | -------------------------------------------------------------- |
@@ -7579,22 +7679,22 @@ Use a single space (` `) to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                        | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                                                      |
-| --------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i16_type )               | No      | const   | No         | -                                                                    | Run custom shell scripts                                                                                                                                               |
-| - [shell](#modules_items_anyOf_i1_oneOf_i16_shell )             | No      | string  | No         | -                                                                    | Shell program used to execute the command text<br />Default: \`cmd\` on Windows, \`/bin/sh\` on Unix-like systems                                                      |
-| - [param](#modules_items_anyOf_i1_oneOf_i16_param )             | No      | string  | No         | -                                                                    | Parameter used when starting the shell<br />If set to an empty string, it is ignored<br />Default: \`/c\` on Windows, \`-c\` on Unix-like systems                      |
-| - [text](#modules_items_anyOf_i1_oneOf_i16_text )               | No      | string  | No         | -                                                                    | Command text to execute                                                                                                                                                |
-| - [useStdErr](#modules_items_anyOf_i1_oneOf_i16_useStdErr )     | No      | boolean | No         | -                                                                    | Whether to use stderr instead of stdout for command output                                                                                                             |
-| - [parallel](#modules_items_anyOf_i1_oneOf_i16_parallel )       | No      | boolean | No         | -                                                                    | Whether to execute the command in parallel with other commands<br />This can improve performance when using multiple commands, but may cause issues with some commands |
-| - [splitLines](#modules_items_anyOf_i1_oneOf_i16_splitLines )   | No      | boolean | No         | -                                                                    | Whether to split command output into multiple lines                                                                                                                    |
-| - [key](#modules_items_anyOf_i1_oneOf_i16_key )                 | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                             |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i16_keyColor )       | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                              |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i16_keyIcon )         | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                           |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i16_keyWidth )       | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                                               |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i16_outputColor ) | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                                         |
-| - [format](#modules_items_anyOf_i1_oneOf_i16_format )           | No      | string  | No         | In #/$defs/commandFormat                                             | Output format for the \`Command\` module. See Wiki for formatting syntax<br />    1. {result}: Command result                                                          |
-| - [condition](#modules_items_anyOf_i1_oneOf_i16_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                                                       |
+| Property                                                        | Pattern | Type        | Deprecated | Definition                                                           | Title/Description                                                                                                                                                      |
+| --------------------------------------------------------------- | ------- | ----------- | ---------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i16_type )               | No      | const       | No         | -                                                                    | Run custom shell scripts                                                                                                                                               |
+| - [shell](#modules_items_anyOf_i1_oneOf_i16_shell )             | No      | string      | No         | -                                                                    | Shell program used to execute the command text<br />Default: \`cmd\` on Windows, \`/bin/sh\` on Unix-like systems                                                      |
+| - [param](#modules_items_anyOf_i1_oneOf_i16_param )             | No      | string      | No         | -                                                                    | Parameter used when starting the shell<br />If set to an empty string, it is ignored<br />Default: \`/c\` on Windows, \`-c\` on Unix-like systems                      |
+| - [text](#modules_items_anyOf_i1_oneOf_i16_text )               | No      | string      | No         | -                                                                    | Command text to execute                                                                                                                                                |
+| - [useOutput](#modules_items_anyOf_i1_oneOf_i16_useOutput )     | No      | Combination | No         | -                                                                    | Which of the command's output streams to capture<br />The stream that is not captured is discarded                                                                     |
+| - [parallel](#modules_items_anyOf_i1_oneOf_i16_parallel )       | No      | boolean     | No         | -                                                                    | Whether to execute the command in parallel with other commands<br />This can improve performance when using multiple commands, but may cause issues with some commands |
+| - [splitLines](#modules_items_anyOf_i1_oneOf_i16_splitLines )   | No      | boolean     | No         | -                                                                    | Whether to split command output into multiple lines                                                                                                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i16_key )                 | No      | string      | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                             |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i16_keyColor )       | No      | object      | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                              |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i16_keyIcon )         | No      | string      | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                           |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i16_keyWidth )       | No      | integer     | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                                               |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i16_outputColor ) | No      | object      | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                                         |
+| - [format](#modules_items_anyOf_i1_oneOf_i16_format )           | No      | string      | No         | In #/$defs/commandFormat                                             | Output format for the \`Command\` module. See Wiki for formatting syntax<br />    1. {result}: Command result                                                          |
+| - [condition](#modules_items_anyOf_i1_oneOf_i16_condition )     | No      | object      | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                                                       |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i16_type"></a>5.1.2.17.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > type`
 
@@ -7637,15 +7737,55 @@ Default: `/c` on Windows, `-c` on Unix-like systems
 
 **Description:** Command text to execute
 
-###### <a name="modules_items_anyOf_i1_oneOf_i16_useStdErr"></a>5.1.2.17.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useStdErr`
+###### <a name="modules_items_anyOf_i1_oneOf_i16_useOutput"></a>5.1.2.17.5. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useOutput`
 
-|              |           |
-| ------------ | --------- |
-| **Type**     | `boolean` |
-| **Required** | No        |
-| **Default**  | `false`   |
+|              |             |
+| ------------ | ----------- |
+| **Type**     | `combining` |
+| **Required** | No          |
+| **Default**  | `"both"`    |
 
-**Description:** Whether to use stderr instead of stdout for command output
+**Description:** Which of the command's output streams to capture
+The stream that is not captured is discarded
+
+| One of(Option)                                                 |
+| -------------------------------------------------------------- |
+| [item 0](#modules_items_anyOf_i1_oneOf_i16_useOutput_oneOf_i0) |
+| [item 1](#modules_items_anyOf_i1_oneOf_i16_useOutput_oneOf_i1) |
+| [item 2](#modules_items_anyOf_i1_oneOf_i16_useOutput_oneOf_i2) |
+
+###### <a name="modules_items_anyOf_i1_oneOf_i16_useOutput_oneOf_i0"></a>5.1.2.17.5.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useOutput > oneOf > item 0`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Capture stdout only and discard stderr
+
+Specific value: `"stdout"`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i16_useOutput_oneOf_i1"></a>5.1.2.17.5.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useOutput > oneOf > item 1`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Capture stderr only and discard stdout
+
+Specific value: `"stderr"`
+
+###### <a name="modules_items_anyOf_i1_oneOf_i16_useOutput_oneOf_i2"></a>5.1.2.17.5.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > useOutput > oneOf > item 2`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
+**Description:** Capture both stdout and stderr
+
+Specific value: `"both"`
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i16_parallel"></a>5.1.2.17.6. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Command > parallel`
 
@@ -13161,19 +13301,19 @@ Use a single space (` `) to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                        | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                              |
-| --------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i53_type )               | No      | const   | No         | -                                                                    | Print your public IP address and related information                                                                                           |
-| - [url](#modules_items_anyOf_i1_oneOf_i53_url )                 | No      | string  | No         | -                                                                    | URL of the public IP detection server to use. Only HTTP is supported                                                                           |
-| - [timeout](#modules_items_anyOf_i1_oneOf_i53_timeout )         | No      | integer | No         | -                                                                    | Time in milliseconds to wait for the public IP server to respond<br />Set to 0 to disable the timeout                                          |
-| - [ipv6](#modules_items_anyOf_i1_oneOf_i53_ipv6 )               | No      | boolean | No         | -                                                                    | Whether to use IPv6 for the public IP detection server                                                                                         |
-| - [key](#modules_items_anyOf_i1_oneOf_i53_key )                 | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                     |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i53_keyColor )       | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                      |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i53_keyIcon )         | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                   |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i53_keyWidth )       | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                       |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i53_outputColor ) | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                 |
-| - [format](#modules_items_anyOf_i1_oneOf_i53_format )           | No      | string  | No         | In #/$defs/publicipFormat                                            | Output format for the \`PublicIp\` module. See Wiki for formatting syntax<br />    1. {ip}: Public IP address<br />    2. {location}: Location |
-| - [condition](#modules_items_anyOf_i1_oneOf_i53_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                               |
+| Property                                                        | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                           |
+| --------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i53_type )               | No      | const   | No         | -                                                                    | Print your public IP address and related information                                                                                                                                                                                                                        |
+| - [url](#modules_items_anyOf_i1_oneOf_i53_url )                 | No      | string  | No         | -                                                                    | URL of the public IP detection server to use. Only HTTP is supported<br />If empty, \`http://ipinfo.io/json\` is requested (\`http://v6.ipinfo.io/json\` when \`ipv6\` is set), with TCP Fast Open enabled. A non-empty URL disables both and makes \`ipv6\` have no effect |
+| - [timeout](#modules_items_anyOf_i1_oneOf_i53_timeout )         | No      | integer | No         | -                                                                    | Time in milliseconds to wait for the public IP server to respond<br />Set to 0 to disable the timeout                                                                                                                                                                       |
+| - [ipv6](#modules_items_anyOf_i1_oneOf_i53_ipv6 )               | No      | boolean | No         | -                                                                    | Whether to use IPv6 for the public IP detection server                                                                                                                                                                                                                      |
+| - [key](#modules_items_anyOf_i1_oneOf_i53_key )                 | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                  |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i53_keyColor )       | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                   |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i53_keyIcon )         | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                                                                                                                                |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i53_keyWidth )       | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                                                                                                                                                    |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i53_outputColor ) | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                                                                                                                                              |
+| - [format](#modules_items_anyOf_i1_oneOf_i53_format )           | No      | string  | No         | In #/$defs/publicipFormat                                            | Output format for the \`PublicIp\` module. See Wiki for formatting syntax<br />    1. {ip}: Public IP address<br />    2. {location}: Location                                                                                                                              |
+| - [condition](#modules_items_anyOf_i1_oneOf_i53_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                                                                                                                                                            |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i53_type"></a>5.1.2.54.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > type`
 
@@ -13188,14 +13328,14 @@ Specific value: `"publicip"`
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i53_url"></a>5.1.2.54.2. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > url`
 
-|              |                         |
-| ------------ | ----------------------- |
-| **Type**     | `string`                |
-| **Required** | No                      |
-| **Format**   | `url`                   |
-| **Default**  | `"http://ipinfo.io/ip"` |
+|              |          |
+| ------------ | -------- |
+| **Type**     | `string` |
+| **Required** | No       |
+| **Format**   | `url`    |
 
 **Description:** URL of the public IP detection server to use. Only HTTP is supported
+If empty, `http://ipinfo.io/json` is requested (`http://v6.ipinfo.io/json` when `ipv6` is set), with TCP Fast Open enabled. A non-empty URL disables both and makes `ipv6` have no effect
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i53_timeout"></a>5.1.2.54.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Public IP > timeout`
 
@@ -16124,4 +16264,4 @@ Use a single space (` `) to hide the key
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2026-09-22 at 15:45:03 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2026-10-10 at 12:34:01 +0800

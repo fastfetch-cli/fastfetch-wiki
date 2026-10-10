@@ -46,7 +46,7 @@ compiled everywhere. Process handling itself lives in
 | `shell` | string | `cmd.exe` (Windows) / `/bin/sh` (else) | Interpreter used to run `text`. |
 | `param` | string | `/c` (Windows) / `-c` (else) | Argument passed before `text`. **If set to an empty string it is omitted entirely**, so the argv becomes `{ shell, text }`. |
 | `text` | string | `""` | The command to run. Empty means the module always fails with `No command text specified`. |
-| `useStdErr` | boolean | `false` | Read the child's stderr instead of its stdout. |
+| `useOutput` | string | `"both"` | Which of the child's output streams to capture: `"stdout"`, `"stderr"` or `"both"`. Whichever stream is not captured is redirected to `/dev/null` and discarded. |
 | `parallel` | boolean | `true` | Spawn the process before other modules run and read it later. See below. |
 | `splitLines` | boolean | `false` | Print one module line per line of output. |
 | `key` | string | (module name) | Key text; `" "` hides it. |
@@ -69,6 +69,12 @@ About `parallel`:
 About `text`: because a shell is involved, quoting is the shell's business. `"text": "echo \"a b\""`
 runs `echo "a b"`. If you set `shell` to a program that does not take a `-c`-style parameter, set
 `param` to `""`.
+
+About `useOutput`: before 2.70.0 the option was a boolean named `useStdErr`, which either captured
+stdout (the default) or stderr. It is now a string and defaults to `"both"`, so configs written for
+the old key must be updated — `"useStdErr": true` becomes `"useOutput": "stderr"` and
+`"useStdErr": false` becomes `"useOutput": "stdout"`. The old key is no longer recognized and is
+reported as an unknown key.
 
 ## Format string
 
@@ -129,14 +135,21 @@ Show the current git branch, but only inside a repository:
   "type": "command",
   "text": "git rev-parse --abbrev-ref HEAD",
   "key": "Branch",
-  "useStdErr": false
+  "useOutput": "stdout"
 }
 ```
 
 Reading stderr instead of stdout — useful for tools that log to stderr:
 
 ```jsonc
-{ "type": "command", "text": "my-tool --version", "useStdErr": true }
+{ "type": "command", "text": "my-tool --version", "useOutput": "stderr" }
+```
+
+Keeping both streams (the default), which is handy when a tool splits its progress report and its
+result across stdout and stderr:
+
+```jsonc
+{ "type": "command", "text": "my-tool --version", "useOutput": "both" }
 ```
 
 A command that does not use a shell interpreter at all — `param: ""` makes the argv
@@ -211,9 +224,14 @@ which is why a module-set mismatch between the two passes corrupts the output ra
 - `param` non-empty → `{ shell, param, text, nullptr }`
 - `param` empty → `{ shell, text, nullptr }`
 
-and calls `ffProcessSpawn(argv, useStdErr, FF_PROCESS_INHERIT_STDIN, &handle)`.
-`FF_PROCESS_INHERIT_STDIN` (`src/common/processing.h:25`) is deliberate: detaching stdin breaks
+and calls `ffProcessSpawn(argv, useOutput, FF_PROCESS_INHERIT_STDIN, &handle)`.
+`FF_PROCESS_INHERIT_STDIN` (`src/common/processing.h:36`) is deliberate: detaching stdin breaks
 `/system/bin/cmd` on Android, which forwards it over binder.
+
+`useOutput` is a bitmask (`FFProcessOutputType`, `src/common/processing.h:25`): the selected
+stream(s) are `dup2`-ed onto the write end of a single pipe, and any unselected stream is pointed at
+the null device. With `"both"` the child's stdout and stderr therefore share one pipe, and the
+output is captured in whatever order the two streams happen to interleave.
 
 `ffDetectCommand()` then trims trailing whitespace with `ffStrbufTrimRightSpace()` and reports
 `nullptr` for success.
