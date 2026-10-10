@@ -35,7 +35,7 @@ which is shared by several modules and always has a real implementation on all t
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `linux/displayserver_linux.c` + `common.c`, `wmde.c`, `xcb.c`, `xlib.c`, `drm.c`, `wayland/` | Wayland, then XCB, then Xlib, then DRM/sysfs |
-| Android | `displayserver_android.c` + `common.c`, `wmde.c`, `xcb.c`, `xlib.c`, `wayland/` | `cmd`, then `dumpsys`, then `getprop`. **No `drm.c`** |
+| Android | `displayserver_android.c` + `common.c`, `wmde.c`, `xcb.c`, `xlib.c`, `wayland/` | The `display` service over binder. **No `drm.c`** |
 | FreeBSD | `linux/displayserver_linux.c` + the same helper set as Linux | Plus a `kenv` fallback for text consoles |
 | NetBSD | `linux/displayserver_linux.c` + the same helper set as Linux | |
 | OpenBSD | `linux/displayserver_linux.c` + the same helper set as Linux | |
@@ -254,6 +254,15 @@ Notes on the shape:
   `compactType: original` the displays are joined by a space and there is no way to change it;
   with a `-with-refresh-rate` value they are joined by `", "`. A trailing separator is trimmed
   (`display.c:57-58`).
+- **On Android there is one route, and it fails closed.** `platformApi` is always `binder`; the
+  `cmd` and `dumpsys` routes that used to answer when the binder parser declined are gone. A device
+  whose `DisplayInfo` layout the parser does not recognise now reports **no display at all** rather
+  than a slower one — so an empty `result` on Android means the parser declined the record, not that
+  the device has no display.
+- **On Android, the refresh rate is the float the framework carries, not a rounded value.** The
+  parcel holds it as a 32-bit float, so a 120 Hz panel reads `120.00000762939453` in the JSON where
+  the text route used to print `120.00001`. The console output is unaffected — the default rounds the
+  rate to a whole number, and only `preciseRefreshRate` shows the difference.
 
 ## Implementation
 
@@ -322,21 +331,39 @@ session is not a bare TTY.
 
 ### Android
 
-`displayserver_android.c` has three routes, tried in order, and they differ in both coverage and
-privileges:
+`displayserver_android.c` has one route: the `display` service
+(`android.hardware.display.IDisplayManager`) over `/dev/binder`, reported as `platformApi` `binder`.
+It needs no permission and starts no child process, which is what makes it the only route an app UID
+can use at all — `cmd display get-displays` does not exist before Android 13, and `dumpsys display` is
+behind `android.permission.DUMP`. The `cmd`, `dumpsys` and vendor `getprop` routes that used to sit
+behind it have been removed, because binder answers on every release they covered and on the ones none
+of them could.
 
-| Route | Command | `platformApi` | Availability |
-|---|---|---|---|
-| 1 | `/system/bin/cmd display get-displays` | `cmd` | Android 13+. No permission needed, so it works for an app UID |
-| 2 | `/system/bin/dumpsys display` | `dumpsys` | Every release, but gated behind `android.permission.DUMP` — `adb shell` and root only |
-| 3 | `getprop` | `getprop` | MiUI specific, last resort |
+It reads the enabled displays from `getDisplayIds()` first, because display ids are not contiguous,
+and then asks for one `getDisplayInfo()` per id. What comes back is the same `DisplayInfo` record a
+dump prints, field for field — but it arrives as a Java `Parcelable` instead of as text, and that is
+where the work is.
 
-`cmd` and `dumpsys` print the same `DisplayInfo` records, so one parser serves both; only the
-command and the marker in front of each record differ (`Display id ` versus `mBaseDisplayInfo=`).
-The record layout has changed across Android releases and every difference is accepted rather than
-version-checked — the mode list is `modes [...]` up to Android 14 and `supportedModes [...]` from
-15, for instance. The child process is detached from stdin because `cmd` forwards its stdin to the
-binder service and the kernel rejects the transaction when that fd is a terminal.
+That record's field set moves with every release and every vendor fork: `DisplayInfo` writes 34 fields
+on Android 11, 42 on 13 and 57 on 16. A fixed offset would silently read a plausible number out of the
+middle of a different field, so the write order is read out of the device's own
+`/system/framework/framework.jar` — from the `iget` order of `DisplayInfo.writeToParcel` — and the
+record is walked field by field along it with a bounds-checked cursor. Every nested `Parcelable` is
+anchored on its class name, every value that can be checked against its neighbours is checked
+(`type`, `displayId`, `rotation`, the mode id, the refresh rates, the density and both DPIs, and
+booleans that must be `0` or `1`), and **every display has to parse before any of them is reported**.
+A field the running release does not write is simply not in the sequence, which is what makes every one
+of them optional without a version check; an unrecognised *type* is a hard failure, because the type
+descriptor is the only thing that says how long a field is. The point is never to guess a value.
+
+Two of the shapes behind that are worth naming, because they are what the Android 11 and Android 16
+layouts were verified against. `Display$Mode` is walked by its own sequence rather than by a fixed
+field count — its fourth field is `mRefreshRate` on Android 11 and 13 and `mPeakRefreshRate` on 16,
+and both names are matched. And `DeviceProductInfo.mManufactureDate` goes through
+`Parcel.writeValue`, which prefixes a length on Android 13 and later but not on Android 11, so both
+framings are tried against the class name: it is a constant string, which makes the attempt decisive.
+Android 11 has been read this way on a device. Android 12 has not, and it sits between the two layouts
+that have.
 
 Android's build block deliberately omits `drm.c` — there are no DRM device nodes to read.
 
@@ -381,6 +408,6 @@ only available on some panels.
 
 `drrStatus` (dynamic refresh rate) is only filled by the Windows and Wayland paths; on every other
 backend it stays unknown and serialises as `null`. `bitDepth` is filled by the X11, DRM and macOS
-paths. On the Android routes almost every field other than size, density-derived DPI, refresh rate
-and rotation is left at its default, which is why Android entries have `hdrStatus: null`,
-`serial: null` and `manufactureDate: null`.
+paths. On the Android route `hdrStatus` and `manufactureDate` are filled — from the record's own
+`hdrCapabilities` and `deviceProductInfo` fields — while `bitDepth` and `serial` are left at their
+defaults, so Android entries serialise `serial: null`.

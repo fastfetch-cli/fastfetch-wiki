@@ -35,13 +35,15 @@ Displays are read through `GDI`, which is what `platformApi` reports. `--ds-forc
 
 ## Android
 
-Wayland, XCB and XRandR are tried first, exactly as on Linux, which is what covers Termux with an X server. When none of them reports a display, the Android display service is queried instead:
+Wayland, XCB and XRandR are tried first, exactly as on Linux, which is what covers Termux with an X server. When none of them reports a display, the Android display service is queried directly:
 
-1. **cmd** — `/system/bin/cmd display get-displays`. Needs no permission, so it also works for an app UID. Requires Android 13 (API 33).
-2. **dumpsys** — `/system/bin/dumpsys display`. The only route that answers on Android 12 and older, and only for `adb shell` and root.
-3. **getprop** — a vendor property that only some devices set. The last resort.
+**binder** — `getDisplayIds()` followed by one `getDisplayInfo()` per id, sent to the `display` service (`android.hardware.display.IDisplayManager`) over `/dev/binder`. It needs no permission and starts no child process, which is what makes it the only route an app UID can use at all: `cmd display get-displays` does not exist before Android 13, and `dumpsys display` is behind `android.permission.DUMP`. `platformApi` reports `binder`.
 
-`platformApi` reports which of the three answered: `cmd`, `dumpsys` or `getprop`.
+It is also the only route there is. The `cmd`, `dumpsys` and vendor `getprop` routes that used to sit behind it have been removed, because binder answers on every release they covered and on the ones none of them could.
+
+What that route has to earn is the parse. The reply is a Java `Parcelable` whose field set moves with every release and every vendor fork, so the record is never read at a fixed offset: the write order is recovered from the device's own `/system/framework/framework.jar`, from the `iget` order of `DisplayInfo.writeToParcel`, and the walk follows it field by field, anchoring every nested `Parcelable` on its class name. A field the running release does not write is simply not in the sequence, which is what makes every release's layout readable without a version check. A layout the parser does not recognise — a jar it cannot read, or a field whose framing it does not know — fails the route, and with nothing behind it the module reports no display rather than a number read out of the middle of another field.
+
+Timed on one device, the module took 16.0–26.5 ms through `cmd display get-displays` and 2.8–3.2 ms through binder. Treat that as an order of magnitude rather than a benchmark — the absolute number moves a lot with what else the device is doing. What binder buys is the fork; most of what is left is reading the jar.
 
 ## Haiku
 

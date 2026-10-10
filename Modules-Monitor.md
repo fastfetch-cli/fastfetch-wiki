@@ -36,8 +36,8 @@ The module layer is platform independent — `monitor.c` only formats what the s
 `displayserver` subsystem returns. Detection is therefore identical to
 [Display](Modules-Display#platform-support): the `displayserver` subsystem has a real implementation
 on all ten platforms (Wayland / XCB / Xlib / DRM / sysfs on Linux and the BSDs, CoreGraphics on
-macOS, GDI plus `DisplayConfigGetDeviceInfo` on Windows, `BScreen` on Haiku, and the `cmd` /
-`dumpsys` / `getprop` chain on Android).
+macOS, GDI plus `DisplayConfigGetDeviceInfo` on Windows, `BScreen` on Haiku, and the `display`
+service over binder on Android).
 
 ## Configuration
 
