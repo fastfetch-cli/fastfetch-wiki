@@ -29,15 +29,16 @@ Local IP (VMware Network Adapter VMnet8): 192.168.88.1/24
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `localip_linux.c` | `getifaddrs()`; speed via `SIOCETHTOOL`, prefix from the netmask |
-| Windows | `localip_windows.c` | `GetAdaptersAddresses()` |
-| macOS | `localip_linux.c` | `getifaddrs()`; speed via `SIOCGIFMEDIA` |
+| Windows | `localip_windows.c` | `GetUnicastIpAddressTable()` + `GetIfEntry2()` |
+| macOS | `localip_linux.c` + `localip_apple.c` | `getifaddrs()`; speed via `SIOCGIFMEDIA`; the MAC address falls back to the IORegistry |
 | FreeBSD / OpenBSD / NetBSD / DragonFly | `localip_linux.c` | `getifaddrs()`; speed via `SIOCGIFMEDIA` |
 | Solaris / illumos | `localip_linux.c` | `getifaddrs()`; speed from the `link` kstat |
 | Haiku | `localip_linux.c` | `getifaddrs()` |
 | GNU/Hurd | `localip_linux.c` | `getifaddrs()`; MAC via `SIOCGIFHWADDR` |
 | Android | `localip_linux.c` | Same code; `defaultRouteOnly` is off by default (permission denied) |
 
-Only Windows has its own backend — every other platform shares `localip_linux.c`.
+Only Windows has a backend of its own; macOS adds `localip_apple.c` on top of the shared file, which
+every other platform uses as it is.
 
 ## Configuration
 
@@ -130,7 +131,8 @@ that is the default route for neither family gets an empty string, which makes
 - `ipv4` and `ipv6` are comma-joined **strings**, not arrays — one entry per address found by
   `showAllIps`. The `/N` suffix is part of the string.
 - `mtu` and `speed` are numbers in bytes and Mbps. An interface the platform cannot describe keeps
-  the sentinel `-1` for `mtu` and `0` for `speed`.
+  the sentinel `-1` for both of them — `speed` is `-1`, not `0`, when the link speed could not be
+  read.
 
 ## Examples
 
@@ -186,6 +188,17 @@ that is the default route for neither family gets an empty string, which makes
 - **`compact` only changes the text path.** With `compact: true` the JSON is still the usual array;
   only the text collapses to one line, with the interfaces joined by ` - ` and the per-interface key
   dropped in favour of a single `Local IP` key.
+- **On macOS the MAC address comes from the IORegistry, and not every interface has one.** macOS 27
+  hands `02:00:00:00:00:00` to every process that is not signed as an Apple platform binary — which
+  includes ad-hoc and linker-signed builds, so your own `ifconfig` shows the placeholder for every
+  interface while fastfetch shows the real address. fastfetch replaces the placeholder through the
+  IORegistry, but only where an `IOMACAddress` exists: on a typical Mac that is `en*`, `anpi*`,
+  `ap1` and `vmenet*`, while `awdl0`, `bridge0`, `bridge100` and `llw0` keep
+  `02:00:00:00:00:00`. The value recovered this way is the **hardware** address, so it differs from
+  what a platform binary reports while Private Wi-Fi Address is turned on.
+- **Windows no longer reports an interface that has no unicast address.** The interfaces are
+  enumerated from the unicast address table, so an adapter that carries only a MAC is invisible —
+  not even `showMac` brings it back.
 
 ## Implementation
 
@@ -194,24 +207,43 @@ that is the default route for neither family gets an empty string, which makes
 `ffPrintLocalIp()` and `ffGenerateLocalIpJsonResult()` each call it themselves, so a
 `--dynamic-interval` run re-probes the interfaces every round; nothing is cached.
 
-The default `showType` is IPv4 | prefix length | default-route-only. On Windows that last bit is
-skipped for Android, where the default route is only available through a restricted syscall.
+The default `showType` is IPv4 | prefix length | default-route-only. The last bit is left out on
+Android, where the default-route lookup needs a permission the app usually does not have.
 
 ### Windows
 
-`GetAdaptersAddresses()` is called with `AF_UNSPEC`, `AF_INET` or `AF_INET6` depending on which
-families are enabled, and with `GAA_FLAG_SKIP_ANYCAST | SKIP_MULTICAST | SKIP_DNS_SERVER`. The call
-is retried up to five times while it returns `ERROR_BUFFER_OVERFLOW`, growing the buffer each time.
+The interfaces are enumerated from the **unicast address table** (`GetUnicastIpAddressTable()`, one
+row per address) and then described one at a time with `GetIfEntry2()`. The table is the only API
+that reports per-interface addresses and it cannot be filtered by interface, so it is queried once
+and only the rows of the interfaces that pass the filter below are read; rows of one interface are
+not adjacent, so each interface is handled at its first row. The per-interface call is deliberate —
+`GetIfTable2()` marshals every registered adapter and costs about 0.95 ms on a machine with a few
+dozen of them, while `GetIfEntry2()` costs about 24 µs each, which wins as long as fewer than
+roughly 40 interfaces carry an address.
 
-Only adapters whose `OperStatus` is `IfOperStatusUp` are kept; the loopback adapter
-(`IF_TYPE_SOFTWARE_LOOPBACK`) is dropped unless `showLoop` is set, and `namePrefix` and the
-default-route filter are applied before anything else. IPv4 addresses come from `FirstUnicastAddress`
-with `RtlIpv4AddressToStringA`, IPv6 with `RtlIpv6AddressToStringA`, and the `/N` suffix is appended
-from `OnLinkPrefixLength`. Unless `showAllIps` is set, only addresses whose `DadState` is
-`IpDadStatePreferred` and whose `SuffixOrigin` is not `IpSuffixOriginRandom` are used, which is what
-keeps temporary IPv6 addresses out. `speed` is `ReceiveLinkSpeed / 1000000`, `mtu` is the adapter's
-`Mtu`, `mac` is formatted from the 6-byte `PhysicalAddress` (adapters with another length get no MAC),
-and the flags string is built from the `IP_ADAPTER_*` bits listed in the module.
+Because the enumeration starts from the address table, an interface that carries no unicast address
+is never seen — it cannot be listed even when only `showMac` is on.
+
+The filters run in this order: the default route (`defaultRouteOnly`, both lookups cached, checked
+before `GetIfEntry2()` so uninteresting interfaces are not queried at all), then `OperStatus` must be
+`IfOperStatusUp`, then loopback (`IF_TYPE_SOFTWARE_LOOPBACK`) is dropped unless `showLoop` is set,
+then `namePrefix` against the adapter alias.
+
+`flags` is built from `MIB_IF_ROW2` rather than from the `IP_ADAPTER_*` bits: the
+`InterfaceAndOperStatusFlags` members (`HARDWARE`, `FILTER`, `CONNECTOR_PRESENT`,
+`NOT_AUTHENTICATED`, `NO_MEDIA`, `PAUSED`, `LOW_POWER`, `ENDPOINT`), the direction (`SEND_ONLY` /
+`RECEIVE_ONLY` / `SEND_RECEIVE`), and two enums that report exactly one value per interface and
+therefore always contribute a flag — `MediaConnectState` (`MEDIA_UNKNOWN` / `MEDIA_CONNECTED` /
+`MEDIA_DISCONNECTED`) and the IANA interface type from `ipifcons.h` (`ETHERNET_CSMACD`,
+`IEEE80211`, `SOFTWARE_LOOPBACK`, `TUNNEL`, …), which is what the CHANGELOG's `ETHERNET_CSMACD` /
+`IEEE80211` / `SOFTWARE_LOOPBACK` examples refer to.
+
+IPv4 addresses come from `RtlIpv4AddressToStringA`, IPv6 from `RtlIpv6AddressToStringA`, and the `/N`
+suffix is appended from `OnLinkPrefixLength`. Unless `showAllIps` is set, only addresses whose
+`DadState` is `IpDadStatePreferred` and whose `SuffixOrigin` is not `IpSuffixOriginRandom` are used,
+which is what keeps temporary IPv6 addresses out. `speed` is `ReceiveLinkSpeed / 1000000`, `mtu` is
+the adapter's `Mtu`, and `mac` is formatted from the 6-byte `PhysicalAddress` (adapters with another
+length get no MAC).
 
 ### Linux / macOS / BSD / Solaris / Haiku / GNU
 
@@ -233,3 +265,21 @@ kstat on Solaris. On Linux the IPv6 address kind is classified from the address 
 (`IN6_IS_ADDR_GLOBAL` / `UNIQUE_LOCAL` / `LINKLOCAL`) and then refined through `SIOCGIFAFLAG_IN6`
 (or, on Linux, `/proc/net/if_inet6`) to mark deprecated, temporary and tentative addresses as
 secondary so the "most useful" address can be chosen.
+
+### macOS: the redacted MAC address
+
+`getifaddrs()` reports `02:00:00:00:00:00` as the link-layer address of every interface when the
+process is not signed as an Apple platform binary, so `ffLocalIpFixRedactedMacs()`
+(`localip_apple.c`) walks the IORegistry for the interfaces whose MAC came back as that exact
+placeholder — and does nothing at all when none did. It enumerates `IONetworkInterface` and
+`IOUserNetworkWLAN`, since the dext-based Wi-Fi interfaces are not subclasses of the former, matches
+on `BSD Name`, and looks for `IOMACAddress` on the node or one of its first four ancestors: the depth
+depends on the driver (`en0` carries it on `IO80211Controller`, `en4` on `AppleUSBDeviceNCM11Data`,
+`ap1` on the node itself). Interfaces the enumeration does not reach are retried individually with
+`IOBSDNameMatching()`, so the pass can only ever be faster than, never worse than, looking every
+interface up by name — measured at 1.5 ms against 3.0 ms for the 21 interfaces of a typical Mac.
+
+`SystemConfiguration` is the obvious alternative and was rejected: `SCNetworkInterfaceCopyAll()` is
+an XPC round trip to `configd` costing 2.6–5.2 ms, and it does not list `anpi0`–`anpi2` or `ap1` at
+all. The whole replacement measured a p50 of 1.5 ms against 0.1 ms for the same run without the
+placeholders.

@@ -28,7 +28,7 @@ because `display.showErrors` defaults to `false`, the line simply disappears.
 | Linux | `media_linux.c` | MPRIS over the session DBus |
 | FreeBSD / OpenBSD / NetBSD / GNU/Hurd | `media_linux.c` | Same code; needs DBus |
 | Windows | `media_windows.cpp` | WinRT `GlobalSystemMediaTransportControlsSessionManager` |
-| macOS | `media_apple.m` | MediaRemote, or a Perl helper process on macOS 15.4+ |
+| macOS | `media_apple.m` | MediaRemote; on macOS 15.4 and newer only for a client whose bundle id starts with `com.apple.` |
 | Android | `media_android.c` | `media_session` over `/dev/binder` while SurfaceFlinger is the display server, otherwise MPRIS over the session DBus |
 | Solaris / illumos | none | No detection source is referenced |
 | Haiku | none | No detection source is referenced |
@@ -157,7 +157,8 @@ When nothing is playing the module carries an error object instead:
 ## Pitfalls
 
 - **A missing session is not a crash, it is an error that is hidden by default.** On Windows a machine
-  with no media app open reports `winrt: GetCurrentSession() failed`; on Linux without DBus,
+  with no media app open reports `winrt: GetCurrentSession() failed`; on macOS,
+  `MRMediaRemoteGetNowPlayingInfo() failed`; on Linux without DBus,
   `Fastfetch was compiled without DBus support`. `ffPrintError()` obeys `display.showErrors`, so the
   text run is blank unless `"display": { "showErrors": true }` is set. The JSON run always carries the
   `error` string.
@@ -170,10 +171,15 @@ When nothing is playing the module carries an error object instead:
 - **Windows needs WinRT and Linux needs DBus at compile time.** A Windows build without WinRT reports
   `Fastfetch is not compiled with WinRT support`; a Linux build without DBus reports
   `Fastfetch was compiled without DBus support`. Neither falls back to another API.
-- **macOS 15.4 and newer go through a Perl helper.** `MRMediaRemoteGetNowPlayingInfo()` stopped
-  working for third-party processes, so the backend spawns `/usr/bin/perl` — which has to be the
-  Apple-signed one, not the Homebrew build — and the dynamic library calls back into fastfetch through
-  `DynaLoader`. If Perl is missing or replaced, playback information is unavailable.
+- **macOS 15.4 and newer only answer Apple-identified clients.** `MRMediaRemoteGetNowPlayingInfo()`
+  stopped working for third-party processes: `mediaremoted` serves the data only when the bundle
+  identifier it derives from the calling process starts with `com.apple.`, or when that process holds
+  the private `com.apple.mediaremote.now-playing-read-access` entitlement. The identifier is read from
+  the binary's embedded `Info.plist` first and from the code-signing identifier second, so **either**
+  one carrying the prefix is enough. fastfetch sets both — `FASTFETCH_BUNDLE_ID` in `CMakeLists.txt`
+  configures the embedded `CFBundleIdentifier` and is handed to `codesign` after linking. A build
+  whose embedded plist and code signature both lack the prefix reports
+  `MRMediaRemoteGetNowPlayingInfo() failed` even while music is playing.
 - **`cover` is usually `null` in the JSON.** The module asks for the cover with `saveCover = false`, so
   the Windows, macOS and Android backends never write the artwork to a file and the field stays `null`.
   Only the MPRIS backend fills it unconditionally (from `mpris:artUrl`, as a local path), and the three
@@ -241,12 +247,17 @@ prefix.
 
 The `MediaRemote` framework is loaded weakly — `MRMediaRemoteGetNowPlayingInfo()`,
 `MRMediaRemoteGetNowPlayingApplicationIsPlaying()`, `...DisplayID()` and `...DisplayName()` — and the
-four callbacks are joined with a dispatch group. `kMRMediaRemoteNowPlayingInfoDuration` gives the
-length and `kMRMediaRemoteNowPlayingInfoElapsedTime` plus the playback rate and timestamp give the
-position. On macOS 15.4 and newer the public API no longer answers for third-party processes, so the
-module instead runs `/usr/bin/perl` with a small script that loads fastfetch's own shared object and
-installs `ffPrintMediaByMediaRemote` as an XSUB; the helper prints one field per line. The cover is
-written to `NSTemporaryDirectory()` as `ff_<uuid>.<ext>` and removed again at exit.
+four callbacks are joined with a dispatch group on one global queue. `kMRMediaRemoteNowPlayingInfoDuration`
+gives the length, and `kMRMediaRemoteNowPlayingInfoElapsedTime` plus the playback rate and timestamp
+give the position. The system is asked for the *current* session, so `general.playerName` has no
+effect here; `player.name` comes from `...DisplayName()` and `player.id` from `...DisplayID()`, which
+is the bundle id (`com.netease.163music`, `com.apple.Music`, …). The cover is written to
+`NSTemporaryDirectory()` as `ff_<uuid>.<ext>` and removed again at exit.
+
+There is one path only. Before 2.70.0 the module fell back to a `/usr/bin/perl` helper process on
+macOS 15.4 and newer, which installed `ffPrintMediaByMediaRemote` as an XSUB through `DynaLoader` and
+printed one field per line; the client now identifies itself through its own bundle id instead, as the
+pitfall above describes.
 
 ### Android
 

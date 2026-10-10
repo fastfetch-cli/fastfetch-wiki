@@ -44,7 +44,7 @@ compiled everywhere. Process handling itself lives in
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `shell` | string | `cmd.exe` (Windows) / `/bin/sh` (else) | Interpreter used to run `text`. |
-| `param` | string | `/c` (Windows) / `-c` (else) | Argument passed before `text`. **If set to an empty string it is omitted entirely**, so the argv becomes `{ shell, text }`. |
+| `param` | string | `/d/c` (Windows) / `-c` (else) | Argument passed before `text`. **If set to an empty string it is omitted entirely**, so the argv becomes `{ shell, text }`. |
 | `text` | string | `""` | The command to run. Empty means the module always fails with `No command text specified`. |
 | `useOutput` | string | `"both"` | Which of the child's output streams to capture: `"stdout"`, `"stderr"` or `"both"`. Whichever stream is not captured is redirected to `/dev/null` and discarded. |
 | `parallel` | boolean | `true` | Spawn the process before other modules run and read it later. See below. |
@@ -65,16 +65,31 @@ About `parallel`:
 - `parallel: false` spawns and reads the process at print time. Use it when the command depends on
   the ordering of the other modules, or when you want its side effects — writing a file, hitting an
   API — to happen only if the module is actually printed.
+- The prepared processes are matched to the modules being printed **by position**, not by identity, so
+  both passes have to see the same set of `command` modules. A module that is skipped in one pass and
+  printed in the other shifts every later module onto the wrong output; a `parallel` command gated on
+  `condition.succeeded` is the one way to trigger that, and it is refused outright.
 
 About `text`: because a shell is involved, quoting is the shell's business. `"text": "echo \"a b\""`
 runs `echo "a b"`. If you set `shell` to a program that does not take a `-c`-style parameter, set
 `param` to `""`.
 
 About `useOutput`: before 2.70.0 the option was a boolean named `useStdErr`, which either captured
-stdout (the default) or stderr. It is now a string and defaults to `"both"`, so configs written for
-the old key must be updated — `"useStdErr": true` becomes `"useOutput": "stderr"` and
-`"useStdErr": false` becomes `"useOutput": "stdout"`. The old key is no longer recognized and is
-reported as an unknown key.
+stdout (the default) or stderr. It is now a string and defaults to `"both"`, so a command that logs
+to stderr has that output captured instead of discarded. `"useStdErr": true` becomes
+`"useOutput": "stderr"` and `"useStdErr": false` becomes `"useOutput": "stdout"`.
+
+The old key is still accepted and maps to those same two values, but it is deprecated and prints
+`useStdErr is deprecated, use useOutput instead`. That notice shows up twice, because the JSON config
+is parsed once for the prepare pass and once for the print pass. Nothing else about the old key is
+kept — there is no `"useStdErr": "both"`.
+
+On Windows, when `shell` is exactly `cmd.exe` and `param` is exactly `/d/c` — the defaults —
+fastfetch appends ` & exit %^errorlevel%` to `text` before spawning it. `cmd.exe` swallows the
+`9009` ("command not found") status and returns `1` on its own, so without the suffix a mistyped
+command is indistinguishable from one that ran and failed. Set a different `shell` or `param` — a full
+path to `cmd.exe`, for instance — and the suffix is not appended, and a missing command goes back to
+being reported as a generic child-process error.
 
 ## Format string
 
@@ -190,6 +205,21 @@ Command: 6.12.4
   occasionally a surprise.
 - **`parallel` is not a scheduler.** Ordering between two `parallel` commands is not defined, even
   though their *outputs* are printed in config order.
+- **A `parallel` command cannot be gated on `condition.succeeded`.** Whether such a module is printed
+  at all is only known in the print pass, so it is never prepared — and the prepared results are
+  matched to modules *by position*, so letting it through would hand it the result prepared for the
+  next `command` module and print that instead of its own output. The config is refused up front
+  rather than printing the wrong thing:
+
+  ```
+  JsonConfig: Module "command" cannot be combined with "condition.succeeded" while it runs in
+  parallel: whether it is printed is only known in the print pass, so it cannot be prepared, and the
+  prepared results are matched to modules by position. Set "parallel": false on it, or drop the
+  condition.
+  ```
+
+  Set `"parallel": false` on that module — it is then spawned and read in the print pass, when the
+  outcome of the previous module is known.
 - **With `param: ""` you can pass exactly one argument.** The argv is `{ shell, text }`, so anything
   needing flags plus operands must go through the shell (`"/bin/sh"` + `param: "-c"`) or a wrapper
   script. Note the argument is passed verbatim — no splitting on spaces.
@@ -199,7 +229,7 @@ Command: 6.12.4
 
 The module is split across two passes, and that split is the source of most of its quirks.
 
-**Prepare pass** — `ffPrepareCommand()` (`src/detection/command/command.c:29`) is called from
+**Prepare pass** — `ffPrepareCommand()` (`src/detection/command/command.c:35`) is called from
 `prepareModuleJsonObject()` (`src/common/impl/jsonconfig.c`) for every `command` entry in the
 config, before anything is printed. When `parallel` is true it spawns the process and appends an
 `FFCommandResultBundle` (handle + error) to the file-static `commandQueue`. The queue is a plain
@@ -218,6 +248,9 @@ static FFlist commandQueue; // FIFO, non-thread-safe
 front of the queue with `FF_LIST_SHIFT` and reads its output with `ffProcessReadOutput()`. Nothing
 checks that the popped bundle belongs to the module being printed: the pairing is purely positional,
 which is why a module-set mismatch between the two passes corrupts the output rather than failing.
+The one mismatch that can arise — a module gated on `condition.succeeded`, which the prepare pass
+skips because its outcome is only known later — is refused at parse time for a `parallel` `command`
+module, and reported by `ffDetectCommand()` with an explanatory error if it is ever reached anyway.
 
 `spawnProcess()` builds the argv:
 
@@ -226,7 +259,9 @@ which is why a module-set mismatch between the two passes corrupts the output ra
 
 and calls `ffProcessSpawn(argv, useOutput, FF_PROCESS_INHERIT_STDIN, &handle)`.
 `FF_PROCESS_INHERIT_STDIN` (`src/common/processing.h:36`) is deliberate: detaching stdin breaks
-`/system/bin/cmd` on Android, which forwards it over binder.
+`/system/bin/cmd` on Android, which forwards it over binder. On Windows, `spawnProcess()` first
+appends ` & exit %^errorlevel%` to `text` when `shell` is `cmd.exe` and `param` is `/d/c`, so that the
+child's real exit status survives `cmd.exe`'s own error handling.
 
 `useOutput` is a bitmask (`FFProcessOutputType`, `src/common/processing.h:25`): the selected
 stream(s) are `dup2`-ed onto the write end of a single pipe, and any unselected stream is pointed at
