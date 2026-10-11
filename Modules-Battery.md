@@ -28,7 +28,7 @@ Battery (LION-4C20): 100% [AC Connected] - 31.2°C
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `battery_linux.c` | `/sys/class/power_supply/*` (sysfs) |
-| Android | `battery_android.c` | `batteryproperties` (IBatteryPropertiesRegistrar) and `batterystats` (IBatteryStats) over `/dev/binder`, the `debug.tracing.*` system properties for the charger bits and the charging state, plus `/sys/class/thermal` for the temperature; `dumpsys battery` instead for the shell UID and root |
+| Android | `battery_android.c` | `batteryproperties` (IBatteryPropertiesRegistrar) and `batterystats` (IBatteryStats) over `/dev/binder`, the `debug.tracing.*` system properties for the charger bits and the charging state, plus `/sys/class/thermal` for the temperature; `dumpsys battery` instead for the shell UID and root. See [Android Permissions](Android-Permissions) |
 | macOS | `battery_apple.c` | IOKit `AppleSmartBattery` registry entry (+ SMC for temperature) |
 | Windows | `battery_windows.c` | WMI battery classes (`batclass.h`) |
 | FreeBSD / MidnightBSD / DragonFly | `battery_bsd.c` | `hw.acpi.battery.units` sysctl + `ACPI_IOCTL_BATTERY` ioctl on `/dev/acpi` |

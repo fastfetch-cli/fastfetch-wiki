@@ -34,7 +34,7 @@ number is suppressed.
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `wifi_linux.c` | nl80211 over generic netlink, falling back to the wireless-extension ioctls |
-| Android | `wifi_android.c` | Talks to the `wifi` service over raw binder and parses the returned parcel; needs `ACCESS_WIFI_STATE` on the calling UID |
+| Android | `wifi_android.c` | Talks to the `wifi` service over raw binder and parses the returned parcel; needs `ACCESS_WIFI_STATE` on the calling UID, and `ACCESS_FINE_LOCATION` for the SSID and the BSSID — see [Android Permissions](Android-Permissions) |
 | FreeBSD | `wifi_bsd.c` | `SIOCG80211` ioctls on interfaces named `wlan*` |
 | NetBSD | `wifi_nbsd.c` | Same ioctls, on interfaces named `iwm*` |
 | OpenBSD | `wifi_obsd.c` | `SIOCG80211NODE` on every interface, filtering out the ones that reject it |
@@ -244,12 +244,17 @@ machine without a Wi-Fi interface answers with `"result": []` while the text pat
   withheld with `<redacted>` rather than leaving it empty — an empty SSID is what the module prints
   the interface state in place of, and the reply still carries a signal, a channel and a rate that
   are worth showing. The same placeholder is used for a connection that genuinely has no address.
+  The two names are withheld from a caller that does not reach the scan-results check, and that check
+  asks for `ACCESS_FINE_LOCATION`: a lapsed location permission is what takes these two fields away
+  and nothing else, so neither the reply nor anything else the module reports changes with it.
 - **On Android the permission belongs to the UID, not to fastfetch.** `getConnectionInfo` is refused
   with a `SecurityException` when the calling UID does not hold `ACCESS_WIFI_STATE`, and a UID holds
   that permission as soon as any package sharing it requests it. Under Termux the package that
   requests it is Termux:API, so removing that app is enough to make the module answer
   `The Wifi service raised an exception` where it used to report the connection. The shell and root
-  UIDs are not affected, and nothing in the module itself changes.
+  UIDs are not affected, and nothing in the module itself changes. Holding it is not the same as
+  being told the names, though: the SSID and the BSSID are gated separately on location access, which
+  the `<redacted>` bullet above describes.
 - **The text path fails on an empty interface list but the JSON path does not.** With no Wi-Fi
   interface at all the text output is an error (`No Wifi interfaces found`) and the JSON result is an
   empty array. This is the same split described in `Modules-Keyboard`.

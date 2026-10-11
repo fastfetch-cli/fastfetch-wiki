@@ -20,8 +20,11 @@ Terminal: dumb
 ```
 
 The name is the *pretty name*, not the process name: `wezterm-gui` prints as `WezTerm`,
-`tmux: server` as `tmux`, `gnome-terminal-server` as `GNOME Terminal`, `com.termux` as `Termux`,
-`WindowsTerminal.exe` as `Windows Terminal` and `conhost` as `Windows Console`. The version is
+`tmux: server` as `tmux`, `gnome-terminal-server` as `GNOME Terminal`,
+`WindowsTerminal.exe` as `Windows Terminal` and `conhost` as `Windows Console`. On Android
+`com.termux` prints the name the installed app declares rather than a fixed `Termux` —
+`Termux:Launcher` on the device this was measured on — and falls back to `Termux` when that name
+cannot be read. The version is
 appended only when the backend could determine one, so a bare `Terminal: dumb` is a normal result,
 not a failure.
 
@@ -30,7 +33,7 @@ not a failure.
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `terminalshell_linux.c` | Walks `/proc/<pid>/stat` up the parent chain, then falls back to environment variables |
-| Android | `terminalshell_linux.c` | Same file; adds `Termux` handling |
+| Android | `terminalshell_linux.c` | Same file; adds Termux handling, which names the app from its own label |
 | FreeBSD / NetBSD / OpenBSD / DragonFly | `terminalshell_linux.c` | Same file; the shared helper uses `sysctl` on these |
 | Solaris / illumos | `terminalshell_linux.c` | Same file |
 | macOS | `terminalshell_linux.c` | Same file; the helper uses `KERN_PROC_PID` |
@@ -201,6 +204,11 @@ Terminal: [dumb][dumb][][0][dumb][][][]
 - **Terminal detection is re-run on every `--dynamic-interval` round.** The result lives in an
   `FFcache` entry that is dropped at each round boundary, so an environment change is picked up
   without restarting fastfetch. Single-shot runs are unaffected.
+- **The Android pretty name comes from the installed app, not from fastfetch.** `com.termux` used to
+  be a hard-coded `Termux`; it is now the label the app declares in its own manifest, so a rename or a
+  fork shows up without a change here. The lookup needs no permission — see
+  [Android Permissions](Android-Permissions) — and falls back to `Termux` when the resource cannot be
+  read.
 - **Errors are invisible by default.** `Couldn't detect terminal` goes through `ffPrintError()` and
   therefore needs `display.showErrors` to be `true` to be seen; otherwise the module simply
   disappears from the output.

@@ -35,7 +35,7 @@ which is shared by several modules and always has a real implementation on all t
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `linux/displayserver_linux.c` + `common.c`, `wmde.c`, `xcb.c`, `xlib.c`, `drm.c`, `wayland/` | Wayland, then XCB, then Xlib, then DRM/sysfs |
-| Android | `displayserver_android.c` + `common.c`, `wmde.c`, `xcb.c`, `xlib.c`, `wayland/` | The `display` service over binder. **No `drm.c`** |
+| Android | `displayserver_android.c` + `common.c`, `wmde.c`, `xcb.c`, `xlib.c`, `wayland/` | The `display` service over binder, which needs no permission (see [Android Permissions](Android-Permissions)). **No `drm.c`** |
 | FreeBSD | `linux/displayserver_linux.c` + the same helper set as Linux | Plus a `kenv` fallback for text consoles |
 | NetBSD | `linux/displayserver_linux.c` + the same helper set as Linux | |
 | OpenBSD | `linux/displayserver_linux.c` + the same helper set as Linux | |

@@ -23,7 +23,7 @@ one device the key is numbered, and the main device is additionally marked with 
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `sound_linux.c` | PulseAudio's own native protocol over the daemon socket; **no other backend and no fallback** |
-| Android | `sound_android.c` + `sound_linux.c` | The `audio` (IAudioService) system service over raw binder while SurfaceFlinger is the display server, otherwise PulseAudio |
+| Android | `sound_android.c` + `sound_linux.c` | The `audio` (IAudioService) system service over raw binder while SurfaceFlinger is the display server, otherwise PulseAudio. Needs no permission (see [Android Permissions](Android-Permissions)) |
 | FreeBSD / MidnightBSD / DragonFly | `sound_bsd.c` | `ioctl(SNDCTL_MIXER_*)` on `/dev/mixer*` |
 | NetBSD | `sound_nbsd.c` | `ioctl(AUDIO_GETDEV)` … on `/dev/audio*` |
 | OpenBSD | `sound_obsd.c` | `ioctl(AUDIO_GETDEV)` … on `/dev/audio*` |

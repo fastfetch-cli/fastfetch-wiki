@@ -127,8 +127,9 @@ When nothing is playing the module carries an error object instead:
 - `player.url` is only filled by the MPRIS backend (the `xesam:url` key) and by the Android backend
   (the `MEDIA_URI` metadata key, which most players do not set); Windows and macOS leave it empty.
   `player.id` is the bus name on Linux, the bundle id on macOS, the `AppUserModelId` on Windows and the
-  package name on Android — which is also what `player.name` gets there, since the name an app displays
-  is a resource of that app and cannot be read from outside it.
+  package name on Android. `player.name` is that same string everywhere except Android, where it is
+  the name the app displays, read out of the app's own resource table, and falls back to the package
+  name when that cannot be read. See [Android Permissions](Android-Permissions).
 - The JSON output never applies the percentage configuration or the output format — it is always this
   fixed object.
 
@@ -190,13 +191,17 @@ When nothing is playing the module carries an error object instead:
   `media_session` service is asked over `/dev/binder`; a Termux:X11 or Wayland session runs a real
   compositor on top of the device, and what plays there belongs to that desktop and is not an Android
   media session at all, so MPRIS answers instead. Only one of the two is consulted, never both. The
-  binder route does still fall back to MPRIS when it comes back empty, which is what an app UID always
-  gets: `getSessions` is the one call in the path that checks a permission — the system UI, a holder of
-  `android.permission.MEDIA_CONTENT_CONTROL` and an enabled notification listener are let through, and
-  no ordinary app is — so an app UID is refused with a `SecurityException` and, with nothing on the
-  session bus either, the module answers `Reading the media session needs the shell UID or root`. That
-  wording is deliberate: an empty result would read as "nothing is playing". The
-  `dumpsys media_session` route has exactly the same restriction.
+  binder route does still fall back to MPRIS when it comes back empty.
+- **Reading the session list needs the service's permission, and the request has to name the caller.**
+  `getSessions` is the one call in the path that checks a permission: the system UI, a holder of
+  `android.permission.MEDIA_CONTENT_CONTROL` and a UID that owns an **enabled notification listener**
+  are let through, as are the shell UID and root. The service also rejects a component whose package
+  the calling UID does not own before it reaches that check, so the request declares the caller's own
+  package and leaves the class name empty. An app UID without notification access is refused and, with
+  nothing on the session bus either, the module answers `Reading the media session from an app UID
+  needs an enabled notification listener, which this UID does not have`; the shell and root get
+  `The media session service refused the request`. The wording is deliberate in both cases — an empty
+  result would read as "nothing is playing". See [Android Permissions](Android-Permissions).
 - **A song with no title falls back to the file name.** On Linux, when `xesam:title` is empty but
   `xesam:url` is not, the title is derived from the last path segment of the URL, with percent escapes
   decoded. A session that has neither is treated as "no media" and cleared.
@@ -251,7 +256,7 @@ four callbacks are joined with a dispatch group on one global queue. `kMRMediaRe
 gives the length, and `kMRMediaRemoteNowPlayingInfoElapsedTime` plus the playback rate and timestamp
 give the position. The system is asked for the *current* session, so `general.playerName` has no
 effect here; `player.name` comes from `...DisplayName()` and `player.id` from `...DisplayID()`, which
-is the bundle id (`com.netease.163music`, `com.apple.Music`, …). The cover is written to
+is the bundle id (`com.apple.Music`, …). The cover is written to
 `NSTemporaryDirectory()` as `ff_<uuid>.<ext>` and removed again at exit.
 
 There is one path only. Before 2.70.0 the module fell back to a `/usr/bin/perl` helper process on
@@ -313,3 +318,10 @@ It is asked for lossless WebP: measured on a 363x363 cover that is 146884 bytes 
 203675 bytes in 370 ms for the same encoder's PNG, whose quality argument is ignored outright, and
 lossless is what keeps the alpha a Bitmap arrives with. The pixels are mapped read-only instead of
 being copied out, and the file goes into `$TMPDIR` (or `/data/local/tmp`) and is removed again at exit.
+
+`player.name` is the one field the module reads from outside the session. The package name that
+`getPackageName` answers with stays in `player.id`; the display name in `player.name` comes from
+`common/android/applabel.h`, which asks `IPackageManager` for the app's resource table and resolves
+the label out of it, and falls back to the package name when it cannot. Nothing in that lookup needs
+a permission — see [Android Permissions](Android-Permissions) — and it happens once, after a session
+has been picked.

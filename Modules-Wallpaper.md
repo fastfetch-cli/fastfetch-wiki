@@ -22,7 +22,7 @@ Wallpaper: macOS Default Wallpaper
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `wallpaper_linux.c` | COSMIC config, otherwise the GTK4 / Qt wallpaper |
-| Android | `wallpaper_android.c` + `wallpaper_linux.c` | The `wallpaper` system service over raw binder, or the Linux backends when the display server is not `SurfaceFlinger` |
+| Android | `wallpaper_android.c` + `wallpaper_linux.c` | The `wallpaper` system service over raw binder, or the Linux backends when the display server is not `SurfaceFlinger`; the service accepts only a request that names the caller itself — see [Android Permissions](Android-Permissions) |
 | FreeBSD / NetBSD / OpenBSD / DragonFly | `wallpaper_linux.c` | Same file |
 | Solaris / illumos | `wallpaper_linux.c` | Same file |
 | GNU/Hurd | `wallpaper_linux.c` | Same file |

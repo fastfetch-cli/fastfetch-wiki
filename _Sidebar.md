@@ -9,6 +9,7 @@
 1. [Migrate Neofetch Logo To Fastfetch](Migrate-Neofetch-Logo-To-Fastfetch)
 1. [Dependencies](Dependencies)
 1. [Display Detection Methods](Display-Detection-Methods)
+1. [Android Permissions](Android-Permissions)
 1. [Building](Building)
 1. [Support Status](Support+Status)
 1. [Modules Reference](Modules)
