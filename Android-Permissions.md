@@ -11,14 +11,16 @@ what a user can do about it.
 | Wifi | `wifi` over `/dev/binder` | `android.permission.ACCESS_WIFI_STATE` on the calling UID, without which the module cannot run at all, and `android.permission.ACCESS_FINE_LOCATION` for the SSID and the BSSID |
 | Wallpaper | `wallpaper` over `/dev/binder` | a request that names the caller's own package |
 | Battery | `batteryproperties` and `batterystats` over `/dev/binder`, the `debug.tracing.*` properties, `/sys/class/thermal` | nothing; `dumpsys battery`, which is used first for the shell UID and root, needs `android.permission.DUMP` |
-| Display / Monitor | `display` over `/dev/binder` | nothing |
+| Display / Monitor | `display` over `/dev/binder`, then `cmd display get-displays` as a parser fallback | nothing |
 | Sound | `audio` over `/dev/binder` | nothing |
 | Media and Terminal names | `package` over `/dev/binder`, then the APK's resource table | nothing |
 
 No other Android backend consults a system service that checks its caller. The routes that used to
-require the shell UID — `dumpsys display`, `cmd display get-displays` and `dumpsys media_session` —
-have been removed rather than kept as fallbacks, so a module that used to answer only for root now
-answers for any UID.
+require the shell UID — `dumpsys display` and `dumpsys media_session` — have been removed rather than
+kept as fallbacks, so a module that used to answer only for root now answers for any UID.
+`cmd display get-displays` is the one route of that group still in use, and it is not a permission
+matter either way: it needs none, and it sits behind the display binder route purely as a parser
+fallback — see [Display detection methods](Display-Detection-Methods).
 
 ## Media sessions: notification access
 

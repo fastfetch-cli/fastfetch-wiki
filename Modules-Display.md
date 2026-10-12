@@ -35,7 +35,7 @@ which is shared by several modules and always has a real implementation on all t
 | Platform | Implementation | Notes |
 |---|---|---|
 | Linux | `linux/displayserver_linux.c` + `common.c`, `wmde.c`, `xcb.c`, `xlib.c`, `drm.c`, `wayland/` | Wayland, then XCB, then Xlib, then DRM/sysfs |
-| Android | `displayserver_android.c` + `common.c`, `wmde.c`, `xcb.c`, `xlib.c`, `wayland/` | The `display` service over binder, which needs no permission (see [Android Permissions](Android-Permissions)). **No `drm.c`** |
+| Android | `displayserver_android.c` + `common.c`, `wmde.c`, `xcb.c`, `xlib.c`, `wayland/` | The `display` service over binder, then `cmd display get-displays` as a parser fallback; neither needs a permission (see [Android Permissions](Android-Permissions)). **No `drm.c`** |
 | FreeBSD | `linux/displayserver_linux.c` + the same helper set as Linux | Plus a `kenv` fallback for text consoles |
 | NetBSD | `linux/displayserver_linux.c` + the same helper set as Linux | |
 | OpenBSD | `linux/displayserver_linux.c` + the same helper set as Linux | |
@@ -248,21 +248,30 @@ Notes on the shape:
 - **`hdrStatus` is `"Unsupported"` rather than `null` when EDID says so.** `null` means "not
   determined". A backend that does not read EDID at all leaves it `null`, so the two are not
   interchangeable.
+- **On Android, `"Supported"` is the platform's answer and it can be wrong.** `hdrStatus` comes from
+  the record's own `hdrCapabilities.mSupportedHdrTypes`, which the vendor's composer HAL fills in and
+  SurfaceFlinger and DisplayManagerService pass through unchanged. A display that does no HDR at all
+  can still arrive with a non-empty list: measured on one device, a Samsung U32J59x was reported as
+  supporting Dolby Vision, HDR10 and HLG, while SurfaceFlinger marked every mode of that display as
+  not HDR-capable. Nothing else in the record contradicts the list, so there is nothing to
+  cross-check it against — read `"Supported"` on Android as "the platform says so".
 - **`serial` can be a non-string-looking value.** EDID serials are often a hex word
   (`"0x12345678"`) on panels that do not carry a textual one. It is a string either way.
 - **The compact layout's separator is positional, not configurable.** With
   `compactType: original` the displays are joined by a space and there is no way to change it;
   with a `-with-refresh-rate` value they are joined by `", "`. A trailing separator is trimmed
   (`display.c:57-58`).
-- **On Android there is one route, and it fails closed.** `platformApi` is always `binder`; the
-  `cmd` and `dumpsys` routes that used to answer when the binder parser declined are gone. A device
-  whose `DisplayInfo` layout the parser does not recognise now reports **no display at all** rather
-  than a slower one — so an empty `result` on Android means the parser declined the record, not that
-  the device has no display.
+- **On Android, `platformApi` tells you which of the two routes answered.** `binder` is the normal
+  one. `cmd` means the binder walk declined the device's `DisplayInfo` layout — an unreadable
+  `/system/framework/framework.jar`, or a field framing it does not know — and the
+  `cmd display get-displays` fallback answered instead, which costs a child process. An empty
+  `result` means **both** declined, not that the device has no display. `dumpsys display` is not a
+  route any more.
 - **On Android, the refresh rate is the float the framework carries, not a rounded value.** The
-  parcel holds it as a 32-bit float, so a 120 Hz panel reads `120.00000762939453` in the JSON where
-  the text route used to print `120.00001`. The console output is unaffected — the default rounds the
-  rate to a whole number, and only `preciseRefreshRate` shows the difference.
+  parcel holds it as a 32-bit float, so a 120 Hz panel reads `120.00000762939453` in the JSON. The
+  console output is unaffected — the default rounds the rate to a whole number, and only
+  `preciseRefreshRate` shows the difference. The `cmd` fallback reads the same rate out of the dump's
+  text, which prints it rounded, so the same panel reads `120.00001` there.
 
 ## Implementation
 
@@ -331,22 +340,24 @@ session is not a bare TTY.
 
 ### Android
 
-`displayserver_android.c` has one route: the `display` service
-(`android.hardware.display.IDisplayManager`) over `/dev/binder`, reported as `platformApi` `binder`.
-It needs no permission and starts no child process, which is what makes it the only route an app UID
-can use at all — `cmd display get-displays` does not exist before Android 13, and `dumpsys display` is
-behind `android.permission.DUMP`. The `cmd`, `dumpsys` and vendor `getprop` routes that used to sit
-behind it have been removed, because binder answers on every release they covered and on the ones none
-of them could.
+`displayserver_android.c` has two routes, tried in this order:
 
-It reads the enabled displays from `getDisplayIds()` first, because display ids are not contiguous,
-and then asks for one `getDisplayInfo()` per id. What comes back is the same `DisplayInfo` record a
-dump prints, field for field — but it arrives as a Java `Parcelable` instead of as text, and that is
-where the work is.
+1. The `display` service (`android.hardware.display.IDisplayManager`) over `/dev/binder`, reported as
+   `platformApi` `binder`. It needs no permission and starts no child process, and it is the only
+   route an app UID can use on Android 11 and 12 at all — `cmd display get-displays` does not exist
+   there, and `dumpsys display` is behind `android.permission.DUMP`.
+2. `/system/bin/cmd display get-displays`, reported as `platformApi` `cmd`, which only runs when the
+   first route declines. The `dumpsys display` route and the vendor `getprop` route that used to sit
+   behind it are gone.
+
+Route 1 reads the enabled displays from `getDisplayIds()` first, because display ids are not
+contiguous, and then asks for one `getDisplayInfo()` per id. What comes back is the same `DisplayInfo`
+record a dump prints, field for field — but it arrives as a Java `Parcelable` instead of as text, and
+that is where the work is.
 
 That record's field set moves with every release and every vendor fork: `DisplayInfo` writes 34 fields
-on Android 11, 42 on 13 and 57 on 16. A fixed offset would silently read a plausible number out of the
-middle of a different field, so the write order is read out of the device's own
+on Android 11, 42 on 13 and 57 on 16 and 17. A fixed offset would silently read a plausible number out
+of the middle of a different field, so the write order is read out of the device's own
 `/system/framework/framework.jar` — from the `iget` order of `DisplayInfo.writeToParcel` — and the
 record is walked field by field along it with a bounds-checked cursor. Every nested `Parcelable` is
 anchored on its class name, every value that can be checked against its neighbours is checked
@@ -364,6 +375,16 @@ and both names are matched. And `DeviceProductInfo.mManufactureDate` goes throug
 framings are tried against the class name: it is a constant string, which makes the attempt decisive.
 Android 11 has been read this way on a device. Android 12 has not, and it sits between the two layouts
 that have.
+
+Route 2 parses the same record out of text, so its fields are found by name rather than by position,
+and the layout differences across releases are accepted rather than version checked. The mode list is
+printed as `modes [...]` up to Android 14 and as `supportedModes [...]` from Android 15 on, which is
+also the release that added `renderFrameRate` and the `parentModeId`, `sfModeId` and `flags` fields
+that now sit inside every mode entry ahead of `width`. That last one is why each mode's fields are
+searched for inside its own entry rather than matched as a single prefix: a prefix match reads the id
+and then stops, which leaves the preferred resolution at `0` and the rate falling back to
+`renderFrameRate`. Anything the text route cannot read is left at its unknown default rather than
+guessed.
 
 Android's build block deliberately omits `drm.c` — there are no DRM device nodes to read.
 
