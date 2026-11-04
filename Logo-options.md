@@ -83,7 +83,7 @@ Note when using environment variables in config files:
 * The `kitty-icat` logo type hands the source to `kitten icat`, which does its own animation handling, and the `raw` logo type prints the file as-is. `--logo-animation-frame` has no effect on either.
 * The terminal-side players accept GIF. To play a video in another format, convert it to a GIF first.
 * A value outside the range of the source is clamped to the first or the last frame instead of being rejected.
-* Negative values can only be given in the JSON config (`logo.animationFrame`), as the command line parser reads a leading `-` as another option.
+* Negative values are accepted on the command line too, as a separate argument: `--logo-animation-frame -1`. A value that starts with `-` and a digit, or with `-.`, is read as the value of the option before it rather than as an option of its own.
 * A source that has a single frame is rendered as a still image even when `0` is given.
 * The frames come from the platform image framework: WIC on Windows, ImageIO on macOS, AImageDecoder on Android, and ImageMagick on Linux and BSD.
 
@@ -124,6 +124,39 @@ Like `builtin`, but search for small logos. For example, if you are running macO
 `-l small` is also accepted as a value of `-l` itself, as a shortcut for `--logo-type small`.
 
 A name that matches no builtin logo, such as `macos_small_small`, is reported as a failure with `--show-errors` and falls back to the auto-detected logo.
+
+## spin
+
+The value of `--logo` is interpreted like `builtin`: empty means the auto-detected logo, the name of a builtin logo shows that logo, and any other value is read as the path to a text file in logo syntax. Either is drawn as a 3D slab: the front carries the art as it is, the back the mirrored art, and the side walls are shaded with block characters.
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--logo-spin-speed-per-frame` | `10` | Degrees the logo turns per drawn frame |
+| `--logo-spin-speed-per-round` | `0` | Seconds one revolution takes |
+| `--logo-spin-angle` | `0` | Rotation of the first frame, in degrees |
+| `--logo-spin-tilt` | `0` | Camera tilt, in degrees, from `-80` to `80` |
+
+* The rotation has no timer of its own: it advances one step per `--watch` (`--dynamic-interval`) refresh, so the logo and the modules are redrawn together and neither can drift. Without `--watch` a single frame is drawn, at `--logo-spin-angle`.
+* `--logo-spin-speed-per-frame` sets how far one refresh turns the logo, so a revolution takes 360 divided by the value in frames. The default of `10` makes a revolution take 36 frames: 3.6 seconds at `--watch 0.1`, 36 seconds at `--watch 1`.
+* `--logo-spin-speed-per-round` sets how many seconds one revolution takes and follows the clock instead of the frame count, so a refresh that takes longer than asked for turns the logo further rather than slowing it down. It wins over `--logo-spin-speed-per-frame` when both are given.
+* `0` means not set for both speed options, so a speed given as `0` falls back to the other one and then to the default of `--logo-spin-speed-per-frame`.
+* Both speed options accept a negative value, which turns the logo the other way.
+* `Ctrl+C` stops it. The animation reads no keys of its own, and every other key is left to the terminal.
+* With `--watch`, the frame is as wide as the widest angle of a whole revolution from the first draw on, so the information column does not move while the logo turns.
+* Colors from `--logo-color-[1-9]` and from the logo itself apply as they do for `builtin`.
+* A source that names no builtin logo and no readable file is reported with `--show-errors`, and no logo is printed.
+* In the JSON config the same options are `logo.spin.speed.perFrame`, `logo.spin.speed.perRound`, `logo.spin.angle` and `logo.spin.tilt`, next to `logo.type: "spin"`.
+
+```
+# 36 frames per revolution, 3.6 seconds at 10 refreshes per second
+fastfetch --logo-type spin --logo arch --watch 0.1
+
+# one revolution every two seconds, whatever the refresh rate
+fastfetch --logo-type spin --logo arch --logo-spin-speed-per-round 2 --watch 0.1
+
+# a single frame, tilted and turned, no --watch needed
+fastfetch --logo-type spin --logo arch --logo-spin-angle 120 --logo-spin-tilt 20
+```
 
 ## file
 
@@ -256,3 +289,4 @@ Shortcut options, such as `--iterm media-cover`, are also supported and recommen
 3. My image logo won't display and the default ASCII is displayed instead: Likely some errors occurred. Try specifying `--show-errors` to see the error message.
 4. My animated logo shows a still image: The default of `--logo-animation-frame` is `1`, which renders a still image. Set it to `0` to play the animation. See [Animation](#animation).
 5. The top of my image logo is scrolled away: An image logo is drawn at its natural size, so the terminal has to make room for it. When the image is taller than the terminal, the terminal scrolls the screen while drawing it and the top rows of the logo end up outside the viewport. The `iterm` and `kitty-direct` logo types also clear the scrollback when they are used with `--logo-position left` or `right`, so those rows cannot be scrolled back to. Use a smaller image, or set both `--logo-width` and `--logo-height` so that the terminal scales the image down to a size that fits.
+6. My `spin` logo does not turn: The spin logo has no timer of its own, so it only turns with `--watch` (`--dynamic-interval`). Without one it is drawn once, as a still image. See [`spin`](#spin).
