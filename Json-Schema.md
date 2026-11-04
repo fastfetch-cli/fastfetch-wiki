@@ -22,56 +22,63 @@
       - [2.3.1.14. Property `JSON config > logo > oneOf > item 2 > type > oneOf > item 13`](#logo_oneOf_i2_type_oneOf_i13)
       - [2.3.1.15. Property `JSON config > logo > oneOf > item 2 > type > oneOf > item 14`](#logo_oneOf_i2_type_oneOf_i14)
       - [2.3.1.16. Property `JSON config > logo > oneOf > item 2 > type > oneOf > item 15`](#logo_oneOf_i2_type_oneOf_i15)
+      - [2.3.1.17. Property `JSON config > logo > oneOf > item 2 > type > oneOf > item 16`](#logo_oneOf_i2_type_oneOf_i16)
     - [2.3.2. Property `JSON config > logo > oneOf > item 2 > source`](#logo_oneOf_i2_source)
-    - [2.3.3. Property `JSON config > logo > oneOf > item 2 > color`](#logo_oneOf_i2_color)
-      - [2.3.3.1. Property `JSON config > logo > oneOf > item 2 > color > 1`](#logo_oneOf_i2_color_1)
-        - [2.3.3.1.1. Property `JSON config > logo > oneOf > item 2 > color > 1 > oneOf > item 0`](#logo_oneOf_i2_color_1_oneOf_i0)
-        - [2.3.3.1.2. Property `JSON config > logo > oneOf > item 2 > color > 1 > oneOf > item 1`](#logo_oneOf_i2_color_1_oneOf_i1)
-      - [2.3.3.2. Property `JSON config > logo > oneOf > item 2 > color > 2`](#logo_oneOf_i2_color_2)
-      - [2.3.3.3. Property `JSON config > logo > oneOf > item 2 > color > 3`](#logo_oneOf_i2_color_3)
-      - [2.3.3.4. Property `JSON config > logo > oneOf > item 2 > color > 4`](#logo_oneOf_i2_color_4)
-      - [2.3.3.5. Property `JSON config > logo > oneOf > item 2 > color > 5`](#logo_oneOf_i2_color_5)
-      - [2.3.3.6. Property `JSON config > logo > oneOf > item 2 > color > 6`](#logo_oneOf_i2_color_6)
-      - [2.3.3.7. Property `JSON config > logo > oneOf > item 2 > color > 7`](#logo_oneOf_i2_color_7)
-      - [2.3.3.8. Property `JSON config > logo > oneOf > item 2 > color > 8`](#logo_oneOf_i2_color_8)
-      - [2.3.3.9. Property `JSON config > logo > oneOf > item 2 > color > 9`](#logo_oneOf_i2_color_9)
-    - [2.3.4. Property `JSON config > logo > oneOf > item 2 > width`](#logo_oneOf_i2_width)
-      - [2.3.4.1. Property `JSON config > logo > oneOf > item 2 > width > oneOf > item 0`](#logo_oneOf_i2_width_oneOf_i0)
-      - [2.3.4.2. Property `JSON config > logo > oneOf > item 2 > width > oneOf > item 1`](#logo_oneOf_i2_width_oneOf_i1)
-    - [2.3.5. Property `JSON config > logo > oneOf > item 2 > height`](#logo_oneOf_i2_height)
-      - [2.3.5.1. Property `JSON config > logo > oneOf > item 2 > height > oneOf > item 0`](#logo_oneOf_i2_height_oneOf_i0)
-      - [2.3.5.2. Property `JSON config > logo > oneOf > item 2 > height > oneOf > item 1`](#logo_oneOf_i2_height_oneOf_i1)
-    - [2.3.6. Property `JSON config > logo > oneOf > item 2 > padding`](#logo_oneOf_i2_padding)
-      - [2.3.6.1. Property `JSON config > logo > oneOf > item 2 > padding > top`](#logo_oneOf_i2_padding_top)
-      - [2.3.6.2. Property `JSON config > logo > oneOf > item 2 > padding > bottom`](#logo_oneOf_i2_padding_bottom)
-      - [2.3.6.3. Property `JSON config > logo > oneOf > item 2 > padding > left`](#logo_oneOf_i2_padding_left)
-      - [2.3.6.4. Property `JSON config > logo > oneOf > item 2 > padding > right`](#logo_oneOf_i2_padding_right)
-    - [2.3.7. Property `JSON config > logo > oneOf > item 2 > printRemaining`](#logo_oneOf_i2_printRemaining)
-    - [2.3.8. Property `JSON config > logo > oneOf > item 2 > preserveAspectRatio`](#logo_oneOf_i2_preserveAspectRatio)
-    - [2.3.9. Property `JSON config > logo > oneOf > item 2 > cache`](#logo_oneOf_i2_cache)
-      - [2.3.9.1. Property `JSON config > logo > oneOf > item 2 > cache > oneOf > item 0`](#logo_oneOf_i2_cache_oneOf_i0)
-      - [2.3.9.2. Property `JSON config > logo > oneOf > item 2 > cache > oneOf > item 1`](#logo_oneOf_i2_cache_oneOf_i1)
-    - [2.3.10. Property `JSON config > logo > oneOf > item 2 > position`](#logo_oneOf_i2_position)
-    - [2.3.11. Property `JSON config > logo > oneOf > item 2 > animationFrame`](#logo_oneOf_i2_animationFrame)
-    - [2.3.12. Property `JSON config > logo > oneOf > item 2 > chafa`](#logo_oneOf_i2_chafa)
-      - [2.3.12.1. Property `JSON config > logo > oneOf > item 2 > chafa > fgOnly`](#logo_oneOf_i2_chafa_fgOnly)
-      - [2.3.12.2. Property `JSON config > logo > oneOf > item 2 > chafa > symbols`](#logo_oneOf_i2_chafa_symbols)
-      - [2.3.12.3. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode`](#logo_oneOf_i2_chafa_canvasMode)
-        - [2.3.12.3.1. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 0`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i0)
-        - [2.3.12.3.2. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 1`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i1)
-        - [2.3.12.3.3. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 2`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i2)
-        - [2.3.12.3.4. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 3`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i3)
-        - [2.3.12.3.5. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 4`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i4)
-        - [2.3.12.3.6. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 5`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i5)
-        - [2.3.12.3.7. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 6`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i6)
-        - [2.3.12.3.8. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 7`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i7)
-      - [2.3.12.4. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace`](#logo_oneOf_i2_chafa_colorSpace)
-        - [2.3.12.4.1. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace > oneOf > item 0`](#logo_oneOf_i2_chafa_colorSpace_oneOf_i0)
-        - [2.3.12.4.2. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace > oneOf > item 1`](#logo_oneOf_i2_chafa_colorSpace_oneOf_i1)
-      - [2.3.12.5. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode`](#logo_oneOf_i2_chafa_ditherMode)
-        - [2.3.12.5.1. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 0`](#logo_oneOf_i2_chafa_ditherMode_oneOf_i0)
-        - [2.3.12.5.2. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 1`](#logo_oneOf_i2_chafa_ditherMode_oneOf_i1)
-        - [2.3.12.5.3. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 2`](#logo_oneOf_i2_chafa_ditherMode_oneOf_i2)
+    - [2.3.3. Property `JSON config > logo > oneOf > item 2 > spin`](#logo_oneOf_i2_spin)
+      - [2.3.3.1. Property `JSON config > logo > oneOf > item 2 > spin > speed`](#logo_oneOf_i2_spin_speed)
+        - [2.3.3.1.1. Property `JSON config > logo > oneOf > item 2 > spin > speed > perFrame`](#logo_oneOf_i2_spin_speed_perFrame)
+        - [2.3.3.1.2. Property `JSON config > logo > oneOf > item 2 > spin > speed > perRound`](#logo_oneOf_i2_spin_speed_perRound)
+      - [2.3.3.2. Property `JSON config > logo > oneOf > item 2 > spin > tilt`](#logo_oneOf_i2_spin_tilt)
+      - [2.3.3.3. Property `JSON config > logo > oneOf > item 2 > spin > angle`](#logo_oneOf_i2_spin_angle)
+    - [2.3.4. Property `JSON config > logo > oneOf > item 2 > color`](#logo_oneOf_i2_color)
+      - [2.3.4.1. Property `JSON config > logo > oneOf > item 2 > color > 1`](#logo_oneOf_i2_color_1)
+        - [2.3.4.1.1. Property `JSON config > logo > oneOf > item 2 > color > 1 > oneOf > item 0`](#logo_oneOf_i2_color_1_oneOf_i0)
+        - [2.3.4.1.2. Property `JSON config > logo > oneOf > item 2 > color > 1 > oneOf > item 1`](#logo_oneOf_i2_color_1_oneOf_i1)
+      - [2.3.4.2. Property `JSON config > logo > oneOf > item 2 > color > 2`](#logo_oneOf_i2_color_2)
+      - [2.3.4.3. Property `JSON config > logo > oneOf > item 2 > color > 3`](#logo_oneOf_i2_color_3)
+      - [2.3.4.4. Property `JSON config > logo > oneOf > item 2 > color > 4`](#logo_oneOf_i2_color_4)
+      - [2.3.4.5. Property `JSON config > logo > oneOf > item 2 > color > 5`](#logo_oneOf_i2_color_5)
+      - [2.3.4.6. Property `JSON config > logo > oneOf > item 2 > color > 6`](#logo_oneOf_i2_color_6)
+      - [2.3.4.7. Property `JSON config > logo > oneOf > item 2 > color > 7`](#logo_oneOf_i2_color_7)
+      - [2.3.4.8. Property `JSON config > logo > oneOf > item 2 > color > 8`](#logo_oneOf_i2_color_8)
+      - [2.3.4.9. Property `JSON config > logo > oneOf > item 2 > color > 9`](#logo_oneOf_i2_color_9)
+    - [2.3.5. Property `JSON config > logo > oneOf > item 2 > width`](#logo_oneOf_i2_width)
+      - [2.3.5.1. Property `JSON config > logo > oneOf > item 2 > width > oneOf > item 0`](#logo_oneOf_i2_width_oneOf_i0)
+      - [2.3.5.2. Property `JSON config > logo > oneOf > item 2 > width > oneOf > item 1`](#logo_oneOf_i2_width_oneOf_i1)
+    - [2.3.6. Property `JSON config > logo > oneOf > item 2 > height`](#logo_oneOf_i2_height)
+      - [2.3.6.1. Property `JSON config > logo > oneOf > item 2 > height > oneOf > item 0`](#logo_oneOf_i2_height_oneOf_i0)
+      - [2.3.6.2. Property `JSON config > logo > oneOf > item 2 > height > oneOf > item 1`](#logo_oneOf_i2_height_oneOf_i1)
+    - [2.3.7. Property `JSON config > logo > oneOf > item 2 > padding`](#logo_oneOf_i2_padding)
+      - [2.3.7.1. Property `JSON config > logo > oneOf > item 2 > padding > top`](#logo_oneOf_i2_padding_top)
+      - [2.3.7.2. Property `JSON config > logo > oneOf > item 2 > padding > bottom`](#logo_oneOf_i2_padding_bottom)
+      - [2.3.7.3. Property `JSON config > logo > oneOf > item 2 > padding > left`](#logo_oneOf_i2_padding_left)
+      - [2.3.7.4. Property `JSON config > logo > oneOf > item 2 > padding > right`](#logo_oneOf_i2_padding_right)
+    - [2.3.8. Property `JSON config > logo > oneOf > item 2 > printRemaining`](#logo_oneOf_i2_printRemaining)
+    - [2.3.9. Property `JSON config > logo > oneOf > item 2 > preserveAspectRatio`](#logo_oneOf_i2_preserveAspectRatio)
+    - [2.3.10. Property `JSON config > logo > oneOf > item 2 > cache`](#logo_oneOf_i2_cache)
+      - [2.3.10.1. Property `JSON config > logo > oneOf > item 2 > cache > oneOf > item 0`](#logo_oneOf_i2_cache_oneOf_i0)
+      - [2.3.10.2. Property `JSON config > logo > oneOf > item 2 > cache > oneOf > item 1`](#logo_oneOf_i2_cache_oneOf_i1)
+    - [2.3.11. Property `JSON config > logo > oneOf > item 2 > position`](#logo_oneOf_i2_position)
+    - [2.3.12. Property `JSON config > logo > oneOf > item 2 > animationFrame`](#logo_oneOf_i2_animationFrame)
+    - [2.3.13. Property `JSON config > logo > oneOf > item 2 > chafa`](#logo_oneOf_i2_chafa)
+      - [2.3.13.1. Property `JSON config > logo > oneOf > item 2 > chafa > fgOnly`](#logo_oneOf_i2_chafa_fgOnly)
+      - [2.3.13.2. Property `JSON config > logo > oneOf > item 2 > chafa > symbols`](#logo_oneOf_i2_chafa_symbols)
+      - [2.3.13.3. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode`](#logo_oneOf_i2_chafa_canvasMode)
+        - [2.3.13.3.1. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 0`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i0)
+        - [2.3.13.3.2. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 1`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i1)
+        - [2.3.13.3.3. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 2`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i2)
+        - [2.3.13.3.4. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 3`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i3)
+        - [2.3.13.3.5. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 4`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i4)
+        - [2.3.13.3.6. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 5`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i5)
+        - [2.3.13.3.7. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 6`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i6)
+        - [2.3.13.3.8. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 7`](#logo_oneOf_i2_chafa_canvasMode_oneOf_i7)
+      - [2.3.13.4. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace`](#logo_oneOf_i2_chafa_colorSpace)
+        - [2.3.13.4.1. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace > oneOf > item 0`](#logo_oneOf_i2_chafa_colorSpace_oneOf_i0)
+        - [2.3.13.4.2. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace > oneOf > item 1`](#logo_oneOf_i2_chafa_colorSpace_oneOf_i1)
+      - [2.3.13.5. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode`](#logo_oneOf_i2_chafa_ditherMode)
+        - [2.3.13.5.1. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 0`](#logo_oneOf_i2_chafa_ditherMode_oneOf_i0)
+        - [2.3.13.5.2. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 1`](#logo_oneOf_i2_chafa_ditherMode_oneOf_i1)
+        - [2.3.13.5.3. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 2`](#logo_oneOf_i2_chafa_ditherMode_oneOf_i2)
 - [3. Property `JSON config > general`](#general)
   - [3.1. Property `JSON config > general > thread`](#general_thread)
   - [3.2. Property `JSON config > general > escapeBedrock`](#general_escapeBedrock)
@@ -1203,7 +1210,8 @@ Specific value: `null`
 | Property                                                     | Pattern | Type             | Deprecated | Definition | Title/Description                                                                                                                                                                                                                                                                                                                              |
 | ------------------------------------------------------------ | ------- | ---------------- | ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | - [type](#logo_oneOf_i2_type )                               | No      | Combination      | No         | -          | Logo type                                                                                                                                                                                                                                                                                                                                      |
-| - [source](#logo_oneOf_i2_source )                           | No      | string           | No         | -          | Path to the logo source file                                                                                                                                                                                                                                                                                                                   |
+| - [source](#logo_oneOf_i2_source )                           | No      | string           | No         | -          | Path to the logo source file. For the spin logo: \`auto\` (the detected OS), any built-in logo name, or a text file in fastfetch logo syntax                                                                                                                                                                                                   |
+| - [spin](#logo_oneOf_i2_spin )                               | No      | object           | No         | -          | Options of the spin logo (\`logo.type: spin\`)                                                                                                                                                                                                                                                                                                 |
 | - [color](#logo_oneOf_i2_color )                             | No      | object           | No         | -          | Override colors in the logo                                                                                                                                                                                                                                                                                                                    |
 | - [width](#logo_oneOf_i2_width )                             | No      | Combination      | No         | -          | -                                                                                                                                                                                                                                                                                                                                              |
 | - [height](#logo_oneOf_i2_height )                           | No      | Combination      | No         | -          | -                                                                                                                                                                                                                                                                                                                                              |
@@ -1244,6 +1252,7 @@ Specific value: `null`
 | [item 13](#logo_oneOf_i2_type_oneOf_i13) |
 | [item 14](#logo_oneOf_i2_type_oneOf_i14) |
 | [item 15](#logo_oneOf_i2_type_oneOf_i15) |
+| [item 16](#logo_oneOf_i2_type_oneOf_i16) |
 
 ##### <a name="logo_oneOf_i2_type_oneOf_i0"></a>2.3.1.1. Property `JSON config > logo > oneOf > item 2 > type > oneOf > item 0`
 
@@ -1417,6 +1426,17 @@ Specific value: `"raw"`
 | **Type**     | `const` |
 | **Required** | No      |
 
+**Description:** Built-in logo (or a text file) drawn as a 3D slab, turning one step per `--watch` refresh
+
+Specific value: `"spin"`
+
+##### <a name="logo_oneOf_i2_type_oneOf_i16"></a>2.3.1.17. Property `JSON config > logo > oneOf > item 2 > type > oneOf > item 16`
+
+|              |         |
+| ------------ | ------- |
+| **Type**     | `const` |
+| **Required** | No      |
+
 **Description:** Disable logo printing
 
 Specific value: `"none"`
@@ -1428,9 +1448,100 @@ Specific value: `"none"`
 | **Type**     | `string` |
 | **Required** | No       |
 
-**Description:** Path to the logo source file
+**Description:** Path to the logo source file. For the spin logo: `auto` (the detected OS), any built-in logo name, or a text file in fastfetch logo syntax
 
-#### <a name="logo_oneOf_i2_color"></a>2.3.3. Property `JSON config > logo > oneOf > item 2 > color`
+#### <a name="logo_oneOf_i2_spin"></a>2.3.3. Property `JSON config > logo > oneOf > item 2 > spin`
+
+|                           |             |
+| ------------------------- | ----------- |
+| **Type**                  | `object`    |
+| **Required**              | No          |
+| **Additional properties** | Not allowed |
+
+**Description:** Options of the spin logo (`logo.type: spin`)
+
+| Property                              | Pattern | Type   | Deprecated | Definition | Title/Description                                                                                                |
+| ------------------------------------- | ------- | ------ | ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------- |
+| - [speed](#logo_oneOf_i2_spin_speed ) | No      | object | No         | -          | How fast the logo turns. 0 means not set for either key; \`perRound\` wins over \`perFrame\` when both are given |
+| - [tilt](#logo_oneOf_i2_spin_tilt )   | No      | number | No         | -          | Camera tilt in degrees                                                                                           |
+| - [angle](#logo_oneOf_i2_spin_angle ) | No      | number | No         | -          | Rotation of the first frame in degrees; 360 is the same as 0. Without \`--watch\` this is the only frame drawn   |
+
+##### <a name="logo_oneOf_i2_spin_speed"></a>2.3.3.1. Property `JSON config > logo > oneOf > item 2 > spin > speed`
+
+|                           |             |
+| ------------------------- | ----------- |
+| **Type**                  | `object`    |
+| **Required**              | No          |
+| **Additional properties** | Not allowed |
+
+**Description:** How fast the logo turns. 0 means not set for either key; `perRound` wins over `perFrame` when both are given
+
+| Property                                          | Pattern | Type   | Deprecated | Definition | Title/Description                                                                                                                                          |
+| ------------------------------------------------- | ------- | ------ | ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [perFrame](#logo_oneOf_i2_spin_speed_perFrame ) | No      | number | No         | -          | Degrees per drawn frame; a revolution takes 360 / perFrame frames, negative turns the other way. 0 means not set, and 10 is used when neither speed is set |
+| - [perRound](#logo_oneOf_i2_spin_speed_perRound ) | No      | number | No         | -          | Seconds one revolution takes, measured on the clock, negative turns the other way                                                                          |
+
+###### <a name="logo_oneOf_i2_spin_speed_perFrame"></a>2.3.3.1.1. Property `JSON config > logo > oneOf > item 2 > spin > speed > perFrame`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `number` |
+| **Required** | No       |
+| **Default**  | `0`      |
+
+**Description:** Degrees per drawn frame; a revolution takes 360 / perFrame frames, negative turns the other way. 0 means not set, and 10 is used when neither speed is set
+
+| Restrictions |           |
+| ------------ | --------- |
+| **Minimum**  | &ge; -360 |
+| **Maximum**  | &le; 360  |
+
+###### <a name="logo_oneOf_i2_spin_speed_perRound"></a>2.3.3.1.2. Property `JSON config > logo > oneOf > item 2 > spin > speed > perRound`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `number` |
+| **Required** | No       |
+| **Default**  | `0`      |
+
+**Description:** Seconds one revolution takes, measured on the clock, negative turns the other way
+
+| Restrictions |            |
+| ------------ | ---------- |
+| **Minimum**  | &ge; -3600 |
+| **Maximum**  | &le; 3600  |
+
+##### <a name="logo_oneOf_i2_spin_tilt"></a>2.3.3.2. Property `JSON config > logo > oneOf > item 2 > spin > tilt`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `number` |
+| **Required** | No       |
+| **Default**  | `0`      |
+
+**Description:** Camera tilt in degrees
+
+| Restrictions |          |
+| ------------ | -------- |
+| **Minimum**  | &ge; -80 |
+| **Maximum**  | &le; 80  |
+
+##### <a name="logo_oneOf_i2_spin_angle"></a>2.3.3.3. Property `JSON config > logo > oneOf > item 2 > spin > angle`
+
+|              |          |
+| ------------ | -------- |
+| **Type**     | `number` |
+| **Required** | No       |
+| **Default**  | `0`      |
+
+**Description:** Rotation of the first frame in degrees; 360 is the same as 0. Without `--watch` this is the only frame drawn
+
+| Restrictions |          |
+| ------------ | -------- |
+| **Minimum**  | &ge; 0   |
+| **Maximum**  | &le; 360 |
+
+#### <a name="logo_oneOf_i2_color"></a>2.3.4. Property `JSON config > logo > oneOf > item 2 > color`
 
 |                           |             |
 | ------------------------- | ----------- |
@@ -1452,7 +1563,7 @@ Specific value: `"none"`
 | - [8](#logo_oneOf_i2_color_8 ) | No      | object | No         | Same as [1](#logo_oneOf_i2_color_1 ) | Color 8           |
 | - [9](#logo_oneOf_i2_color_9 ) | No      | object | No         | Same as [1](#logo_oneOf_i2_color_1 ) | Color 9           |
 
-##### <a name="logo_oneOf_i2_color_1"></a>2.3.3.1. Property `JSON config > logo > oneOf > item 2 > color > 1`
+##### <a name="logo_oneOf_i2_color_1"></a>2.3.4.1. Property `JSON config > logo > oneOf > item 2 > color > 1`
 
 |                           |                  |
 | ------------------------- | ---------------- |
@@ -1468,7 +1579,7 @@ Specific value: `"none"`
 | [item 0](#logo_oneOf_i2_color_1_oneOf_i0) |
 | [item 1](#logo_oneOf_i2_color_1_oneOf_i1) |
 
-###### <a name="logo_oneOf_i2_color_1_oneOf_i0"></a>2.3.3.1.1. Property `JSON config > logo > oneOf > item 2 > color > 1 > oneOf > item 0`
+###### <a name="logo_oneOf_i2_color_1_oneOf_i0"></a>2.3.4.1.1. Property `JSON config > logo > oneOf > item 2 > color > 1 > oneOf > item 0`
 
 |              |          |
 | ------------ | -------- |
@@ -1553,14 +1664,14 @@ Specific value: `"none"`
 "default"
 ```
 
-###### <a name="logo_oneOf_i2_color_1_oneOf_i1"></a>2.3.3.1.2. Property `JSON config > logo > oneOf > item 2 > color > 1 > oneOf > item 1`
+###### <a name="logo_oneOf_i2_color_1_oneOf_i1"></a>2.3.4.1.2. Property `JSON config > logo > oneOf > item 2 > color > 1 > oneOf > item 1`
 
 |              |        |
 | ------------ | ------ |
 | **Type**     | `null` |
 | **Required** | No     |
 
-##### <a name="logo_oneOf_i2_color_2"></a>2.3.3.2. Property `JSON config > logo > oneOf > item 2 > color > 2`
+##### <a name="logo_oneOf_i2_color_2"></a>2.3.4.2. Property `JSON config > logo > oneOf > item 2 > color > 2`
 
 |                           |                             |
 | ------------------------- | --------------------------- |
@@ -1571,7 +1682,7 @@ Specific value: `"none"`
 
 **Description:** Color 2
 
-##### <a name="logo_oneOf_i2_color_3"></a>2.3.3.3. Property `JSON config > logo > oneOf > item 2 > color > 3`
+##### <a name="logo_oneOf_i2_color_3"></a>2.3.4.3. Property `JSON config > logo > oneOf > item 2 > color > 3`
 
 |                           |                             |
 | ------------------------- | --------------------------- |
@@ -1582,7 +1693,7 @@ Specific value: `"none"`
 
 **Description:** Color 3
 
-##### <a name="logo_oneOf_i2_color_4"></a>2.3.3.4. Property `JSON config > logo > oneOf > item 2 > color > 4`
+##### <a name="logo_oneOf_i2_color_4"></a>2.3.4.4. Property `JSON config > logo > oneOf > item 2 > color > 4`
 
 |                           |                             |
 | ------------------------- | --------------------------- |
@@ -1593,7 +1704,7 @@ Specific value: `"none"`
 
 **Description:** Color 4
 
-##### <a name="logo_oneOf_i2_color_5"></a>2.3.3.5. Property `JSON config > logo > oneOf > item 2 > color > 5`
+##### <a name="logo_oneOf_i2_color_5"></a>2.3.4.5. Property `JSON config > logo > oneOf > item 2 > color > 5`
 
 |                           |                             |
 | ------------------------- | --------------------------- |
@@ -1604,7 +1715,7 @@ Specific value: `"none"`
 
 **Description:** Color 5
 
-##### <a name="logo_oneOf_i2_color_6"></a>2.3.3.6. Property `JSON config > logo > oneOf > item 2 > color > 6`
+##### <a name="logo_oneOf_i2_color_6"></a>2.3.4.6. Property `JSON config > logo > oneOf > item 2 > color > 6`
 
 |                           |                             |
 | ------------------------- | --------------------------- |
@@ -1615,7 +1726,7 @@ Specific value: `"none"`
 
 **Description:** Color 6
 
-##### <a name="logo_oneOf_i2_color_7"></a>2.3.3.7. Property `JSON config > logo > oneOf > item 2 > color > 7`
+##### <a name="logo_oneOf_i2_color_7"></a>2.3.4.7. Property `JSON config > logo > oneOf > item 2 > color > 7`
 
 |                           |                             |
 | ------------------------- | --------------------------- |
@@ -1626,7 +1737,7 @@ Specific value: `"none"`
 
 **Description:** Color 7
 
-##### <a name="logo_oneOf_i2_color_8"></a>2.3.3.8. Property `JSON config > logo > oneOf > item 2 > color > 8`
+##### <a name="logo_oneOf_i2_color_8"></a>2.3.4.8. Property `JSON config > logo > oneOf > item 2 > color > 8`
 
 |                           |                             |
 | ------------------------- | --------------------------- |
@@ -1637,7 +1748,7 @@ Specific value: `"none"`
 
 **Description:** Color 8
 
-##### <a name="logo_oneOf_i2_color_9"></a>2.3.3.9. Property `JSON config > logo > oneOf > item 2 > color > 9`
+##### <a name="logo_oneOf_i2_color_9"></a>2.3.4.9. Property `JSON config > logo > oneOf > item 2 > color > 9`
 
 |                           |                             |
 | ------------------------- | --------------------------- |
@@ -1648,7 +1759,7 @@ Specific value: `"none"`
 
 **Description:** Color 9
 
-#### <a name="logo_oneOf_i2_width"></a>2.3.4. Property `JSON config > logo > oneOf > item 2 > width`
+#### <a name="logo_oneOf_i2_width"></a>2.3.5. Property `JSON config > logo > oneOf > item 2 > width`
 
 |                           |                  |
 | ------------------------- | ---------------- |
@@ -1661,7 +1772,7 @@ Specific value: `"none"`
 | [item 0](#logo_oneOf_i2_width_oneOf_i0) |
 | [item 1](#logo_oneOf_i2_width_oneOf_i1) |
 
-##### <a name="logo_oneOf_i2_width_oneOf_i0"></a>2.3.4.1. Property `JSON config > logo > oneOf > item 2 > width > oneOf > item 0`
+##### <a name="logo_oneOf_i2_width_oneOf_i0"></a>2.3.5.1. Property `JSON config > logo > oneOf > item 2 > width > oneOf > item 0`
 
 |              |        |
 | ------------ | ------ |
@@ -1670,7 +1781,7 @@ Specific value: `"none"`
 
 **Description:** Auto-detect the width (default)
 
-##### <a name="logo_oneOf_i2_width_oneOf_i1"></a>2.3.4.2. Property `JSON config > logo > oneOf > item 2 > width > oneOf > item 1`
+##### <a name="logo_oneOf_i2_width_oneOf_i1"></a>2.3.5.2. Property `JSON config > logo > oneOf > item 2 > width > oneOf > item 1`
 
 |              |           |
 | ------------ | --------- |
@@ -1683,7 +1794,7 @@ Specific value: `"none"`
 | ------------ | ------ |
 | **Minimum**  | &ge; 1 |
 
-#### <a name="logo_oneOf_i2_height"></a>2.3.5. Property `JSON config > logo > oneOf > item 2 > height`
+#### <a name="logo_oneOf_i2_height"></a>2.3.6. Property `JSON config > logo > oneOf > item 2 > height`
 
 |                           |                  |
 | ------------------------- | ---------------- |
@@ -1696,7 +1807,7 @@ Specific value: `"none"`
 | [item 0](#logo_oneOf_i2_height_oneOf_i0) |
 | [item 1](#logo_oneOf_i2_height_oneOf_i1) |
 
-##### <a name="logo_oneOf_i2_height_oneOf_i0"></a>2.3.5.1. Property `JSON config > logo > oneOf > item 2 > height > oneOf > item 0`
+##### <a name="logo_oneOf_i2_height_oneOf_i0"></a>2.3.6.1. Property `JSON config > logo > oneOf > item 2 > height > oneOf > item 0`
 
 |              |        |
 | ------------ | ------ |
@@ -1705,7 +1816,7 @@ Specific value: `"none"`
 
 **Description:** Auto-detect the height (default)
 
-##### <a name="logo_oneOf_i2_height_oneOf_i1"></a>2.3.5.2. Property `JSON config > logo > oneOf > item 2 > height > oneOf > item 1`
+##### <a name="logo_oneOf_i2_height_oneOf_i1"></a>2.3.6.2. Property `JSON config > logo > oneOf > item 2 > height > oneOf > item 1`
 
 |              |           |
 | ------------ | --------- |
@@ -1718,7 +1829,7 @@ Specific value: `"none"`
 | ------------ | ------ |
 | **Minimum**  | &ge; 1 |
 
-#### <a name="logo_oneOf_i2_padding"></a>2.3.6. Property `JSON config > logo > oneOf > item 2 > padding`
+#### <a name="logo_oneOf_i2_padding"></a>2.3.7. Property `JSON config > logo > oneOf > item 2 > padding`
 
 |                           |             |
 | ------------------------- | ----------- |
@@ -1735,7 +1846,7 @@ Specific value: `"none"`
 | - [left](#logo_oneOf_i2_padding_left )     | No      | integer | No         | -          | Left padding of the logo                                            |
 | - [right](#logo_oneOf_i2_padding_right )   | No      | integer | No         | -          | Right padding of the logo                                           |
 
-##### <a name="logo_oneOf_i2_padding_top"></a>2.3.6.1. Property `JSON config > logo > oneOf > item 2 > padding > top`
+##### <a name="logo_oneOf_i2_padding_top"></a>2.3.7.1. Property `JSON config > logo > oneOf > item 2 > padding > top`
 
 |              |           |
 | ------------ | --------- |
@@ -1748,7 +1859,7 @@ Specific value: `"none"`
 | ------------ | ------ |
 | **Minimum**  | &ge; 0 |
 
-##### <a name="logo_oneOf_i2_padding_bottom"></a>2.3.6.2. Property `JSON config > logo > oneOf > item 2 > padding > bottom`
+##### <a name="logo_oneOf_i2_padding_bottom"></a>2.3.7.2. Property `JSON config > logo > oneOf > item 2 > padding > bottom`
 
 |              |           |
 | ------------ | --------- |
@@ -1761,7 +1872,7 @@ Specific value: `"none"`
 | ------------ | ------ |
 | **Minimum**  | &ge; 0 |
 
-##### <a name="logo_oneOf_i2_padding_left"></a>2.3.6.3. Property `JSON config > logo > oneOf > item 2 > padding > left`
+##### <a name="logo_oneOf_i2_padding_left"></a>2.3.7.3. Property `JSON config > logo > oneOf > item 2 > padding > left`
 
 |              |           |
 | ------------ | --------- |
@@ -1774,7 +1885,7 @@ Specific value: `"none"`
 | ------------ | ------ |
 | **Minimum**  | &ge; 0 |
 
-##### <a name="logo_oneOf_i2_padding_right"></a>2.3.6.4. Property `JSON config > logo > oneOf > item 2 > padding > right`
+##### <a name="logo_oneOf_i2_padding_right"></a>2.3.7.4. Property `JSON config > logo > oneOf > item 2 > padding > right`
 
 |              |           |
 | ------------ | --------- |
@@ -1787,7 +1898,7 @@ Specific value: `"none"`
 | ------------ | ------ |
 | **Minimum**  | &ge; 0 |
 
-#### <a name="logo_oneOf_i2_printRemaining"></a>2.3.7. Property `JSON config > logo > oneOf > item 2 > printRemaining`
+#### <a name="logo_oneOf_i2_printRemaining"></a>2.3.8. Property `JSON config > logo > oneOf > item 2 > printRemaining`
 
 |              |           |
 | ------------ | --------- |
@@ -1797,7 +1908,7 @@ Specific value: `"none"`
 
 **Description:** Whether to print any remaining logo lines when the logo is taller than the module list
 
-#### <a name="logo_oneOf_i2_preserveAspectRatio"></a>2.3.8. Property `JSON config > logo > oneOf > item 2 > preserveAspectRatio`
+#### <a name="logo_oneOf_i2_preserveAspectRatio"></a>2.3.9. Property `JSON config > logo > oneOf > item 2 > preserveAspectRatio`
 
 |              |           |
 | ------------ | --------- |
@@ -1807,7 +1918,7 @@ Specific value: `"none"`
 
 **Description:** Whether to preserve the aspect ratio of the logo. Supported by iTerm image protocol only
 
-#### <a name="logo_oneOf_i2_cache"></a>2.3.9. Property `JSON config > logo > oneOf > item 2 > cache`
+#### <a name="logo_oneOf_i2_cache"></a>2.3.10. Property `JSON config > logo > oneOf > item 2 > cache`
 
 |                           |                  |
 | ------------------------- | ---------------- |
@@ -1823,7 +1934,7 @@ Specific value: `"none"`
 | [item 0](#logo_oneOf_i2_cache_oneOf_i0) |
 | [item 1](#logo_oneOf_i2_cache_oneOf_i1) |
 
-##### <a name="logo_oneOf_i2_cache_oneOf_i0"></a>2.3.9.1. Property `JSON config > logo > oneOf > item 2 > cache > oneOf > item 0`
+##### <a name="logo_oneOf_i2_cache_oneOf_i0"></a>2.3.10.1. Property `JSON config > logo > oneOf > item 2 > cache > oneOf > item 0`
 
 |              |           |
 | ------------ | --------- |
@@ -1832,7 +1943,7 @@ Specific value: `"none"`
 
 **Description:** Whether to use the image logo cache
 
-##### <a name="logo_oneOf_i2_cache_oneOf_i1"></a>2.3.9.2. Property `JSON config > logo > oneOf > item 2 > cache > oneOf > item 1`
+##### <a name="logo_oneOf_i2_cache_oneOf_i1"></a>2.3.10.2. Property `JSON config > logo > oneOf > item 2 > cache > oneOf > item 1`
 
 |              |         |
 | ------------ | ------- |
@@ -1843,7 +1954,7 @@ Specific value: `"none"`
 
 Specific value: `"regen"`
 
-#### <a name="logo_oneOf_i2_position"></a>2.3.10. Property `JSON config > logo > oneOf > item 2 > position`
+#### <a name="logo_oneOf_i2_position"></a>2.3.11. Property `JSON config > logo > oneOf > item 2 > position`
 
 |              |                    |
 | ------------ | ------------------ |
@@ -1859,7 +1970,7 @@ Must be one of:
 * "top"
 * "right"
 
-#### <a name="logo_oneOf_i2_animationFrame"></a>2.3.11. Property `JSON config > logo > oneOf > item 2 > animationFrame`
+#### <a name="logo_oneOf_i2_animationFrame"></a>2.3.12. Property `JSON config > logo > oneOf > item 2 > animationFrame`
 
 |              |           |
 | ------------ | --------- |
@@ -1871,7 +1982,7 @@ Must be one of:
 0 plays the animation (kitty image protocol only), a positive value is the 1-based frame number, and a negative value counts back from the end, so -1 is the last frame.
 Only the JSON config can express a negative value, as the command line parser reads a leading `-` as another option
 
-#### <a name="logo_oneOf_i2_chafa"></a>2.3.12. Property `JSON config > logo > oneOf > item 2 > chafa`
+#### <a name="logo_oneOf_i2_chafa"></a>2.3.13. Property `JSON config > logo > oneOf > item 2 > chafa`
 
 |                           |             |
 | ------------------------- | ----------- |
@@ -1889,7 +2000,7 @@ Only the JSON config can express a negative value, as the command line parser re
 | - [colorSpace](#logo_oneOf_i2_chafa_colorSpace ) | No      | Combination | No         | -          | Set color space used for quantization. This value maps to enum ChafaColorSpace.                |
 | - [ditherMode](#logo_oneOf_i2_chafa_ditherMode ) | No      | Combination | No         | -          | Set output dither mode (No effect with 24-bit color). This value maps to enum ChafaDitherMode. |
 
-##### <a name="logo_oneOf_i2_chafa_fgOnly"></a>2.3.12.1. Property `JSON config > logo > oneOf > item 2 > chafa > fgOnly`
+##### <a name="logo_oneOf_i2_chafa_fgOnly"></a>2.3.13.1. Property `JSON config > logo > oneOf > item 2 > chafa > fgOnly`
 
 |              |           |
 | ------------ | --------- |
@@ -1899,7 +2010,7 @@ Only the JSON config can express a negative value, as the command line parser re
 
 **Description:** Produce character-cell output using foreground colors only
 
-##### <a name="logo_oneOf_i2_chafa_symbols"></a>2.3.12.2. Property `JSON config > logo > oneOf > item 2 > chafa > symbols`
+##### <a name="logo_oneOf_i2_chafa_symbols"></a>2.3.13.2. Property `JSON config > logo > oneOf > item 2 > chafa > symbols`
 
 |              |          |
 | ------------ | -------- |
@@ -1908,7 +2019,7 @@ Only the JSON config can express a negative value, as the command line parser re
 
 **Description:** Specify character symbols to employ in final output
 
-##### <a name="logo_oneOf_i2_chafa_canvasMode"></a>2.3.12.3. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode`
+##### <a name="logo_oneOf_i2_chafa_canvasMode"></a>2.3.13.3. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode`
 
 |              |             |
 | ------------ | ----------- |
@@ -1928,7 +2039,7 @@ Only the JSON config can express a negative value, as the command line parser re
 | [item 6](#logo_oneOf_i2_chafa_canvasMode_oneOf_i6) |
 | [item 7](#logo_oneOf_i2_chafa_canvasMode_oneOf_i7) |
 
-###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i0"></a>2.3.12.3.1. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 0`
+###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i0"></a>2.3.13.3.1. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 0`
 
 |              |         |
 | ------------ | ------- |
@@ -1939,7 +2050,7 @@ Only the JSON config can express a negative value, as the command line parser re
 
 Specific value: `"TRUECOLOR"`
 
-###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i1"></a>2.3.12.3.2. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 1`
+###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i1"></a>2.3.13.3.2. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 1`
 
 |              |         |
 | ------------ | ------- |
@@ -1950,7 +2061,7 @@ Specific value: `"TRUECOLOR"`
 
 Specific value: `"INDEXED_256"`
 
-###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i2"></a>2.3.12.3.3. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 2`
+###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i2"></a>2.3.13.3.3. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 2`
 
 |              |         |
 | ------------ | ------- |
@@ -1961,7 +2072,7 @@ Specific value: `"INDEXED_256"`
 
 Specific value: `"INDEXED_240"`
 
-###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i3"></a>2.3.12.3.4. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 3`
+###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i3"></a>2.3.13.3.4. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 3`
 
 |              |         |
 | ------------ | ------- |
@@ -1972,7 +2083,7 @@ Specific value: `"INDEXED_240"`
 
 Specific value: `"INDEXED_16"`
 
-###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i4"></a>2.3.12.3.5. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 4`
+###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i4"></a>2.3.13.3.5. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 4`
 
 |              |         |
 | ------------ | ------- |
@@ -1983,7 +2094,7 @@ Specific value: `"INDEXED_16"`
 
 Specific value: `"FGBG_BGFG"`
 
-###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i5"></a>2.3.12.3.6. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 5`
+###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i5"></a>2.3.13.3.6. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 5`
 
 |              |         |
 | ------------ | ------- |
@@ -1994,7 +2105,7 @@ Specific value: `"FGBG_BGFG"`
 
 Specific value: `"FGBG"`
 
-###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i6"></a>2.3.12.3.7. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 6`
+###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i6"></a>2.3.13.3.7. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 6`
 
 |              |         |
 | ------------ | ------- |
@@ -2005,7 +2116,7 @@ Specific value: `"FGBG"`
 
 Specific value: `"INDEXED_8"`
 
-###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i7"></a>2.3.12.3.8. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 7`
+###### <a name="logo_oneOf_i2_chafa_canvasMode_oneOf_i7"></a>2.3.13.3.8. Property `JSON config > logo > oneOf > item 2 > chafa > canvasMode > oneOf > item 7`
 
 |              |         |
 | ------------ | ------- |
@@ -2016,7 +2127,7 @@ Specific value: `"INDEXED_8"`
 
 Specific value: `"INDEXED_16_8"`
 
-##### <a name="logo_oneOf_i2_chafa_colorSpace"></a>2.3.12.4. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace`
+##### <a name="logo_oneOf_i2_chafa_colorSpace"></a>2.3.13.4. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace`
 
 |              |             |
 | ------------ | ----------- |
@@ -2030,7 +2141,7 @@ Specific value: `"INDEXED_16_8"`
 | [item 0](#logo_oneOf_i2_chafa_colorSpace_oneOf_i0) |
 | [item 1](#logo_oneOf_i2_chafa_colorSpace_oneOf_i1) |
 
-###### <a name="logo_oneOf_i2_chafa_colorSpace_oneOf_i0"></a>2.3.12.4.1. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace > oneOf > item 0`
+###### <a name="logo_oneOf_i2_chafa_colorSpace_oneOf_i0"></a>2.3.13.4.1. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace > oneOf > item 0`
 
 |              |         |
 | ------------ | ------- |
@@ -2041,7 +2152,7 @@ Specific value: `"INDEXED_16_8"`
 
 Specific value: `"RGB"`
 
-###### <a name="logo_oneOf_i2_chafa_colorSpace_oneOf_i1"></a>2.3.12.4.2. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace > oneOf > item 1`
+###### <a name="logo_oneOf_i2_chafa_colorSpace_oneOf_i1"></a>2.3.13.4.2. Property `JSON config > logo > oneOf > item 2 > chafa > colorSpace > oneOf > item 1`
 
 |              |         |
 | ------------ | ------- |
@@ -2052,7 +2163,7 @@ Specific value: `"RGB"`
 
 Specific value: `"DIN99D"`
 
-##### <a name="logo_oneOf_i2_chafa_ditherMode"></a>2.3.12.5. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode`
+##### <a name="logo_oneOf_i2_chafa_ditherMode"></a>2.3.13.5. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode`
 
 |              |             |
 | ------------ | ----------- |
@@ -2067,7 +2178,7 @@ Specific value: `"DIN99D"`
 | [item 1](#logo_oneOf_i2_chafa_ditherMode_oneOf_i1) |
 | [item 2](#logo_oneOf_i2_chafa_ditherMode_oneOf_i2) |
 
-###### <a name="logo_oneOf_i2_chafa_ditherMode_oneOf_i0"></a>2.3.12.5.1. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 0`
+###### <a name="logo_oneOf_i2_chafa_ditherMode_oneOf_i0"></a>2.3.13.5.1. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 0`
 
 |              |         |
 | ------------ | ------- |
@@ -2078,7 +2189,7 @@ Specific value: `"DIN99D"`
 
 Specific value: `"NONE"`
 
-###### <a name="logo_oneOf_i2_chafa_ditherMode_oneOf_i1"></a>2.3.12.5.2. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 1`
+###### <a name="logo_oneOf_i2_chafa_ditherMode_oneOf_i1"></a>2.3.13.5.2. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 1`
 
 |              |         |
 | ------------ | ------- |
@@ -2089,7 +2200,7 @@ Specific value: `"NONE"`
 
 Specific value: `"ORDERED"`
 
-###### <a name="logo_oneOf_i2_chafa_ditherMode_oneOf_i2"></a>2.3.12.5.3. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 2`
+###### <a name="logo_oneOf_i2_chafa_ditherMode_oneOf_i2"></a>2.3.13.5.3. Property `JSON config > logo > oneOf > item 2 > chafa > ditherMode > oneOf > item 2`
 
 |              |         |
 | ------------ | ------- |
@@ -5343,18 +5454,18 @@ Must be one of:
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                       | Pattern | Type    | Deprecated | Definition                                                       | Title/Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------------------------------------------------------------- | ------- | ------- | ---------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i1_type )               | No      | const   | No         | -                                                                | Print battery information                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| - [temp](#modules_items_anyOf_i1_oneOf_i1_temp )               | No      | object  | No         | In #/$defs/temperature                                           | Whether to detect and display temperature, if supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| - [percent](#modules_items_anyOf_i1_oneOf_i1_percent )         | No      | object  | No         | In #/$defs/percent                                               | Color thresholds for percentage output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| - [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | No      | string  | No         | In #/$defs/key                                                   | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | No      | object  | No         | In #/$defs/keyColor                                              | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | No      | string  | No         | In #/$defs/keyIcon                                               | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | No      | integer | No         | In #/$defs/keyWidth                                              | Width of the module key. Overrides \`display.key.width\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | No      | object  | No         | In #/$defs/outputColor                                           | Color of the module output. Overrides \`display.color.output\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| - [format](#modules_items_anyOf_i1_oneOf_i1_format )           | No      | string  | No         | In #/$defs/batteryFormat                                         | Output format for the \`Battery\` module. See Wiki for formatting syntax<br />    1. {manufacturer}: Battery manufacturer<br />    2. {name}: Battery model name *<br />    3. {technology}: Battery technology<br />    4. {capacity}: Battery capacity (percentage num)<br />    5. {status}: Battery status<br />    6. {temperature}: Battery temperature (formatted)<br />    7. {cycle-count}: Battery cycle count<br />    8. {serial}: Battery serial number<br />    9. {manufacture-date}: Battery manufacture date<br />    10. {capacity-bar}: Battery capacity (percentage bar)<br />    11. {time-days}: Battery time remaining days<br />    12. {time-hours}: Battery time remaining hours<br />    13. {time-minutes}: Battery time remaining minutes<br />    14. {time-seconds}: Battery time remaining seconds<br />    15. {time-formatted}: Battery time remaining (formatted) |
-| - [condition](#modules_items_anyOf_i1_oneOf_i1_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition ) | Show the module only if these conditions are met                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Property                                                       | Pattern | Type    | Deprecated | Definition                                                       | Title/Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| -------------------------------------------------------------- | ------- | ------- | ---------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i1_type )               | No      | const   | No         | -                                                                | Print battery information                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| - [temp](#modules_items_anyOf_i1_oneOf_i1_temp )               | No      | object  | No         | In #/$defs/temperature                                           | Whether to detect and display temperature, if supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| - [percent](#modules_items_anyOf_i1_oneOf_i1_percent )         | No      | object  | No         | In #/$defs/percent                                               | Color thresholds for percentage output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| - [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | No      | string  | No         | In #/$defs/key                                                   | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | No      | object  | No         | In #/$defs/keyColor                                              | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | No      | string  | No         | In #/$defs/keyIcon                                               | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | No      | integer | No         | In #/$defs/keyWidth                                              | Width of the module key. Overrides \`display.key.width\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | No      | object  | No         | In #/$defs/outputColor                                           | Color of the module output. Overrides \`display.color.output\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| - [format](#modules_items_anyOf_i1_oneOf_i1_format )           | No      | string  | No         | In #/$defs/batteryFormat                                         | Output format for the \`Battery\` module. See Wiki for formatting syntax<br />    1. {manufacturer}: Battery manufacturer<br />    2. {model-name}: Battery model name *<br />    3. {technology}: Battery technology<br />    4. {capacity}: Battery capacity (percentage num)<br />    5. {status}: Battery status<br />    6. {temperature}: Battery temperature (formatted)<br />    7. {cycle-count}: Battery cycle count<br />    8. {serial}: Battery serial number<br />    9. {manufacture-date}: Battery manufacture date<br />    10. {capacity-bar}: Battery capacity (percentage bar)<br />    11. {time-days}: Battery time remaining days<br />    12. {time-hours}: Battery time remaining hours<br />    13. {time-minutes}: Battery time remaining minutes<br />    14. {time-seconds}: Battery time remaining seconds<br />    15. {time-formatted}: Battery time remaining (formatted) |
+| - [condition](#modules_items_anyOf_i1_oneOf_i1_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition ) | Show the module only if these conditions are met                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i1_type"></a>5.1.2.2.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Battery > type`
 
@@ -5557,7 +5668,7 @@ Use a single space (` `) to hide the key
 
 **Description:** Output format for the `Battery` module. See Wiki for formatting syntax
     1. {manufacturer}: Battery manufacturer
-    2. {name}: Battery model name *
+    2. {model-name}: Battery model name *
     3. {technology}: Battery technology
     4. {capacity}: Battery capacity (percentage num)
     5. {status}: Battery status
@@ -6938,19 +7049,19 @@ Use a single space (` `) to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                                | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| ----------------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i12_type )                       | No      | const   | No         | -                                                                    | Print CPU name, frequency, etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| - [temp](#modules_items_anyOf_i1_oneOf_i12_temp )                       | No      | object  | No         | Same as [temp](#modules_items_anyOf_i1_oneOf_i1_temp )               | Whether to detect and display temperature, if supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| - [tempSensor](#modules_items_anyOf_i1_oneOf_i12_tempSensor )           | No      | string  | No         | -                                                                    | Set the temperature sensor to use for CPU temperature detection<br />* Linux: \`hwmon\` or \`thermal\` path name (eg. \`hwmon0\`, \`thermal_zone0)\`<br />* macOS: SMC sensor key (eg. \`Tp01\`)<br />* Windows: thermal zone key (eg. \`\_TZ.CPUZ\`)<br />* FreeBSD: sysctl key (eg. \`dev.cpu.0.temperature\`)<br />* NetBSD: sysmon sensor key (eg. \`coretemp0\`)                                                                                                                                                                                                                                                                                                                                                                                 |
-| - [showPeCoreCount](#modules_items_anyOf_i1_oneOf_i12_showPeCoreCount ) | No      | boolean | No         | -                                                                    | Whether to detect and display CPU frequencies for different core types (for example, P-cores and E-cores), if supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| - [key](#modules_items_anyOf_i1_oneOf_i12_key )                         | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i12_keyColor )               | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i12_keyIcon )                 | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i12_keyWidth )               | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i12_outputColor )         | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| - [format](#modules_items_anyOf_i1_oneOf_i12_format )                   | No      | string  | No         | In #/$defs/cpuFormat                                                 | Output format for the \`CPU\` module. See Wiki for formatting syntax<br />    1. {name}: Name<br />    2. {vendor}: Vendor<br />    3. {cores-physical}: Physical core count<br />    4. {cores-logical}: Logical core count<br />    5. {cores-online}: Online core count<br />    6. {freq-base}: Base frequency (formatted)<br />    7. {freq-max}: Max frequency (formatted)<br />    8. {temperature}: Temperature (formatted)<br />    9. {core-types}: Logical core count grouped by frequency<br />    10. {packages}: Processor package count<br />    11. {march}: CPU microarchitecture<br />    12. {numa-nodes}: NUMA node count<br />    13. {code-name}: CPU code name (x86 only)<br />    14. {technology}: CPU technology (x86 only) |
-| - [condition](#modules_items_anyOf_i1_oneOf_i12_condition )             | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Property                                                                | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ----------------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i12_type )                       | No      | const   | No         | -                                                                    | Print CPU name, frequency, etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| - [temp](#modules_items_anyOf_i1_oneOf_i12_temp )                       | No      | object  | No         | Same as [temp](#modules_items_anyOf_i1_oneOf_i1_temp )               | Whether to detect and display temperature, if supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| - [tempSensor](#modules_items_anyOf_i1_oneOf_i12_tempSensor )           | No      | string  | No         | -                                                                    | Set the temperature sensor to use for CPU temperature detection<br />* Linux: \`hwmon\` or \`thermal\` path name (eg. \`hwmon0\`, \`thermal_zone0)\`<br />* macOS: SMC sensor key (eg. \`Tp01\`)<br />* Windows: thermal zone key (eg. \`\_TZ.CPUZ\`)<br />* FreeBSD: sysctl key (eg. \`dev.cpu.0.temperature\`)<br />* NetBSD: sysmon sensor key (eg. \`coretemp0\`)                                                                                                                                                                                                                                                                         |
+| - [showPeCoreCount](#modules_items_anyOf_i1_oneOf_i12_showPeCoreCount ) | No      | boolean | No         | -                                                                    | Whether to detect and display CPU frequencies for different core types (for example, P-cores and E-cores), if supported                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| - [key](#modules_items_anyOf_i1_oneOf_i12_key )                         | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i12_keyColor )               | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i12_keyIcon )                 | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i12_keyWidth )               | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i12_outputColor )         | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| - [format](#modules_items_anyOf_i1_oneOf_i12_format )                   | No      | string  | No         | In #/$defs/cpuFormat                                                 | Output format for the \`CPU\` module. See Wiki for formatting syntax<br />    1. {name}: Name<br />    2. {vendor}: Vendor<br />    3. {cores-physical}: Physical core count<br />    4. {cores-logical}: Logical core count<br />    5. {cores-online}: Online core count<br />    6. {freq-base}: Base frequency (formatted)<br />    7. {freq-max}: Max frequency (formatted)<br />    8. {temperature}: Temperature (formatted)<br />    9. {core-types}: Logical core count grouped by frequency<br />    10. {packages}: Processor package count<br />    11. {march}: CPU microarchitecture<br />    12. {numa-nodes}: NUMA node count |
+| - [condition](#modules_items_anyOf_i1_oneOf_i12_condition )             | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i12_type"></a>5.1.2.13.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > type`
 
@@ -7072,8 +7183,6 @@ Use a single space (` `) to hide the key
     10. {packages}: Processor package count
     11. {march}: CPU microarchitecture
     12. {numa-nodes}: NUMA node count
-    13. {code-name}: CPU code name (x86 only)
-    14. {technology}: CPU technology (x86 only)
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i12_condition"></a>5.1.2.13.11. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > CPU > condition`
 
@@ -8528,27 +8637,27 @@ Use a single space (` `) to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                              | Pattern | Type        | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| --------------------------------------------------------------------- | ------- | ----------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| - [type](#modules_items_anyOf_i1_oneOf_i21_type )                     | No      | const       | No         | -                                                                    | Print partitions, space usage, file system, etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| - [folders](#modules_items_anyOf_i1_oneOf_i21_folders )               | No      | Combination | No         | -                                                                    | A list of folder paths for the disk output<br />Default: auto detection using mount-points<br />This option overrides other \`show*\` options                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| - [hideFolders](#modules_items_anyOf_i1_oneOf_i21_hideFolders )       | No      | Combination | No         | -                                                                    | A list of folder paths (or glob patterns) to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| - [hideFS](#modules_items_anyOf_i1_oneOf_i21_hideFS )                 | No      | Combination | No         | -                                                                    | A list of file systems to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| - [showRegular](#modules_items_anyOf_i1_oneOf_i21_showRegular )       | No      | boolean     | No         | -                                                                    | Whether to show regular volumes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| - [showExternal](#modules_items_anyOf_i1_oneOf_i21_showExternal )     | No      | boolean     | No         | -                                                                    | Whether to show external volumes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| - [showHidden](#modules_items_anyOf_i1_oneOf_i21_showHidden )         | No      | boolean     | No         | -                                                                    | Whether to show hidden volumes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| - [showSubvolumes](#modules_items_anyOf_i1_oneOf_i21_showSubvolumes ) | No      | boolean     | No         | -                                                                    | Whether to show subvolumes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| - [showReadOnly](#modules_items_anyOf_i1_oneOf_i21_showReadOnly )     | No      | boolean     | No         | -                                                                    | Whether to show read-only volumes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| - [showUnknown](#modules_items_anyOf_i1_oneOf_i21_showUnknown )       | No      | boolean     | No         | -                                                                    | Whether to show unknown volumes whose sizes cannot be detected                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| - [useAvailable](#modules_items_anyOf_i1_oneOf_i21_useAvailable )     | No      | boolean     | No         | -                                                                    | Use f_bavail (lpFreeBytesAvailableToCaller for Windows) instead of f_bfree to calculate used bytes<br />May be required for macOS to display correct results                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| - [percent](#modules_items_anyOf_i1_oneOf_i21_percent )               | No      | object      | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i1_percent )         | Color thresholds for percentage output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| - [key](#modules_items_anyOf_i1_oneOf_i21_key )                       | No      | string      | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i21_keyColor )             | No      | object      | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i21_keyIcon )               | No      | string      | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i21_keyWidth )             | No      | integer     | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i21_outputColor )       | No      | object      | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| - [format](#modules_items_anyOf_i1_oneOf_i21_format )                 | No      | string      | No         | In #/$defs/diskFormat                                                | Output format for the \`Disk\` module. See Wiki for formatting syntax<br />    1. {size-used}: Size used<br />    2. {size-total}: Size total<br />    3. {size-percentage}: Size percentage num<br />    4. {files-used}: Files used<br />    5. {files-total}: Files total<br />    6. {files-percentage}: Files percentage num<br />    7. {is-external}: True if external volume<br />    8. {is-hidden}: True if hidden volume<br />    9. {filesystem}: Filesystem *<br />    10. {name}: Label / name *<br />    11. {is-readonly}: True if read-only<br />    12. {create-time}: Create time in local timezone<br />    13. {size-percentage-bar}: Size percentage bar<br />    14. {files-percentage-bar}: Files percentage bar<br />    15. {days}: Days after creation<br />    16. {hours}: Hours after creation<br />    17. {minutes}: Minutes after creation<br />    18. {seconds}: Seconds after creation<br />    19. {milliseconds}: Milliseconds after creation<br />    20. {mountpoint}: Mount point / drive letter *<br />    21. {mount-from}: Mount from (device path) *<br />    22. {years}: Years integer after creation<br />    23. {days-of-year}: Days of year after creation<br />    24. {years-fraction}: Years fraction after creation<br />    25. {size-free}: Size free<br />    26. {size-available}: Size available |
-| - [condition](#modules_items_anyOf_i1_oneOf_i21_condition )           | No      | object      | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Property                                                              | Pattern | Type        | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| --------------------------------------------------------------------- | ------- | ----------- | ---------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [type](#modules_items_anyOf_i1_oneOf_i21_type )                     | No      | const       | No         | -                                                                    | Print partitions, space usage, file system, etc.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| - [folders](#modules_items_anyOf_i1_oneOf_i21_folders )               | No      | Combination | No         | -                                                                    | A list of folder paths for the disk output<br />Default: auto detection using mount-points<br />This option overrides other \`show*\` options                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| - [hideFolders](#modules_items_anyOf_i1_oneOf_i21_hideFolders )       | No      | Combination | No         | -                                                                    | A list of folder paths (or glob patterns) to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| - [hideFS](#modules_items_anyOf_i1_oneOf_i21_hideFS )                 | No      | Combination | No         | -                                                                    | A list of file systems to hide from the disk output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| - [showRegular](#modules_items_anyOf_i1_oneOf_i21_showRegular )       | No      | boolean     | No         | -                                                                    | Whether to show regular volumes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| - [showExternal](#modules_items_anyOf_i1_oneOf_i21_showExternal )     | No      | boolean     | No         | -                                                                    | Whether to show external volumes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| - [showHidden](#modules_items_anyOf_i1_oneOf_i21_showHidden )         | No      | boolean     | No         | -                                                                    | Whether to show hidden volumes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| - [showSubvolumes](#modules_items_anyOf_i1_oneOf_i21_showSubvolumes ) | No      | boolean     | No         | -                                                                    | Whether to show subvolumes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| - [showReadOnly](#modules_items_anyOf_i1_oneOf_i21_showReadOnly )     | No      | boolean     | No         | -                                                                    | Whether to show read-only volumes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| - [showUnknown](#modules_items_anyOf_i1_oneOf_i21_showUnknown )       | No      | boolean     | No         | -                                                                    | Whether to show unknown volumes whose sizes cannot be detected                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| - [useAvailable](#modules_items_anyOf_i1_oneOf_i21_useAvailable )     | No      | boolean     | No         | -                                                                    | Use f_bavail instead of f_bfree to calculate used bytes<br />May be required for macOS to display correct results<br />On Windows, set to true to make fastfetch honors the quota settings                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| - [percent](#modules_items_anyOf_i1_oneOf_i21_percent )               | No      | object      | No         | Same as [percent](#modules_items_anyOf_i1_oneOf_i1_percent )         | Color thresholds for percentage output                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| - [key](#modules_items_anyOf_i1_oneOf_i21_key )                       | No      | string      | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i21_keyColor )             | No      | object      | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i21_keyIcon )               | No      | string      | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i21_keyWidth )             | No      | integer     | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i21_outputColor )       | No      | object      | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| - [format](#modules_items_anyOf_i1_oneOf_i21_format )                 | No      | string      | No         | In #/$defs/diskFormat                                                | Output format for the \`Disk\` module. See Wiki for formatting syntax<br />    1. {size-used}: Size used (formatted)<br />    2. {size-total}: Size total (formatted)<br />    3. {size-percentage}: Size percentage num<br />    4. {files-used}: Files used<br />    5. {files-total}: Files total<br />    6. {files-percentage}: Files percentage num<br />    7. {is-external}: True if external volume<br />    8. {is-hidden}: True if hidden volume<br />    9. {filesystem}: Filesystem *<br />    10. {name}: Label / name *<br />    11. {is-readonly}: True if read-only<br />    12. {create-time}: Create time in local timezone<br />    13. {size-percentage-bar}: Size percentage bar<br />    14. {files-percentage-bar}: Files percentage bar<br />    15. {days}: Days after creation<br />    16. {hours}: Hours after creation<br />    17. {minutes}: Minutes after creation<br />    18. {seconds}: Seconds after creation<br />    19. {milliseconds}: Milliseconds after creation<br />    20. {mountpoint}: Mount point / drive letter *<br />    21. {mount-from}: Mount from (device path) *<br />    22. {years}: Years integer after creation<br />    23. {days-of-year}: Days of year after creation<br />    24. {years-fraction}: Years fraction after creation<br />    25. {size-free}: Size free (formatted)<br />    26. {bytes-used}: Size used (in bytes)<br />    27. {bytes-total}: Size total (in bytes) |
+| - [condition](#modules_items_anyOf_i1_oneOf_i21_condition )           | No      | object      | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i21_type"></a>5.1.2.22.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > type`
 
@@ -8789,8 +8898,9 @@ This option overrides other `show*` options
 | **Required** | No        |
 | **Default**  | `false`   |
 
-**Description:** Use f_bavail (lpFreeBytesAvailableToCaller for Windows) instead of f_bfree to calculate used bytes
+**Description:** Use f_bavail instead of f_bfree to calculate used bytes
 May be required for macOS to display correct results
+On Windows, set to true to make fastfetch honors the quota settings
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i21_percent"></a>5.1.2.22.12. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > percent`
 
@@ -8865,8 +8975,8 @@ Use a single space (` `) to hide the key
 | **Defined in** | #/$defs/diskFormat |
 
 **Description:** Output format for the `Disk` module. See Wiki for formatting syntax
-    1. {size-used}: Size used
-    2. {size-total}: Size total
+    1. {size-used}: Size used (formatted)
+    2. {size-total}: Size total (formatted)
     3. {size-percentage}: Size percentage num
     4. {files-used}: Files used
     5. {files-total}: Files total
@@ -8889,8 +8999,9 @@ Use a single space (` `) to hide the key
     22. {years}: Years integer after creation
     23. {days-of-year}: Days of year after creation
     24. {years-fraction}: Years fraction after creation
-    25. {size-free}: Size free
-    26. {size-available}: Size available
+    25. {size-free}: Size free (formatted)
+    26. {bytes-used}: Size used (in bytes)
+    27. {bytes-total}: Size total (in bytes)
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i21_condition"></a>5.1.2.22.19. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Disk > condition`
 
@@ -13070,16 +13181,16 @@ Use a single space (` `) to hide the key
 | **Required**              | No          |
 | **Additional properties** | Not allowed |
 
-| Property                                                        | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                                                                         |
-| --------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| - [type](#modules_items_anyOf_i1_oneOf_i51_type )               | No      | const   | No         | -                                                                    | Print power adapter name and charging watts                                                                                                                                                                                                                                                                                                                               |
-| - [key](#modules_items_anyOf_i1_oneOf_i51_key )                 | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                                                                                                                |
-| - [keyColor](#modules_items_anyOf_i1_oneOf_i51_keyColor )       | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                                                                                                                 |
-| - [keyIcon](#modules_items_anyOf_i1_oneOf_i51_keyIcon )         | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                                                                                                                                                                                                                              |
-| - [keyWidth](#modules_items_anyOf_i1_oneOf_i51_keyWidth )       | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                                                                                                                                                                                                                                                  |
-| - [outputColor](#modules_items_anyOf_i1_oneOf_i51_outputColor ) | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                                                                                                                                                                                                                                            |
-| - [format](#modules_items_anyOf_i1_oneOf_i51_format )           | No      | string  | No         | In #/$defs/poweradapterFormat                                        | Output format for the \`PowerAdapter\` module. See Wiki for formatting syntax<br />    1. {watts}: Power adapter watts<br />    2. {name}: Power adapter name<br />    3. {manufacturer}: Power adapter manufacturer<br />    4. {model-name}: Power adapter model<br />    5. {description}: Power adapter description<br />    6. {serial}: Power adapter serial number |
-| - [condition](#modules_items_anyOf_i1_oneOf_i51_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                                                                                                                                                                                                                                                          |
+| Property                                                        | Pattern | Type    | Deprecated | Definition                                                           | Title/Description                                                                                                                                                                                                                                                                                                                                                              |
+| --------------------------------------------------------------- | ------- | ------- | ---------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - [type](#modules_items_anyOf_i1_oneOf_i51_type )               | No      | const   | No         | -                                                                    | Print power adapter name and charging watts                                                                                                                                                                                                                                                                                                                                    |
+| - [key](#modules_items_anyOf_i1_oneOf_i51_key )                 | No      | string  | No         | Same as [key](#modules_items_anyOf_i1_oneOf_i1_key )                 | Module key<br />Use a single space (\` \`) to hide the key                                                                                                                                                                                                                                                                                                                     |
+| - [keyColor](#modules_items_anyOf_i1_oneOf_i51_keyColor )       | No      | object  | No         | Same as [keyColor](#modules_items_anyOf_i1_oneOf_i1_keyColor )       | Color of the module key. Overrides \`display.color.keys\`                                                                                                                                                                                                                                                                                                                      |
+| - [keyIcon](#modules_items_anyOf_i1_oneOf_i51_keyIcon )         | No      | string  | No         | Same as [keyIcon](#modules_items_anyOf_i1_oneOf_i1_keyIcon )         | Icon to display when \`display.key.type\` is set to \`icon\`                                                                                                                                                                                                                                                                                                                   |
+| - [keyWidth](#modules_items_anyOf_i1_oneOf_i51_keyWidth )       | No      | integer | No         | Same as [keyWidth](#modules_items_anyOf_i1_oneOf_i1_keyWidth )       | Width of the module key. Overrides \`display.key.width\`                                                                                                                                                                                                                                                                                                                       |
+| - [outputColor](#modules_items_anyOf_i1_oneOf_i51_outputColor ) | No      | object  | No         | Same as [outputColor](#modules_items_anyOf_i1_oneOf_i1_outputColor ) | Color of the module output. Overrides \`display.color.output\`                                                                                                                                                                                                                                                                                                                 |
+| - [format](#modules_items_anyOf_i1_oneOf_i51_format )           | No      | string  | No         | In #/$defs/poweradapterFormat                                        | Output format for the \`PowerAdapter\` module. See Wiki for formatting syntax<br />    1. {watts}: Power adapter watts<br />    2. {name}: Power adapter name<br />    3. {manufacturer}: Power adapter manufacturer<br />    4. {model-name}: Power adapter model name<br />    5. {description}: Power adapter description<br />    6. {serial}: Power adapter serial number |
+| - [condition](#modules_items_anyOf_i1_oneOf_i51_condition )     | No      | object  | No         | Same as [condition](#modules_items_anyOf_i1_oneOf_i0_condition )     | Show the module only if these conditions are met                                                                                                                                                                                                                                                                                                                               |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i51_type"></a>5.1.2.52.1. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Power Adapter > type`
 
@@ -13157,7 +13268,7 @@ Use a single space (` `) to hide the key
     1. {watts}: Power adapter watts
     2. {name}: Power adapter name
     3. {manufacturer}: Power adapter manufacturer
-    4. {model-name}: Power adapter model
+    4. {model-name}: Power adapter model name
     5. {description}: Power adapter description
     6. {serial}: Power adapter serial number
 
@@ -13476,6 +13587,10 @@ Specific value: `"separator"`
 | **Default**  | `"-"`    |
 
 **Description:** String to print for the separator line
+
+| Restrictions   |   |
+| -------------- | - |
+| **Min length** | 1 |
 
 ###### <a name="modules_items_anyOf_i1_oneOf_i54_outputColor"></a>5.1.2.55.3. Property `JSON config > modules > modules items > anyOf > item 1 > oneOf > Separator > outputColor`
 
@@ -16264,4 +16379,4 @@ Use a single space (` `) to hide the key
 | **Required** | Yes      |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2026-10-10 at 12:34:01 +0800
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2026-11-04 at 13:43:58 +0800
