@@ -57,7 +57,7 @@ platform". There is no `disk_nosupport.c` in the tree.
 | `showSubvolumes` | boolean | `false` | Show subvolumes (btrfs subvolumes, ZFS datasets) |
 | `showReadOnly` | boolean | `true` | Show read-only volumes |
 | `showUnknown` | boolean | `false` | Show volumes whose sizes cannot be detected |
-| `useAvailable` | boolean | `false` | Compute used bytes from `f_bavail` (Windows: `CallerAvailableAllocationUnits`) instead of `f_bfree` |
+| `useAvailable` | boolean | `false` | Report the space available to an unprivileged process (`f_bavail`, Windows: `CallerAvailableAllocationUnits`) instead of the file system's free space (`f_bfree`, Windows: `ActualAvailableAllocationUnits`). The used size is always `total − free` of whichever value is selected. |
 | `percent` | object | `{ "green": 50, "yellow": 80, "type": 0 }` | Colour thresholds and style for the percentage. `type: 0` inherits `display.percentType`. |
 | `key` | string | `Disk (<mount point>)` | Module key. A single space hides the key and the separator. |
 | `keyColor` | color | – | Overrides `display.color.keys` |
@@ -84,8 +84,9 @@ Run `fastfetch -h disk-format` for the authoritative list.
 |---|---|
 | `{size-used}` | Used size, formatted with `display.size` |
 | `{size-total}` | Total size, formatted |
-| `{size-free}` | Free size (`f_bfree`), formatted |
-| `{size-available}` | Size available to an unprivileged user (`f_bavail`), formatted |
+| `{size-free}` | Free size, formatted. Holds `f_bfree`, or `f_bavail` when `useAvailable` is `true` |
+| `{bytes-used}` | Used size in bytes, not formatted |
+| `{bytes-total}` | Total size in bytes, not formatted |
 | `{size-percentage}` | Used percentage as a number; empty unless the percentage style includes the number |
 | `{size-percentage-bar}` | Used percentage as a bar, brackets included; empty unless the percentage style includes a bar |
 | `{files-used}` | Inodes used |
@@ -126,7 +127,7 @@ clicking the key opens the volume in Explorer. Everywhere else the link target i
     "type": "Disk",
     "result": [
         {
-            "bytes": { "available": 160183455744, "free": 160183455744, "total": 900000120832, "used": 739816665088 },
+            "bytes": { "free": 160183455744, "total": 900000120832 },
             "files": { "total": 1564775574, "used": 484014 },
             "filesystem": "apfs",
             "mountpoint": "/",
@@ -141,7 +142,9 @@ clicking the key opens the volume in Explorer. Everywhere else the link target i
 
 All byte values are raw numbers, `volumeType` is an array of strings in the order
 `Regular`, `External`, `Subvolume`, `Hidden`, `Read-only`, `Unknown`, and `createTime` is either the
-full ISO-8601 stamp or `null`. `files.total` and `files.used` are both `null` when the file system
+full ISO-8601 stamp or `null`. `bytes` reports only `free` and `total`; the used size is
+`total − free` and is not written out separately, because which free value `free` carries already
+depends on `useAvailable`. `files.total` and `files.used` are both `null` when the file system
 does not report inode counts at all (the Windows file system in WSL returns `0`/`0`, which is turned
 into `null`). On a detection failure the object is `{ "type": "Disk", "error": "…" }`.
 
@@ -211,12 +214,17 @@ into `null`). On a detection failure the object is `{ "type": "Disk", "error": "
   default configuration prints `/` only. `useAvailable` exists for the same reason: on macOS
   `f_bfree` counts the APFS reserved blocks, and the schema suggests it "may be required for macOS
   to display correct results" when the numbers disagree with Finder.
-- **`f_bfree` and `f_bavail` differ, and the module prints both.** `{size-free}` is everything the
-  file system considers free; `{size-available}` is what an unprivileged process may still write.
-  They differ whenever the file system holds something back — ext4's reserved blocks, a ZFS
-  reservation — and `used` is `total − free` unless `useAvailable` is set. On a file system with
-  nothing reserved (a container's plain ext4, for instance) the two differ only by the few blocks
-  written between the two readings.
+- **`f_bfree` and `f_bavail` differ, and only one of them is reported at a time.** `f_bfree` is
+  everything the file system considers free; `f_bavail` is what an unprivileged process may still
+  write. They differ whenever the file system holds something back — ext4's reserved blocks, a ZFS
+  reservation — and `useAvailable` decides which one `{size-free}` and `bytes.free` carry. `used` is
+  always `total − free` of the selected value, so switching the option moves the free and the used
+  figure together instead of only one of them. On a file system with nothing reserved (a container's
+  plain ext4, for instance) the two differ only by the few blocks written between the two readings,
+  and the option makes no visible difference. There is no placeholder for the *other* value any
+  more: `{size-available}` was removed in v2.70.0 together with `bytes.available` and `bytes.used`
+  in the JSON result, so a custom format that wants both has to run the module twice with different
+  `useAvailable` values.
 - **The `Read-only` label on macOS does not mean a read-only disk.** It comes from `MNT_RDONLY`,
   which macOS sets for the sealed system snapshot at `/` on every modern install.
 - **`Unknown` is a size, not an error.** When `statvfs()` fails (a share whose server went away, a
@@ -230,10 +238,11 @@ into `null`). On a detection failure the object is `{ "type": "Disk", "error": "
 ## Implementation
 
 Every platform implements only `ffDetectDisksImpl()`; the shared `disk.c` then sorts the list
-alphabetically by mount point — which is also the order the volumes are printed in — marks volumes
-with `bytesTotal == 0` as `Unknown` and fills in `bytesUsed` as
-`bytesTotal − (free | available)` according to `useAvailable`. The per-volume printing, the key, the
-`show*` mask and the JSON writer all live in the module.
+alphabetically by mount point — which is also the order the volumes are printed in — and marks
+volumes with `bytesTotal == 0` as `Unknown`. There is no `bytesUsed` field in `FFDisk`: each
+platform stores exactly one free value in `disk->bytesFree`, the one `useAvailable` selected, and the
+module derives `bytesTotal − bytesFree` wherever it needs the used size. The per-volume printing, the
+key, the `show*` mask and the JSON writer all live in the module.
 
 There is no cache in this module: `ffPrintDisk()` and `ffGenerateDiskJsonResult()` each call the
 detector, so under `--dynamic-interval` the volumes are re-read on every round. The one piece of
@@ -256,8 +265,9 @@ through `ffStrbufDecodeHexEscapeSequences()` to turn `\x20` escapes into spaces.
 `Hidden` for `x-gvfs-hide`/`hidden` mount options, `Subvolume` when a device already appeared
 earlier in the sorted list (btrfs subvolumes, ZFS datasets), `External` when
 `/sys/class/block/<dev>/removable` is `1`, and `Regular` otherwise; `ro` adds the `Read-only` bit.
-Sizes come from `statvfs()`, and the creation time from a `statx()` `STATX_BTIME` call, rejected when
-it is before 1991 (the field is not always real).
+Sizes come from `statvfs()` — `f_blocks` for the total, and `f_bfree` or `f_bavail` for the free
+value, depending on `useAvailable` — and the creation time from a `statx()` `STATX_BTIME` call,
+rejected when it is before 1991 (the field is not always real).
 
 ### FreeBSD, NetBSD, OpenBSD and macOS
 
@@ -285,13 +295,32 @@ of the `statvfs` result, trimmed.
 `Hidden`, `B_FS_IS_READONLY` means `Read-only`, `B_FS_IS_REMOVABLE` means `External`, and a volume
 with none of them is `Regular`. The creation time comes from `BDirectory::GetCreationTime()`.
 
+Haiku is the one platform where `useAvailable` has no effect: `fs_info` exposes only `free_blocks`,
+with no separate "available to the user" counter, so that single value is stored for both settings.
+
 ### Windows
 
 `NtQueryInformationProcess(ProcessDeviceMap)` returns the drive map and the type of each letter;
 `DRIVE_NO_ROOT_DIR` is skipped unless `folders` asked for it. Each drive is opened with
-`FILE_FLAG_BACKUP_SEMANTICS` and queried three times: `FileFsAttributeInformation` gives the file
-system name and the read-only flag, `FileFsVolumeInformation` gives the label and the creation time,
-and `FileFsFullSizeInformation` gives total, free and caller-available sizes from the allocation
-unit counts. `mountFrom` is the DOS device path from `QueryDosDeviceW()`. A `folders` value of
-`"/"` is rewritten to `<system drive>:\` before matching, which is what makes the cross-platform
+`FILE_FLAG_BACKUP_SEMANTICS` and queried for the file system name and the read-only flag
+(`FileFsAttributeInformation`), for the label and the creation time (`FileFsVolumeInformation`) and
+for the sizes (below). `mountFrom` is the DOS device path from `QueryDosDeviceW()`. A `folders` value
+of `"/"` is rewritten to `<system drive>:\` before matching, which is what makes the cross-platform
 presets work.
+
+The sizes need two different information classes, because the older one reports a per-user quota as
+if it were the capacity of the volume. `FILE_FS_FULL_SIZE_INFORMATION` (class 7) carries
+`TotalAllocationUnits`, which is the space available **to the caller**, next to
+`ActualAvailableAllocationUnits`, which is the volume's real free space; the previous code mixed the
+two, which is what produced the overflowing used sizes of
+[#2651](https://github.com/fastfetch-cli/fastfetch/issues/2651)
+(`16.00 EiB / 10.00 GiB (171798629981%)` on a 10 GiB university share whose server had 6 TiB free).
+Since v2.70.0 the default path on Windows 10 1809 (build 17763) and later is
+`FILE_FS_FULL_SIZE_INFORMATION_EX` (class 14), whose `ActualTotalAllocationUnits` and
+`ActualAvailableAllocationUnits` ignore the quota, so the real capacity and free space are reported.
+`useAvailable: true` selects the legacy class and its caller-available numbers instead, and every
+Windows older than 1809 uses the legacy class unconditionally, since class 14 does not exist there.
+
+The choice between the two classes is made from the build number alone, not from the result of the
+query. A volume whose file system driver rejects class 14 therefore keeps `bytesTotal == 0` and is
+printed as `Unknown`; it is not retried with class 7.
