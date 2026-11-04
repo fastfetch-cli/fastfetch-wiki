@@ -309,7 +309,7 @@ first backend that produces at least one display:
 
 | Order | Backend | File | `platformApi` values |
 |---|---|---|---|
-| 1 | Wayland | `wayland/global-output.c`, `kde-output.c` | `wayland-base`, `wayland-zxdg`, `wayland-wpcolor`, `wayland-zxdg+wpcolor`, `wayland-kde` |
+| 1 | Wayland | `wayland/global-output.c`, `mutter.c`, `kde-output.c` | `wayland-base`, `wayland-zxdg`, `wayland-wpcolor`, `wayland-zxdg+wpcolor`, `wayland-kde`, `wayland-mutter` |
 | 2 | XCB + RandR | `xcb.c` | `xcb-randr-mode`, `xcb-randr-crtc`, `xcb-randr-monitor`, `xcb-randr-screen`, plus `-emu-` variants under XWayland |
 | 3 | Xlib + RandR | `xlib.c` | `xlib-randr-mode`, `xlib-randr-crtc`, `xlib-randr-monitor`, `xlib-randr-screen`, plus `-emu-` variants |
 | 4 | DRM ioctls | `drm.c` | `libdrm` |
@@ -318,6 +318,13 @@ first backend that produces at least one display:
 Steps 1–3 are skipped entirely when `general.dsForceDrm` is set. The `-emu-` suffix means XWayland:
 RandR reports a single emulated output, so the per-CRTC and per-mode paths are distinguishable from
 the real ones.
+
+Inside step 1, `mutter.c` reads the monitor configuration of GNOME and Cinnamon from
+`org.gnome.Mutter.DisplayConfig` / `org.cinnamon.Muffin.DisplayConfig` over the session bus, when the
+build has D-Bus and the interface answers. It supplies the primary flag, `is-builtin`, the raw EDID
+and the HDR color mode, it replaces the `wl_output` name to DRM connector matching, and the displays
+it answered for report `wayland-mutter`. See
+[Display-Detection-Methods](Display-Detection-Methods#mutter-and-muffin).
 
 The X11 backends read EDID from the output's RandR property and fill in `hdrStatus` (via
 `ffEdidGetHdrCompatible()`), `manufactureYear`/`manufactureWeek` and `serial`. On X11 the rotation

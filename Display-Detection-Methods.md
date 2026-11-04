@@ -6,6 +6,7 @@ The methods are tried in order, and the first one that reports at least one disp
 
 1. **wayland** — via `libwayland-client`. Supports the most features, including per-monitor refresh rates. It cannot detect the name of the WM / DE, which is filled in separately from environment variables and the process list.
     * Reported as `wayland-base`, `wayland-zxdg`, `wayland-wpcolor`, `wayland-zxdg+wpcolor`, or `wayland-kde` when the KDE output device protocol is available.
+    * On GNOME and Cinnamon the monitor configuration is read from the compositor over D-Bus as well, and the displays it answered for report `wayland-mutter` instead. See [Mutter and Muffin](#mutter-and-muffin).
 2. **xcb-randr** — via `libxcb-randr`.
     * Reported as `xcb-randr-mode` when the current mode was found in the mode list, and `xcb-randr-crtc` when only the CRTC size is known, in which case no refresh rate is reported. An `emu` infix (`xcb-randr-emu-mode`, `xcb-randr-emu-crtc`) means the values come from an emulated RandR, as under XWayland.
     * `xcb-randr-monitor` and `xcb-randr-screen` are the fallbacks used when the per-output data is not usable.
@@ -16,6 +17,19 @@ The methods are tried in order, and the first one that reports at least one disp
     * Reported as `sysfs-drm`.
 6. **kenv** — FreeBSD only. Reads `screen.width` and `screen.height` from the kernel environment.
     * Reported as `kenv`.
+
+### Mutter and Muffin
+
+GNOME (gnome-shell, Mutter) and Cinnamon (cinnamon, Muffin) publish their monitor configuration on the session bus, as `org.gnome.Mutter.DisplayConfig` and `org.cinnamon.Muffin.DisplayConfig`. When one of those interfaces answers, the `wayland` method reads it, and the displays it describes report `wayland-mutter` as `platformApi`. This route is Linux only, and needs a build with the `DBus` feature, which `fastfetch --list-features` reports.
+
+What it adds over the `wl_output` route:
+
+* The primary monitor and the built-in / external split come from the compositor instead of being guessed. Each logical monitor carries a primary flag, and each monitor carries `is-builtin`, which is authoritative where the type is otherwise guessed from the connector name.
+* The raw EDID comes from `GetResources()` — `GetCurrentState()` does not expose it — and fills in the monitor model name, serial number, manufacture date, and preferred resolution and refresh rate.
+* HDR state comes from the monitor's `color-mode` and `supported-color-modes` properties: `BT2100` means HDR is on, or is only supported when it is in the list but not the current one. The EDID answers only where the properties say nothing.
+* The `wl_output` name is no longer matched against the DRM connectors, since the connector names arrive with the configuration itself. A monitor whose EDID cannot be read therefore keeps its connector name as the display name instead of falling back to that match.
+
+None of this has to be available. A build without D-Bus, a compositor that does not expose the interface, or a reply that cannot be read leaves the previous behavior in place: the `wayland-*` values above, with the primary monitor read from `monitors.xml` on GNOME or `cinnamon-monitors.xml` on Cinnamon.
 
 Use `--ds-force-drm` to skip wayland and X11 and go straight to DRM:
 
