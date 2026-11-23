@@ -10,7 +10,7 @@
 | Detection source | `src/detection/cpu/` |
 
 Prints the processor model, its core counts, its maximum clock and — if you ask for it — its
-package temperature. All of it goes on one line.
+temperature. All of it goes on one line.
 
 ```
 CPU: Apple M<n> (8+2) @ 3.23 GHz
@@ -38,7 +38,7 @@ which is the normal case on Apple Silicon and inside virtual machines. The `- 52
 | Haiku | `cpu_haiku.c` | `get_system_info()` and `get_cpu_topology_info()` |
 | GNU/Hurd | `cpu_linux.c` | The same file as Linux |
 | macOS | `cpu_apple.c` | `sysctl`, plus IOKit and the SMC for the clock and the temperature |
-| Windows | `cpu_windows.c` | The registry, `NtQuerySystemInformationEx`, SMBIOS and Perflib |
+| Windows | `cpu_windows.c` | The registry, `NtQuerySystemInformationEx`, SMBIOS, Perflib and — on elevated x86-64 Intel systems — PawnIO MSRs |
 
 All ten platforms have a real implementation. `cpu_x86.c` — a large table of Intel and AMD code
 names and process technologies — is listed once in the shared part of `CMakeLists.txt` rather than
@@ -49,7 +49,7 @@ in a platform block, so it is compiled everywhere; its whole body sits behind
 
 | Key | Type | Default | Description |
 |---|---|---|---|
-| `temp` | boolean or object | `false` | Detect and print the package temperature. The object form sets the colour thresholds: `{ "green": 60, "yellow": 80 }`. |
+| `temp` | boolean or object | `false` | Detect and print the CPU temperature. The object form sets the colour thresholds: `{ "green": 60, "yellow": 80 }`. |
 | `tempSensor` | string | – | Sensor to read instead of the automatic one. The accepted syntax is platform-specific. |
 | `showPeCoreCount` | boolean | `true` | Group the core count by clock (`8+2`) and fill `{core-types}`. |
 | `key` | string | module name | Module key. A single space hides the key and the separator. |
@@ -71,7 +71,7 @@ thresholds).
 |---|---|---|
 | Linux / Android | `hwmonN`, `thermal_zoneN`, `cputemp.N`, or an absolute path | `hwmon0`, `thermal_zone0` |
 | macOS | an SMC sensor key | `Tp01` |
-| Windows | a Perflib thermal-zone instance name | `\_TZ.CPUZ` |
+| Windows | a Perflib thermal-zone instance name; ignored when the PawnIO MSR path succeeds | `\_TZ.CPUZ` |
 | FreeBSD | a `sysctl` OID | `dev.cpu.0.temperature` |
 | NetBSD | a `sysmon` sensor key | `coretemp0` |
 | OpenBSD | a `sensordev` name | `cpu0` |
@@ -169,6 +169,15 @@ entirely on non-x86 builds rather than being `null`.
 - **`temp: true` can silently do nothing.** Haiku has no temperature support at all — the option is
   accepted and the field stays unset, so `{temperature}` is empty and the JSON value is `null` with
   no error. The same silent outcome happens on any platform whose sensor read fails.
+- **On Windows, the PawnIO path needs elevation.** On x86-64 Intel systems fastfetch first tries to
+  open `\\.\PawnIO`. The device ACL allows only administrators and `SYSTEM`, so an unelevated
+  process silently falls back to the Perflib thermal zone. Debug builds log the exact reason —
+  missing device, access denied, or another Win32 error — but normal builds do not print it.
+  `tempSensor` selects the Perflib instance only; it does not change which MSR is read when the
+  PawnIO path succeeds.
+- **The Windows MSR path is Intel/x86-64 only.** AMD and ARM continue to use the Perflib fallback.
+  AMD Zen exposes CPPC performance values rather than a simple maximum-frequency MSR, and ARM has no
+  architectural CPU temperature register, so neither is implemented through PawnIO here.
 - **Swapping `green` and `yellow` inverts the colour scale rather than being rejected.**
   `ffTempsAppendNum()` compares the two thresholds and switches to a "lower is hotter" rule when
   `green > yellow`. A typo turns a "warmer is redder" gradient into the opposite, with no warning.
@@ -288,6 +297,22 @@ core counts, the package count, the NUMA node count and — when `showPeCoreCoun
 come from the registry key
 `HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0`. If CPUID did not produce a
 maximum clock, SMBIOS type 4 is consulted, but its value is discarded when it is below the base
-clock or more than twice the base clock — the code comments call that an invalid report. The
-temperature comes from the Perflib `Thermal Zone Information` counter set, defaulting to the
-`\_TZ.CPUZ` instance and falling back to the first instance that exists.
+clock or more than twice the base clock — the code comments call that an invalid report.
+
+On x86-64 Intel systems fastfetch also tries the PawnIO kernel driver. It opens `\\.\PawnIO`
+directly, loads the signed `IntelMSR` module from an RCDATA resource embedded in the executable,
+and executes functions through the driver's IOCTL interface. No `PawnIOLib.dll` is needed at
+runtime. If the device cannot be opened, or the process is not elevated, the whole PawnIO path is
+skipped and the existing sources are used unchanged. The embedded module is third-party
+LGPL-2.1-or-later code; its binary, Pawn source, and license text are kept in
+`src/3rdparty/pawnio/`.
+
+When the module is loaded successfully, `frequencyMax` is overwritten with
+`MSR 0x1AD[7:0] × 100 MHz`, the one-core P-core turbo ratio. A failed read leaves the CPUID or
+SMBIOS value in place. Temperature is read from CPU 0: `MSR 0x1A2[23:16]` gives TjMax and
+`MSR 0x19C[22:16]` gives the digital temperature slope below it, so the result is
+`TjMax - DTS`. The reading thread is briefly pinned to CPU 0 and yielded before the MSR read so
+the scheduler actually migrates it. If that reading is invalid, fastfetch tries the package
+sensor in `MSR 0x1B1`. Only if both MSR reads fail does it fall back to the Perflib
+`Thermal Zone Information` counter set, defaulting to the `\_TZ.CPUZ` instance and then the first
+instance that exists. AMD and ARM never enter this path and keep using Perflib.

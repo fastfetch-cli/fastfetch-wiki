@@ -22,8 +22,8 @@ one device the key is numbered, and the main device is additionally marked with 
 
 | Platform | Implementation | Notes |
 |---|---|---|
-| Linux | `sound_linux.c` | PulseAudio's own native protocol over the daemon socket; **no other backend and no fallback** |
-| Android | `sound_android.c` + `sound_linux.c` | The `audio` (IAudioService) system service over raw binder while SurfaceFlinger is the display server, otherwise PulseAudio. Needs no permission (see [Android Permissions](Android-Permissions)) |
+| Linux | `sound_linux.c` | PulseAudio's own native protocol over the daemon socket; when no server answers, ALSA over the kernel's control interface |
+| Android | `sound_android.c` + `sound_linux.c` | The `audio` (IAudioService) system service over raw binder while SurfaceFlinger is the display server, otherwise the Linux code. Needs no permission (see [Android Permissions](Android-Permissions)) |
 | FreeBSD / MidnightBSD / DragonFly | `sound_bsd.c` | `ioctl(SNDCTL_MIXER_*)` on `/dev/mixer*` |
 | NetBSD | `sound_nbsd.c` | `ioctl(AUDIO_GETDEV)` … on `/dev/audio*` |
 | OpenBSD | `sound_obsd.c` | `ioctl(AUDIO_GETDEV)` … on `/dev/audio*` |
@@ -31,7 +31,7 @@ one device the key is numbered, and the main device is additionally marked with 
 | macOS | `sound_apple.c` | CoreAudio |
 | Windows | `sound_windows.cpp` | Core Audio APIs (`IMMDeviceEnumerator`) |
 | Haiku | `sound_haiku.cpp` | `BMediaRoster` / the media kit |
-| GNU/Hurd | `sound_linux.c` | Same code |
+| GNU/Hurd | `sound_linux.c` | Same code. Hurd has neither the Linux sound headers nor `/proc/asound`, so only the sound server path can answer there |
 
 Every platform has an implementation. Which device ends up in the list is decided by `soundType`,
 and each backend applies that filter in its own way — see the pitfalls.
@@ -40,8 +40,9 @@ Android compiles both files and the display server decides between them, the sam
 `wallpaper` and `media`. SurfaceFlinger means the sound that is audible is Android's own, so
 `sound_android.c` asks `IAudioService` over `/dev/binder`; a Termux:X11 or Wayland session runs a real
 desktop on top of the device, and what plays there belongs to that desktop, so `sound_linux.c` —
-compiled alongside for exactly that reason — answers over PulseAudio. Only one of the two is ever
-consulted, never merged.
+compiled alongside for exactly that reason — answers, with the same two backends it has on a desktop.
+The ALSA one is not compiled on Android at all, since `/dev/snd` and `/proc/asound` are closed to an
+app. Only one of the two files is ever consulted, never merged.
 
 ## Configuration
 
@@ -141,12 +142,33 @@ has to set `percent.type` explicitly. `{platform-api}` is a free-form string cho
   default `main` mode never shows it. Switching to `all` is what makes it appear.
 - **Muting a device means two different things on two platforms.** On Windows the volume is read only
   when `GetMute()` fails or reports *not* muted, so a muted output reports **no volume at all**
-  (`null` in the JSON, and no `(…%)` suffix). On Linux a muted sink reports **`0%`**. Neither is
-  "unknown" — they are genuinely different values for the same user action.
-- **Linux needs a reachable PulseAudio server, and has no fallback.** There is no ALSA path, and no
-  library either — the backend speaks PulseAudio's native protocol itself over the daemon socket — so
-  a machine running plain ALSA, or one where PulseAudio was replaced by PipeWire with no socket at the
-  usual path, reports a connection error and prints nothing.
+  (`null` in the JSON, and no `(…%)` suffix). On Linux a muted sink, and a muted ALSA control,
+  report **`0%`**. Neither is "unknown" — they are genuinely different values for the same user
+  action.
+- **Linux has two backends, and only one of them answers per run.** PulseAudio is asked first, because
+  it is the only one that knows the volume of the desktop rather than of the hardware, and ALSA is
+  consulted only when that path returns an error. That is what a machine running plain ALSA does, and
+  one where PipeWire runs with no socket at the usual path; a machine with neither reports the sound
+  server's error, as before.
+- **The ALSA path reports one device per sound card.** `identifier` is `hw:N`, the card index that
+  ALSA's own tools also take after `-c`, and `name` is the name of that card's main playback control
+  with its direction suffix stripped — `Master`, not `Master Playback Volume` — which is what a
+  desktop mixer puts on the slider. The control is picked from `Master`, `Master Mono`, `PCM`,
+  `Speaker`, `Headphone`, `Headphones` and `Front` in that order, and the first playback volume
+  control otherwise: falling back to the first control of the card would follow the order the driver
+  registered things in, which is not a ranking. A card with a single unnamed volume, as a codec that
+  registers `Playback Volume`, is named after the card itself.
+- **The ALSA volume is the control's own scale**, converted to a percentage linearly, which is the
+  number `amixer` prints in brackets. A control whose range is empty or inverted reports no volume.
+- **A capture control is never a device there.** `Capture Volume` is an input gain, so a card that
+  carries nothing else — a USB microphone, for example — has no output to report.
+- **`volume: null` on the ALSA path has two meanings.** The card's control device could not be opened
+  (the nodes are `root:audio` behind an ACL for the seat, so a session over ssh can name a card it may
+  not read — that card is still reported, by its own name), or it has no control whose value could be
+  read.
+- **`main` and `active` on the ALSA path.** `main` is the first card that has an output at all, and
+  `active` is the playback switch of the control being reported. A control without a switch, and a
+  card whose controls could not be read, count as active rather than as unknown.
 - **On Android exactly one device is ever reported.** It is the sink the audio policy has selected for
   `USAGE_MEDIA`, taken from the first entry of `getDevicesForAttributesUnprotected`, and not a list of
   connected outputs — so `soundType: "all"` does not widen it.
@@ -163,9 +185,9 @@ has to set `percent.type` explicitly. `{platform-api}` is a free-form string cho
 - **On Android `active` means "something is playing"**, from `isMusicActive()`. A build that does not
   declare the method, or a service that refuses it, leaves the bit clear rather than failing the
   module.
-- **`platformApi` is not a constant across platforms.** Windows always reports `Core Audio APIs`,
-  Android always reports `AudioService`, while Linux reports the PulseAudio server name and version,
-  so a script cannot treat the field as an enum.
+- **`platformApi` is not a constant across platforms.** Windows always reports `Core Audio APIs` and
+  Android always reports `AudioService`; Linux reports the PulseAudio server name and version, or the
+  constant `ALSA` when the fallback answered, so a script cannot treat the field as an enum.
 - **`soundType: "active"` does not mean "currently playing".** It maps to the platform's notion of a
   present / enabled device. `all` in turn disables the filter entirely, which is why it also lists
   devices that are not plugged in.
@@ -183,7 +205,7 @@ has to set `percent.type` explicitly. `{platform-api}` is a free-form string cho
   have.
 - **Older builds reported the module as failed even when it printed.** `ffPrintSound()` used to
   return the initial `false` no matter what, which suppressed every following module gated on
-  `condition.succeeded`. This was fixed (B60); it is the only module that ever had the defect.
+  `condition.succeeded`. This was fixed; it is the only module that ever had the defect.
 
 ## Implementation
 
@@ -211,21 +233,41 @@ from `IAudioEndpointVolume::GetMasterVolumeLevelScalar()` unless the endpoint is
 
 ### Linux / GNU/Hurd
 
-There is exactly one backend, and it is not a library client: `sound_linux.c` speaks PulseAudio's
-native protocol itself over the daemon socket, so no `libpulse` is linked or loaded at runtime and
-there is no build option for one. A PulseAudio server still has to be reachable — a machine running
-plain ALSA, or PulseAudio replaced by PipeWire with no socket at the usual path, reports a
-connection error rather than falling back.
+Neither backend is a library client, so no `libpulse` and no `libasound` is linked or loaded at
+runtime, and there is no build option for either.
 
-The server is reached at `$PULSE_SERVER`, or at the socket under `$PULSE_RUNTIME_PATH`, and the two
-queries a library client would make are sent as native protocol commands: the server information first
-(the server name, with a `(on …)` wrapper stripped, and the default sink name), then the sink list. A
-sink is `main` when its name equals the default sink name and `active` when it has an active port whose
-availability is not `PA_PORT_AVAILABLE_NO`. In `main` mode the enumeration stops as soon as one device
-has been collected, so only the default sink is reported. `platformApi` is the PulseAudio server
-string, not a constant, and `identifier` is the sink name. The volume is
+`sound_linux.c` asks the sound server first. It is reached at `$PULSE_SERVER`, or at the socket
+under `$PULSE_RUNTIME_PATH`, and the two queries a library client would make are sent as PulseAudio's
+own native protocol commands: the server information first (the server name, with a `(on …)` wrapper
+stripped, and the default sink name), then the sink list. A sink is `main` when its name equals the
+default sink name and `active` when it has an active port whose availability is not
+`PA_PORT_AVAILABLE_NO`. In `main` mode the enumeration stops as soon as one device has been
+collected, so only the default sink is reported. `platformApi` is the PulseAudio server string, not a
+constant, and `identifier` is the sink name. The volume is
 `volume.values[0] * 100 / PA_VOLUME_NORM` rounded — and it is forced to **0** when the sink is muted,
 which is the opposite of what the Windows backend does.
+
+When that returns an error, the ALSA path runs. It needs no library either: the cards are read from
+`/proc/asound/cards`, which is world readable, and each card's controls over `/dev/snd/controlC<N>`
+with the kernel's own control interface — `SNDRV_CTL_IOCTL_ELEM_LIST` to walk the control ids,
+`ELEM_INFO` for the type and the value range, `ELEM_READ` for the value. The structs and the request
+numbers come from `<sound/asound.h>`, the kernel's uapi header, so nothing about the abi is written
+down here; a request number carries the size of the struct it passes, which is why a header that does
+not match the kernel is refused as an unknown ioctl instead of being read as garbage. A libc without
+that header simply compiles the fallback out, and Android leaves it out too, where those two paths
+are closed to an app anyway.
+
+What a control *is* is not in that interface: an access bitmask with no volume and no switch bit, and
+a type. It is read from the control's name instead, which is a base name plus a suffix — `Master
+Playback Volume`, or `Capture Volume` for a control with no base name of its own — and a suffix only
+counts when it is the whole name or starts a word of it. The suffixes are the ones libasound's simple
+mixer layer carries, tried longest first. Capture and routing controls are not outputs and are never
+reported, which is a deliberate difference from libasound, where `Capture Volume` is a mixer slider
+like any other.
+
+The switch that mutes a control is a second control with the same base name and index, so it takes a
+second walk of the card — which base name wins is only known once the first walk is over. A control
+without a switch leaves the device active.
 
 ### Android
 
